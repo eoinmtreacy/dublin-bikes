@@ -2,6 +2,9 @@
 Project repo for Software Engineering group project
 
 # Developer notes
+## Don't merge your own pull request!
+Let somebody know that you've made a PR, even request code review, and make sure somebody else get a sets of eyes on it before we merge into main
+## It's a lot easier to catch issues this way than rolling back main after we break everything
 If you are uncomfortable with git at all, take it slow and follow each step every single commit for at least the first few <br>
 Eventually it'll be second nature
 ## How to start a new branch
