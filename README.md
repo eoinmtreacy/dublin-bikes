@@ -8,16 +8,16 @@ Let somebody know that you've made a PR, even request code review, and make sure
 If you are uncomfortable with git at all, take it slow and follow each step every single commit for at least the first few <br>
 Eventually it'll be second nature
 ## How to start a new branch
-0. Clone repo:
-1. ```
+1. Clone repo if you haven't already:
+```
 git clone https://github.com/eoinmtreacy/comp30380-dublin-bikes.git
-2. ```
-3. Check out main, pull down from main to pull any changes
+```
+2. Check out main, pull down from main to pull any changes
 `git pull`
-4. Checkout a new branch
+3. Checkout a new branch
 `git checkout -b BRANCH_NAME`
-5. Make changes in branch
-6. Checkout main again, and then merge into your branch
+4. Make changes in branch
+5. Checkout main again, and then merge into your branch
 ```
 git checkout main
 git pull
