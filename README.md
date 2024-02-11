@@ -1,0 +1,24 @@
+# COMP30380 Group 7
+Project repo for Software Engineering group project
+
+# Developer notes
+If you are uncomfortable with git at all, take it slow and follow each step every single commit for at least the first few <br>
+Eventually it'll be second nature
+## How to start a new branch
+0. Clone repo: `git clone https://github.com/eoinmtreacy/comp30380-dublin-bikes.git`
+1. Check out main, pull down from main to pull any changes
+`git pull`
+2. Checkout a new branch
+`git checkout -b BRANCH_NAME`
+3. Make changes in branch
+4. Checkout main again, and then merge into your branch
+```
+git checkout main
+git pull
+git checkout MY_BRANCH
+git merge main
+git push
+```
+This checkout into main is to prevent issues with pushing. If you merge main into the branch you've just edited and there are no conflicts and nothing breaks, then it's likely fine.
+
+5. Resolve conflicts if any (reach out to team to resolve): complexity will only increase as sections become closer to each other
