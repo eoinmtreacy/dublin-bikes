@@ -11,12 +11,14 @@ USER = "root"
 
 engine = create_engine(f'mysql+mysqldb://{USER}:{PASSWORD}@{URI}:{PORT}/{DB}', echo=True)
 
+connection = engine.connect()
+
 
 sql = """
 CREATE DATABASE IF NOT EXISTS dbikes;
 """
 
-engine.execute(sql)
+connection.execute(sql)
 
 sql = """
 CREATE TABLE IF NOT EXISTS station (
@@ -34,8 +36,8 @@ status VARCHAR(256)
 """
 
 try:
-    res = engine.execute("DROP TABLE IF EXISTS station")
-    res = engine.execute(sql)
+    res = connection.execute("DROP TABLE IF EXISTS station")
+    res = connection.execute(sql)
     print(res.fetchall())
 except Exception as e:
     print(e)
@@ -50,7 +52,7 @@ last_update INTEGER
 """
 
 try:
-    res = engine.execute(sql)
+    res = connection.execute(sql)
     print(res.fetchall())
 except Exception as e:
     print(e)
