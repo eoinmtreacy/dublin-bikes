@@ -4,7 +4,7 @@ from constants import * # contains DB_USER, DB_PW
 
 URI = "dublin-bikes-db.c7w22mqua0gp.eu-north-1.rds.amazonaws.com"
 PORT = "3306"
-DB = "dublin-bikes-db"
+DB = "dbikes"
 
 engine = create_engine(f'mysql+mysqldb://{DB_USER}:{DB_PW}@{URI}:{PORT}/{DB}', echo=True)
 
