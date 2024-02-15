@@ -1,15 +1,13 @@
 from sqlalchemy import create_engine
-from password import Password
+from constants import Password
 from sqlalchemy.dialects.mysql import mysqldb
+from constants import * # contains DB_USER, DB_PW
 
-
-PASSWORD = Password().get()
 URI = "database-1.c7w22mqua0gp.eu-north-1.rds.amazonaws.com"
 PORT = "3306"
 DB = "database-1"
-USER = "root"
 
-engine = create_engine(f'mysql+mysqldb://{USER}:{PASSWORD}@{URI}:{PORT}/{DB}', echo=True)
+engine = create_engine(f'mysql+mysqldb://{DB_USER}:{DB_PW}@{URI}:{PORT}/{DB_USER}', echo=True)
 
 connection = engine.connect()
 
