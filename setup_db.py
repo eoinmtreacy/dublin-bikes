@@ -9,7 +9,7 @@ PORT = "3306"
 DB = "database-1"
 USER = "root"
 
-engine = create_engine("mysqldbs://{}:{}@{}:{}/{}".format(USER, PASSWORD, URI, PORT, DB), echo=True)
+engine = create_engine(f'mysql+mysqldbs://{USER}:{PASSWORD}@{URI}:{PORT}/{DB}', echo=True)
 
 
 sql = """
