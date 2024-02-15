@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
 from password import Password
+from sqlalchemy.dialects.mysql import mysqldb
 
 
 PASSWORD = Password().get()
