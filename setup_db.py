@@ -1,5 +1,4 @@
 from sqlalchemy import create_engine
-from constants import Password
 from sqlalchemy.dialects.mysql import mysqldb
 from constants import * # contains DB_USER, DB_PW
 
