@@ -6,7 +6,7 @@ URI = "database-1.c7w22mqua0gp.eu-north-1.rds.amazonaws.com"
 PORT = "3306"
 DB = "database-1"
 
-engine = create_engine(f'mysql+mysqldb://{DB_USER}:{DB_PW}@{URI}:{PORT}/{DB}', echo=True)
+engine = create_engine(f'mysql+mysqldb://{DB_USER}:{DB_PW}@{URI}:{PORT}/', echo=True)
 
 connection = engine.connect()
 
