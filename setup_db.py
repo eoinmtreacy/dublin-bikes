@@ -2,9 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.dialects.mysql import mysqldb
 from constants import * # contains DB_USER, DB_PW
 
-URI = "database-1.c7w22mqua0gp.eu-north-1.rds.amazonaws.com"
+URI = "dublin-bikes-db.c7w22mqua0gp.eu-north-1.rds.amazonaws.com"
 PORT = "3306"
-DB = "database-1"
+DB = "dublin-bikes-db"
 
 engine = create_engine(f'mysql+mysqldb://{DB_USER}:{DB_PW}@{URI}:{PORT}/{DB}', echo=True)
 
