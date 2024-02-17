@@ -1,11 +1,13 @@
 import mysql.connector
 import json
 from constants import *
+import os
 
-# Open the JSON file
-with open('dublin.json', 'r') as file:
-    # Load the JSON data into a dictionary
-    data = json.load(file)
+print(os.getcwd())
+
+# Open the JSON file and read as dictionary
+file =  open('prototypes/prototypes_scraper/dublin.json', 'r')
+data = json.load(file)
 
 # Connect to your MySQL database
 conn = mysql.connector.connect(
@@ -17,9 +19,6 @@ conn = mysql.connector.connect(
 
 # Create a cursor object
 cursor = conn.cursor()
-
-# Data to be inserted
-data = open
 
 # Insert data into the station table
 for entry in data:
