@@ -1,9 +1,6 @@
 import mysql.connector
 import json
 from constants import *
-import os
-
-print(os.getcwd())
 
 # Open the JSON file and read as dictionary
 file =  open('prototypes/prototypes_scraper/dublin.json', 'r')
