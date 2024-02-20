@@ -22,6 +22,8 @@ def main():
 
         cursor = conn.cursor()
 
+        # pull weather api 
+
         for station in data:
             # get relevant chunks
             try: 
@@ -34,7 +36,7 @@ def main():
                 cursor.execute("""
                     INSERT INTO availability (number, available_bike_stands, available_bikes, last_update)
                     VALUES (%s, %s, %s, %s)
-                """, (number, available_bike_stands, available_bikes, last_update))
+                """, (number, available_bike_stands, available_bikes, last_update)) # temp, precipitation, wind sppeed 
 
                 conn.commit()
             except:
