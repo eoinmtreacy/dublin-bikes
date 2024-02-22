@@ -7,3 +7,5 @@ JCD_API_KEY = '4c0892699aba5ab6f5f9c65bfb93fcd6fae2e49f'
 CITY = 'dublin'
 
 EC2 = 'ec2-13-48-203-122.eu-north-1.compute.amazonaws.com'
+
+WEATHER_API_KEY = 'KQr7EcPoIC7ZmAHwkLI57Tr3KIA31a9m'
