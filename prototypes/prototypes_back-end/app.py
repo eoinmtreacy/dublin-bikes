@@ -12,6 +12,8 @@ with open('./prototypes/prototypes_back-end/dublin.json', 'r') as file:
 
 print([(station['number'], station['name'], station['latitude'], station['longitude']) for station in data])
 
+print{"something class"}
+
 
 
 # create landing page
