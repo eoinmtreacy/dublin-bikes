@@ -6,14 +6,6 @@ import requests
 # initialise flask app
 app = Flask(__name__)
 
-with open('dublin.json', 'r') as file:
-    # Load JSON data from the file
-    data = json.load(file)
-
-print([(station['number'], station['name'], station['latitude'], station['longitude']) for station in data])
-
-
-
 # create landing page
 @app.route('/')
 def landing():
