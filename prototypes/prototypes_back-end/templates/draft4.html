@@ -31,6 +31,7 @@
     </div>
    
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbyqcHXdStChD06jciUCL-41mCkCv-uUQ&callback=initMap&libraries=places"></script>
-    <script src="draft4js.js"></script>
+    <!-- escape into JS to generate URL for the script source -->
+    <script src="{{ url_for('static', filename='draft4js.js') }}"></script>
 </body>
 </html>
