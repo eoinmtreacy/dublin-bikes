@@ -6,7 +6,7 @@ import requests
 # initialise flask app
 app = Flask(__name__)
 
-with open('./prototypes/prototypes_back-end/dublin.json', 'r') as file:
+with open('dublin.json', 'r') as file:
     # Load JSON data from the file
     data = json.load(file)
 
@@ -28,7 +28,7 @@ def landing():
 
     print(response.status_code)
 
-    return render_template('draft4.html')
+    return render_template('index.html')
 
 # Open the JSON file for reading
 
