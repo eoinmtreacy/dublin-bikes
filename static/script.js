@@ -63,6 +63,7 @@ async function populateDropdownOptions() {
     // Select dropdowns by their IDs
     const dropdown1 = document.getElementById('dropdown1');
     const dropdown2 = document.getElementById('dropdown2');
+    const dropdown3 = document.getElementById('dropdown3');
 
     // Populate options for each dropdown
     names.forEach(name => {
@@ -73,6 +74,11 @@ async function populateDropdownOptions() {
         dropdown2.innerHTML += `<option value="${i}">${i}</option>`;
     }
 
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
+    days.forEach(day => {
+        dropdown3.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
+    })
 }
 
 async function fetchDropdownOptions() {
