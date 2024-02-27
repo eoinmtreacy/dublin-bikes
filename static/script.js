@@ -52,8 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function populateDropdownOptions() {
+    // fetch dublin.json
     const options = await fetchDropdownOptions()
 
+    // parse json
     const stations = options['stations']
     const numbers = stations.map(station => station['number'])
     const names = stations.map(station => station['name'])
@@ -61,19 +63,21 @@ async function populateDropdownOptions() {
     // Select dropdowns by their IDs
     const dropdown1 = document.getElementById('dropdown1');
     const dropdown2 = document.getElementById('dropdown2');
-    const dropdown3 = document.getElementById('dropdown3');
 
     // Populate options for each dropdown
     names.forEach(name => {
         dropdown1.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
-        dropdown2.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
-        dropdown3.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
     });
+
+    for (let i = 0; i < 24; i++) {
+        dropdown2.innerHTML += `<option value="${i}">${i}</option>`;
+    }
+
 }
 
 async function fetchDropdownOptions() {
     const options = await fetch('static/dublin.json')
-    .then((response) => response.json())
+        .then((response) => response.json())
 
     return options
 }
