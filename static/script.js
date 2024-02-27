@@ -151,8 +151,3 @@ const stations = [
 ]
 
 const cluster = new Cluster(stations)
-console.log(cluster.getStations());
-console.log("Free spaces in cluster are: " + cluster.getFree());
-console.log("Free parking spaces in cluster are: " + cluster.getParking());
-
-stations.forEach((station) => console.log(station, "Free parking: ", station.getParking()))
