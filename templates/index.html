@@ -51,9 +51,12 @@
 
         </main>
     </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initMap&libraries=places"></script>
+
+    <script src="{{ url_for('static', filename='script.js') }}">
+        
+
+    </script>
    
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbyqcHXdStChD06jciUCL-41mCkCv-uUQ&callback=initMap&libraries=places"></script>
-    <!-- escape into JS to generate URL for the script source -->
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
