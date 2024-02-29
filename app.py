@@ -51,7 +51,7 @@ def predict():
 def stations():
     with open('static/dublin.json', 'r') as file:
         data = json.load(file)
-    return jsonify(data)
+    return data['stations']
 
 
 if __name__ == '__main__':
