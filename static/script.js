@@ -86,7 +86,7 @@ async function fetchDropdownOptions() {
     return options
 }
 
-function submitForm(event) {
+function submitForm() {
     const station = document.getElementById("dropdown1").value;
     const hour = document.getElementById("dropdown2").value;
     const day = document.getElementById("dropdown3").value;
@@ -104,8 +104,7 @@ function submitForm(event) {
     })
     .then(response => response.json())
     .then(data => {
-        // document.getElementById("result").innerText = JSON.stringify(data);
-        console.log(JSON.stringify(data))
+        document.getElementById("result").innerText = JSON.stringify(data);
     })
     .catch(error => console.error('Error:', error));
 }
