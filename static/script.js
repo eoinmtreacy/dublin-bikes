@@ -1,5 +1,3 @@
-console.log("fire");
-
 var map;
 
 function initMap() {
@@ -86,6 +84,30 @@ async function fetchDropdownOptions() {
         .then((response) => response.json())
 
     return options
+}
+
+function submitForm(event) {
+    const station = document.getElementById("dropdown1").value;
+    const hour = document.getElementById("dropdown2").value;
+    const day = document.getElementById("dropdown3").value;
+
+    fetch('/predict', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            dropdown1: station,
+            dropdown2: hour,
+            dropdown3: day
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // document.getElementById("result").innerText = JSON.stringify(data);
+        console.log(JSON.stringify(data))
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 class Station {
