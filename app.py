@@ -28,7 +28,7 @@ def landing():
 # Open the JSON file for reading
 @app.route('/stations')
 def stations():
-    with open('/Users/phillipmcnamee/Desktop/comp30380-dublin-bikes/static/dublin.json', 'r') as file:
+    with open('static/dublin.json', 'r') as file:
         data = json.load(file)
     return jsonify(data)
 
