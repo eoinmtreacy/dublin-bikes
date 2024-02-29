@@ -9,3 +9,4 @@ CITY = 'dublin'
 EC2 = 'ec2-13-48-203-122.eu-north-1.compute.amazonaws.com'
 
 WEATHER_API_KEY = 'KQr7EcPoIC7ZmAHwkLI57Tr3KIA31a9m'
+GOOGLE_MAPS_API_KEY = 'AIzaSyBbyqcHXdStChD06jciUCL-41mCkCv-uUQ'
