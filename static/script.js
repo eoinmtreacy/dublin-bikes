@@ -47,7 +47,46 @@ document.addEventListener('DOMContentLoaded', function() {
     navbar.addEventListener('mouseleave', function() {
         navbar.classList.add('-translate-x-full');
     });
+
+    populateDropdownOptions()
 });
+
+async function populateDropdownOptions() {
+    // fetch dublin.json
+    const options = await fetchDropdownOptions()
+
+    // parse json
+    const stations = options['stations']
+    const numbers = stations.map(station => station['number'])
+    const names = stations.map(station => station['name'])
+
+    // Select dropdowns by their IDs
+    const dropdown1 = document.getElementById('dropdown1');
+    const dropdown2 = document.getElementById('dropdown2');
+    const dropdown3 = document.getElementById('dropdown3');
+
+    // Populate options for each dropdown
+    names.forEach(name => {
+        dropdown1.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
+    });
+
+    for (let i = 0; i < 24; i++) {
+        dropdown2.innerHTML += `<option value="${i}">${i}</option>`;
+    }
+
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
+    days.forEach(day => {
+        dropdown3.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
+    })
+}
+
+async function fetchDropdownOptions() {
+    const options = await fetch('static/dublin.json')
+        .then((response) => response.json())
+
+    return options
+}
 
 class Station {
     constructor(id, lat, long, free, parking) {
@@ -118,8 +157,3 @@ const stations = [
 ]
 
 const cluster = new Cluster(stations)
-console.log(cluster.getStations());
-console.log("Free spaces in cluster are: " + cluster.getFree());
-console.log("Free parking spaces in cluster are: " + cluster.getParking());
-
-stations.forEach((station) => console.log(station, "Free parking: ", station.getParking()))
