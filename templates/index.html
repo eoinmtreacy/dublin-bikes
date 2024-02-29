@@ -15,7 +15,8 @@
     
     <div class="flex">
         <div class="flex">
-            <nav id="navbar" class="bg-slate-200 transform top-0 left-0 w-64 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30" style="translateX(-100%)">
+            <nav id="navbar" class="bg-slate-200 transform top-0 left-0 w-64 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30" style="transform: translateX(-100%)">
+
                 <div class="flex flex-col items-center pt-8">
                     <ion-icon name="bicycle-outline" class="text-black text-4xl mb-8"></ion-icon>
                     <a href="#" class="w-full text-center py-4 hover:bg-slate-300 text-slate-800">Home</a>
@@ -25,8 +26,29 @@
             </nav>
         </div>
         <main id="main-content" class="flex-1 p-4">
-            <div id="map" class="w-full h-screen rounded-lg" style="height: calc(100vh - 64px);">
-            </div>
+            <div id="map" class="w-full h-screen rounded-lg" style="height: calc(100vh - 64px);"></div>
+
+            <!--  Planning Panel -->
+                <div class="fixed inset-x-0 bottom-0 mb-4 flex items-center justify-center">
+
+                        <div class="bg-gray-900 p-8 rounded-lg shadow-lg">
+                            <div class="flex mb-4">
+                                <form id="myForm">
+                                    <select id="dropdown1" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
+                                    </select>
+                                    <select id="dropdown2" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
+                                    </select>
+                                    <select id="dropdown3" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
+                                    </select>
+                                    <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md" onclick="submitForm()">Submit</button>
+                                </form>
+                                <div id="result"></div>
+                            </div>
+                        </div>
+                </div>
+
+            <!-- End Planning Panel -->
+
         </main>
     </div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initMap&libraries=places"></script>
