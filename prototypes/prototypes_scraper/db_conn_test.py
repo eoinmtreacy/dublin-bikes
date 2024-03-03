@@ -1,4 +1,4 @@
-import mysql
+import mysql.connector
 from constants import *
 
 try:
