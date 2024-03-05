@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 import json
 from flask_cors import CORS
-from constants import GOOGLE_MAPS_API_KEY, WEATHER_API_KEY, CITY 
+from constants import *
+# from local_constants import * 
 import requests
-
+import mysql.connector
 
 # initialise flask app
 app = Flask(__name__)
@@ -18,14 +19,13 @@ def landing():
     """serve landing page html from /templates folder
     calls weather api
     """
+    # TODO uncomment
+    # headers = {"accept": "application/json"}
+    # url = f"https://api.tomorrow.io/v4/weather/realtime?location={CITY}&units=metric&apikey={WEATHER_API_KEY}"
 
-    headers = {"accept": "application/json"}
-    url = f"https://api.tomorrow.io/v4/weather/realtime?location={CITY}&units=metric&apikey={WEATHER_API_KEY}"
-
-    response = requests.get(url, headers=headers)
-
-    print(response.status_code)
-    return render_template('index.html', google_maps_api_key=GOOGLE_MAPS_API_KEY)
+    # response = requests.get(url, headers=headers)
+        
+    return render_template('index.html', google_maps_api_key=GOOGLE_MAPS_API_KEY, )
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -49,10 +49,34 @@ def predict():
 # Open the JSON file for reading
 @app.route('/stations')
 def stations():
-    with open('static/dublin.json', 'r') as file:
-        data = json.load(file)
-    return data['stations']
+    # this won't work on campus without an SSH tunnel but should be okay at home 
+    try:
+        conn = mysql.connector.connect(
+        host=DB,
+        user=DB_USER,
+        password=DB_PW,
+        database=DB_NAME
+        )
 
+        cursor = conn.cursor()
+
+        query = (
+            "SELECT * "
+            "FROM station"
+        )
+
+        cursor.execute(query)
+        results = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        print("Data fetched from databse")
+        return jsonify(data=results)['data']
+
+    except:
+        print("Error fetching from DB, parsing local file")
+        with open('static/dublin.json', 'r') as file:
+            data = json.load(file)
+        return data['stations']
 
 if __name__ == '__main__':
     app.run(debug=True)

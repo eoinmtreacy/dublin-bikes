@@ -10,6 +10,7 @@ function fetchStations() {
     fetch('/stations')
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             data.forEach(station => {
                 const marker = new google.maps.Marker({
                     position: { lat: station.latitude, lng: station.longitude },
@@ -24,7 +25,7 @@ function fetchStations() {
                         <p>Address: ${station.address}</p>
                     </div>
                 `;
-                console.log("InfoWindow content:", infoWindowContent);
+                // console.log("InfoWindow content:", infoWindowContent);
                 const infoWindow = new google.maps.InfoWindow({
                     content: infoWindowContent
                 });
