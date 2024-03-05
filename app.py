@@ -52,7 +52,7 @@ def stations():
     # this won't work on campus without an SSH tunnel but should be okay at home 
     try:
         conn = mysql.connector.connect(
-        host=DB + "a",
+        host=DB,
         user=DB_USER,
         password=DB_PW,
         database=DB_NAME
