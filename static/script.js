@@ -14,8 +14,8 @@ function fetchStations() {
     fetch('/stations')
     .then(response => response.json())
     .then(data => {
-        var heatmapData = data.map(station => ({
-            location: new google.maps.LatLng(station.latitude, station.longitude),
+        var heatmapData = data['data'].map(station => ({
+            location: new google.maps.LatLng(station.position_lat, station.position_lng),
             weight: station.number 
         }));
 
@@ -30,7 +30,7 @@ function fetchStations() {
 
         markers.forEach(marker => marker.setMap(null));
 
-        data.forEach(station => {
+        data['data'].forEach(station => {
             
             let markerColor;
             if (station.number === 0) {
@@ -42,7 +42,7 @@ function fetchStations() {
             }
 
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(station.latitude, station.longitude),
+                position: new google.maps.LatLng(station.position_lat, station.position_lng),
                 map: null, 
                 title: `${station.name} - Bikes available: ${station.number}`,
                 icon: {
