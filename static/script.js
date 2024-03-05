@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     populateDropdownOptions()
+    fetchRealTime()
 });
 
 async function populateDropdownOptions() {
@@ -123,4 +124,7 @@ function submitForm() {
     .catch(error => console.error('Error:', error));
 }
 
-    
+async function fetchRealTime() {
+    const realTime = await fetch('/realtime')
+        .then((response) => console.log(response))
+}
