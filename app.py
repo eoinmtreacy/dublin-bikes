@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import json
 from flask_cors import CORS
 from constants import *
+# from local_constants import * 
 import requests
 import mysql.connector
 
@@ -48,6 +49,7 @@ def predict():
 # Open the JSON file for reading
 @app.route('/stations')
 def stations():
+    # this won't work on campus without an SSH tunnel but should be okay at home 
     try:
         conn = mysql.connector.connect(
         host=DB,
@@ -65,16 +67,16 @@ def stations():
 
         cursor.execute(query)
         results = cursor.fetchall()
-        json_result = json.dumps(results)
         cursor.close()
         conn.close()
+        print("Data fetched from databse")
+        return jsonify(data=results)['data']
 
     except:
-        # TODO uncomment
-        # with open('static/dublin.json', 'r') as file:
-        #     data = json.load(file)
-        # return data['stations']
-        pass
+        print("Error fetching from DB, parsing local file")
+        with open('static/dublin.json', 'r') as file:
+            data = json.load(file)
+        return data['stations']
 
 if __name__ == '__main__':
     app.run(debug=True)
