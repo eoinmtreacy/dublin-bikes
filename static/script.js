@@ -1,49 +1,88 @@
 var map;
+var heatmap;
+var markers =[]
+
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 53.349805, lng: -6.26031},
         zoom: 13
     });
     fetchStations(); 
+    map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
 function fetchStations() {
     fetch('/stations')
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            data['data'].forEach(station => {
-                const marker = new google.maps.Marker({
-                    position: { lat: station.position_lat, lng: station.position_lng },
-                    map: map,
-                });
+    .then(response => response.json())
+    .then(data => {
+        var heatmapData = data['data'].map(station => ({
+            location: new google.maps.LatLng(station.position_lat, station.position_lng),
+            weight: station.number 
+        }));
 
-                const infoWindowContent = `
-                    <div>
-                        <h3>${station.name}</h3>
-                        <p>ID: ${station.number}</p>
-                        <p>Number: ${station.number}</p>
-                        <p>Address: ${station.address}</p>
-                    </div>
-                `;
-                // console.log("InfoWindow content:", infoWindowContent);
-                const infoWindow = new google.maps.InfoWindow({
-                    content: infoWindowContent
-                });
-
-                marker.addListener('mouseover', () => {
-                    infoWindow.open({
-                        anchor: marker,
-                        map,
-                        shouldFocus: false,
-                    });
-                });
-
-                marker.addListener('mouseout', () => {
-                    infoWindow.close();
-                });
+        if (heatmap) {
+            heatmap.setData(heatmapData);
+        } else {
+            heatmap = new google.maps.visualization.HeatmapLayer({
+                data: heatmapData,
+                map: map,
             });
-        })
-        .catch(error => console.error('Error fetching stations:', error));
+        }
+
+        markers.forEach(marker => marker.setMap(null));
+
+        data['data'].forEach(station => {
+            
+            let markerColor;
+            if (station.number === 0) {
+                markerColor = 'red'; 
+            } else if (station.number > 0 && station.number <= 5) { 
+                markerColor = 'yellow';
+            } else {
+                markerColor = 'green'; 
+            }
+
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(station.position_lat, station.position_lng),
+                map: null, 
+                title: `${station.name} - Bikes available: ${station.number}`,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 7, 
+                    fillColor: markerColor,
+                    fillOpacity: 0.8,
+                    strokeWeight: 1
+                }
+            });
+
+            var infoWindow = new google.maps.InfoWindow({
+                content: `<div><strong>${station.name}</strong><p>Station Number: ${station.number}</p></div>`
+            });
+
+            marker.addListener('mouseover', function() {
+                infoWindow.open(map, marker);
+            });
+
+            marker.addListener('mouseout', function() {
+                infoWindow.close();
+            });
+
+            markers.push(marker);
+        });
+
+        toggleHeatmapAndMarkers();
+    })
+    .catch(error => console.error('Error fetching stations:', error));
+}
+
+function toggleHeatmapAndMarkers() {
+    var zoom = map.getZoom();
+    if (zoom < 14) { 
+        markers.forEach(marker => marker.setMap(null)); 
+        heatmap.setMap(map); 
+    } else {
+        markers.forEach(marker => marker.setMap(map)); 
+        heatmap.setMap(null); 
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
