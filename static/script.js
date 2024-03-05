@@ -11,16 +11,16 @@ function fetchStations() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            data.forEach(station => {
+            data['data'].forEach(station => {
                 const marker = new google.maps.Marker({
-                    position: { lat: station.latitude, lng: station.longitude },
+                    position: { lat: station.position_lat, lng: station.position_lng },
                     map: map,
                 });
 
                 const infoWindowContent = `
                     <div>
                         <h3>${station.name}</h3>
-                        <p>ID: ${station.id}</p>
+                        <p>ID: ${station.number}</p>
                         <p>Number: ${station.number}</p>
                         <p>Address: ${station.address}</p>
                     </div>

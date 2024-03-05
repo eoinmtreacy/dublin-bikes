@@ -52,7 +52,7 @@ def stations():
     # this won't work on campus without an SSH tunnel but should be okay at home 
     try:
         conn = mysql.connector.connect(
-        host=DB,
+        host=DB + "a",
         user=DB_USER,
         password=DB_PW,
         database=DB_NAME
@@ -66,17 +66,33 @@ def stations():
         )
 
         cursor.execute(query)
-        results = cursor.fetchall()
+
+        columns = [desc[0] for desc in cursor.description]
+
+        # Fetch all rows
+        rows = cursor.fetchall()
+
+        # Combine column names and data into a list of dictionaries
+        results = []
+        for row in rows:
+            result = {}
+            for i in range(len(columns)):
+                result[columns[i]] = row[i]
+            results.append(result)
+
+        # with open('static/stations.json', 'w') as json_file:
+        #     json.dump(results, json_file)
+
         cursor.close()
         conn.close()
         print("Data fetched from databse")
-        return jsonify(data=results)['data']
+        return jsonify(data=results)
 
     except:
         print("Error fetching from DB, parsing local file")
-        with open('static/dublin.json', 'r') as file:
+        with open('static/stations.json', 'r') as file:
             data = json.load(file)
-        return data['stations']
+        return data
 
 if __name__ == '__main__':
     app.run(debug=True)
