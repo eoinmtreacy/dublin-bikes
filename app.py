@@ -111,14 +111,17 @@ def realtime():
         cursor = conn.cursor()
 
         query = (
-            ""
+            """SELECT number, MAX(last_update) AS time
+            FROM availability
+            GROUP BY number;
+            """
         )
 
         cursor.execute(query)
         results = cursor.fetchall()
         cursor.close()
         conn.close()
-        return 'SUCCESS realtime'
+        return jsonify(results)
 
     except:
         return 'FAILURE realtime'

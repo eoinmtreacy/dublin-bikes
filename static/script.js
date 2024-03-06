@@ -165,5 +165,7 @@ function submitForm() {
 
 async function fetchRealTime() {
     const realTime = await fetch('/realtime')
-        .then((response) => console.log(response))
+        .then((response) => console.log(response.json()))
+
+    return realTime
 }
