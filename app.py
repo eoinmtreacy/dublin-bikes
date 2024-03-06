@@ -111,7 +111,7 @@ def realtime():
         cursor = conn.cursor()
 
         query = (
-            """SELECT number, MAX(last_update) AS time
+            """SELECT number, available_bikes, MAX(last_update) AS time
             FROM availability
             GROUP BY number;
             """
