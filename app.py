@@ -5,6 +5,8 @@ from constants import *
 # from local_constants import * 
 import requests
 import mysql.connector
+import pickle
+import numpy as np
 
 # initialise flask app
 app = Flask(__name__)
@@ -34,6 +36,19 @@ def predict():
         dropdown1_value = data['dropdown1']
         dropdown2_value = data['dropdown2']
         dropdown3_value = data['dropdown3']
+
+        query = [dropdown1_value] + [int(dropdown2_value)] + dropdown3_value
+
+        print(query)
+
+        # import model for particular station
+        with open(f'./models/{query[0]}.pkl', 'rb') as file:
+            model = pickle.load(file)
+
+        # format query corretly for the model
+        result = model.predict(np.asarray(query[1:]).reshape(1, -1))
+
+        print(result)
 
         # Perform operations with the dropdown values
         # For example, you could process them and return a result
