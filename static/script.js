@@ -119,7 +119,7 @@ async function populateDropdownOptions() {
     const options = await fetchDropdownOptions()
 
     // parse json
-    const stations = options['stations']
+    const stations = options['data']
     const numbers = stations.map(station => station['number'])
     const names = stations.map(station => station['name'])
 
@@ -145,7 +145,7 @@ async function populateDropdownOptions() {
 }
 
 async function fetchDropdownOptions() {
-    const options = await fetch('static/dublin.json')
+    const options = await fetch('static/stations.json')
         .then((response) => response.json())
 
     return options
