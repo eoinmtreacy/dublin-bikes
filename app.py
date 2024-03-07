@@ -7,6 +7,7 @@ import requests
 import mysql.connector
 import pickle
 import numpy as np
+from sklearn.preprocessing import PolynomialFeatures
 
 # initialise flask app
 app = Flask(__name__)
@@ -45,17 +46,18 @@ def predict():
         with open(f'./models/{query[0]}.pkl', 'rb') as file:
             model = pickle.load(file)
 
-        # format query corretly for the model
-        result = model.predict(np.asarray(query[1:]).reshape(1, -1))
+        # Linear model trained on Polynomial
+        # transformation of these features
+        poly = PolynomialFeatures(degree=4)
+        X_poly = poly.fit_transform(np.asarray(query[1:]).reshape(1, -1))
 
-        print(result)
+        # format query corretly for the model
+        result = model.predict(X_poly)
 
         # Perform operations with the dropdown values
         # For example, you could process them and return a result
         result = {
-            'dropdown1_value': dropdown1_value,
-            'dropdown2_value': dropdown2_value,
-            'dropdown3_value': dropdown3_value
+            'availabilty': result[0],
         }
         return jsonify(result)
     else:
