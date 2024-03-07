@@ -128,20 +128,26 @@ async function populateDropdownOptions() {
     const dropdown1 = document.getElementById('dropdown1');
     const dropdown2 = document.getElementById('dropdown2');
     const dropdown3 = document.getElementById('dropdown3');
+    const dropdown4 = document.getElementById('dropdown4');
+    const dropdown5 = document.getElementById('dropdown5');
+    const dropdown6 = document.getElementById('dropdown6');
 
     // Populate options for each dropdown
     names.forEach(name => {
         dropdown1.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
+        dropdown4.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
     });
 
     for (let i = 0; i < 24; i++) {
         dropdown2.innerHTML += `<option value="${i}">${i}</option>`;
+        dropdown5.innerHTML += `<option value="${i}">${i}</option>`;
     }
 
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
     days.forEach(day => {
         dropdown3.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
+        dropdown6.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
     })
 
     for (let i = 0; i < numbers.length; i++) {
