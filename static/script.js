@@ -1,6 +1,7 @@
 var map;
 var heatmap;
 var markers =[]
+const stationsIds = {}
 
 // changed this to async because it wouldn't work otherwise lol
 async function initMap() {
@@ -13,7 +14,6 @@ async function initMap() {
     // so we can populate markers with the 
     // realtime info as we create them
     const realTime = await fetchRealTime()
-    console.log(realTime);
     fetchStations(realTime); 
     map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
@@ -83,6 +83,7 @@ function fetchStations(realTime) {
         toggleHeatmapAndMarkers();
     })
     .catch(error => console.error('Error fetching stations:', error));
+
 }
 
 function toggleHeatmapAndMarkers() {
@@ -142,6 +143,12 @@ async function populateDropdownOptions() {
     days.forEach(day => {
         dropdown3.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
     })
+
+    for (let i = 0; i < numbers.length; i++) {
+        stationsIds[names[i].toLowerCase().replace(/\s+/g, '')] = numbers[i]
+    }
+
+    console.log(stationsIds);
 }
 
 async function fetchDropdownOptions() {
@@ -177,7 +184,7 @@ function submitForm() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            dropdown1: station,
+            dropdown1: stationsIds[station],
             dropdown2: hour,
             dropdown3: Object.values(dayOptions)
         })
