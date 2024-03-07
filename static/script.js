@@ -2,21 +2,32 @@ var map;
 var heatmap;
 var markers =[]
 
-function initMap() {
+// changed this to async because it wouldn't work otherwise lol
+async function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 53.349805, lng: -6.26031},
         zoom: 13
     });
-    fetchStations(); 
+
+    // need to fetchRealTime before stations
+    // so we can populate markers with the 
+    // realtime info as we create them
+    const realTime = await fetchRealTime()
+    console.log(realTime);
+    fetchStations(realTime); 
     map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
-function fetchStations() {
+function fetchStations(realTime) {
     fetch('/stations')
     .then(response => response.json())
     .then(data => {
+        // the realTime[station.number] wrapping just means instead
+        // of pulling the station number to populate the map
+        // it checks the station number against the realtime
+        // and returns the number of available bikes instead
         var heatmapData = data['data'].map(station => ({
             location: new google.maps.LatLng(station.position_lat, station.position_lng),
-            weight: station.number 
+            weight: realTime[station.number] 
         }));
 
         if (heatmap) {
@@ -33,9 +44,9 @@ function fetchStations() {
         data['data'].forEach(station => {
             
             let markerColor;
-            if (station.number === 0) {
+            if (realTime[station.number] === 0) {
                 markerColor = 'red'; 
-            } else if (station.number > 0 && station.number <= 5) { 
+            } else if (realTime[station.number] > 0 && realTime[station.number] <= 5) { 
                 markerColor = 'yellow';
             } else {
                 markerColor = 'green'; 
@@ -44,7 +55,7 @@ function fetchStations() {
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(station.position_lat, station.position_lng),
                 map: null, 
-                title: `${station.name} - Bikes available: ${station.number}`,
+                title: `${station.name} - Bikes available: ${realTime[station.number]}`,
                 icon: {
                     path: google.maps.SymbolPath.CIRCLE,
                     scale: 7, 
@@ -100,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     populateDropdownOptions()
+    fetchRealTime()
 });
 
 async function populateDropdownOptions() {
@@ -162,4 +174,22 @@ function submitForm() {
     .catch(error => console.error('Error:', error));
 }
 
-    
+async function fetchRealTime() {
+    // first route the app calls after '/' is /realtime
+    // it means we will have realtime data to 
+    // populate the markers with
+
+    // create object that we will eventually return
+    const realTime = {}
+    const request = await fetch('/realtime')
+        .then((response) => response.json())
+            .then((data) => {
+                data.forEach(station => {
+                    // populate the object with
+                    // KEY station number: VALUE available bikes
+                    realTime[station[0]] = station[1]
+                })
+            })
+
+    return realTime
+}
