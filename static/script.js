@@ -191,8 +191,6 @@ function submitForm() {
     departOptions[departDay] = 1
     arriveOptions[arriveDay] = 1
 
-    console.log(departOptions, arriveOptions);
-
     fetch('/predict', {
         method: 'POST',
         headers: {
