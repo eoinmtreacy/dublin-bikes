@@ -168,6 +168,9 @@ function submitForm() {
     const hour = document.getElementById("dropdown2").value;
     const day = document.getElementById("dropdown3").value;
 
+    // change selected day to 1 (True)
+    dayOptions[day] = 1
+
     fetch('/predict', {
         method: 'POST',
         headers: {
@@ -176,7 +179,7 @@ function submitForm() {
         body: JSON.stringify({
             dropdown1: station,
             dropdown2: hour,
-            dropdown3: day
+            dropdown3: Object.values(dayOptions)
         })
     })
     .then(response => response.json())
