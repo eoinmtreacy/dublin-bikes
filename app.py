@@ -92,7 +92,39 @@ def stations():
         print("Error fetching from DB, parsing local file")
         with open('static/stations.json', 'r') as file:
             data = json.load(file)
-        return data
+        return data['stations']
+    
+@app.route('/realtime')
+def realtime():
+    """fetch most recent realtime availability data
+    for each station
+    return for pop-up UI"""
+
+    try:
+        conn = mysql.connector.connect(
+        host=DB,
+        user=DB_USER,
+        password=DB_PW,
+        database=DB_NAME
+        )
+
+        cursor = conn.cursor()
+
+        query = (
+            """SELECT number, available_bikes, MAX(last_update) AS time
+            FROM availability
+            GROUP BY number;
+            """
+        )
+
+        cursor.execute(query)
+        results = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return jsonify(results)
+
+    except:
+        return 'FAILURE realtime'
 
 if __name__ == '__main__':
     app.run(debug=True)
