@@ -140,6 +140,18 @@ async function fetchDropdownOptions() {
 }
 
 function submitForm() {
+    // dayOptions in strange order because that's how the model
+    // reads the booleans
+    const dayOptions = {
+        "friday": 0,
+        "monday": 0,
+        "saturday": 0,
+        "sunday": 0,
+        "thursday": 0,
+        "tuesday": 0,
+        "wednesday": 0
+    }
+
     const station = document.getElementById("dropdown1").value;
     const hour = document.getElementById("dropdown2").value;
     const day = document.getElementById("dropdown3").value;
