@@ -42,7 +42,7 @@ def predict():
         arriveDay = data['arriveDay']
 
         depart = [depart] + [int(departTime)] + departDay
-        arrive = [arrive] + [int(arriveTime)] + arriveTime
+        arrive = [arrive] + [int(arriveTime)] + arriveDay
 
         print(depart, arrive)
 

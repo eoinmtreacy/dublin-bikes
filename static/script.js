@@ -188,7 +188,8 @@ function submitForm() {
     const departOptions = dayOptions
     const arriveOptions = dayOptions
 
-    departOptions
+    departOptions[departDay] = 1
+    arriveOptions[arriveDay] = 1
 
     console.log(departOptions, arriveOptions);
 
@@ -201,9 +202,9 @@ function submitForm() {
             depart: stationsIds[depart],
             departTime: departTime,
             departDay: Object.values(departOptions),
-            depart: stationsIds[arrive],
-            departTime: arriveTime,
-            departDay: Object.values(arriveOptions)
+            arrive: stationsIds[arrive],
+            arriveTime: arriveTime,
+            arriveDay: Object.values(arriveOptions)
         })
     })
     .then(response => response.json())
