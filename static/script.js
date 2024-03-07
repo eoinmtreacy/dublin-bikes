@@ -125,29 +125,29 @@ async function populateDropdownOptions() {
     const names = stations.map(station => station['name'])
 
     // Select dropdowns by their IDs
-    const dropdown1 = document.getElementById('dropdown1');
-    const dropdown2 = document.getElementById('dropdown2');
-    const dropdown3 = document.getElementById('dropdown3');
-    const dropdown4 = document.getElementById('dropdown4');
-    const dropdown5 = document.getElementById('dropdown5');
-    const dropdown6 = document.getElementById('dropdown6');
+    const depart = document.getElementById('depart');
+    const departTime = document.getElementById('departTime');
+    const departDay = document.getElementById('departDay');
+    const arrive = document.getElementById('arrive');
+    const arriveTime = document.getElementById('arriveTime');
+    const arriveDay = document.getElementById('arriveDay');
 
     // Populate options for each dropdown
     names.forEach(name => {
-        dropdown1.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
-        dropdown4.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
+        depart.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
+        arrive.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
     });
 
     for (let i = 0; i < 24; i++) {
-        dropdown2.innerHTML += `<option value="${i}">${i}</option>`;
-        dropdown5.innerHTML += `<option value="${i}">${i}</option>`;
+        departTime.innerHTML += `<option value="${i}">${i}</option>`;
+        arriveTime.innerHTML += `<option value="${i}">${i}</option>`;
     }
 
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
     days.forEach(day => {
-        dropdown3.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
-        dropdown6.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
+        departDay.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
+        arriveDay.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
     })
 
     for (let i = 0; i < numbers.length; i++) {
@@ -177,12 +177,20 @@ function submitForm() {
         "wednesday": 0
     }
 
-    const station = document.getElementById("dropdown1").value;
-    const hour = document.getElementById("dropdown2").value;
-    const day = document.getElementById("dropdown3").value;
+    const depart = document.getElementById("depart").value;
+    const departTime = document.getElementById("departTime").value;
+    const departDay = document.getElementById("departDay").value;
+    const arrive = document.getElementById("arrive").value;
+    const arriveTime = document.getElementById("arriveTime").value;
+    const arriveDay = document.getElementById("arriveDay").value;
 
     // change selected day to 1 (True)
-    dayOptions[day] = 1
+    const departOptions = dayOptions
+    const arriveOptions = dayOptions
+
+    departOptions
+
+    console.log(departOptions, arriveOptions);
 
     fetch('/predict', {
         method: 'POST',
@@ -190,9 +198,12 @@ function submitForm() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            dropdown1: stationsIds[station],
-            dropdown2: hour,
-            dropdown3: Object.values(dayOptions)
+            depart: stationsIds[depart],
+            departTime: departTime,
+            departDay: Object.values(departOptions),
+            depart: stationsIds[arrive],
+            departTime: arriveTime,
+            departDay: Object.values(arriveOptions)
         })
     })
     .then(response => response.json())
