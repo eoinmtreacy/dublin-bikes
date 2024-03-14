@@ -8,5 +8,16 @@ try:
         password=DB_PW
     )
     print("connected")
+
+    cursor = conn.cursor()
+
+    query = (
+        """SHOW DATABASES;"""
+    )
+
+    cursor.execute(query)
+
+    cursor.close()
+    conn.close()
 except:
     print("can't connect.")
