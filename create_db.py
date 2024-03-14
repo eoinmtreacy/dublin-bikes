@@ -48,7 +48,8 @@ def create_stations_table(cursor) -> bool:
     
 def populate_stations_table(cursor, arg) -> bool:
     try:
-        data = json.load(f'stations/{arg}_stations.json')
+        with open(f"./stations/{arg}_stations.json", "r") as json_file:
+            data = json.load(json_file)
         for entry in data:
             cursor.execute("""
                            INSERT INTO station (address, banking, bike_stands, bonus, contract_name, 
