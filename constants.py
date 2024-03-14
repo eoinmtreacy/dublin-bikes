@@ -1,4 +1,4 @@
-DB = 'dublin-bikes-rds.c7w22mqua0gp.eu-north-1.rds.amazonaws.com'
+DB = 'jcd-bikes-db.cja0yoqser2j.eu-west-1.rds.amazonaws.com'
 DB_USER = 'admin'
 DB_PW = 'godilovenetworks'
 DB_NAME = 'dbikes'

@@ -5,8 +5,7 @@ try:
     conn = mysql.connector.connect(
         host=DB,
         user=DB_USER,
-        password=DB_PW,
-        database=DB_NAME
+        password=DB_PW
     )
     print("connected")
 except:
