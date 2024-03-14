@@ -9,7 +9,6 @@ def fetch_city_static(arg: str) -> bool:
             r = requests.get(f'https://api.jcdecaux.com/vls/v1/stations?contract={arg}&apiKey={JCD_API_KEY}')
             # parse json
             data = json.loads(r.text)
-            print(data)
 
             with open(f"./stations/{arg}_stations.json", "w") as json_file:
                 json_file.write(json.dumps(data, indent=4))
@@ -17,14 +16,51 @@ def fetch_city_static(arg: str) -> bool:
         except:
             return False
 
-def create_stations_db(arg, cursor):
-    query = f"CREATE DATABASE IF NOT EXISTS {arg};"
+def create_stations_db(arg: str, cursor: str) -> bool:
+    query: str = f"CREATE DATABASE IF NOT EXISTS {arg};"
     try:
         cursor.execute(query)
         return True
     except:
          return False
         
+def create_stations_table(cursor) -> bool:
+    try:
+        sql = """
+            CREATE TABLE IF NOT EXISTS stations (
+            address VARCHAR(256),
+            banking INTEGER,
+            bike_stands INTEGER,
+            bonus INTEGER,
+            contract_name VARCHAR(256),
+            name VARCHAR(256),
+            number INTEGER,
+            position_lat REAL,
+            position_lng REAL,
+            status VARCHAR(256)
+            )
+            """
+        
+        cursor.execute(sql)
+        return True
+    except:
+        return False
+    
+def populate_stations_table(cursor, arg) -> bool:
+    try:
+        data = json.load(f'stations/{arg}_stations.json')
+        for entry in data:
+            cursor.execute("""
+                           INSERT INTO station (address, banking, bike_stands, bonus, contract_name, 
+                           name, number, position_lat, position_lang, status)
+                           VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                           """, 
+                           (entry["address"], entry["banking"], entry["bike_stands"], entry["bonus"], entry["contract_name"],
+                            entry["name"], entry["number"], entry["position"]["lat"], entry["position"]["lng"], entry["status"]))
+
+        return True
+    except:
+        return False
 
 if __name__ == "__main__":
     # Check if there is exactly one command-line argument (excluding the script name)
@@ -49,3 +85,19 @@ if __name__ == "__main__":
 
     if not create_stations_db(arg, cursor):
          print("Error creating database")
+
+    conn.close()
+    cursor.close()
+
+    # connect to database: arg
+    conn = mysql.connector.connect(host=DB,
+                                   user=DB_USER,
+                                   password=DB_PW,
+                                   database=arg)
+    cursor = conn.cursor()
+
+    if not create_stations_table(cursor):
+         print(f"Error creating stations table in database: {arg}")
+
+    if not populate_stations_table(cursor):
+         print(f"Error populating stations table in databse: {arg}")
