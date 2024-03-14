@@ -17,7 +17,14 @@ try:
 
     cursor.execute(query)
 
+    # Fetch all the rows
+    databases = cursor.fetchall()
+
+    # Print each database
+    for db in databases:
+        print(db[0])
+
     cursor.close()
     conn.close()
-except:
-    print("can't connect.")
+except mysql.connector.Error as e:
+    print("Error connecting to MySQL:", e)
