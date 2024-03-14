@@ -52,7 +52,7 @@ def populate_stations_table(cursor, arg) -> bool:
             data = json.load(json_file)
         for entry in data:
             cursor.execute("""
-                           INSERT INTO station (address, banking, bike_stands, bonus, contract_name, 
+                           INSERT INTO stations (address, banking, bike_stands, bonus, contract_name, 
                            name, number, position_lat, position_lang, status)
                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                            """, 
