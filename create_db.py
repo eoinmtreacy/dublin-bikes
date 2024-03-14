@@ -99,5 +99,5 @@ if __name__ == "__main__":
     if not create_stations_table(cursor):
          print(f"Error creating stations table in database: {arg}")
 
-    if not populate_stations_table(cursor):
+    if not populate_stations_table(cursor, arg):
          print(f"Error populating stations table in databse: {arg}")
