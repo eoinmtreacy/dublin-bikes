@@ -53,7 +53,7 @@ def populate_stations_table(cursor, arg) -> bool:
         for entry in data:
             cursor.execute("""
                            INSERT INTO stations (address, banking, bike_stands, bonus, contract_name, 
-                           name, number, position_lat, position_lang, status)
+                           name, number, position_lat, position_lng, status)
                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                            """, 
                            (entry["address"], entry["banking"], entry["bike_stands"], entry["bonus"], entry["contract_name"],
