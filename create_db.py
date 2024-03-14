@@ -59,7 +59,8 @@ def populate_stations_table(cursor, arg) -> bool:
                             entry["name"], entry["number"], entry["position"]["lat"], entry["position"]["lng"], entry["status"]))
 
         return True
-    except:
+    except mysql.connector.Error as e:
+        print(e)
         return False
 
 if __name__ == "__main__":
