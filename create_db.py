@@ -1,9 +1,10 @@
 import requests
 import json
-from constants import *
 import sys
+import mysql.connector
+from constants import *
 
-def fetch_city_static(arg):
+def fetch_city_static(arg: str) -> bool:
         try:
             r = requests.get(f'https://api.jcdecaux.com/vls/v1/stations?contract={arg}&apiKey={JCD_API_KEY}')
             # parse json
@@ -12,9 +13,17 @@ def fetch_city_static(arg):
 
             with open(f"./stations/{arg}_stations.json", "w") as json_file:
                 json_file.write(json.dumps(data, indent=4))
+            return True
         except:
-             "Error with request to JCDecaux API: check your contract name and API key"
+            return False
 
+def create_stations_db(arg, cursor):
+    query = f"CREATE DATABASE IF NOT EXISTS {arg};"
+    try:
+        cursor.execute(query)
+        return True
+    except:
+         return False
         
 
 if __name__ == "__main__":
@@ -27,6 +36,16 @@ if __name__ == "__main__":
     arg = sys.argv[1]
 
     # Process the argument
-    fetch_city_static(arg)
+    if not fetch_city_static(arg):
+         print("Error fetching contract city stations file")
+         print("Error with request to JCDecaux API: check your contract name and API key")
 
+    conn = mysql.connector.connect(host=DB,
+                                   user=DB_USER,
+                                   password=DB_PW
+                                   )
+    
+    cursor = conn.cursor()
 
+    if not create_stations_db(arg, cursor):
+         print("Error creating database")
