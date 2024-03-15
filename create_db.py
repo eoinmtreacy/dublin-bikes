@@ -28,7 +28,7 @@ def create_stations_db(cursor, arg) -> bool:
         print(e)
         return False
         
-def create_stations_table(cursor) -> bool:
+def create_stations_table(conn, cursor) -> bool:
     try:
         sql = """
             CREATE TABLE IF NOT EXISTS stations (
@@ -44,7 +44,7 @@ def create_stations_table(cursor) -> bool:
             status VARCHAR(256)
             )
             """
-        
+        conn.commit()
         cursor.execute(sql)
         return True
     except mysql.connector.Error as e:
