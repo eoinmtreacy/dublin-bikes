@@ -99,7 +99,7 @@ def main(arg):
                                     )
         cursor = conn.cursor()
 
-        if create_stations_db(arg, cursor):
+        if create_stations_db(cursor, arg):
             print(f"Creating/found database {arg}")
             conn.close()
             cursor.close()
