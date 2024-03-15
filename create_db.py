@@ -70,7 +70,7 @@ def populate_stations_table(conn, cursor, arg) -> bool:
     
 def create_availability_table(conn, cursor):
     try:
-        cursor.execute = """
+        cursor.execute = ("""
         CREATE TABLE IF NOT EXISTS availability (
         number INTEGER,
         available_bikes INTEGER,
@@ -78,7 +78,7 @@ def create_availability_table(conn, cursor):
         last_update BIGINT,
         PRIMARY KEY (number, last_update)
         )
-        """
+        """)
         conn.commit()
         return True
     except mysql.connector.Error as e:
