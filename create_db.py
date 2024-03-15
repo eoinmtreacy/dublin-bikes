@@ -65,7 +65,7 @@ def populate_stations_table(cursor, arg) -> bool:
     
 def show_stations(cursor) -> bool:
     try:
-        res = cursor.execute("SHOW * FROM stations;")
+        res = cursor.execute("SELECT * FROM stations;")
         print(res.fetchall())
         return True
     except mysql.connector.Error as e:
