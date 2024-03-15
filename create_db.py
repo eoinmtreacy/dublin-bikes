@@ -16,7 +16,7 @@ def fetch_city_static(arg: str) -> bool:
         except:
             return False
 
-def create_stations_db(arg: str, cursor: str) -> bool:
+def create_stations_db(cursor, arg) -> bool:
     query: str = f"CREATE DATABASE IF NOT EXISTS {arg};"
     try:
         cursor.execute(query)
@@ -46,7 +46,7 @@ def create_stations_table(cursor) -> bool:
     except:
         return False
     
-def populate_stations_table(cursor, arg) -> bool:
+def populate_stations_table(conn, cursor, arg) -> bool:
     try:
         with open(f"./stations/{arg}_stations.json", "r") as json_file:
             data = json.load(json_file)
@@ -68,14 +68,14 @@ def populate_stations_table(cursor, arg) -> bool:
         print(e)
         return False
     
-def create_availability_table(cursor):
+def create_availability_table(conn, cursor):
     try:
         cursor.execute = """
         CREATE TABLE IF NOT EXISTS availability (
         number INTEGER,
         available_bikes INTEGER,
         available_bike_stands INTEGER,
-        last_update INTEGER,
+        last_update BIGINT,
         PRIMARY KEY (number, last_update)
         )
         """
@@ -128,12 +128,12 @@ if __name__ == "__main__":
     else:
         print(f"made stations table for {arg}")
 
-    if not populate_stations_table(cursor, arg):
+    if not populate_stations_table(conn, cursor, arg):
         print(f"Error populating stations table in databse: {arg}")
     else:
         print("succesfully added stations to table")
 
-    if not create_availability_table(cursor):
+    if not create_availability_table(conn, cursor):
         print("error creating availability table")
 
     cursor.close()
