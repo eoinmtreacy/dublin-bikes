@@ -110,11 +110,12 @@ def main(arg):
                                         password=DB_PW,
                                         database=arg)
             cursor = conn.cursor()
-
-            if populate_stations_table(conn, cursor, arg):
-                print(f"stations table in  database {arg} succesfully populated")
-                if create_availability_table(conn, cursor):
-                    print(f"availability table created in database {arg}")
+            if create_stations_table(conn, cursor):
+                print(f"created stations table in database {arg}")
+                if populate_stations_table(conn, cursor, arg):
+                    print(f"stations table in  database {arg} succesfully populated")
+                    if create_availability_table(conn, cursor):
+                        print(f"availability table created in database {arg}")
 
         conn.close()
         cursor.close()
