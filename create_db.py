@@ -54,8 +54,7 @@ def populate_stations_table(cursor, arg) -> bool:
             cursor.execute(f"""
                            INSERT INTO stations (address, banking, bike_stands, bonus, contract_name, 
                            name, number, position_lat, position_lng, status)
-                           VALUES ({entry["address"]}, {entry["banking"]}, {entry["bike_stands"]}, {entry["bonus"]}, {entry["contract_name"]},
-                            {entry["name"]}, {entry["number"]}, {entry["position"]["lat"]}, {entry["position"]["lng"]}, {entry["status"]})
+                           VALUES ({entry["address"]}, {entry["banking"]}, {entry["bike_stands"]}, {entry["bonus"]}, {entry["contract_name"]}, {entry["name"]}, {entry["number"]}, {entry["position"]["lat"]}, {entry["position"]["lng"]}, {entry["status"]})
                            """)
         return True
     except mysql.connector.Error as e:
