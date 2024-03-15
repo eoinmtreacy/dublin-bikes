@@ -70,13 +70,13 @@ def populate_stations_table(conn, cursor, arg) -> bool:
     
 def create_availability_table(conn, cursor):
     try:
-        cursor.execute = ("""
+        cursor.execute("""
         CREATE TABLE IF NOT EXISTS availability (
-        number INTEGER,
-        available_bikes INTEGER,
-        available_bike_stands INTEGER,
-        last_update BIGINT,
-        PRIMARY KEY (number, last_update)
+            number INTEGER,
+            available_bikes INTEGER,
+            available_bike_stands INTEGER,
+            last_update BIGINT,
+            PRIMARY KEY (number, last_update)
         )
         """)
         conn.commit()
