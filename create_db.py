@@ -34,7 +34,7 @@ def create_stations_table(cursor) -> bool:
             bonus INTEGER,
             contract_name VARCHAR(256),
             name VARCHAR(256),
-            number INTEGER,
+            number INTEGER PRIMARY KEY,
             position_lat REAL,
             position_lng REAL,
             status VARCHAR(256)
@@ -51,23 +51,35 @@ def populate_stations_table(cursor, arg) -> bool:
         with open(f"./stations/{arg}_stations.json", "r") as json_file:
             data = json.load(json_file)
         for entry in data:
-            cursor.execute("""
-                           INSERT INTO stations (address, banking, bike_stands, bonus, contract_name, 
-                           name, number, position_lat, position_lng, status)
-                           VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-                           """, 
-                           (entry["address"], entry["banking"], entry["bike_stands"], entry["bonus"], entry["contract_name"],
-                            entry["name"], entry["number"], entry["position"]["lat"], entry["position"]["lng"], entry["status"]))
+            try:
+                cursor.execute("""
+                            INSERT INTO stations (address, banking, bike_stands, bonus, contract_name, 
+                            name, number, position_lat, position_lng, status)
+                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                            """, 
+                            (entry["address"], entry["banking"], entry["bike_stands"], entry["bonus"], entry["contract_name"],
+                                entry["name"], entry["number"], entry["position"]["lat"], entry["position"]["lng"], entry["status"]))
+            except mysql.connector.Error as e:
+                print(e)
+
         conn.commit()
         return True
     except mysql.connector.Error as e:
         print(e)
         return False
     
-def show_stations(cursor) -> bool:
+def create_availability_table(cursor):
     try:
-        res = cursor.execute("SHOW * FROM stations;")
-        print(res.fetchall())
+        cursor.execute = """
+        CREATE TABLE IF NOT EXISTS availability (
+        number INTEGER,
+        available_bikes INTEGER,
+        available_bike_stands INTEGER,
+        last_update INTEGER,
+        PRIMARY KEY (number, last_update)
+        )
+        """
+        conn.commit()
         return True
     except mysql.connector.Error as e:
         print(e)
@@ -121,8 +133,8 @@ if __name__ == "__main__":
     else:
         print("succesfully added stations to table")
 
-    if not show_stations(cursor):
-        print("error finding stations in table")
+    if not create_availability_table(cursor):
+        print("error creating availability table")
 
     cursor.close()
     conn.close()
