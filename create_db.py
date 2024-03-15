@@ -6,8 +6,12 @@ from constants import *
 
 def fetch_city_static(arg: str) -> bool:
         try:
-            r = requests.get(f'https://api.jcdecaux.com/vls/v1/stations?contract={arg}&apiKey={JCD_API_KEY}')
-            # parse json
+            r: requests.Response = requests.get(f'https://api.jcdecaux.com/vls/v1/stations?contract={arg}&apiKey={JCD_API_KEY}')
+
+            if r.status_code != 200:
+                print(f"Error fetching static data for {arg}, are you sure it is a valid contract name?")
+                return False
+
             data = json.loads(r.text)
 
             with open(f"./stations/{arg}_stations.json", "w") as json_file:
@@ -17,12 +21,12 @@ def fetch_city_static(arg: str) -> bool:
             return False
 
 def create_stations_db(cursor, arg) -> bool:
-    query: str = f"CREATE DATABASE IF NOT EXISTS {arg};"
     try:
-        cursor.execute(query)
+        cursor.execute(f"CREATE DATABASE IF NOT EXISTS {arg};")
         return True
-    except:
-         return False
+    except mysql.connector.Error as e:
+        print(e)
+        return False
         
 def create_stations_table(cursor) -> bool:
     try:
@@ -43,7 +47,8 @@ def create_stations_table(cursor) -> bool:
         
         cursor.execute(sql)
         return True
-    except:
+    except mysql.connector.Error as e:
+        print(e)
         return False
     
 def populate_stations_table(conn, cursor, arg) -> bool:
@@ -84,6 +89,40 @@ def create_availability_table(conn, cursor):
     except mysql.connector.Error as e:
         print(e)
         return False
+    
+def main(arg):
+    if fetch_city_static(arg):
+        print(f"static data saved in stations/{arg})station.json")
+        conn = mysql.connector.connect(host=DB,
+                                    user=DB_USER,
+                                    password=DB_PW
+                                    )
+        cursor = conn.cursor()
+
+        if create_stations_db(arg, cursor):
+            print(f"Creating/found database {arg}")
+            conn.close()
+            cursor.close()
+
+            # create new connection and cursor to database: arg
+            conn = mysql.connector.connect(host=DB,
+                                        user=DB_USER,
+                                        password=DB_PW,
+                                        database=arg)
+            cursor = conn.cursor()
+
+            if populate_stations_table(conn, cursor, arg):
+                print(f"stations table in  database {arg} succesfully populated")
+                if create_availability_table(conn, cursor):
+                    print(f"availability table created in database {arg}")
+
+        conn.close()
+        cursor.close()
+
+    else:
+         print("Error fetching contract city stations file")
+         print("Error with request to JCDecaux API: check your contract name and API key")
+
 
 if __name__ == "__main__":
     # Check if there is exactly one command-line argument (excluding the script name)
@@ -91,50 +130,7 @@ if __name__ == "__main__":
         print("Usage: python static_create.py <city_name>")
         sys.exit(1)
 
-    # Extract the argument
-    arg = sys.argv[1]
-
-    # Process the argument
-    if not fetch_city_static(arg):
-         print("Error fetching contract city stations file")
-         print("Error with request to JCDecaux API: check your contract name and API key")
     else:
-        print("static file fetched")
-
-    conn = mysql.connector.connect(host=DB,
-                                   user=DB_USER,
-                                   password=DB_PW
-                                   )
-    
-    cursor = conn.cursor()
-
-    if not create_stations_db(arg, cursor):
-         print("Error creating database")
-    else:
-        print(f"found database {arg}")
-
-    conn.close()
-    cursor.close()
-
-    # connect to database: arg
-    conn = mysql.connector.connect(host=DB,
-                                   user=DB_USER,
-                                   password=DB_PW,
-                                   database=arg)
-    cursor = conn.cursor()
-
-    if not create_stations_table(cursor):
-        print(f"Error creating stations table in database: {arg}")
-    else:
-        print(f"made stations table for {arg}")
-
-    if not populate_stations_table(conn, cursor, arg):
-        print(f"Error populating stations table in databse: {arg}")
-    else:
-        print("succesfully added stations to table")
-
-    if not create_availability_table(conn, cursor):
-        print("error creating availability table")
-
-    cursor.close()
-    conn.close()
+        # Extract the argument
+        arg = sys.argv[1]
+        main(arg)
