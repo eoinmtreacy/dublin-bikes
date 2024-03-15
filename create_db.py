@@ -51,15 +51,13 @@ def populate_stations_table(cursor, arg) -> bool:
         with open(f"./stations/{arg}_stations.json", "r") as json_file:
             data = json.load(json_file)
         for entry in data:
-            if cursor.execute("""
+            cursor.execute("""
                            INSERT INTO stations (address, banking, bike_stands, bonus, contract_name, 
                            name, number, position_lat, position_lng, status)
                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                            """, 
                            (entry["address"], entry["banking"], entry["bike_stands"], entry["bonus"], entry["contract_name"],
-                            entry["name"], entry["number"], entry["position"]["lat"], entry["position"]["lng"], entry["status"])):
-                print("added entry ", entry['name'])
-
+                            entry["name"], entry["number"], entry["position"]["lat"], entry["position"]["lng"], entry["status"]))
         return True
     except mysql.connector.Error as e:
         print(e)
@@ -78,6 +76,8 @@ if __name__ == "__main__":
     if not fetch_city_static(arg):
          print("Error fetching contract city stations file")
          print("Error with request to JCDecaux API: check your contract name and API key")
+    else:
+        print("static file fetched")
 
     conn = mysql.connector.connect(host=DB,
                                    user=DB_USER,
@@ -88,6 +88,8 @@ if __name__ == "__main__":
 
     if not create_stations_db(arg, cursor):
          print("Error creating database")
+    else:
+        print(f"found database {arg}")
 
     conn.close()
     cursor.close()
@@ -100,10 +102,14 @@ if __name__ == "__main__":
     cursor = conn.cursor()
 
     if not create_stations_table(cursor):
-         print(f"Error creating stations table in database: {arg}")
+        print(f"Error creating stations table in database: {arg}")
+    else:
+        print(f"made stations table for {arg}")
 
     if not populate_stations_table(cursor, arg):
-         print(f"Error populating stations table in databse: {arg}")
+        print(f"Error populating stations table in databse: {arg}")
+    else:
+        print("succesfully added stations to table")
 
     cursor.close()
     conn.close()
