@@ -51,13 +51,14 @@ def populate_stations_table(cursor, arg) -> bool:
         with open(f"./stations/{arg}_stations.json", "r") as json_file:
             data = json.load(json_file)
         for entry in data:
-            cursor.execute("""
+            if cursor.execute("""
                            INSERT INTO stations (address, banking, bike_stands, bonus, contract_name, 
                            name, number, position_lat, position_lng, status)
                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                            """, 
                            (entry["address"], entry["banking"], entry["bike_stands"], entry["bonus"], entry["contract_name"],
-                            entry["name"], entry["number"], entry["position"]["lat"], entry["position"]["lng"], entry["status"]))
+                            entry["name"], entry["number"], entry["position"]["lat"], entry["position"]["lng"], entry["status"])):
+                print("added entry ", entry['name'])
 
         return True
     except mysql.connector.Error as e:
@@ -103,3 +104,6 @@ if __name__ == "__main__":
 
     if not populate_stations_table(cursor, arg):
          print(f"Error populating stations table in databse: {arg}")
+
+    cursor.close()
+    conn.close()
