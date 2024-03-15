@@ -51,11 +51,14 @@ def populate_stations_table(cursor, arg) -> bool:
         with open(f"./stations/{arg}_stations.json", "r") as json_file:
             data = json.load(json_file)
         for entry in data:
-            cursor.execute(f"""
+            cursor.execute("""
                            INSERT INTO stations (address, banking, bike_stands, bonus, contract_name, 
                            name, number, position_lat, position_lng, status)
-                           VALUES ({entry["address"]}, {entry["banking"]}, {entry["bike_stands"]}, {entry["bonus"]}, {entry["contract_name"]}, {entry["name"]}, {entry["number"]}, {entry["position"]["lat"]}, {entry["position"]["lng"]}, {entry["status"]})
-                           """)
+                           VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                           """, 
+                           (entry["address"], entry["banking"], entry["bike_stands"], entry["bonus"], entry["contract_name"],
+                            entry["name"], entry["number"], entry["position"]["lat"], entry["position"]["lng"], entry["status"]))
+        conn.commit()
         return True
     except mysql.connector.Error as e:
         print(e)
@@ -63,7 +66,7 @@ def populate_stations_table(cursor, arg) -> bool:
     
 def show_stations(cursor) -> bool:
     try:
-        res = cursor.execute("SELECT * FROM stations;")
+        res = cursor.execute("SHOW * FROM stations;")
         print(res.fetchall())
         return True
     except mysql.connector.Error as e:
