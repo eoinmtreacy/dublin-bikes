@@ -62,6 +62,15 @@ def populate_stations_table(cursor, arg) -> bool:
     except mysql.connector.Error as e:
         print(e)
         return False
+    
+def show_stations(cursor) -> bool:
+    try:
+        res = cursor.execute("SHOW * FROM stations;")
+        print(res.fetchall())
+        return True
+    except mysql.connector.Error as e:
+        print(e)
+        return False
 
 if __name__ == "__main__":
     # Check if there is exactly one command-line argument (excluding the script name)
@@ -110,6 +119,9 @@ if __name__ == "__main__":
         print(f"Error populating stations table in databse: {arg}")
     else:
         print("succesfully added stations to table")
+
+    if not show_stations(cursor):
+        print("error finding stations in table")
 
     cursor.close()
     conn.close()
