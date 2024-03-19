@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
 </head>
+
 <body class="bg-gray-800 text-white">
     <header class="bg-slate-200 py-3 pl-4 flex items-center">
         <ion-icon name="menu-outline" class="text-black text-4xl pr-4" id="menuToggle"></ion-icon>
         <h1 class="text-3xl font-semibold text-gray-800">Dublin Bikes Live</h1>
     </header>
-    
+
     <div class="flex">
         <div class="flex">
-            <nav id="navbar" class="bg-slate-200 transform top-0 left-0 w-64 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30" style="transform: translateX(-100%)">
+            <nav id="navbar"
+                class="bg-slate-200 transform top-0 left-0 w-64 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
+                style="transform: translateX(-100%)">
 
                 <div class="flex flex-col items-center pt-8">
                     <ion-icon name="bicycle-outline" class="text-black text-4xl mb-8"></ion-icon>
@@ -29,34 +33,51 @@
             <div id="map" class="w-full h-screen rounded-lg" style="height: calc(100vh - 64px);"></div>
 
             <!--  Planning Panel -->
-                <div class="fixed inset-x-0 bottom-0 mb-4 flex items-center justify-center">
+            <div class="fixed inset-x-0 bottom-0 mb-4 flex items-center justify-center">
 
-                        <div class="bg-gray-900 p-8 rounded-lg shadow-lg">
-                            <div class="flex mb-4">
-                                <form id="myForm">
-                                    <select id="dropdown1" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
-                                    </select>
-                                    <select id="dropdown2" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
-                                    </select>
-                                    <select id="dropdown3" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
-                                    </select>
-                                    <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md" onclick="submitForm()">Submit</button>
-                                </form>
-                                <div id="result"></div>
-                            </div>
+                <div class="bg-gray-900 p-8 rounded-lg shadow-lg">
+                    <form id="myForm">
+
+                        <div class="flex mb-4">
+                            <span>Depart: </span><select id="depart" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
+                            </select>
+                            <select id="departTime" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
+                            </select>
+                            <select id="departDay" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
+                            </select>
                         </div>
+                        <div class="flex mb-4">
+                            <span>Arrive: </span><select id="arrive" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
+                            </select>
+                            <select id="arriveTime" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
+                            </select>
+                            <select id="arriveDay" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
+                            </select>
+                        </div>
+
+                        <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md"
+                        onclick="submitForm()">Submit</button>
+
+                    </form>
+
+                    <div id="result"></div>
                 </div>
+
+
+            </div>
 
             <!-- End Planning Panel -->
 
         </main>
     </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=visualization&callback=initMap"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=visualization&callback=initMap"></script>
 
     <script src="{{ url_for('static', filename='script.js') }}">
-        
+
 
     </script>
-   
+
 </body>
+
 </html>

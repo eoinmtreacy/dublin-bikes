@@ -5,6 +5,9 @@ from constants import *
 # from local_constants import * 
 import requests
 import mysql.connector
+import pickle
+import numpy as np
+from sklearn.preprocessing import PolynomialFeatures
 
 # initialise flask app
 app = Flask(__name__)
@@ -31,16 +34,47 @@ def landing():
 def predict():
     if request.method == 'POST':
         data = request.json
-        dropdown1_value = data['dropdown1']
-        dropdown2_value = data['dropdown2']
-        dropdown3_value = data['dropdown3']
+        depart = data['depart']
+        departTime = data['departTime']
+        departDay = data['departDay']
+        arrive = data['arrive']
+        arriveTime = data['arriveTime']
+        arriveDay = data['arriveDay']
+
+        depart = [depart] + [int(departTime)] + departDay
+        arrive = [arrive] + [int(arriveTime)] + arriveDay
+
+        print(depart, arrive)
+
+        # import model for depart station
+        with open(f'./models/{depart[0]}.pkl', 'rb') as file:
+            model = pickle.load(file)
+
+        # Linear model trained on Polynomial
+        # transformation of these features
+        poly = PolynomialFeatures(degree=4)
+        X_poly = poly.fit_transform(np.asarray(depart[1:]).reshape(1, -1))
+
+        # format query corretly for the model
+        departPrediction = model.predict(X_poly)
+
+        # import model for arrive station
+        with open(f'./models/{arrive[0]}.pkl', 'rb') as file:
+            model = pickle.load(file)
+
+        # Linear model trained on Polynomial
+        # transformation of these features
+        poly = PolynomialFeatures(degree=4)
+        X_poly = poly.fit_transform(np.asarray(arrive[1:]).reshape(1, -1))
+
+        # format query corretly for the model
+        arrivePrediction = model.predict(X_poly)
 
         # Perform operations with the dropdown values
         # For example, you could process them and return a result
         result = {
-            'dropdown1_value': dropdown1_value,
-            'dropdown2_value': dropdown2_value,
-            'dropdown3_value': dropdown3_value
+            'departAvailability': departPrediction[0],
+            'arriveAvailability': arrivePrediction[0]
         }
         return jsonify(result)
     else:
