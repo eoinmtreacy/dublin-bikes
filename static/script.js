@@ -271,13 +271,11 @@ function submitForm() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ hour: hour, day: day })
+            body: JSON.stringify({ hour: departTime, day: departDay })
         })
         .then(response => response.json())
         .then(data => {
-            // Update elements with the correct IDs
-            document.getElementById('weather-description').innerText = 'Current Weather: ' + data.condition;
-            // Assuming you want to insert the weather icon as an <img> inside the 'weather-icon' span
+            document.getElementById('weather-description').innerText = 'Predicted Weather: ' + data.condition;
             let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
             document.getElementById('weather-icon').innerHTML = iconImg;
             document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c;
