@@ -62,11 +62,15 @@
                             <select id="arriveDay" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
                             </select>
                         </div>
-
+                        <!-- Google Maps Direction button, styled to appear to the right of Submit button. Hidden. Becomes Visible when form is submitted-->
+                        <button id="directionsButton" type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md float-right" style="display: none;">
+                            Directions
+                            </button>
                         <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md"
                         onclick="submitForm()">Submit</button>
 
                     </form>
+                    
 
                     <div id="result"></div>
                 </div>
