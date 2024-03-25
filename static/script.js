@@ -17,6 +17,7 @@ async function initMap() {
     fetchStations(realTime); 
     map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
+var stationsData = [] // Define stationsData outside of the function so it can be accessed globally
 function fetchStations(realTime) {
     fetch('/stations')
     .then(response => response.json())
@@ -40,6 +41,7 @@ function fetchStations(realTime) {
         }
 
         markers.forEach(marker => marker.setMap(null));
+        stationsData = data['data'] // Assign the data to the global variable
 
         data['data'].forEach(station => {
             
@@ -181,6 +183,40 @@ async function fetchDropdownOptions() {
     return options
 }
 
+// Function to get the coordinates of a station by its name
+function getStationCoordinates(stationName, stationsData) {
+    const station = stationsData.find(station => station.name === stationName); // Find station data in json by name: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+    if (station) {
+        console.log("Station Found:", station);
+        return `${station.position_lat},${station.position_lng}`; // Return the coordinates as a string in the format required by Google Maps API
+    }
+    else
+        console.error("Station not found", stationName);
+        return null; // Return null if station not found
+}
+function getText(elementID, value) { // Function to get the text of an option by its value rather than its value. https://www.geeksforgeeks.org/how-to-get-the-text-of-option-tag-by-value-using-javascript/
+    Object.values(document.getElementById(
+        elementID).options).
+        forEach(function (option){
+        if (option.value === value) {
+            text = option.text;
+        }
+    });
+    return text; // Return the text of the option
+}
+// Function to create the directions URL and open it in a new tab
+function getDirections() {
+    const originStationName = getText("depart", document.getElementById("depart").value);
+    const originStationCoordinates = getStationCoordinates(originStationName, stationsData);
+    const destinationStationName = getText("arrive", document.getElementById("arrive").value);
+    const destinationStationCoordinates = getStationCoordinates(destinationStationName, stationsData);
+
+    const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=${originStationCoordinates}&destination=${destinationStationCoordinates}&travelmode=bicycling`; // Create the directions URL with the origin and destination coordinates and the travel mode set to bicycling: https://developers.google.com/maps/documentation/urls/get-started#directions-action
+    const directionsButton = document.getElementById('directionsButton');
+    directionsButton.style.display = 'block'; // Display the directions button
+    directionsButton.onclick = () => window.open(directionsUrl, '_blank'); // Open the directions URL in a new tab when the button is clicked https://stackoverflow.com/questions/6303964/javascript-open-a-given-url-in-a-new-tab-by-clicking-a-button
+}
+
 function submitForm() {
     // dayOptions in strange order because that's how the model
     // reads the booleans
@@ -200,6 +236,8 @@ function submitForm() {
     const arrive = document.getElementById("arrive").value;
     const arriveTime = document.getElementById("arriveTime").value;
     const arriveDay = document.getElementById("arriveDay").value;
+
+    getDirections(); // Call the getDirections function to display the directions button
 
     // change selected day to 1 (True)
     const departOptions = dayOptions
