@@ -113,11 +113,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     populateDropdownOptions()
     fetchRealTime()
+    fetchRealTimeWeather()
 });
 
 async function populateDropdownOptions() {
     // fetch dublin.json
     const options = await fetchDropdownOptions()
+    const days = await sortedWeekdays()
 
     // parse json
     const stations = options['data']
@@ -143,7 +145,6 @@ async function populateDropdownOptions() {
         arriveTime.innerHTML += `<option value="${i}">${i}</option>`;
     }
 
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
     days.forEach(day => {
         departDay.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
@@ -156,6 +157,22 @@ async function populateDropdownOptions() {
 
     console.log(stationsIds);
 }
+function sortedWeekdays() { // Allows for the days to be sorted in the dropdown from Today to Next Week (inclusive)
+    let today = new Date();
+    let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let todayIndex = today.getDay(); // Get today's index (0-6, where 0 is Sunday and 6 is Saturday)
+    let sortedWeekdays = ["Today"]; // Start with "Today" as the first element
+
+    // Add the rest of the week days starting from tomorrow
+    for (let i = 1; i < 7; i++) {
+        let index = (todayIndex + i) % 7; // Calculate index to wrap around the weekdays array
+        sortedWeekdays.push(weekdays[index]);
+    }
+
+    return sortedWeekdays;
+}
+
+console.log(sortedWeekdays());
 
 async function fetchDropdownOptions() {
     const options = await fetch('static/stations.json')
@@ -210,7 +227,28 @@ function submitForm() {
         document.getElementById("result").innerText = JSON.stringify(data);
     })
     .catch(error => console.error('Error:', error));
-}
+
+        fetch('/api/WeatherForecast', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ hour: hour, day: day })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Update elements with the correct IDs
+            document.getElementById('weather-description').innerText = 'Current Weather: ' + data.condition;
+            // Assuming you want to insert the weather icon as an <img> inside the 'weather-icon' span
+            let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
+            document.getElementById('weather-icon').innerHTML = iconImg;
+            document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c;
+            document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity + '%';
+            document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm + 'mm';
+        })
+        .catch(error => console.error('Error fetching weather:', error));
+    }
+    
 
 async function fetchRealTime() {
     // first route the app calls after '/' is /realtime
@@ -231,3 +269,17 @@ async function fetchRealTime() {
 
     return realTime
 }
+
+async function fetchRealTimeWeather() { 
+    fetch('/api/CurrentWeather')
+            .then(response => response.json())
+            .then(data => {
+        document.getElementById('weather-description').innerText = 'Current Weather: ' + data.condition;
+        let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
+        document.getElementById('weather-icon').innerHTML = iconImg;
+        document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c;
+        document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity;
+        document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm;
+            })
+            .catch(error => console.error('Error fetching weather:', error));
+        }
