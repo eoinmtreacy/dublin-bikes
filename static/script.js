@@ -1,6 +1,7 @@
 var map;
 var heatmap;
 var markers =[]
+const stationsIds = {}
 
 // changed this to async because it wouldn't work otherwise lol
 async function initMap() {
@@ -13,7 +14,6 @@ async function initMap() {
     // so we can populate markers with the 
     // realtime info as we create them
     const realTime = await fetchRealTime()
-    console.log(realTime);
     fetchStations(realTime); 
     map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
@@ -83,6 +83,7 @@ function fetchStations(realTime) {
         toggleHeatmapAndMarkers();
     })
     .catch(error => console.error('Error fetching stations:', error));
+
 }
 
 function toggleHeatmapAndMarkers() {
@@ -126,23 +127,35 @@ async function populateDropdownOptions() {
     const names = stations.map(station => station['name'])
 
     // Select dropdowns by their IDs
-    const dropdown1 = document.getElementById('dropdown1');
-    const dropdown2 = document.getElementById('dropdown2');
-    const dropdown3 = document.getElementById('dropdown3');
+    const depart = document.getElementById('depart');
+    const departTime = document.getElementById('departTime');
+    const departDay = document.getElementById('departDay');
+    const arrive = document.getElementById('arrive');
+    const arriveTime = document.getElementById('arriveTime');
+    const arriveDay = document.getElementById('arriveDay');
 
     // Populate options for each dropdown
     names.forEach(name => {
-        dropdown1.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
+        depart.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
+        arrive.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
     });
 
     for (let i = 0; i < 24; i++) {
-        dropdown2.innerHTML += `<option value="${i}">${i}</option>`;
+        departTime.innerHTML += `<option value="${i}">${i}</option>`;
+        arriveTime.innerHTML += `<option value="${i}">${i}</option>`;
     }
 
 
     days.forEach(day => {
-        dropdown3.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
+        departDay.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
+        arriveDay.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
     })
+
+    for (let i = 0; i < numbers.length; i++) {
+        stationsIds[names[i].toLowerCase().replace(/\s+/g, '')] = numbers[i]
+    }
+
+    console.log(stationsIds);
 }
 function sortedWeekdays() { // Allows for the days to be sorted in the dropdown from Today to Next Week (inclusive)
     let today = new Date();
@@ -169,9 +182,31 @@ async function fetchDropdownOptions() {
 }
 
 function submitForm() {
-    const station = document.getElementById("dropdown1").value;
-    const hour = document.getElementById("dropdown2").value;
-    const day = document.getElementById("dropdown3").value;
+    // dayOptions in strange order because that's how the model
+    // reads the booleans
+    const dayOptions = {
+        "friday": 0,
+        "monday": 0,
+        "saturday": 0,
+        "sunday": 0,
+        "thursday": 0,
+        "tuesday": 0,
+        "wednesday": 0
+    }
+
+    const depart = document.getElementById("depart").value;
+    const departTime = document.getElementById("departTime").value;
+    const departDay = document.getElementById("departDay").value;
+    const arrive = document.getElementById("arrive").value;
+    const arriveTime = document.getElementById("arriveTime").value;
+    const arriveDay = document.getElementById("arriveDay").value;
+
+    // change selected day to 1 (True)
+    const departOptions = dayOptions
+    const arriveOptions = dayOptions
+
+    departOptions[departDay] = 1
+    arriveOptions[arriveDay] = 1
 
     fetch('/predict', {
         method: 'POST',
@@ -179,9 +214,12 @@ function submitForm() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            dropdown1: station,
-            dropdown2: hour,
-            dropdown3: day
+            depart: stationsIds[depart],
+            departTime: departTime,
+            departDay: Object.values(departOptions),
+            arrive: stationsIds[arrive],
+            arriveTime: arriveTime,
+            arriveDay: Object.values(arriveOptions)
         })
     })
     .then(response => response.json())
