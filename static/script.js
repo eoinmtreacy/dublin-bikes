@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
 async function go() {
     const STATIONS = await fetchStations()
     const MAP = await initMap()
-    const HEATMAP = genHeatmap(STATIONS, MAP)
-    const MARKERS = createMarkers(STATIONS, MAP)
+    const HEATMAP = await genHeatmap(STATIONS, MAP)
+    const MARKERS = await createMarkers(STATIONS, MAP, HEATMAP)
     // console.log(MARKERS);
     MAP.addListener('zoom_changed', toggleHeatmapAndMarkers(MAP, MARKERS, HEATMAP))
 }
@@ -44,7 +44,7 @@ async function fetchStations() {
     return await fetch('/stations').then(response => response.json())
 }
 
-function genHeatmap(stations, map) {
+async function genHeatmap(stations, map) {
     const heatmapData = stations.map(station => {
         let heatmapDataPoint = {
             location: new google.maps.LatLng(station.position.lat, station.position.lng),
@@ -58,11 +58,11 @@ function genHeatmap(stations, map) {
         data: heatmapData,
         map: map,
     });
-    console.log(heatmap);
+
     return heatmap
 }
 
-function createMarkers(stations, map) {
+async function createMarkers(stations, map) {
     // markers.forEach(marker => marker.setMap(null));
     const markers = stations.map(station => {
         let markerColor;
@@ -103,17 +103,22 @@ function createMarkers(stations, map) {
 
     })
 
-    // toggleHeatmapAndMarkers(map, markers);
+    toggleHeatmapAndMarkers(map, markers, heatmap);
     return markers
 }
 
 function toggleHeatmapAndMarkers(map, markers, heatmap) {
+    markers.map(marker => marker.setMap(map))
+    console.log(map.getZoom());
+
+    if (map.getZoom() > 1) markers.map(marker => marker.setMap(null))
+
     var zoom = map.getZoom();
     if (zoom < 14) {
-        markers.forEach(marker => marker.setMap(null));
+        markers.map(marker => marker.setMap(null))
         heatmap.setMap(map);
     } else {
-        markers.forEach(marker => marker.setMap(map));
+        markers.map(marker => marker.setMap(map))
         heatmap.setMap(null);
     }
 }
@@ -157,7 +162,6 @@ async function populateDropdownOptions() {
         stationsIds[names[i].toLowerCase().replace(/\s+/g, '')] = numbers[i]
     }
 
-    console.log(stationsIds);
 }
 function sortedWeekdays() { // Allows for the days to be sorted in the dropdown from Today to Next Week (inclusive)
     let today = new Date();
@@ -174,7 +178,6 @@ function sortedWeekdays() { // Allows for the days to be sorted in the dropdown 
     return sortedWeekdays;
 }
 
-console.log(sortedWeekdays());
 
 async function fetchDropdownOptions() {
     const options = await fetch('static/stations.json')
