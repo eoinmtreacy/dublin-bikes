@@ -13,11 +13,10 @@ async function initMap() {
     // need to fetchRealTime before stations
     // so we can populate markers with the 
     // realtime info as we create them
-    const realTime = await fetchRealTime()
-    fetchStations(realTime); 
+    await fetchStations()
     map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
-function fetchStations(realTime) {
+async function fetchStations() {
     fetch('/stations')
     .then(response => response.json())
     .then(data => {
@@ -25,9 +24,9 @@ function fetchStations(realTime) {
         // of pulling the station number to populate the map
         // it checks the station number against the realtime
         // and returns the number of available bikes instead
-        var heatmapData = data['data'].map(station => ({
-            location: new google.maps.LatLng(station.position_lat, station.position_lng),
-            weight: realTime[station.number] 
+        var heatmapData = data.map(station => ({
+            location: new google.maps.LatLng(station.position.lat, station.position.lng),
+            weight: station.number 
         }));
 
         if (heatmap) {
@@ -41,21 +40,21 @@ function fetchStations(realTime) {
 
         markers.forEach(marker => marker.setMap(null));
 
-        data['data'].forEach(station => {
+        data.forEach(station => {
             
             let markerColor;
-            if (realTime[station.number] === 0) {
+            if (station.number === 0) {
                 markerColor = 'red'; 
-            } else if (realTime[station.number] > 0 && realTime[station.number] <= 5) { 
+            } else if (station.number > 0 && station.number <= 5) { 
                 markerColor = 'yellow';
             } else {
                 markerColor = 'green'; 
             }
 
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(station.position_lat, station.position_lng),
+                position: new google.maps.LatLng(station.position.lat, station.position.lng),
                 map: null, 
-                title: `${station.name} - Bikes available: ${realTime[station.number]}`,
+                title: `${station.name} - Bikes available: ${station.number}`,
                 icon: {
                     path: google.maps.SymbolPath.CIRCLE,
                     scale: 7, 

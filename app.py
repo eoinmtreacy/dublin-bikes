@@ -84,6 +84,11 @@ def predict():
 @app.route('/stations')
 def stations():
     # this won't work on campus without an SSH tunnel but should be okay at home 
+
+    with open('stations/dublin_stations.json', 'r') as file:
+        json_data = json.load(file)
+    return json_data
+
     try:
         conn = mysql.connector.connect(
         host=DB,
