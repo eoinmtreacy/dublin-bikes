@@ -10,11 +10,19 @@
 </head>
 
 <body class="bg-gray-800 text-white">
-    <header class="bg-slate-200 py-3 pl-4 flex items-center">
-        <ion-icon name="menu-outline" class="text-black text-4xl pr-4" id="menuToggle"></ion-icon>
-        <h1 class="text-3xl font-semibold text-gray-800">Dublin Bikes Live</h1>
+    <header class="bg-slate-200 py-3 px-4 flex items-center justify-between">
+        <div class="flex items-center">
+            <ion-icon name="menu-outline" class="text-black text-4xl pr-4" id="menuToggle"></ion-icon>
+            <h1 class="text-3xl font-semibold text-gray-800">Dublin Bikes Live</h1>
+        </div>
+        <div class="weather-info flex items-center text-xl font-semibold text-gray-800">
+            <span id="weather-description" class="mr-4">Loading weather data...</span>
+            <span id="weather-icon" class="mx-4 flex items-center justify-center"></span>
+            <span id="weather-temperature" class="mr-4"></span>
+            <span id="weather-humidity" class="mr-4">Humidity: ...%</span>
+            <span id="weather-precipitation">Precipitation: ...mm</span>
+        </div>
     </header>
-
     <div class="flex">
         <div class="flex">
             <nav id="navbar"
@@ -54,11 +62,15 @@
                             <select id="arriveDay" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
                             </select>
                         </div>
-
+                        <!-- Google Maps Direction button, styled to appear to the right of Submit button. Hidden. Becomes Visible when form is submitted-->
+                        <button id="directionsButton" type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md float-right" style="display: none;">
+                            Directions
+                            </button>
                         <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md"
                         onclick="submitForm()">Submit</button>
 
                     </form>
+                    
 
                     <div id="result"></div>
                 </div>
