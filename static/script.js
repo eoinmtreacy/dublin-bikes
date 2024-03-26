@@ -17,6 +17,7 @@ async function initMap() {
     fetchStations(realTime); 
     map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
+var stationsData = [] // Define stationsData outside of the function so it can be accessed globally
 function fetchStations(realTime) {
     fetch('/stations')
     .then(response => response.json())
@@ -40,6 +41,7 @@ function fetchStations(realTime) {
         }
 
         markers.forEach(marker => marker.setMap(null));
+        stationsData = data['data'] // Assign the data to the global variable
 
         data['data'].forEach(station => {
             
@@ -113,11 +115,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     populateDropdownOptions()
     fetchRealTime()
+    fetchRealTimeWeather()
 });
 
 async function populateDropdownOptions() {
     // fetch dublin.json
     const options = await fetchDropdownOptions()
+    const days = await sortedWeekdays()
 
     // parse json
     const stations = options['data']
@@ -143,7 +147,6 @@ async function populateDropdownOptions() {
         arriveTime.innerHTML += `<option value="${i}">${i}</option>`;
     }
 
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
     days.forEach(day => {
         departDay.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
@@ -156,12 +159,62 @@ async function populateDropdownOptions() {
 
     console.log(stationsIds);
 }
+function sortedWeekdays() { // Allows for the days to be sorted in the dropdown from Today to Next Week (inclusive)
+    let today = new Date();
+    let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let todayIndex = today.getDay(); // Get today's index (0-6, where 0 is Sunday and 6 is Saturday)
+    let sortedWeekdays = ["Today"]; // Start with "Today" as the first element
+
+    // Add the rest of the week days starting from tomorrow
+    for (let i = 1; i < 7; i++) {
+        let index = (todayIndex + i) % 7; // Calculate index to wrap around the weekdays array
+        sortedWeekdays.push(weekdays[index]);
+    }
+
+    return sortedWeekdays;
+}
+
+console.log(sortedWeekdays());
 
 async function fetchDropdownOptions() {
     const options = await fetch('static/stations.json')
         .then((response) => response.json())
 
     return options
+}
+
+// Function to get the coordinates of a station by its name
+function getStationCoordinates(stationName, stationsData) {
+    const station = stationsData.find(station => station.name === stationName); // Find station data in json by name: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+    if (station) {
+        console.log("Station Found:", station);
+        return `${station.position_lat},${station.position_lng}`; // Return the coordinates as a string in the format required by Google Maps API
+    }
+    else
+        console.error("Station not found", stationName);
+        return null; // Return null if station not found
+}
+function getText(elementID, value) { // Function to get the text of an option by its value rather than its value. https://www.geeksforgeeks.org/how-to-get-the-text-of-option-tag-by-value-using-javascript/
+    Object.values(document.getElementById(
+        elementID).options).
+        forEach(function (option){
+        if (option.value === value) {
+            text = option.text;
+        }
+    });
+    return text; // Return the text of the option
+}
+// Function to create the directions URL and open it in a new tab
+function getDirections() {
+    const originStationName = getText("depart", document.getElementById("depart").value);
+    const originStationCoordinates = getStationCoordinates(originStationName, stationsData);
+    const destinationStationName = getText("arrive", document.getElementById("arrive").value);
+    const destinationStationCoordinates = getStationCoordinates(destinationStationName, stationsData);
+
+    const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=${originStationCoordinates}&destination=${destinationStationCoordinates}&travelmode=bicycling`; // Create the directions URL with the origin and destination coordinates and the travel mode set to bicycling: https://developers.google.com/maps/documentation/urls/get-started#directions-action
+    const directionsButton = document.getElementById('directionsButton');
+    directionsButton.style.display = 'block'; // Display the directions button
+    directionsButton.onclick = () => window.open(directionsUrl, '_blank'); // Open the directions URL in a new tab when the button is clicked https://stackoverflow.com/questions/6303964/javascript-open-a-given-url-in-a-new-tab-by-clicking-a-button
 }
 
 function submitForm() {
@@ -183,6 +236,8 @@ function submitForm() {
     const arrive = document.getElementById("arrive").value;
     const arriveTime = document.getElementById("arriveTime").value;
     const arriveDay = document.getElementById("arriveDay").value;
+
+    getDirections(); // Call the getDirections function to display the directions button
 
     // change selected day to 1 (True)
     const departOptions = dayOptions
@@ -210,7 +265,26 @@ function submitForm() {
         document.getElementById("result").innerText = JSON.stringify(data);
     })
     .catch(error => console.error('Error:', error));
-}
+
+        fetch('/api/WeatherForecast', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ hour: departTime, day: departDay })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('weather-description').innerText = 'Predicted Weather: ' + data.condition;
+            let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
+            document.getElementById('weather-icon').innerHTML = iconImg;
+            document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c;
+            document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity + '%';
+            document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm + 'mm';
+        })
+        .catch(error => console.error('Error fetching weather:', error));
+    }
+    
 
 async function fetchRealTime() {
     // first route the app calls after '/' is /realtime
@@ -231,3 +305,17 @@ async function fetchRealTime() {
 
     return realTime
 }
+
+async function fetchRealTimeWeather() { 
+    fetch('/api/CurrentWeather')
+            .then(response => response.json())
+            .then(data => {
+        document.getElementById('weather-description').innerText = 'Current Weather: ' + data.condition;
+        let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
+        document.getElementById('weather-icon').innerHTML = iconImg;
+        document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c;
+        document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity;
+        document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm;
+            })
+            .catch(error => console.error('Error fetching weather:', error));
+        }
