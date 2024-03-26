@@ -89,14 +89,14 @@ def stations():
         host=DB,
         user=DB_USER,
         password=DB_PW,
-        database=DB_NAME
+        database=CITY
         )
 
         cursor = conn.cursor()
 
         query = (
             "SELECT * "
-            "FROM station"
+            "FROM stations"
         )
 
         cursor.execute(query)
@@ -124,7 +124,7 @@ def stations():
 
     except:
         print("Error fetching from DB, parsing local file")
-        with open('static/stations.json', 'r') as file:
+        with open('stations/dublin_stations.json', 'r') as file:
             data = json.load(file)
         return data['stations']
     
@@ -139,7 +139,7 @@ def realtime():
         host=DB,
         user=DB_USER,
         password=DB_PW,
-        database=DB_NAME
+        database=CITY
         )
 
         cursor = conn.cursor()

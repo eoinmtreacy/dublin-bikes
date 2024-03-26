@@ -1,3 +1,13 @@
+## Setup
+1. `git clone https://github.com/eoinmtreacy/comp30380-dublin-bikes/tree/main`
+2. `cd comp30830-dublin-bikes`
+3. `conda create -n jcd-bikes python=3.11 pip` & `conda activate jcd-bikes`
+4. `pip install -r requirements.txt`
+5. OPTIONAL: `python db_conn_test.py`
+6. `python create_db.py <city-name-here>`
+7. `scrape.py` - edit conda env, city
+8. `flask run`
+
 # COMP30380 Group 7
 Project repo for Software Engineering group project
 
