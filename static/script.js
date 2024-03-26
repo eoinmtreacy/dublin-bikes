@@ -1,121 +1,122 @@
 var map;
 var heatmap;
-var markers =[]
-const stationsIds = {}
+var markers = []
 
-// changed this to async because it wouldn't work otherwise lol
-async function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 53.349805, lng: -6.26031},
-        zoom: 13
-    });
+// STATION DATA FOR THE WEATHER CRAIC 
 
-    // need to fetchRealTime before stations
-    // so we can populate markers with the 
-    // realtime info as we create them
-    await fetchStations()
-    map.addListener('zoom_changed', toggleHeatmapAndMarkers);
-}
-var stationsData = [] // Define stationsData outside of the function so it can be accessed globally
-function fetchStations(realTime) {
-    fetch('/stations')
-    .then(response => response.json())
-    .then(data => {
-        // the realTime[station.number] wrapping just means instead
-        // of pulling the station number to populate the map
-        // it checks the station number against the realtime
-        // and returns the number of available bikes instead
-        var heatmapData = data.map(station => ({
-            location: new google.maps.LatLng(station.position.lat, station.position.lng),
-            weight: station.number 
-        }));
-
-        if (heatmap) {
-            heatmap.setData(heatmapData);
-        } else {
-            heatmap = new google.maps.visualization.HeatmapLayer({
-                data: heatmapData,
-                map: map,
-            });
-        }
-
-        markers.forEach(marker => marker.setMap(null));
-        stationsData = data['data'] // Assign the data to the global variable
-
-        data.forEach(station => {
-            
-            let markerColor;
-            if (station.number === 0) {
-                markerColor = 'red'; 
-            } else if (station.number > 0 && station.number <= 5) { 
-                markerColor = 'yellow';
-            } else {
-                markerColor = 'green'; 
-            }
-
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(station.position.lat, station.position.lng),
-                map: null, 
-                title: `${station.name} - Bikes available: ${station.number}`,
-                icon: {
-                    path: google.maps.SymbolPath.CIRCLE,
-                    scale: 7, 
-                    fillColor: markerColor,
-                    fillOpacity: 0.8,
-                    strokeWeight: 1
-                }
-            });
-
-            var infoWindow = new google.maps.InfoWindow({
-                content: `<div><strong>${station.name}</strong><p>Station Number: ${station.number}</p></div>`
-            });
-
-            marker.addListener('mouseover', function() {
-                infoWindow.open(map, marker);
-            });
-
-            marker.addListener('mouseout', function() {
-                infoWindow.close();
-            });
-
-            markers.push(marker);
-        });
-
-        toggleHeatmapAndMarkers();
-    })
-    .catch(error => console.error('Error fetching stations:', error));
-
-}
-
-function toggleHeatmapAndMarkers() {
-    var zoom = map.getZoom();
-    if (zoom < 14) { 
-        markers.forEach(marker => marker.setMap(null)); 
-        heatmap.setMap(map); 
-    } else {
-        markers.forEach(marker => marker.setMap(map)); 
-        heatmap.setMap(null); 
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.getElementById('menuToggle');
     const navbar = document.getElementById('navbar');
 
     navbar.style.transform = 'translateX(-100%)';
 
-    menuToggle.addEventListener('mouseenter', function() {
+    menuToggle.addEventListener('mouseenter', function () {
         navbar.style.transform = 'translateX(0)';
     });
 
-    navbar.addEventListener('mouseleave', function() {
+    navbar.addEventListener('mouseleave', function () {
         navbar.style.transform = 'translateX(-100%)';
     });
 
-    populateDropdownOptions()
-    fetchRealTime()
-    fetchRealTimeWeather()
+    go()
 });
+
+async function go() {
+    const STATIONS = await fetchStations()
+    const MAP = await initMap()
+    const HEATMAP = genHeatmap(STATIONS, MAP)
+    const MARKERS = createMarkers(STATIONS, MAP)
+    console.log(MARKERS);
+    // MAP.addListener('zoom_changed', toggleHeatmapAndMarkers(MAP, MARKERS, HEATMAP))
+}
+
+// changed this to async because it wouldn't work otherwise lol
+async function initMap() {
+    const MAP = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 53.349805, lng: -6.26031 },
+        zoom: 13
+    })
+    // MAP.addListener('zoom_changed', toggleHeatmapAndMarkers)
+    return MAP
+}
+var stationsData = [] // Define stationsData outside of the function so it can be accessed globally
+async function fetchStations() {
+    return await fetch('/stations').then(response => response.json())
+}
+
+function genHeatmap(stations, map) {
+    const heatmapData = stations.map(station => ({
+        location: new google.maps.LatLng(station.position.lat, station.position.lng),
+        weight: station.number
+    }));
+
+    if (heatmap) {
+        heatmap.setData(heatmapData);
+    } else {
+        heatmap = new google.maps.visualization.HeatmapLayer({
+            data: heatmapData,
+            map: map,
+        });
+    }
+
+    return heatmapData
+}
+
+function createMarkers(stations, map) {
+    // markers.forEach(marker => marker.setMap(null));
+    const markers = stations.map(station => {
+        let markerColor;
+        if (station.number === 0) {
+            markerColor = 'red';
+        } else if (station.number > 0 && station.number <= 5) {
+            markerColor = 'yellow';
+        } else {
+            markerColor = 'green';
+        }
+        
+        let marker = new google.maps.Marker({
+            position: new google.maps.LatLng(station.position.lat, station.position.lng),
+            map: null,
+            title: `${station.name} - Bikes available: ${station.number}`,
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 7,
+                fillColor: markerColor,
+                fillOpacity: 0.8,
+                strokeWeight: 1
+            }
+        });
+
+        let infoWindow = new google.maps.InfoWindow({
+            content: `<div><strong>${station.name}</strong><p>Station Number: ${station.number}</p></div>`
+        });
+
+        marker.addListener('mouseover', function () {
+            infoWindow.open(map, marker);
+        });
+
+        marker.addListener('mouseout', function () {
+            infoWindow.close();
+        });
+
+        return marker
+
+    })
+
+    // toggleHeatmapAndMarkers(map, markers);
+    return markers
+}
+
+function toggleHeatmapAndMarkers(map, markers, heatmap) {
+    var zoom = map.getZoom();
+    if (zoom < 14) {
+        markers.forEach(marker => marker.setMap(null));
+        heatmap.setMap(map);
+    } else {
+        markers.forEach(marker => marker.setMap(map));
+        heatmap.setMap(null);
+    }
+}
 
 async function populateDropdownOptions() {
     // fetch dublin.json
@@ -191,16 +192,16 @@ function getStationCoordinates(stationName, stationsData) {
     }
     else
         console.error("Station not found", stationName);
-        return null; // Return null if station not found
+    return null; // Return null if station not found
 }
 function getText(elementID, value) { // Function to get the text of an option by its value rather than its value. https://www.geeksforgeeks.org/how-to-get-the-text-of-option-tag-by-value-using-javascript/
     Object.values(document.getElementById(
         elementID).options).
-        forEach(function (option){
-        if (option.value === value) {
-            text = option.text;
-        }
-    });
+        forEach(function (option) {
+            if (option.value === value) {
+                text = option.text;
+            }
+        });
     return text; // Return the text of the option
 }
 // Function to create the directions URL and open it in a new tab
@@ -259,19 +260,19 @@ function submitForm() {
             arriveDay: Object.values(arriveOptions)
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById("result").innerText = JSON.stringify(data);
-    })
-    .catch(error => console.error('Error:', error));
-
-        fetch('/api/WeatherForecast', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ hour: departTime, day: departDay })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("result").innerText = JSON.stringify(data);
         })
+        .catch(error => console.error('Error:', error));
+
+    fetch('/api/WeatherForecast', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ hour: departTime, day: departDay })
+    })
         .then(response => response.json())
         .then(data => {
             document.getElementById('weather-description').innerText = 'Predicted Weather: ' + data.condition;
@@ -282,8 +283,8 @@ function submitForm() {
             document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm + 'mm';
         })
         .catch(error => console.error('Error fetching weather:', error));
-    }
-    
+}
+
 
 async function fetchRealTime() {
     // first route the app calls after '/' is /realtime
@@ -294,27 +295,27 @@ async function fetchRealTime() {
     const realTime = {}
     const request = await fetch('/realtime')
         .then((response) => response.json())
-            .then((data) => {
-                data.forEach(station => {
-                    // populate the object with
-                    // KEY station number: VALUE available bikes
-                    realTime[station[0]] = station[1]
-                })
+        .then((data) => {
+            data.forEach(station => {
+                // populate the object with
+                // KEY station number: VALUE available bikes
+                realTime[station[0]] = station[1]
             })
+        })
 
     return realTime
 }
 
-async function fetchRealTimeWeather() { 
+async function fetchRealTimeWeather() {
     fetch('/api/CurrentWeather')
-            .then(response => response.json())
-            .then(data => {
-        document.getElementById('weather-description').innerText = 'Current Weather: ' + data.condition;
-        let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
-        document.getElementById('weather-icon').innerHTML = iconImg;
-        document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c;
-        document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity;
-        document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm;
-            })
-            .catch(error => console.error('Error fetching weather:', error));
-        }
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('weather-description').innerText = 'Current Weather: ' + data.condition;
+            let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
+            document.getElementById('weather-icon').innerHTML = iconImg;
+            document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c;
+            document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity;
+            document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm;
+        })
+        .catch(error => console.error('Error fetching weather:', error));
+}
