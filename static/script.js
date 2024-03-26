@@ -26,8 +26,8 @@ async function go() {
     const MAP = await initMap()
     const HEATMAP = genHeatmap(STATIONS, MAP)
     const MARKERS = createMarkers(STATIONS, MAP)
-    console.log(MARKERS);
-    // MAP.addListener('zoom_changed', toggleHeatmapAndMarkers(MAP, MARKERS, HEATMAP))
+    // console.log(MARKERS);
+    MAP.addListener('zoom_changed', toggleHeatmapAndMarkers(MAP, MARKERS, HEATMAP))
 }
 
 // changed this to async because it wouldn't work otherwise lol
@@ -45,21 +45,21 @@ async function fetchStations() {
 }
 
 function genHeatmap(stations, map) {
-    const heatmapData = stations.map(station => ({
-        location: new google.maps.LatLng(station.position.lat, station.position.lng),
-        weight: station.number
-    }));
+    const heatmapData = stations.map(station => {
+        let heatmapDataPoint = {
+            location: new google.maps.LatLng(station.position.lat, station.position.lng),
+            weight: station.number
+        }
 
-    if (heatmap) {
-        heatmap.setData(heatmapData);
-    } else {
-        heatmap = new google.maps.visualization.HeatmapLayer({
-            data: heatmapData,
-            map: map,
-        });
-    }
+        return heatmapDataPoint
+    })
 
-    return heatmapData
+    const heatmap = new google.maps.visualization.HeatmapLayer({
+        data: heatmapData,
+        map: map,
+    });
+    console.log(heatmap);
+    return heatmap
 }
 
 function createMarkers(stations, map) {
@@ -73,7 +73,7 @@ function createMarkers(stations, map) {
         } else {
             markerColor = 'green';
         }
-        
+
         let marker = new google.maps.Marker({
             position: new google.maps.LatLng(station.position.lat, station.position.lng),
             map: null,
