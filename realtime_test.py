@@ -44,7 +44,8 @@ def main():
 
         cursor.close()
         conn.close()
-        print(results_dict)
+        
+        print(json.dumps(results_dict, indent=4))
 
     except mysql.connector.Error as e:  
         print("Error connecting to MySQL:", e)
