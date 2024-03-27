@@ -13,7 +13,7 @@ try:
 
     query = (
         "USE dublin"
-        "SELECT *"
+        "SELECT * "
         "FROM availability;"
     )
 
