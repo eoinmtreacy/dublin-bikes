@@ -69,10 +69,11 @@ async function genHeatmap(stations) {
 async function createMarkers(stations, map) {
     // markers.forEach(marker => marker.setMap(null));
     const markers = stations.map(station => {
+        let avail = station.available_bikes / station.bike_stands
         let markerColor;
-        if (station.number === 0) {
+        if (avail < 0.2) {
             markerColor = 'red';
-        } else if (station.number > 0 && station.number <= 5) {
+        } else if (0.2 < avail && avail < 0.5) {
             markerColor = 'yellow';
         } else {
             markerColor = 'green';
@@ -81,7 +82,7 @@ async function createMarkers(stations, map) {
         let marker = new google.maps.Marker({
             position: new google.maps.LatLng(station.position.lat, station.position.lng),
             map: null,
-            title: `${station.name} - Bikes available: ${station.number}`,
+            title: `${station.name} - Bikes available: ${station.available_bikes}`,
             icon: {
                 path: google.maps.SymbolPath.CIRCLE,
                 scale: 7,
