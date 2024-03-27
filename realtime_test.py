@@ -29,7 +29,8 @@ def main():
         cursor.execute(query)
 
         query = (
-            """SELECT number, available_bikes, MAX(last_update) AS time
+            """USE dublin;
+            SELECT number, available_bikes, MAX(last_update) AS time
             FROM availability
             GROUP BY number;
             """
