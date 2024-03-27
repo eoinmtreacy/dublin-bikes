@@ -106,22 +106,24 @@ async function createMarkers(stations, map) {
         return marker
 
     })
-
     // toggleHeatmapAndMarkers(map, markers, heatmap);
     return markers
 }
 
 function toggleHeatmapAndMarkers(map, markers, heatmap) {
+    // Log the current zoom level to check
+    console.log(map.getZoom());
 
     var zoom = map.getZoom();
-    if (zoom < 14) {
-        markers.map(marker => marker.setMap(null))
-        heatmap.setMap(map);
+    if (zoom < 12) {
+        markers.forEach(marker => marker.setMap(null)); // Hide markers
+        // heatmap.setMap(map); // Show heatmap
     } else {
-        markers.map(marker => marker.setMap(map))
-        heatmap.setMap(null);
+        markers.forEach(marker => marker.setMap(map)); // Show markers
+        // heatmap.setMap(null); // Hide heatmap
     }
 }
+
 
 async function populateDropdownOptions(stations) {
     const days = sortedWeekdays()
