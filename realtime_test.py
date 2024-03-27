@@ -1,6 +1,7 @@
 import mysql.connector
 from constants import *
 from flask import jsonify
+import json
 
 
 def main():
@@ -36,15 +37,16 @@ def main():
             """
         )
 
-        cursor.execute(query)
         results = cursor.fetchall()
+
+        # Convert the results to a list of dictionaries for JSON encoding
+        results_dict = [{'number': row[0], 'available_bikes': row[1], 'time': row[2]} for row in results]
+
         cursor.close()
         conn.close()
-        print(results)
+        print(results_dict)
 
-        print("SUCCESS")
-
-    except mysql.connector.Error as e:
+    except mysql.connector.Error as e:  
         print("Error connecting to MySQL:", e)
     
 if __name__ == "__main__":
