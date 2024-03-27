@@ -40,8 +40,7 @@ def main():
         results = cursor.fetchall()
         cursor.close()
         conn.close()
-        print(jsonify(results))
-        return jsonify(results)
+        print(results)
 
         print("SUCCESS")
 
