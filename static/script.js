@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function go() {
     const STATIONS = await fetchStations()
+    // fetch realtime placeholder
     const MAP = await initMap()
     const HEATMAP = await genHeatmap(STATIONS, MAP)
     const MARKERS = await createMarkers(STATIONS, MAP, HEATMAP)
@@ -153,8 +154,8 @@ async function populateDropdownOptions(stations) {
 
 
     days.forEach(day => {
-        departDay.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
-        arriveDay.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
+        departDay.innerHTML += `<option value="${day}">${day}</option>`;
+        arriveDay.innerHTML += `<option value="${day}">${day}</option>`;
     })
 
 }
@@ -179,7 +180,7 @@ function getStationCoordinates(stationName) {
     const station = stations.find(station => station.name === stationName); // Find station data in json by name: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
     if (station) {
         console.log("Station Found:", station);
-        return `${station.position_lat},${station.position_lng}`; // Return the coordinates as a string in the format required by Google Maps API
+        return `${station.position.lat},${station.position.lng}`; // Return the coordinates as a string in the format required by Google Maps API
     }
     else
         console.error("Station not found", stationName);
@@ -211,15 +212,11 @@ function getDirections() {
 function submitForm() {
     // dayOptions in strange order because that's how the model
     // reads the booleans
-    const dayOptions = {
-        "friday": 0,
-        "monday": 0,
-        "saturday": 0,
-        "sunday": 0,
-        "thursday": 0,
-        "tuesday": 0,
-        "wednesday": 0
-    }
+    const dayOptions = {}
+    const days = sortedWeekdays()
+    days.forEach(day => {
+        dayOptions[day] = 0
+    })
 
     const depart = document.getElementById("depart").value;
     const departTime = document.getElementById("departTime").value;
@@ -236,6 +233,8 @@ function submitForm() {
 
     departOptions[departDay] = 1
     arriveOptions[arriveDay] = 1
+
+    console.log(departOptions, arriveOptions);
 
     fetch('/predict', {
         method: 'POST',

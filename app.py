@@ -107,7 +107,7 @@ def predict():
         depart = [depart] + [int(departTime)] + departDay
         arrive = [arrive] + [int(arriveTime)] + arriveDay
 
-        print(depart, arrive)
+        print("depart day", departDay, "arrive day", arriveDay)
 
         # import model for depart station
         with open(f'./models/{depart[0]}.pkl', 'rb') as file:
