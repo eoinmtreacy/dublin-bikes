@@ -45,8 +45,8 @@ def main():
 
         print("SUCCESS")
 
-    except:
-        print('FAILURE realtime')
+    except mysql.connector.Error as e:
+        print("Error connecting to MySQL:", e)
     
 if __name__ == "__main__":
     main()
