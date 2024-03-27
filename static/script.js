@@ -1,6 +1,7 @@
 var map;
 var heatmap;
 var markers = []
+let stations
 
 // STATION DATA FOR THE WEATHER CRAIC 
 
@@ -27,7 +28,10 @@ async function go() {
     const HEATMAP = await genHeatmap(STATIONS, MAP)
     const MARKERS = await createMarkers(STATIONS, MAP, HEATMAP)
     // console.log(MARKERS);
-    MAP.addListener('zoom_changed', toggleHeatmapAndMarkers(MAP, MARKERS, HEATMAP))
+    // MAP.addListener('zoom_changed', toggleHeatmapAndMarkers(MAP, MARKERS, HEATMAP))
+    await populateDropdownOptions(STATIONS)
+    await fetchRealTimeWeather()
+    stations = STATIONS
 }
 
 // changed this to async because it wouldn't work otherwise lol
@@ -36,10 +40,10 @@ async function initMap() {
         center: { lat: 53.349805, lng: -6.26031 },
         zoom: 13
     })
-    // MAP.addListener('zoom_changed', toggleHeatmapAndMarkers)
+    // MAP.addListener('zoom_changed', toggleHeatmapAndMarkers())
     return MAP
 }
-var stationsData = [] // Define stationsData outside of the function so it can be accessed globally
+
 async function fetchStations() {
     return await fetch('/stations').then(response => response.json())
 }
@@ -103,7 +107,7 @@ async function createMarkers(stations, map) {
 
     })
 
-    toggleHeatmapAndMarkers(map, markers, heatmap);
+    // toggleHeatmapAndMarkers(map, markers, heatmap);
     return markers
 }
 
@@ -111,7 +115,7 @@ function toggleHeatmapAndMarkers(map, markers, heatmap) {
     markers.map(marker => marker.setMap(map))
     console.log(map.getZoom());
 
-    if (map.getZoom() > 1) markers.map(marker => marker.setMap(null))
+    if (map.getZoom() > 10) markers.map(marker => marker.setMap(null))
 
     var zoom = map.getZoom();
     if (zoom < 14) {
@@ -123,15 +127,8 @@ function toggleHeatmapAndMarkers(map, markers, heatmap) {
     }
 }
 
-async function populateDropdownOptions() {
-    // fetch dublin.json
-    const options = await fetchDropdownOptions()
-    const days = await sortedWeekdays()
-
-    // parse json
-    const stations = options['data']
-    const numbers = stations.map(station => station['number'])
-    const names = stations.map(station => station['name'])
+async function populateDropdownOptions(stations) {
+    const days = sortedWeekdays()
 
     // Select dropdowns by their IDs
     const depart = document.getElementById('depart');
@@ -142,9 +139,11 @@ async function populateDropdownOptions() {
     const arriveDay = document.getElementById('arriveDay');
 
     // Populate options for each dropdown
-    names.forEach(name => {
-        depart.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
-        arrive.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
+    stations.forEach(station => {
+        depart.innerHTML += `<option value="${station.number}">${station.name}</option>`;
+        arrive.innerHTML += `<option value="${station.number}">${station.name}</option>`;
+
+        console.log(depart.value, arrive.value)
     });
 
     for (let i = 0; i < 24; i++) {
@@ -157,10 +156,6 @@ async function populateDropdownOptions() {
         departDay.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
         arriveDay.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
     })
-
-    for (let i = 0; i < numbers.length; i++) {
-        stationsIds[names[i].toLowerCase().replace(/\s+/g, '')] = numbers[i]
-    }
 
 }
 function sortedWeekdays() { // Allows for the days to be sorted in the dropdown from Today to Next Week (inclusive)
@@ -178,17 +173,10 @@ function sortedWeekdays() { // Allows for the days to be sorted in the dropdown 
     return sortedWeekdays;
 }
 
-
-async function fetchDropdownOptions() {
-    const options = await fetch('static/stations.json')
-        .then((response) => response.json())
-
-    return options
-}
-
 // Function to get the coordinates of a station by its name
-function getStationCoordinates(stationName, stationsData) {
-    const station = stationsData.find(station => station.name === stationName); // Find station data in json by name: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+function getStationCoordinates(stationName) {
+
+    const station = stations.find(station => station.name === stationName); // Find station data in json by name: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
     if (station) {
         console.log("Station Found:", station);
         return `${station.position_lat},${station.position_lng}`; // Return the coordinates as a string in the format required by Google Maps API
@@ -210,9 +198,9 @@ function getText(elementID, value) { // Function to get the text of an option by
 // Function to create the directions URL and open it in a new tab
 function getDirections() {
     const originStationName = getText("depart", document.getElementById("depart").value);
-    const originStationCoordinates = getStationCoordinates(originStationName, stationsData);
+    const originStationCoordinates = getStationCoordinates(originStationName, stations);
     const destinationStationName = getText("arrive", document.getElementById("arrive").value);
-    const destinationStationCoordinates = getStationCoordinates(destinationStationName, stationsData);
+    const destinationStationCoordinates = getStationCoordinates(destinationStationName, stations);
 
     const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=${originStationCoordinates}&destination=${destinationStationCoordinates}&travelmode=bicycling`; // Create the directions URL with the origin and destination coordinates and the travel mode set to bicycling: https://developers.google.com/maps/documentation/urls/get-started#directions-action
     const directionsButton = document.getElementById('directionsButton');
@@ -255,10 +243,10 @@ function submitForm() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            depart: stationsIds[depart],
+            depart: depart,
             departTime: departTime,
             departDay: Object.values(departOptions),
-            arrive: stationsIds[arrive],
+            arrive: arrive,
             arriveTime: arriveTime,
             arriveDay: Object.values(arriveOptions)
         })
