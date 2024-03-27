@@ -26,10 +26,9 @@ async function go() {
     const STATIONS = await fetchStations()
     // fetch realtime placeholder
     const MAP = await initMap()
-    const HEATMAP = await genHeatmap(STATIONS, MAP)
-    const MARKERS = await createMarkers(STATIONS, MAP, HEATMAP)
-    // console.log(MARKERS);
-    // MAP.addListener('zoom_changed', toggleHeatmapAndMarkers(MAP, MARKERS, HEATMAP))
+    const HEATMAP = await genHeatmap(STATIONS)
+    const MARKERS = await createMarkers(STATIONS)
+    MAP.addListener('zoom_changed', toggleHeatmapAndMarkers(MAP, MARKERS, HEATMAP))
     await populateDropdownOptions(STATIONS)
     await fetchRealTimeWeather()
     stations = STATIONS
@@ -49,7 +48,7 @@ async function fetchStations() {
     return await fetch('/stations').then(response => response.json())
 }
 
-async function genHeatmap(stations, map) {
+async function genHeatmap(stations) {
     const heatmapData = stations.map(station => {
         let heatmapDataPoint = {
             location: new google.maps.LatLng(station.position.lat, station.position.lng),
@@ -61,7 +60,7 @@ async function genHeatmap(stations, map) {
 
     const heatmap = new google.maps.visualization.HeatmapLayer({
         data: heatmapData,
-        map: map,
+        map: null,
     });
 
     return heatmap
@@ -113,10 +112,6 @@ async function createMarkers(stations, map) {
 }
 
 function toggleHeatmapAndMarkers(map, markers, heatmap) {
-    markers.map(marker => marker.setMap(map))
-    console.log(map.getZoom());
-
-    if (map.getZoom() > 10) markers.map(marker => marker.setMap(null))
 
     var zoom = map.getZoom();
     if (zoom < 14) {
@@ -143,8 +138,6 @@ async function populateDropdownOptions(stations) {
     stations.forEach(station => {
         depart.innerHTML += `<option value="${station.number}">${station.name}</option>`;
         arrive.innerHTML += `<option value="${station.number}">${station.name}</option>`;
-
-        console.log(depart.value, arrive.value)
     });
 
     for (let i = 0; i < 24; i++) {
