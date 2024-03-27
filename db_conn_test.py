@@ -12,7 +12,7 @@ try:
     cursor = conn.cursor()
 
     query = (
-        "USE dublin"
+        "USE dublin;"
         "SELECT * "
         "FROM availability;"
     )
