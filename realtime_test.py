@@ -22,21 +22,25 @@ def main():
         password=DB_PW
     )
 
-        # cursor = conn.cursor()
+        cursor = conn.cursor()
 
-        # query = (
-        #     """SELECT number, available_bikes, MAX(last_update) AS time
-        #     FROM availability
-        #     GROUP BY number;
-        #     """
-        # )
+        query = ("USE dublin;")
 
-        # cursor.execute(query)
-        # results = cursor.fetchall()
-        # cursor.close()
-        # conn.close()
-        # print(jsonify(results))
-        # return jsonify(results)
+        cursor.execute(query)
+
+        query = (
+            """SELECT number, available_bikes, MAX(last_update) AS time
+            FROM availability
+            GROUP BY number;
+            """
+        )
+
+        cursor.execute(query)
+        results = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        print(jsonify(results))
+        return jsonify(results)
 
         print("SUCCESS")
 
