@@ -258,6 +258,8 @@ function submitForm() {
     })
     .then(response => response.json())
     .then(data => {
+        const navbar = document.getElementById("navbar")
+        navbar.style.transform = "translateX(0)"
         document.getElementById("result").innerText = JSON.stringify(data);
     })
     .catch(error => console.error('Error:', error));
