@@ -157,7 +157,6 @@ async function populateDropdownOptions() {
         stationsIds[names[i].toLowerCase().replace(/\s+/g, '')] = numbers[i]
     }
 
-    console.log(stationsIds);
 }
 function sortedWeekdays() { // Allows for the days to be sorted in the dropdown from Today to Next Week (inclusive)
     let today = new Date();
@@ -173,8 +172,6 @@ function sortedWeekdays() { // Allows for the days to be sorted in the dropdown 
 
     return sortedWeekdays;
 }
-
-console.log(sortedWeekdays());
 
 async function fetchDropdownOptions() {
     const options = await fetch('static/stations.json')
@@ -215,6 +212,7 @@ function getDirections() {
     const directionsButton = document.getElementById('directionsButton');
     directionsButton.style.display = 'block'; // Display the directions button
     directionsButton.onclick = () => window.open(directionsUrl, '_blank'); // Open the directions URL in a new tab when the button is clicked https://stackoverflow.com/questions/6303964/javascript-open-a-given-url-in-a-new-tab-by-clicking-a-button
+    return [originStationName, destinationStationName]
 }
 
 function submitForm() {
@@ -233,7 +231,9 @@ function submitForm() {
     const arriveTime = document.getElementById("arriveTime").value;
     const arriveDay = document.getElementById("arriveDay").value;
 
-    getDirections(); // Call the getDirections function to display the directions button
+    const directions = getDirections(); // Call the getDirections function to display the directions button#
+    const departName = directions[0]
+    const arriveName = directions[1]
 
     // change selected day to 1 (True)
     const departOptions = dayOptions
@@ -260,7 +260,8 @@ function submitForm() {
     .then(data => {
         const navbar = document.getElementById("navbar")
         navbar.style.transform = "translateX(0)"
-        document.getElementById("result").innerText = JSON.stringify(data);
+        console.log(departName, arriveName)
+        // document.getElementById("result").innerText = JSON.stringify(data);
     })
     .catch(error => console.error('Error:', error));
 
