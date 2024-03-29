@@ -261,7 +261,22 @@ function submitForm() {
         const navbar = document.getElementById("navbar")
         navbar.style.transform = "translateX(0)"
         console.log(departName, arriveName)
-        // document.getElementById("result").innerText = JSON.stringify(data);
+
+        createPlanningPanel('depart-panel', 
+            departName, 
+            Math.floor(stationsData.find(station => station.name === departName).bike_stands * data['departAvailability']),
+            Math.floor(stationsData.find(station => station.name === departName).bike_stands - stationsData.find(station => station.name === departName).bike_stands * data['departAvailability'])
+            )
+
+        createPlanningPanel('arrive-panel',
+            departName, 
+            Math.floor(stationsData.find(station => station.name === arriveName).bike_stands * data['arriveAvailability']),
+            Math.floor(stationsData.find(station => station.name === arriveName).bike_stands - stationsData.find(station => station.name === arriveName).bike_stands * data['arriveAvailability'])
+            )
+
+        
+
+        console.log(data);
     })
     .catch(error => console.error('Error:', error));
 
@@ -318,3 +333,14 @@ async function fetchRealTimeWeather() {
             })
             .catch(error => console.error('Error fetching weather:', error));
         }
+
+function createPlanningPanel(label, station, bikes, parking) {
+    let div = document.getElementById(label)
+    div.innerHTML = `
+        <h3>
+            ${label === "depart-panel" ? "Departure" : "Arrival"}
+        </h3>
+        <h4>${station}</h4>
+        <span>Bikes: ${bikes} Parking: ${parking}</span>
+    `
+}
