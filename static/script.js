@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
 async function populateDropdownOptions() {
     // fetch dublin.json
     const options = await fetchDropdownOptions()
-    const days = await sortedWeekdays()
+    const days = sortedWeekdays()
 
     // parse json
     const stations = options['data']
@@ -149,8 +149,8 @@ async function populateDropdownOptions() {
 
 
     days.forEach(day => {
-        departDay.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
-        arriveDay.innerHTML += `<option value="${day.toLowerCase()}">${day}</option>`;
+        departDay.innerHTML += `<option value="${day}">${day}</option>`;
+        arriveDay.innerHTML += `<option value="${day}">${day}</option>`;
     })
 
     for (let i = 0; i < numbers.length; i++) {
@@ -220,15 +220,11 @@ function getDirections() {
 function submitForm() {
     // dayOptions in strange order because that's how the model
     // reads the booleans
-    const dayOptions = {
-        "friday": 0,
-        "monday": 0,
-        "saturday": 0,
-        "sunday": 0,
-        "thursday": 0,
-        "tuesday": 0,
-        "wednesday": 0
-    }
+    const dayOptions = {}
+    const days = sortedWeekdays()
+    days.forEach(day => {
+        dayOptions[day] = 0
+    })
 
     const depart = document.getElementById("depart").value;
     const departTime = document.getElementById("departTime").value;

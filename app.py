@@ -218,9 +218,11 @@ def realtime():
         results = cursor.fetchall()
         cursor.close()
         conn.close()
+        print("Succesfully got realtime")
         return jsonify(results)
 
     except:
+        print("Error fetching realtime")
         return 'FAILURE realtime'
 
 if __name__ == '__main__':
