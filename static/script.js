@@ -14,65 +14,65 @@ async function initMap() {
     // so we can populate markers with the 
     // realtime info as we create them
     const realTime = await fetchRealTime()
-    fetchStations(realTime); 
+    await fetchStations(realTime); 
     // map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
 var stationsData = [] // Define stationsData outside of the function so it can be accessed globally
-function fetchStations(realTime) {
-    fetch('/stations')
+async function fetchStations(realTime) {
+    const stations = await fetch('/stations')
     .then(response => response.json())
     .then(data => {
-        // the realTime[station.number] wrapping just means instead
-        // of pulling the station number to populate the map
-        // it checks the station number against the realtime
-        // and returns the number of available bikes instead
+        return data['data']
+    })
 
-        markers.forEach(marker => marker.setMap(null));
-        stationsData = data['data'] // Assign the data to the global variable
+    if (realTime) {
+        stations.map(station => station['available_bikes'] = realTime[station.number])
+    }
 
-        data['data'].forEach(station => {
-            
-            let markerColor;
-            if (realTime[station.number] === 0) {
-                markerColor = 'red'; 
-            } else if (realTime[station.number] > 0 && realTime[station.number] <= 5) { 
-                markerColor = 'yellow';
-            } else {
-                markerColor = 'green'; 
+    else {
+        stations.map(station => station['available_bikes'] = 6)
+    }
+
+    data['data'].forEach(station => {
+        
+        let markerColor;
+        if (realTime[station.number] === 0) {
+            markerColor = 'red'; 
+        } else if (realTime[station.number] > 0 && realTime[station.number] <= 5) { 
+            markerColor = 'yellow';
+        } else {
+            markerColor = 'green'; 
+        }
+
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(station.position_lat, station.position_lng),
+            map: null, 
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 7, 
+                fillColor: markerColor,
+                fillOpacity: 0.8,
+                strokeWeight: 1
             }
-
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(station.position_lat, station.position_lng),
-                map: null, 
-                icon: {
-                    path: google.maps.SymbolPath.CIRCLE,
-                    scale: 7, 
-                    fillColor: markerColor,
-                    fillOpacity: 0.8,
-                    strokeWeight: 1
-                }
-            });
-
-            var infoWindow = new google.maps.InfoWindow({
-                content: `<div style='color: black'><strong>${station.name}</strong><p>Station Number: ${station.number}</p></div>`
-            });
-
-            marker.addListener('mouseover', function() {
-                infoWindow.open(map, marker);
-            });
-
-            marker.addListener('mouseout', function() {
-                infoWindow.close();
-            });
-
-            markers.push(marker);
         });
 
-        let markerCluster = new MarkerClusterer(map, markers,
-            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+        var infoWindow = new google.maps.InfoWindow({
+            content: `<div style='color: black'><strong>${station.name}</strong><p>Station Number: ${station.number}</p></div>`
+        });
 
-    })
-    .catch(error => console.error('Error fetching stations:', error));
+        marker.addListener('mouseover', function() {
+            infoWindow.open(map, marker);
+        });
+
+        marker.addListener('mouseout', function() {
+            infoWindow.close();
+        });
+
+        markers.push(marker);
+    });
+
+    let markerCluster = new MarkerClusterer(map, markers,
+        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
 }
 

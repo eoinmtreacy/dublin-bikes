@@ -183,6 +183,7 @@ def stations():
         cursor.close()
         conn.close()
         print("Data fetched from databse")
+        print(results)
         return jsonify(data=results)
 
     except:
