@@ -107,8 +107,6 @@ def predict():
         depart = [depart] + [int(departTime)] + departDay
         arrive = [arrive] + [int(arriveTime)] + arriveDay
 
-        print(depart, arrive)
-
         # import model for depart station
         with open(f'./models/{depart[0]}.pkl', 'rb') as file:
             model = pickle.load(file)
@@ -183,7 +181,6 @@ def stations():
         cursor.close()
         conn.close()
         print("Data fetched from databse")
-        print(results)
         return jsonify(data=results)
 
     except:

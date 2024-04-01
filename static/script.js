@@ -2,6 +2,7 @@ var map;
 var heatmap;
 var markers =[]
 const stationsIds = {}
+let stationsData;
 
 // changed this to async because it wouldn't work otherwise lol
 async function initMap() {
@@ -14,10 +15,9 @@ async function initMap() {
     // so we can populate markers with the 
     // realtime info as we create them
     const realTime = await fetchRealTime()
-    await fetchStations(realTime); 
+    stationsData = await fetchStations(realTime); 
     // map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
-var stationsData = [] // Define stationsData outside of the function so it can be accessed globally
 async function fetchStations(realTime) {
     const stations = await fetch('/stations')
     .then(response => response.json())
@@ -71,9 +71,11 @@ async function fetchStations(realTime) {
         markers.push(marker);
     });
 
-    let markerCluster = new MarkerClusterer(map, markers,
-        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    new MarkerClusterer(map,
+                    markers,
+                    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
+    return stations
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -159,11 +161,9 @@ async function fetchDropdownOptions() {
 function getStationCoordinates(stationName, stationsData) {
     const station = stationsData.find(station => station.name === stationName); // Find station data in json by name: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
     if (station) {
-        console.log("Station Found:", station);
         return `${station.position_lat},${station.position_lng}`; // Return the coordinates as a string in the format required by Google Maps API
     }
     else
-        console.error("Station not found", stationName);
         return null; // Return null if station not found
 }
 function getText(elementID, value) { // Function to get the text of an option by its value rather than its value. https://www.geeksforgeeks.org/how-to-get-the-text-of-option-tag-by-value-using-javascript/
