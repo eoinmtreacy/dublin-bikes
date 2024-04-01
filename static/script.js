@@ -1,4 +1,3 @@
-var map;
 var heatmap;
 var markers =[]
 const stationsIds = {}
@@ -7,7 +6,8 @@ const stationsIds = {}
 async function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 53.349805, lng: -6.26031},
-        zoom: 13
+        zoom: 13,
+        mapTypeControl : false // Changed this to remove satellite toggle
     });
 
     directionsService = new google.maps.DirectionsService();
@@ -59,21 +59,46 @@ async function initMap() {
           }
       });
 
-      function calculateAndDisplayRoute(marker) {  
-        var request = {
-          origin: document.getElementById('searchInput').value,
-          destination: {lat: marker.position.lat(), lng: marker.position.lng()}, // Replace with the selected marker's coordinates
-          travelMode: 'WALKING'
-        };
-  
-        directionsService.route(request, function(response, status) {
-          if (status === 'OK') {
-            directionsRenderer.setDirections(response);
-          } else {
-            window.alert('Directions request failed due to ' + status);
-          }
+      function calculateAndDisplayRoute(directionsService, directionsRenderer, travelMode, origin, destination) {
+        directionsService.route({
+            origin: origin,
+            destination: destination,
+            travelMode: travelMode
+        }, function(response, status) {
+            if (status === 'OK') {
+                directionsRenderer.setDirections(response);
+                // Optionally, display distance and duration
+                const route = response.routes[0].legs[0];
+                alert(`Distance: ${route.distance.text}, Duration: ${route.duration.text}`);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
         });
-      }
+    }
+    
+    // two search boxes with IDs 'startInput' and 'endInput', ie start location end location
+    let startInput = document.getElementById('startInput');
+    let endInput = document.getElementById('endInput');
+    
+    let startSearchBox = new google.maps.places.SearchBox(startInput);
+    let endSearchBox = new google.maps.places.SearchBox(endInput);
+    
+    // Function to handle the confirm button click
+    document.getElementById('confirmButton').addEventListener('click', function() {
+        var startPlace = startSearchBox.getPlaces();
+        var endPlace = endSearchBox.getPlaces();
+    
+        if (!startPlace || startPlace.length == 0 || !endPlace || endPlace.length == 0) {
+            alert('Please select both a start and an end location.');
+            return;
+        }
+    
+        let selectedMode = 'DRIVING'; // Default to DRIVING
+        if (document.getElementById('modeWalk').checked) selectedMode = 'WALKING';
+        if (document.getElementById('modeBike').checked) selectedMode = 'BICYCLING';
+    
+        calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, startPlace[0].geometry.location, endPlace[0].geometry.location);
+    });
 
     // need to fetchRealTime before stations
     // so we can populate markers with the 

@@ -23,7 +23,17 @@
             <span id="weather-precipitation">Precipitation: ...mm</span>
         </div>
         
-        <input id="searchInput" type="text" placeholder="Search for a location" style="color: black">
+        <input id="startInput" type="text" placeholder="Start location" style="color: black">
+    <input id="endInput" type="text" placeholder="End location" style="color: black">
+    <div>
+        <input type="radio" id="modeWalk" name="travelMode" value="WALKING" checked>
+        <label for="modeWalk">Walk</label>
+        <input type="radio" id="modeBike" name="travelMode" value="BICYCLING">
+        <label for="modeBike">Bike</label>
+        <input type="radio" id="modeDrive" name="travelMode" value="DRIVING">
+        <label for="modeDrive">Drive</label>
+    </div>
+    <button id="confirmButton">Confirm Locations</button>
         <!-- <select id="markerSelect">
             <option value="">Select a marker</option>
         </select> -->
