@@ -82,6 +82,9 @@ function fetchStations(realTime) {
             markers.push(marker);
         });
 
+        let markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
         toggleHeatmapAndMarkers();
     })
     .catch(error => console.error('Error fetching stations:', error));
