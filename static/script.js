@@ -10,6 +10,56 @@ async function initMap() {
         zoom: 13
     });
 
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+
+    let input = document.getElementById('searchInput');
+    let searchBox = new google.maps.places.SearchBox(input);
+
+    searchBox.addListener('places_changed', function() {
+        var places = searchBox.getPlaces();
+        if (places.length == 0) {
+          return;
+        }
+        var bounds = new google.maps.LatLngBounds();
+        places.forEach(function(place) {
+          if (!place.geometry) {
+            console.log("Returned place contains no geometry");
+            return;
+          }
+          if (place.geometry.viewport) {
+            bounds.union(place.geometry.viewport);
+          } else {
+            bounds.extend(place.geometry.location);
+          }
+        });
+        map.fitBounds(bounds);
+
+        var closestMarker = findClosestMarker(places[0].geometry.location);
+        console.log(closestMarker); 
+        if (closestMarker) {
+          // Do something with the closestMarker, like display directions
+          console.log('Closest marker:', closestMarker);
+        }
+
+        function findClosestMarker(location) {
+            var closestMarker = null;
+            var closestDistance = Number.MAX_VALUE;
+
+            markers.forEach(function(marker) {
+              var distance = google.maps.geometry.spherical.computeDistanceBetween(
+                new google.maps.LatLng(marker.position.lat(), marker.position.lng()), location);
+
+              if (distance < closestDistance) {
+                closestDistance = distance;
+                closestMarker = marker;
+              }
+            });
+            return closestMarker;
+          }
+      });
+
     // need to fetchRealTime before stations
     // so we can populate markers with the 
     // realtime info as we create them
