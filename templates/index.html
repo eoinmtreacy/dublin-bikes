@@ -22,6 +22,11 @@
             <span id="weather-humidity" class="mr-4">Humidity: ...%</span>
             <span id="weather-precipitation">Precipitation: ...mm</span>
         </div>
+        
+        <input id="searchInput" type="text" placeholder="Search for a location" style="color: black">
+        <!-- <select id="markerSelect">
+            <option value="">Select a marker</option>
+        </select> -->
     </header>
     <div class="flex">
         <div class="flex">
@@ -39,6 +44,7 @@
         </div>
         <main id="main-content" class="flex-1 p-4">
             <div id="map" class="w-full h-screen rounded-lg" style="height: calc(100vh - 64px);"></div>
+
 
             <!--  Planning Panel -->
             <div class="fixed inset-x-0 bottom-0 mb-4 flex items-center justify-center">
@@ -84,7 +90,8 @@
     </div>
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=visualization&callback=initMap"></script>
+        src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=visualization,places&callback=initMap"></script>
+
     <script src="{{ url_for('static', filename='script.js') }}">
 
 
