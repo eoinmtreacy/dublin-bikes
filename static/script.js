@@ -92,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     populateDropdownOptions()
-    fetchRealTime()
     fetchRealTimeWeather()
 });
 
