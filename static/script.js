@@ -57,7 +57,6 @@ function fetchStations(realTime) {
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(station.position_lat, station.position_lng),
                 map: null, 
-                title: `${station.name} - Bikes available: ${realTime[station.number]}`,
                 icon: {
                     path: google.maps.SymbolPath.CIRCLE,
                     scale: 7, 
@@ -68,10 +67,11 @@ function fetchStations(realTime) {
             });
 
             var infoWindow = new google.maps.InfoWindow({
-                content: `<div><strong>${station.name}</strong><p>Station Number: ${station.number}</p></div>`
+                content: `<div style='color: black'><strong>${station.name}</strong><p>Station Number: ${station.number}</p></div>`
             });
 
             marker.addListener('mouseover', function() {
+                console.log(infoWindow);
                 infoWindow.open(map, marker);
             });
 
