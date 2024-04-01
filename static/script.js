@@ -32,13 +32,13 @@ async function fetchStations(realTime) {
     else {
         stations.map(station => station['available_bikes'] = 6)
     }
-
-    data['data'].forEach(station => {
+    
+    stations.forEach(station => {
         
         let markerColor;
-        if (realTime[station.number] === 0) {
+        if (station.available_bikes / station.bike_stands < 0.1) {
             markerColor = 'red'; 
-        } else if (realTime[station.number] > 0 && realTime[station.number] <= 5) { 
+        } else if (0.1 < station.available_bikes / station.bike_stands < 0.33) { 
             markerColor = 'yellow';
         } else {
             markerColor = 'green'; 
