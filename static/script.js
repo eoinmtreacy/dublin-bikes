@@ -58,7 +58,6 @@ function fetchStations(realTime) {
             });
 
             marker.addListener('mouseover', function() {
-                console.log(infoWindow);
                 infoWindow.open(map, marker);
             });
 
@@ -133,8 +132,6 @@ async function populateDropdownOptions() {
     for (let i = 0; i < numbers.length; i++) {
         stationsIds[names[i].toLowerCase().replace(/\s+/g, '')] = numbers[i]
     }
-
-    console.log(stationsIds);
 }
 function sortedWeekdays() { // Allows for the days to be sorted in the dropdown from Today to Next Week (inclusive)
     let today = new Date();
@@ -150,8 +147,6 @@ function sortedWeekdays() { // Allows for the days to be sorted in the dropdown 
 
     return sortedWeekdays;
 }
-
-console.log(sortedWeekdays());
 
 async function fetchDropdownOptions() {
     const options = await fetch('static/stations.json')
@@ -260,23 +255,9 @@ function submitForm() {
     
 
 async function fetchRealTime() {
-    // first route the app calls after '/' is /realtime
-    // it means we will have realtime data to 
-    // populate the markers with
-
-    // create object that we will eventually return
-    const realTime = {}
     const request = await fetch('/realtime')
         .then((response) => response.json())
-            .then((data) => {
-                data.forEach(station => {
-                    // populate the object with
-                    // KEY station number: VALUE available bikes
-                    realTime[station[0]] = station[1]
-                })
-            })
-
-    return realTime
+    return request
 }
 
 async function fetchRealTimeWeather() { 
