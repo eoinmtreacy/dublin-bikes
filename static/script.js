@@ -80,7 +80,7 @@ async function initMap() {
     // realtime info as we create them
     const realTime = await fetchRealTime()
     fetchStations(realTime); 
-    map.addListener('zoom_changed', toggleHeatmapAndMarkers);
+    // map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
 var stationsData = [] // Define stationsData outside of the function so it can be accessed globally
 function fetchStations(realTime) {
@@ -91,19 +91,6 @@ function fetchStations(realTime) {
         // of pulling the station number to populate the map
         // it checks the station number against the realtime
         // and returns the number of available bikes instead
-        var heatmapData = data['data'].map(station => ({
-            location: new google.maps.LatLng(station.position_lat, station.position_lng),
-            weight: realTime[station.number] 
-        }));
-
-        if (heatmap) {
-            heatmap.setData(heatmapData);
-        } else {
-            heatmap = new google.maps.visualization.HeatmapLayer({
-                data: heatmapData,
-                map: map,
-            });
-        }
 
         markers.forEach(marker => marker.setMap(null));
         stationsData = data['data'] // Assign the data to the global variable
@@ -122,7 +109,6 @@ function fetchStations(realTime) {
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(station.position_lat, station.position_lng),
                 map: null, 
-                title: `${station.name} - Bikes available: ${realTime[station.number]}`,
                 icon: {
                     path: google.maps.SymbolPath.CIRCLE,
                     scale: 7, 
@@ -133,10 +119,11 @@ function fetchStations(realTime) {
             });
 
             var infoWindow = new google.maps.InfoWindow({
-                content: `<div><strong>${station.name}</strong><p>Station Number: ${station.number}</p></div>`
+                content: `<div style='color: black'><strong>${station.name}</strong><p>Station Number: ${station.number}</p></div>`
             });
 
             marker.addListener('mouseover', function() {
+                console.log(infoWindow);
                 infoWindow.open(map, marker);
             });
 
@@ -147,21 +134,12 @@ function fetchStations(realTime) {
             markers.push(marker);
         });
 
-        toggleHeatmapAndMarkers();
+        let markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
     })
     .catch(error => console.error('Error fetching stations:', error));
 
-}
-
-function toggleHeatmapAndMarkers() {
-    var zoom = map.getZoom();
-    if (zoom < 14) { 
-        markers.forEach(marker => marker.setMap(null)); 
-        heatmap.setMap(map); 
-    } else {
-        markers.forEach(marker => marker.setMap(map)); 
-        heatmap.setMap(null); 
-    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
