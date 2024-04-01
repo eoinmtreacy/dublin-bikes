@@ -36,11 +36,10 @@ async function initMap() {
         });
         map.fitBounds(bounds);
 
-        var closestMarker = findClosestMarker(places[0].geometry.location);
-        console.log(closestMarker); 
+        var closestMarker = findClosestMarker(places[0].geometry.location); 
         if (closestMarker) {
           // Do something with the closestMarker, like display directions
-          console.log('Closest marker:', closestMarker);
+          calculateAndDisplayRoute(closestMarker)
         }
 
         function findClosestMarker(location) {
@@ -59,6 +58,22 @@ async function initMap() {
             return closestMarker;
           }
       });
+
+      function calculateAndDisplayRoute(marker) {  
+        var request = {
+          origin: document.getElementById('searchInput').value,
+          destination: {lat: marker.position.lat(), lng: marker.position.lng()}, // Replace with the selected marker's coordinates
+          travelMode: 'WALKING'
+        };
+  
+        directionsService.route(request, function(response, status) {
+          if (status === 'OK') {
+            directionsRenderer.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
 
     // need to fetchRealTime before stations
     // so we can populate markers with the 
