@@ -228,7 +228,6 @@ def realtime():
     print("Error fetching from DB, parsing local file")
     with open('realtime.json', 'r') as file:
         data = json.load(file)
-        print(data)
     return jsonify(data)
 
 if __name__ == '__main__':
