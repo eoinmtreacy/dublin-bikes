@@ -189,8 +189,7 @@ def stations():
     print("Error fetching from DB, parsing local file")
     with open('stations.json', 'r') as file:
         data = json.load(file)
-        print(data)
-    return data
+    return jsonify(data=data)
     
 @app.route('/realtime')
 def realtime():
@@ -198,33 +197,39 @@ def realtime():
     for each station
     return for pop-up UI"""
 
-    try:
-        conn = mysql.connector.connect(
-        host=DB,
-        user=DB_USER,
-        password=DB_PW,
-        database=CITY
-        )
+    # try:
+    #     conn = mysql.connector.connect(
+    #     host=DB,
+    #     user=DB_USER,
+    #     password=DB_PW,
+    #     database=CITY
+    #     )
 
-        cursor = conn.cursor()
+    #     cursor = conn.cursor()
 
-        query = (
-            """SELECT number, available_bikes, MAX(last_update) AS time
-            FROM availability
-            GROUP BY number;
-            """
-        )
+    #     query = (
+    #         """SELECT number, available_bikes, MAX(last_update) AS time
+    #         FROM availability
+    #         GROUP BY number;
+    #         """
+    #     )
 
-        cursor.execute(query)
-        results = cursor.fetchall()
-        cursor.close()
-        conn.close()
-        print("Succesfully got realtime")
-        return jsonify(results)
+    #     cursor.execute(query)
+    #     results = cursor.fetchall()
+    #     cursor.close()
+    #     conn.close()
+    #     print("Succesfully got realtime")
+    #     return jsonify(results)
 
-    except:
-        print("Error fetching realtime")
-        return 'FAILURE realtime'
+    # except:
+    #     print("Error fetching realtime")
+    #     return 'FAILURE realtime'
+
+    print("Error fetching from DB, parsing local file")
+    with open('realtime.json', 'r') as file:
+        data = json.load(file)
+        print(data)
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(debug=True)
