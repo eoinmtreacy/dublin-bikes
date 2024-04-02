@@ -147,49 +147,50 @@ def predict():
 @app.route('/stations')
 def stations():
     # this won't work on campus without an SSH tunnel but should be okay at home 
-    try:
-        conn = mysql.connector.connect(
-        host=DB,
-        user=DB_USER,
-        password=DB_PW,
-        database=CITY
-        )
+    # try:
+    #     conn = mysql.connector.connect(
+    #     host=DB,
+    #     user=DB_USER,
+    #     password=DB_PW,
+    #     database=CITY
+    #     )
 
-        cursor = conn.cursor()
+    #     cursor = conn.cursor()
 
-        query = (
-            "SELECT * "
-            "FROM stations"
-        )
+    #     query = (
+    #         "SELECT * "
+    #         "FROM stations"
+    #     )
 
-        cursor.execute(query)
+    #     cursor.execute(query)
 
-        columns = [desc[0] for desc in cursor.description]
+    #     columns = [desc[0] for desc in cursor.description]
 
-        # Fetch all rows
-        rows = cursor.fetchall()
+    #     # Fetch all rows
+    #     rows = cursor.fetchall()
 
-        # Combine column names and data into a list of dictionaries
-        results = []
-        for row in rows:
-            result = {}
-            for i in range(len(columns)):
-                result[columns[i]] = row[i]
-            results.append(result)
+    #     # Combine column names and data into a list of dictionaries
+    #     results = []
+    #     for row in rows:
+    #         result = {}
+    #         for i in range(len(columns)):
+    #             result[columns[i]] = row[i]
+    #         results.append(result)
 
-        # with open('static/stations.json', 'w') as json_file:
-        #     json.dump(results, json_file)
+    #     # with open('static/stations.json', 'w') as json_file:
+    #     #     json.dump(results, json_file)
 
-        cursor.close()
-        conn.close()
-        print("Data fetched from databse")
-        return jsonify(data=results)
+    #     cursor.close()
+    #     conn.close()
+    #     print("Data fetched from databse")
+    #     return jsonify(data=results)
 
-    except:
-        print("Error fetching from DB, parsing local file")
-        with open('stations/dublin_stations.json', 'r') as file:
-            data = json.load(file)
-        return data['stations']
+    # except:
+    print("Error fetching from DB, parsing local file")
+    with open('stations.json', 'r') as file:
+        data = json.load(file)
+        print(data)
+    return data
     
 @app.route('/realtime')
 def realtime():
