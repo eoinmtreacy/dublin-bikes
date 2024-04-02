@@ -107,8 +107,6 @@ def predict():
         depart = [depart] + [int(departTime)] + departDay
         arrive = [arrive] + [int(arriveTime)] + arriveDay
 
-        print(depart, arrive)
-
         # import model for depart station
         with open(f'./models/{depart[0]}.pkl', 'rb') as file:
             model = pickle.load(file)
@@ -215,7 +213,13 @@ def realtime():
         )
 
         cursor.execute(query)
-        results = cursor.fetchall()
+        rows = cursor.fetchall()
+
+        stationIds = [row[0] for row in rows]
+        availability = [row[1] for row in rows]
+
+        results = {id: avail for id, avail in zip(stationIds, availability)}
+
         cursor.close()
         conn.close()
         print("Succesfully got realtime")
