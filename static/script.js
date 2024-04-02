@@ -67,7 +67,7 @@ async function initMap() {
         }, function(response, status) {
             if (status === 'OK') {
                 directionsRenderer.setDirections(response);
-                // Optionally, display distance and duration
+                // Display distance and duration
                 const route = response.routes[0].legs[0];
                 alert(`Distance: ${route.distance.text}, Duration: ${route.duration.text}`);
             } else {
@@ -75,6 +75,7 @@ async function initMap() {
             }
         });
     }
+    
     
     // two search boxes with IDs 'startInput' and 'endInput', ie start location end location
     let startInput = document.getElementById('startInput');
@@ -98,6 +99,17 @@ async function initMap() {
         if (document.getElementById('modeBike').checked) selectedMode = 'BICYCLING';
     
         calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, startPlace[0].geometry.location, endPlace[0].geometry.location);
+        if (status === 'OK') {
+    const route = response.routes[0].legs[0];
+    document.getElementById('journeyDistance').textContent = `Distance: ${route.distance.text}`;
+    document.getElementById('journeyTime').textContent = `Time: ${route.duration.text}`;
+} else {
+    console.error('Directions request failed due to ' + status);
+    // Optionally, update the HTML to indicate the error or that no data could be fetched
+    document.getElementById('journeyDistance').textContent = 'Distance: unavailable due to error';
+    document.getElementById('journeyTime').textContent = 'Time: unavailable due to error';
+}
+
     });
 
     // need to fetchRealTime before stations
@@ -171,14 +183,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menuToggle');
     const navbar = document.getElementById('navbar');
 
-    navbar.style.transform = 'translateX(-100%)';
+    // This function toggles the navbar's visibility
+    function toggleNavbar() {
+        const isNavbarHidden = navbar.style.transform === 'translateX(-100%)';
+        navbar.style.transform = isNavbarHidden ? 'translateX(0)' : 'translateX(-100%)';
+    }
 
-    menuToggle.addEventListener('mouseenter', function() {
-        navbar.style.transform = 'translateX(0)';
+    // Event listener for the bike icon
+    menuToggle.addEventListener('click', function() {
+        toggleNavbar();
     });
 
-    navbar.addEventListener('mouseleave', function() {
-        navbar.style.transform = 'translateX(-100%)';
+    // Prevent the navbar from hiding when it's clicked
+    navbar.addEventListener('click', function(event) {
+        event.stopPropagation();
     });
 
     populateDropdownOptions()

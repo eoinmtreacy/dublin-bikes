@@ -13,7 +13,7 @@
     <header class="bg-slate-200 py-3 px-4 flex items-center justify-between">
         <div class="flex items-center">
             <ion-icon name="menu-outline" class="text-black text-4xl pr-4" id="menuToggle"></ion-icon>
-            <h1 class="text-3xl font-semibold text-gray-800">Dublin Bikes Live</h1>
+            
         </div>
         <div class="weather-info flex items-center text-xl font-semibold text-gray-800">
             <span id="weather-description" class="mr-4">Loading weather data...</span>
@@ -23,17 +23,7 @@
             <span id="weather-precipitation">Precipitation: ...mm</span>
         </div>
         
-        <input id="startInput" type="text" placeholder="Start location" style="color: black">
-    <input id="endInput" type="text" placeholder="End location" style="color: black">
-    <div>
-        <input type="radio" id="modeWalk" name="travelMode" value="WALKING" checked>
-        <label for="modeWalk">Walk</label>
-        <input type="radio" id="modeBike" name="travelMode" value="BICYCLING">
-        <label for="modeBike">Bike</label>
-        <input type="radio" id="modeDrive" name="travelMode" value="DRIVING">
-        <label for="modeDrive">Drive</label>
-    </div>
-    <button id="confirmButton">Confirm Locations</button>
+        
         <!-- <select id="markerSelect">
             <option value="">Select a marker</option>
         </select> -->
@@ -41,16 +31,38 @@
     <div class="flex">
         <div class="flex">
             <nav id="navbar"
-                class="bg-slate-200 transform top-0 left-0 w-64 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
-                style="transform: translateX(-100%)">
+     class="bg-slate-200 transform top-0 left-0 w-64 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
+     style="transform: translateX(-100%)">
 
-                <div class="flex flex-col items-center pt-8">
-                    <ion-icon name="bicycle-outline" class="text-black text-4xl mb-8"></ion-icon>
-                    <a href="#" class="w-full text-center py-4 hover:bg-slate-300 text-slate-800">Home</a>
-                    <a href="#" class="w-full text-center py-4 hover:bg-slate-300 text-slate-800">Information</a>
-                    <a href="#" class="w-full text-center py-4 hover:bg-slate-300 text-slate-800">Weather</a>
-                </div>
-            </nav>
+    <div class="flex flex-col items-center pt-8">
+        <ion-icon name="bicycle-outline" class="text-black text-4xl mb-8"></ion-icon>
+        
+        <div class="search-section px-4 py-4 w-full">
+            <input id="startInput" type="text" placeholder="Start location" class="w-full mb-4 p-2 bg-gray-200 rounded text-black">
+            <input id="endInput" type="text" placeholder="End location" class="w-full mb-4 p-2 bg-gray-200 rounded text-black">
+            
+            <div class="travel-modes mb-4">
+                <label class="inline-flex items-center mr-2">
+                    <input type="radio" class="form-radio" id="modeWalk" name="travelMode" value="WALKING" checked>
+                    <span class="ml-2">Walk</span>
+                </label>
+                <label class="inline-flex items-center mr-2">
+                    <input type="radio" class="form-radio" id="modeBike" name="travelMode" value="BICYCLING">
+                    <span class="ml-2">Bike</span>
+                </label>
+                <label class="inline-flex items-center">
+                    <input type="radio" class="form-radio" id="modeDrive" name="travelMode" value="DRIVING">
+                    <span class="ml-2">Drive</span>
+                </label>
+            </div>
+            <button id="confirmButton" class="w-full bg-teal-500 text-white p-2 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-700 focus:ring-opacity-50">
+                Confirm Locations
+            </button>
+        </div>
+    </div>
+    
+    
+</nav>
         </div>
         <main id="main-content" class="flex-1 p-4">
             <div id="map" class="w-full h-screen rounded-lg" style="height: calc(100vh - 64px);"></div>
