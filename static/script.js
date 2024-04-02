@@ -279,6 +279,25 @@ function submitForm() {
     departOptions[departDay] = 1
     arriveOptions[arriveDay] = 1
 
+    const forecast = fetch('/api/WeatherForecast', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ hour: departTime, day: departDay })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        document.getElementById('weather-description').innerText = 'Predicted Weather: ' + data.condition;
+        let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
+        document.getElementById('weather-icon').innerHTML = iconImg;
+        document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c + '°C';
+        document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity + '%';
+        document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm + 'mm';
+    })
+    .catch(error => console.error('Error fetching weather:', error));
+
     fetch('/predict', {
         method: 'POST',
         headers: {
@@ -299,23 +318,6 @@ function submitForm() {
     })
     .catch(error => console.error('Error:', error));
 
-        fetch('/api/WeatherForecast', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ hour: departTime, day: departDay })
-        })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('weather-description').innerText = 'Predicted Weather: ' + data.condition;
-            let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
-            document.getElementById('weather-icon').innerHTML = iconImg;
-            document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c;
-            document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity + '%';
-            document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm + 'mm';
-        })
-        .catch(error => console.error('Error fetching weather:', error));
     }
     
 
@@ -329,6 +331,7 @@ async function fetchRealTimeWeather() {
     fetch('/api/CurrentWeather')
             .then(response => response.json())
             .then(data => {
+                console.log(data);
         document.getElementById('weather-description').innerText = 'Current Weather: ' + data.condition;
         let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
         document.getElementById('weather-icon').innerHTML = iconImg;
