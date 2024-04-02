@@ -254,7 +254,7 @@ function getDirections() {
     directionsButton.onclick = () => window.open(directionsUrl, '_blank'); // Open the directions URL in a new tab when the button is clicked https://stackoverflow.com/questions/6303964/javascript-open-a-given-url-in-a-new-tab-by-clicking-a-button
 }
 
-function submitForm() {
+async function submitForm() {
     // dayOptions in strange order because that's how the model
     // reads the booleans
     const dayOptions = {}
@@ -279,7 +279,7 @@ function submitForm() {
     departOptions[departDay] = 1
     arriveOptions[arriveDay] = 1
 
-    const forecast = fetch('/api/WeatherForecast', {
+    const forecast = await fetch('/api/WeatherForecast', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -288,17 +288,17 @@ function submitForm() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         document.getElementById('weather-description').innerText = 'Predicted Weather: ' + data.condition;
         let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
         document.getElementById('weather-icon').innerHTML = iconImg;
         document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c + '°C';
         document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity + '%';
         document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm + 'mm';
+        return data
     })
     .catch(error => console.error('Error fetching weather:', error));
 
-    fetch('/predict', {
+    const prediction = await fetch('/predict', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -309,15 +309,20 @@ function submitForm() {
             departDay: Object.values(departOptions),
             arrive: stationsIds[arrive],
             arriveTime: arriveTime,
-            arriveDay: Object.values(arriveOptions)
+            arriveDay: Object.values(arriveOptions),
+            rain: forecast.precip_mm,
+            temp: forecast.temp_c,
+            hum: forecast.humidity
         })
     })
     .then(response => response.json())
     .then(data => {
         document.getElementById("result").innerText = JSON.stringify(data);
+        return data
     })
     .catch(error => console.error('Error:', error));
 
+    return prediction
     }
     
 

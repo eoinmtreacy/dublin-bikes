@@ -97,15 +97,20 @@ def landing():
 def predict():
     if request.method == 'POST':
         data = request.json
+        print(data)
         depart = data['depart']
         departTime = data['departTime']
         departDay = data['departDay']
         arrive = data['arrive']
         arriveTime = data['arriveTime']
         arriveDay = data['arriveDay']
+        rain = data['rain']
+        temp = data['temp']
+        hum = data['hum']
 
-        depart = [depart] + [int(departTime)] + departDay
-        arrive = [arrive] + [int(arriveTime)] + arriveDay
+        depart = [depart] + [int(departTime)] + departDay + [int(rain)] + [int(temp)] + [int(hum)]
+        arrive = [arrive] + [int(arriveTime)] + arriveDay + [int(rain)] + [int(temp)] + [int(hum)]
+
 
         # import model for depart station
         with open(f'./models/{depart[0]}.pkl', 'rb') as file:
