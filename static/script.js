@@ -21,8 +21,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const map = await initMap()
     const realTime = await fetchRealTime()
     let STATIONS = await fetchStations(realTime)
-
-    populateDropdownOptions()
     fetchRealTimeWeather()
 });
 
@@ -125,7 +123,6 @@ async function initMap() {
             var closestMarker = findClosestMarker(lastSelectedStartPlace.geometry.location);
             if (closestMarker) {
                 // TODO return nearest station with free bikes
-
                 // Retrieve the selected travel mode from the radio buttons
                 let selectedMode = document.querySelector('input[name="travelMode"]:checked').value;
 
@@ -239,8 +236,6 @@ async function fetchStations() {
     const response = await fetch('static/stations.json');
     const data = await response.json();
     const stations = data.data;
-
-    console.log(stations);
 
     stations.forEach((station, index) => {
 
@@ -474,13 +469,10 @@ function getDirections() {
 }
 
 async function submitForm() {
-    // dayOptions in strange order because that's how the model
-    // reads the booleans
-
-
     const depart = document.getElementById("depart").value;
-
     const arrive = document.getElementById("arrive").value;
+
+    console.log(depart, arrive);
 
 
     getDirections(); // Call the getDirections function to display the directions button
@@ -549,7 +541,6 @@ async function fetchRealTimeWeather() {
     fetch('/api/CurrentWeather')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             document.getElementById('weather-description').innerText = 'Current Weather: ' + data.condition;
             let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
             document.getElementById('weather-icon').innerHTML = iconImg;
