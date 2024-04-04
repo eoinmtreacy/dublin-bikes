@@ -6,9 +6,14 @@ const stationsIds = {}
 async function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 53.349805, lng: -6.26031},
-        zoom: 13,
-        mapTypeControl : false // Changed this to remove satellite toggle
+        zoom: 13
     });
+
+
+    console.log('Calling fetchStations'); // Diagnostic log before the call
+    stationsData = await fetchStations();
+    console.log('fetchStations called', stationsData); // Diagnostic log to confirm it's called and log data
+    console.log('Called fetchStations'); // Diagnostic log before the call
 
     directionsService = new google.maps.DirectionsService();
     directionsRenderer = new google.maps.DirectionsRenderer();
@@ -185,96 +190,231 @@ function findClosestMarker(location) {
       var distance = google.maps.geometry.spherical.computeDistanceBetween(
         new google.maps.LatLng(marker.position.lat(), marker.position.lng()), location);
 
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestMarker = marker;
+              if (distance < closestDistance) {
+                closestDistance = distance;
+                closestMarker = marker;
+              }
+            });
+            return closestMarker;
+          }
+      });
+
+      function calculateAndDisplayRoute(marker) {  
+        var request = {
+          origin: document.getElementById('searchInput').value,
+          destination: {lat: marker.position.lat(), lng: marker.position.lng()}, // Replace with the selected marker's coordinates
+          travelMode: 'WALKING'
+        };
+  
+        directionsService.route(request, function(response, status) {
+          if (status === 'OK') {
+            directionsRenderer.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
       }
-    });
-    return closestMarker;
-  }
 
-  function selectDropdownOptionByMarker(dropdown, marker) {
-    for (let i = 0; i < dropdown.options.length; i++) {
-        if (dropdown.options[i].text === marker.title) { // Assuming marker.title is the station name
-            dropdown.selectedIndex = i;
-            break;
-        }
-    }
+    // need to fetchRealTime before stations
+    // so we can populate markers with the 
+    // realtime info as we create them
+    // map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
+async function fetchStations() {
+    let currentInfoWindow = null; // Variable to store the currently open info window
 
+    const response = await fetch('static/stations.json');
+    const data = await response.json(); 
+    const stations = data.data; 
+    const markers = [];
 
-document.getElementById('confirmButton').addEventListener('click', function() {
-    //stored the nearest stations' positions from above
-    
-    if (!startStationPosition || !endStationPosition) {
-        alert('Please select both a start and an end location.');
-        return;
-    }
+    console.log(stations);
 
-    let selectedMode = document.querySelector('input[name="travelMode"]:checked').value; // Assuming you have radio buttons for selecting mode
-    calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, startStationPosition, endStationPosition);
-});
-var stationsData = [] // Define stationsData outside of the function so it can be accessed globally
-function fetchStations(realTime) {
-    fetch('/stations')
-    .then(response => response.json())
-    .then(data => {
-        return data['data']
-    })
-
-    if (realTime) {
-        stations.map(station => station['available_bikes'] = realTime[station.number])
-    }
-
-    else {
-        stations.map(station => station['available_bikes'] = 6)
-    }
-    
-    stations.forEach(station => {
+    stations.forEach((station, index) => {
         
-        let markerColor;
-        if (station.available_bikes / station.bike_stands < 0.1) {
-            markerColor = 'red'; 
-        } else if (0.1 < station.available_bikes / station.bike_stands < 0.33) { 
-            markerColor = 'yellow';
-        } else {
-            markerColor = 'green'; 
-        }
+        const contentString = `
+            <div style='color: black;'>
+                <strong>${station.name}</strong>
+                <p>Station Number: ${station.number}</p>
+                <canvas id="chart-day-${index}" width="400" height="200"></canvas>
+                <canvas id="chart-hour-${index}" width="400" height="200" style="margin-top: 20px;"></canvas>
+            </div>
+        `;
 
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(station.position_lat, station.position_lng),
-                map: null, 
-                title: station.name, // to autoset dropdowns
-                icon: {
-                    path: google.maps.SymbolPath.CIRCLE,
-                    scale: 7, 
-                    fillColor: markerColor,
-                    fillOpacity: 0.8,
-                    strokeWeight: 1
-                }
+        const marker = new google.maps.Marker({
+            position: new google.maps.LatLng(station.position_lat, station.position_lng),
+            map: map, 
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        marker.addListener('click', () => {
+            // Close the current info window if it exists
+            if (currentInfoWindow) {
+                currentInfoWindow.close();
+            }
+
+            // Open the info window for the clicked marker
+            infoWindow.open({
+                anchor: marker,
+                map,
+                shouldFocus: false,
             });
 
-        var infoWindow = new google.maps.InfoWindow({
-            content: `<div style='color: black'><strong>${station.name}</strong><p>Station Number: ${station.number}</p></div>`
-        });
+            // Set the current info window to the opened info window
+            currentInfoWindow = infoWindow;
 
-        marker.addListener('mouseover', function() {
-            infoWindow.open(map, marker);
-        });
+            google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+                // First chart: Bike availability by day
+                var ctxDay = document.getElementById(`chart-day-${index}`).getContext('2d');
+                new Chart(ctxDay, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                        datasets: [{
+                            label: 'Bike Availability',
+                            // get time
+                            // pull from /realtime-ish for 1 station, for 
+                            // average availabliltiy group by datatime (the hour)
+                            // call /predict for every time from now until midnight
+                                // format from /predict 
+                            data: Array.from({ length: 7 }, () => Math.floor(Math.random() * (15 - 3 + 1)) + 3),
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(255, 205, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(201, 203, 207, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(255, 159, 64)',
+                                'rgb(255, 205, 86)',
+                                'rgb(75, 192, 192)',
+                                'rgb(54, 162, 235)',
+                                'rgb(153, 102, 255)',
+                                'rgb(201, 203, 207)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                ticks: {
+                                    stepSize: 5,
+                                    autoSkip: false
+                                },
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Number of Bikes Available'
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    autoSkip: false
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Day of the Week'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                            },
+                            tooltip: {
+                                enabled: true,
+                                mode: 'index',
+                                intersect: false,
+                            }
+                        },
+                        animation: {
+                            duration: 1000,
+                            easing: 'easeOutBounce'
+                        }
+                    }
+                });
 
-        marker.addListener('mouseout', function() {
-            infoWindow.close();
-        });
-
+                // Second chart: Bike availability by hour
+                var ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
+                new Chart(ctxHour, {
+                    type: 'bar',
+                    data: {
+                        labels: Array.from({length: 24}, (_, i) => `${i}:00`), // 0 to 23 hours
+                        datasets: [{
+                            label: 'Bike Availability per Hour',
+                            data: Array.from({ length: 24 }, () => Math.floor(Math.random() * (15 - 3 + 1)) + 3),
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgb(54, 162, 235)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Number of Bikes Available'
+                                }
+                            },
+                            x: {
+                                max: 25,
+                                min: 0,
+                                ticks: {
+                                    autoSkip: false,
+                                    callback: function(value, index, values) {
+                                        // Display label for every second hour and format it
+                                        if (index % 2 === 0) {
+                                            return `${value}:00`;
+                                        } else {
+                                            return '';
+                                        }
+                                    }
+                                },
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Hour of the Day'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                            },
+                            tooltip: {
+                                enabled: true,
+                                mode: 'index',
+                                intersect: false,
+                            }
+                        },
+                        animation: {
+                            duration: 1000,
+                            easing: 'easeOutBounce'
+                        }
+                    }
+                });
+            }); 
+        }); 
         markers.push(marker);
-    });
+    }); 
 
-    new MarkerClusterer(map,
-                    markers,
-                    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
-    return stations
-}
+    return stations; 
+} 
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menuToggle');
@@ -381,7 +521,7 @@ function getDirections() {
     directionsButton.onclick = () => window.open(directionsUrl, '_blank'); // Open the directions URL in a new tab when the button is clicked https://stackoverflow.com/questions/6303964/javascript-open-a-given-url-in-a-new-tab-by-clicking-a-button
 }
 
-function submitForm() {
+async function submitForm() {
     // dayOptions in strange order because that's how the model
     // reads the booleans
     
@@ -394,9 +534,32 @@ function submitForm() {
     getDirections(); // Call the getDirections function to display the directions button
 
     // change selected day to 1 (True)
-    
+    const departOptions = dayOptions
+    const arriveOptions = dayOptions
 
-    fetch('/predict', {
+    departOptions[departDay] = 1
+    arriveOptions[arriveDay] = 1
+
+    const forecast = await fetch('/api/WeatherForecast', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ hour: departTime, day: departDay })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('weather-description').innerText = 'Predicted Weather: ' + data.condition;
+        let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
+        document.getElementById('weather-icon').innerHTML = iconImg;
+        document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c + '°C';
+        document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity + '%';
+        document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm + 'mm';
+        return data
+    })
+    .catch(error => console.error('Error fetching weather:', error));
+
+    const prediction = await fetch('/predict', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -407,32 +570,20 @@ function submitForm() {
             departDay: Object.values(departOptions),
             arrive: stationsIds[arrive],
             arriveTime: arriveTime,
-            arriveDay: Object.values(arriveOptions)
+            arriveDay: Object.values(arriveOptions),
+            rain: forecast.precip_mm,
+            temp: forecast.temp_c,
+            hum: forecast.humidity
         })
     })
     .then(response => response.json())
     .then(data => {
         document.getElementById("result").innerText = JSON.stringify(data);
+        return data
     })
     .catch(error => console.error('Error:', error));
 
-        fetch('/api/WeatherForecast', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ hour: departTime, day: departDay })
-        })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('weather-description').innerText = 'Predicted Weather: ' + data.condition;
-            let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
-            document.getElementById('weather-icon').innerHTML = iconImg;
-            document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c;
-            document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity + '%';
-            document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm + 'mm';
-        })
-        .catch(error => console.error('Error fetching weather:', error));
+    return prediction
     }
     
 
@@ -446,6 +597,7 @@ async function fetchRealTimeWeather() {
     fetch('/api/CurrentWeather')
             .then(response => response.json())
             .then(data => {
+                console.log(data);
         document.getElementById('weather-description').innerText = 'Current Weather: ' + data.condition;
         let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
         document.getElementById('weather-icon').innerHTML = iconImg;

@@ -73,12 +73,12 @@ def fetchWeatherForecast():
         'condition' : forecast_data['condition']['text'],
         'condition_icon' : forecast_data['condition']['icon'],
         'precip_mm' : f"{round(forecast_data['precip_mm'])}",
-        'temp_c' : f"{round(forecast_data['temp_c'])}°C"
+        'temp_c' : f"{round(forecast_data['temp_c'])}"
         }
         if weather_data['condition'].endswith('nearby'): # Remove the word "nearby" from the condition
             weather_data['condition'] = weather_data['condition'][:-6]
             weather_data['condition'] = weather_data['condition'].strip().capitalize()
-        return jsonify(weather_data) # Adjusted to return JSON for API endpoint
+        return jsonify(weather_data) # Adjusted to return JSON for API endpoint 
 # create landing page
 @app.route('/')
 def landing():
@@ -97,15 +97,20 @@ def landing():
 def predict():
     if request.method == 'POST':
         data = request.json
+        print(data)
         depart = data['depart']
         departTime = data['departTime']
         departDay = data['departDay']
         arrive = data['arrive']
         arriveTime = data['arriveTime']
         arriveDay = data['arriveDay']
+        rain = data['rain']
+        temp = data['temp']
+        hum = data['hum']
 
-        depart = [depart] + [int(departTime)] + departDay
-        arrive = [arrive] + [int(arriveTime)] + arriveDay
+        depart = [depart] + [int(departTime)] + departDay + [int(rain)] + [int(temp)] + [int(hum)]
+        arrive = [arrive] + [int(arriveTime)] + arriveDay + [int(rain)] + [int(temp)] + [int(hum)]
+
 
         # import model for depart station
         with open(f'./models/{depart[0]}.pkl', 'rb') as file:
