@@ -11,6 +11,12 @@ async function initMap() {
         zoom: 13
     });
 
+
+    console.log('Calling fetchStations'); // Diagnostic log before the call
+    stationsData = await fetchStations();
+    console.log('fetchStations called', stationsData); // Diagnostic log to confirm it's called and log data
+    console.log('Called fetchStations'); // Diagnostic log before the call
+
     directionsService = new google.maps.DirectionsService();
     directionsRenderer = new google.maps.DirectionsRenderer();
     directionsRenderer.setMap(map);
@@ -79,69 +85,198 @@ async function initMap() {
     // need to fetchRealTime before stations
     // so we can populate markers with the 
     // realtime info as we create them
-    const realTime = await fetchRealTime()
-    stationsData = await fetchStations(realTime); 
     // map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
-async function fetchStations(realTime) {
-    const stations = await fetch('/stations')
-    .then(response => response.json())
-    .then(data => {
-        return data['data']
-    })
+async function fetchStations() {
+    let currentInfoWindow = null; // Variable to store the currently open info window
 
-    if (realTime) {
-        stations.map(station => station['available_bikes'] = realTime[station.number])
-    }
+    const response = await fetch('static/stations.json');
+    const data = await response.json(); 
+    const stations = data.data; 
+    const markers = []; /
 
-    else {
-        stations.map(station => station['available_bikes'] = 6)
-    }
-    
-    stations.forEach(station => {
+    console.log(stations);
+
+    stations.forEach((station, index) => {
         
-        let markerColor;
-        if (station.available_bikes / station.bike_stands < 0.1) {
-            markerColor = 'red'; 
-        } else if (0.1 < station.available_bikes / station.bike_stands < 0.33) { 
-            markerColor = 'yellow';
-        } else {
-            markerColor = 'green'; 
-        }
+        const contentString = `
+            <div style='color: black;'>
+                <strong>${station.name}</strong>
+                <p>Station Number: ${station.number}</p>
+                <canvas id="chart-day-${index}" width="400" height="200"></canvas>
+                <canvas id="chart-hour-${index}" width="400" height="200" style="margin-top: 20px;"></canvas>
+            </div>
+        `;
 
-        var marker = new google.maps.Marker({
+        const marker = new google.maps.Marker({
             position: new google.maps.LatLng(station.position_lat, station.position_lng),
-            map: null, 
-            icon: {
-                path: google.maps.SymbolPath.CIRCLE,
-                scale: 7, 
-                fillColor: markerColor,
-                fillOpacity: 0.8,
-                strokeWeight: 1
+            map: map, 
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        marker.addListener('click', () => {
+            // Close the current info window if it exists
+            if (currentInfoWindow) {
+                currentInfoWindow.close();
             }
-        });
 
-        var infoWindow = new google.maps.InfoWindow({
-            content: `<div style='color: black'><strong>${station.name}</strong><p>Station Number: ${station.number}</p></div>`
-        });
+            // Open the info window for the clicked marker
+            infoWindow.open({
+                anchor: marker,
+                map,
+                shouldFocus: false,
+            });
 
-        marker.addListener('mouseover', function() {
-            infoWindow.open(map, marker);
-        });
+            // Set the current info window to the opened info window
+            currentInfoWindow = infoWindow;
 
-        marker.addListener('mouseout', function() {
-            infoWindow.close();
-        });
+            google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+                // First chart: Bike availability by day
+                var ctxDay = document.getElementById(`chart-day-${index}`).getContext('2d');
+                new Chart(ctxDay, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                        datasets: [{
+                            label: 'Bike Availability',
+                            data: Array.from({ length: 7 }, () => Math.floor(Math.random() * (15 - 3 + 1)) + 3),
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(255, 205, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(201, 203, 207, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(255, 159, 64)',
+                                'rgb(255, 205, 86)',
+                                'rgb(75, 192, 192)',
+                                'rgb(54, 162, 235)',
+                                'rgb(153, 102, 255)',
+                                'rgb(201, 203, 207)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                ticks: {
+                                    stepSize: 5,
+                                    autoSkip: false
+                                },
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Number of Bikes Available'
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    autoSkip: false
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Day of the Week'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                            },
+                            tooltip: {
+                                enabled: true,
+                                mode: 'index',
+                                intersect: false,
+                            }
+                        },
+                        animation: {
+                            duration: 1000,
+                            easing: 'easeOutBounce'
+                        }
+                    }
+                });
 
+                // Second chart: Bike availability by hour
+                var ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
+                new Chart(ctxHour, {
+                    type: 'bar',
+                    data: {
+                        labels: Array.from({length: 24}, (_, i) => `${i}:00`), // 0 to 23 hours
+                        datasets: [{
+                            label: 'Bike Availability per Hour',
+                            data: Array.from({ length: 24 }, () => Math.floor(Math.random() * (15 - 3 + 1)) + 3),
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgb(54, 162, 235)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Number of Bikes Available'
+                                }
+                            },
+                            x: {
+                                max: 25,
+                                min: 0,
+                                ticks: {
+                                    autoSkip: false,
+                                    callback: function(value, index, values) {
+                                        // Display label for every second hour and format it
+                                        if (index % 2 === 0) {
+                                            return `${value}:00`;
+                                        } else {
+                                            return '';
+                                        }
+                                    }
+                                },
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Hour of the Day'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                            },
+                            tooltip: {
+                                enabled: true,
+                                mode: 'index',
+                                intersect: false,
+                            }
+                        },
+                        animation: {
+                            duration: 1000,
+                            easing: 'easeOutBounce'
+                        }
+                    }
+                });
+            }); 
+        }); 
         markers.push(marker);
-    });
+    }); 
 
-    new MarkerClusterer(map,
-                    markers,
-                    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
-    return stations
-}
+    return stations; 
+} 
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menuToggle');
