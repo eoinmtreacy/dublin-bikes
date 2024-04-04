@@ -13,7 +13,10 @@ async function initMap() {
     directionsService = new google.maps.DirectionsService();
     directionsRenderer = new google.maps.DirectionsRenderer();
     directionsRenderer.setMap(map);
-
+    let autocompleteOptions = {
+        componentRestrictions: { country: 'ie' }, // Restrict to Ireland
+        types: ['geocode'], // This restricts search to geographical location types.
+    };
     let input = document.getElementById('searchInput');
     let searchBox = new google.maps.places.SearchBox(input);
 
@@ -42,21 +45,7 @@ async function initMap() {
           calculateAndDisplayRoute(closestMarker)
         }
 
-        function findClosestMarker(location) {
-            var closestMarker = null;
-            var closestDistance = Number.MAX_VALUE;
-
-            markers.forEach(function(marker) {
-              var distance = google.maps.geometry.spherical.computeDistanceBetween(
-                new google.maps.LatLng(marker.position.lat(), marker.position.lng()), location);
-
-              if (distance < closestDistance) {
-                closestDistance = distance;
-                closestMarker = marker;
-              }
-            });
-            return closestMarker;
-          }
+        
       });
 
       function calculateAndDisplayRoute(directionsService, directionsRenderer, travelMode, origin, destination) {
@@ -77,12 +66,81 @@ async function initMap() {
     }
     
     
+   
+    
     // two search boxes with IDs 'startInput' and 'endInput', ie start location end location
     let startInput = document.getElementById('startInput');
     let endInput = document.getElementById('endInput');
+    // Replace SearchBox with Autocomplete and include the options for restriction
+    let startAutocomplete = new google.maps.places.Autocomplete(startInput, autocompleteOptions);
+    let endAutocomplete = new google.maps.places.Autocomplete(endInput, autocompleteOptions);
+    var countyDublinBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(53.2987, -6.3871), // Southwest coordinates
+        new google.maps.LatLng(53.4116, -6.1298)  // Northeast coordinates
+    );
     
-    let startSearchBox = new google.maps.places.SearchBox(startInput);
-    let endSearchBox = new google.maps.places.SearchBox(endInput);
+    // Set bounds for Autocomplete
+    startAutocomplete.setBounds(countyDublinBounds);
+    endAutocomplete.setBounds(countyDublinBounds);
+    startAutocomplete.addListener('place_changed', function() {
+        var place = startAutocomplete.getPlace();
+        if (place.geometry) {
+            lastSelectedStartPlace = place; // Store the last selected place
+        }
+    });
+    
+    
+    endAutocomplete.addListener('place_changed', function() {
+        var place = endAutocomplete.getPlace();
+        if (place.geometry) {
+            lastSelectedEndPlace = place; // Store the last selected place
+        }
+    });
+    
+    let lastSelectedStartPlace = null;
+    let lastSelectedEndPlace = null;
+    document.getElementById('confirmStartLocation').addEventListener('click', function() {
+        if (lastSelectedStartPlace && lastSelectedStartPlace.geometry) {
+            var closestMarker = findClosestMarker(lastSelectedStartPlace.geometry.location);
+            if (closestMarker) {
+                selectDropdownOptionByMarker(document.getElementById('depart'), closestMarker);
+    
+                // Retrieve the selected travel mode from the radio buttons
+                let selectedMode = document.querySelector('input[name="travelMode"]:checked').value;
+    
+                let origin = lastSelectedStartPlace.geometry.location;
+                let destination = closestMarker.position;
+                calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
+            }
+        } else {
+            alert('Please select a start location first.');
+        }
+    });
+    
+    document.getElementById('confirmEndLocation').addEventListener('click', function() {
+        if (lastSelectedEndPlace && lastSelectedEndPlace.geometry) {
+            var closestMarker = findClosestMarker(lastSelectedEndPlace.geometry.location);
+            if (closestMarker) {
+                selectDropdownOptionByMarker(document.getElementById('arrive'), closestMarker);
+    
+                // Retrieve the selected travel mode from the radio buttons or dropdown
+                // This assumes  the same travel mode selection for both start and end locations
+                
+                let selectedMode = document.querySelector('input[name="endTravelMode"]:checked') ? document.querySelector('input[name="endTravelMode"]:checked').value : document.querySelector('input[name="travelMode"]:checked').value;
+    
+                let origin = lastSelectedEndPlace.geometry.location; // This now represents the end location's selected place
+                let destination = closestMarker.position; // The position of the closest marker to the end location
+                
+                // Assuming you want to show the route from the end location to the closest station
+                // If you're looking to display the complete route from start to finish, including this segment, adjust accordingly
+                calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
+            }
+        } else {
+            alert('Please select an end location first.');
+        }
+    });
+    
+    
     
     // Function to handle the confirm button click
     document.getElementById('confirmButton').addEventListener('click', function() {
@@ -94,7 +152,7 @@ async function initMap() {
             return;
         }
     
-        let selectedMode = 'DRIVING'; // Default to DRIVING
+        let selectedMode = 'DRIVING'; 
         if (document.getElementById('modeWalk').checked) selectedMode = 'WALKING';
         if (document.getElementById('modeBike').checked) selectedMode = 'BICYCLING';
     
@@ -105,7 +163,7 @@ async function initMap() {
     document.getElementById('journeyTime').textContent = `Time: ${route.duration.text}`;
 } else {
     console.error('Directions request failed due to ' + status);
-    // Optionally, update the HTML to indicate the error or that no data could be fetched
+    // update the HTML to indicate the error or that no data could be fetched
     document.getElementById('journeyDistance').textContent = 'Distance: unavailable due to error';
     document.getElementById('journeyTime').textContent = 'Time: unavailable due to error';
 }
@@ -119,6 +177,43 @@ async function initMap() {
     fetchStations(realTime); 
     // map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
+function findClosestMarker(location) {
+    var closestMarker = null;
+    var closestDistance = Number.MAX_VALUE;
+
+    markers.forEach(function(marker) {
+      var distance = google.maps.geometry.spherical.computeDistanceBetween(
+        new google.maps.LatLng(marker.position.lat(), marker.position.lng()), location);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestMarker = marker;
+      }
+    });
+    return closestMarker;
+  }
+
+  function selectDropdownOptionByMarker(dropdown, marker) {
+    for (let i = 0; i < dropdown.options.length; i++) {
+        if (dropdown.options[i].text === marker.title) { // Assuming marker.title is the station name
+            dropdown.selectedIndex = i;
+            break;
+        }
+    }
+}
+
+
+document.getElementById('confirmButton').addEventListener('click', function() {
+    //stored the nearest stations' positions from above
+    
+    if (!startStationPosition || !endStationPosition) {
+        alert('Please select both a start and an end location.');
+        return;
+    }
+
+    let selectedMode = document.querySelector('input[name="travelMode"]:checked').value; // Assuming you have radio buttons for selecting mode
+    calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, startStationPosition, endStationPosition);
+});
 var stationsData = [] // Define stationsData outside of the function so it can be accessed globally
 function fetchStations(realTime) {
     fetch('/stations')
@@ -146,6 +241,7 @@ function fetchStations(realTime) {
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(station.position_lat, station.position_lng),
                 map: null, 
+                title: station.name, // to autoset dropdowns
                 icon: {
                     path: google.maps.SymbolPath.CIRCLE,
                     scale: 7, 
@@ -207,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
 async function populateDropdownOptions() {
     // fetch dublin.json
     const options = await fetchDropdownOptions()
-    const days = sortedWeekdays()
+    
 
     // parse json
     const stations = options['data']
@@ -216,11 +312,9 @@ async function populateDropdownOptions() {
 
     // Select dropdowns by their IDs
     const depart = document.getElementById('depart');
-    const departTime = document.getElementById('departTime');
-    const departDay = document.getElementById('departDay');
+    
     const arrive = document.getElementById('arrive');
-    const arriveTime = document.getElementById('arriveTime');
-    const arriveDay = document.getElementById('arriveDay');
+ 
 
     // Populate options for each dropdown
     names.forEach(name => {
@@ -228,16 +322,6 @@ async function populateDropdownOptions() {
         arrive.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
     });
 
-    for (let i = 0; i < 24; i++) {
-        departTime.innerHTML += `<option value="${i}">${i}</option>`;
-        arriveTime.innerHTML += `<option value="${i}">${i}</option>`;
-    }
-
-
-    days.forEach(day => {
-        departDay.innerHTML += `<option value="${day}">${day}</option>`;
-        arriveDay.innerHTML += `<option value="${day}">${day}</option>`;
-    })
 
     for (let i = 0; i < numbers.length; i++) {
         stationsIds[names[i].toLowerCase().replace(/\s+/g, '')] = numbers[i]
@@ -245,22 +329,11 @@ async function populateDropdownOptions() {
 
     console.log(stationsIds);
 }
-function sortedWeekdays() { // Allows for the days to be sorted in the dropdown from Today to Next Week (inclusive)
-    let today = new Date();
-    let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let todayIndex = today.getDay(); // Get today's index (0-6, where 0 is Sunday and 6 is Saturday)
-    let sortedWeekdays = ["Today"]; // Start with "Today" as the first element
 
-    // Add the rest of the week days starting from tomorrow
-    for (let i = 1; i < 7; i++) {
-        let index = (todayIndex + i) % 7; // Calculate index to wrap around the weekdays array
-        sortedWeekdays.push(weekdays[index]);
-    }
 
-    return sortedWeekdays;
-}
 
-console.log(sortedWeekdays());
+
+
 
 async function fetchDropdownOptions() {
     const options = await fetch('static/stations.json')
@@ -290,7 +363,7 @@ function getText(elementID, value) { // Function to get the text of an option by
     });
     return text; // Return the text of the option
 }
-// Function to create the directions URL and open it in a new tab
+// Function to create the directions URL and open it in a new tab, changed dropdowns to no longer populate with the time/day and predictions
 function getDirections() {
     const originStationName = getText("depart", document.getElementById("depart").value);
     const originStationCoordinates = getStationCoordinates(originStationName, stationsData);
@@ -306,27 +379,17 @@ function getDirections() {
 function submitForm() {
     // dayOptions in strange order because that's how the model
     // reads the booleans
-    const dayOptions = {}
-    const days = sortedWeekdays()
-    days.forEach(day => {
-        dayOptions[day] = 0
-    })
+    
 
     const depart = document.getElementById("depart").value;
-    const departTime = document.getElementById("departTime").value;
-    const departDay = document.getElementById("departDay").value;
+  
     const arrive = document.getElementById("arrive").value;
-    const arriveTime = document.getElementById("arriveTime").value;
-    const arriveDay = document.getElementById("arriveDay").value;
+   
 
     getDirections(); // Call the getDirections function to display the directions button
 
     // change selected day to 1 (True)
-    const departOptions = dayOptions
-    const arriveOptions = dayOptions
-
-    departOptions[departDay] = 1
-    arriveOptions[arriveDay] = 1
+    
 
     fetch('/predict', {
         method: 'POST',
@@ -401,3 +464,32 @@ async function fetchRealTimeWeather() {
             })
             .catch(error => console.error('Error fetching weather:', error));
         }
+
+        document.getElementById('resetButton').addEventListener('click', function() {
+            // Reset text inputs
+            document.getElementById('startInput').value = '';
+            document.getElementById('endInput').value = '';
+        
+            // Reset dropdowns to their first option
+            document.getElementById('depart').selectedIndex = 0;
+            document.getElementById('arrive').selectedIndex = 0;
+            document.getElementById('departTime').selectedIndex = 0;
+            document.getElementById('arriveTime').selectedIndex = 0;
+            document.getElementById('departDay').selectedIndex = 0;
+            document.getElementById('arriveDay').selectedIndex = 0;
+        
+            // reset the travel mode radio buttons to default (first radio button)
+            document.querySelector('input[name="travelMode"][value="DRIVING"]').checked = true;
+        
+            //  map or directions, y reset them as well
+            if (directionsRenderer) {
+                directionsRenderer.setDirections({routes: []});
+            }
+        
+            
+            document.getElementById('directionsButton').style.display = 'none';
+            
+            
+        });
+        
+        

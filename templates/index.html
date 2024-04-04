@@ -37,75 +37,115 @@
     <div class="flex flex-col items-center pt-8">
         <ion-icon name="bicycle-outline" class="text-black text-4xl mb-8"></ion-icon>
         
-        <div class="search-section px-4 py-4 w-full">
-            <input id="startInput" type="text" placeholder="Start location" class="w-full mb-4 p-2 bg-gray-200 rounded text-black">
-            <input id="endInput" type="text" placeholder="End location" class="w-full mb-4 p-2 bg-gray-200 rounded text-black">
-            
-            <div class="travel-modes mb-4">
-                <label class="inline-flex items-center mr-2">
-                    <input type="radio" class="form-radio" id="modeWalk" name="travelMode" value="WALKING" checked>
-                    <span class="ml-2">Walk</span>
-                </label>
-                <label class="inline-flex items-center mr-2">
-                    <input type="radio" class="form-radio" id="modeBike" name="travelMode" value="BICYCLING">
-                    <span class="ml-2">Bike</span>
-                </label>
-                <label class="inline-flex items-center">
-                    <input type="radio" class="form-radio" id="modeDrive" name="travelMode" value="DRIVING">
-                    <span class="ml-2">Drive</span>
-                </label>
-            </div>
-            <button id="confirmButton" class="w-full bg-teal-500 text-white p-2 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-700 focus:ring-opacity-50">
-                Confirm Locations
-            </button>
+       
         </div>
     </div>
-    
+     
+                                    </div>
+                                    <!-- Google Maps Direction button, styled to appear to the right of Submit button. Hidden. Becomes Visible when form is submitted-->
+                                    
     
 </nav>
         </div>
         <main id="main-content" class="flex-1 p-4">
             <div id="map" class="w-full h-screen rounded-lg" style="height: calc(100vh - 64px);"></div>
+            <div class="text-white text-3xl font-bold text-center my-4">
+    Journey Planner
+</div>
+
 
 
             <!--  Planning Panel -->
-            <div class="fixed inset-x-0 bottom-0 mb-4 flex items-center justify-center">
+            <div class="mt-auto"></div>
+            <div class="bg-gray-900 p-8 rounded-lg shadow-lg mx-4 mb-4">
+                <form id="myForm" class="space-y-4">
+                    <div class="text-white text-lg mb-2">
+                        Choose your start destination location then hit accept to find nearest station to you and navigation
+                    </div>
+                    <!-- Start Location Row -->
+                    <div class="flex flex-wrap items-center -mx-2">
+                        <div class="px-2 w-full sm:w-1/2">
+                            <label for="startInput" class="block text-sm font-medium text-white mb-1">Start:</label>
+                            <input id="startInput" type="text" placeholder="Start location" class="w-full p-2 bg-gray-200 rounded text-black">
+                            <!-- Travel Mode Selection -->
+                            <div id="travelModeSelection" class="travel-mode">
+                                <label><input type="radio" name="travelMode" value="DRIVING" checked> Drive</label>
+                                <label><input type="radio" name="travelMode" value="WALKING"> Walk</label>
+                                <label><input type="radio" name="travelMode" value="BICYCLING"> Cycle</label>
+                            </div>
 
-                <div class="bg-gray-900 p-8 rounded-lg shadow-lg">
-                    <form id="myForm">
+                            <button id="confirmStartLocation" type="button">Accept</button>
 
-                        <div class="flex mb-4">
-                            <span>Depart: </span><select id="depart" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
-                            </select>
-                            <select id="departTime" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
-                            </select>
-                            <select id="departDay" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
+                        </div>
+                        <div class="px-2 w-full sm:w-1/2 md:flex-1">
+                            <label for="depart" class="block text-sm font-medium text-white mb-1">Closest Station:</label>
+                            <select id="depart" class="w-full p-2 bg-gray-800 text-white rounded-md">
+                                <!-- Options -->
                             </select>
                         </div>
-                        <div class="flex mb-4">
-                            <span>Arrive: </span><select id="arrive" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
-                            </select>
-                            <select id="arriveTime" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
-                            </select>
-                            <select id="arriveDay" class="mr-2 px-4 py-2 bg-gray-800 text-white rounded-md">
+                    </div>
+                    
+                    <!-- Start Time and Day Row -->
+                    
+                    <div class="text-white text-lg mb-2 mt-4">
+                        Choose your end destination and hit accept for the nearest station and navigation
+                    </div>
+                    <!-- End Location Row -->
+                    <div class="flex flex-wrap items-center -mx-2">
+                        <div class="px-2 w-full sm:w-1/2">
+                            <label for="endInput" class="block text-sm font-medium text-white mb-1">End:</label>
+                            <input id="endInput" type="text" placeholder="End location" class="w-full p-2 bg-gray-200 rounded text-black">
+                                <!-- Travel Mode Selection -->
+                    <div id="travelModeSelection" class="travel-mode">
+                        <label><input type="radio" name="travelMode" value="DRIVING" checked> Drive</label>
+                        <label><input type="radio" name="travelMode" value="WALKING"> Walk</label>
+                        <label><input type="radio" name="travelMode" value="BICYCLING"> Cycle</label>
+                    </div>
+
+                            <button id="confirmEndLocation" type="button">Accept</button>
+                        </div>
+                        <div class="px-2 w-full sm:w-1/2 md:flex-1">
+                            <label for="arrive" class="block text-sm font-medium text-white mb-1">Closest Station:</label>
+                            <select id="arrive" class="w-full p-2 bg-gray-800 text-white rounded-md">
+                                <!-- Options -->
                             </select>
                         </div>
-                        <!-- Google Maps Direction button, styled to appear to the right of Submit button. Hidden. Becomes Visible when form is submitted-->
-                        <button id="directionsButton" type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md float-right" style="display: none;">
-                            Directions
-                            </button>
-                        <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md"
-                        onclick="submitForm()">Submit</button>
-
-                    </form>
+                    </div>
+                    
+                    <!-- End Time and Day Row -->
                     
 
-                    <div id="result"></div>
-                </div>
-
-
+                    <div class="px-2">
+                        <button id="resetButton" type="button" class="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
+                            <ion-icon name="refresh-outline" class="text-xl"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="text-white text-lg mb-4 text-right">
+                        Click here for station to station directions
+                    </div>
+                    <!-- Buttons Row -->
+                    <div class="flex flex-wrap items-center justify-between -mx-2">
+                        <div class="px-2">
+                            <button id="confirmButton" type="button" class="bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-700 focus:ring-opacity-50">
+                                
+                            </button>
+                        </div>
+                        <div class="px-2">
+                            <button id="directionsButton" type="button" class="bg-gray-800 text-white px-4 py-2 rounded-md" style="display: none;">
+                                Directions
+                            </button>
+                        </div>
+                        <div class="px-2">
+                            <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded-md" onclick="submitForm()">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-
+            
+            
+                            
             <!-- End Planning Panel -->
 
         </main>
