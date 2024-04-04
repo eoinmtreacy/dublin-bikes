@@ -73,12 +73,12 @@ def fetchWeatherForecast():
         'condition' : forecast_data['condition']['text'],
         'condition_icon' : forecast_data['condition']['icon'],
         'precip_mm' : f"{round(forecast_data['precip_mm'])}",
-        'temp_c' : f"{round(forecast_data['temp_c'])}°C"
+        'temp_c' : f"{round(forecast_data['temp_c'])}"
         }
         if weather_data['condition'].endswith('nearby'): # Remove the word "nearby" from the condition
             weather_data['condition'] = weather_data['condition'][:-6]
             weather_data['condition'] = weather_data['condition'].strip().capitalize()
-        return jsonify(weather_data) # Adjusted to return JSON for API endpoint
+        return jsonify(weather_data) # Adjusted to return JSON for API endpoint 
 # create landing page
 @app.route('/')
 def landing():
@@ -97,15 +97,20 @@ def landing():
 def predict():
     if request.method == 'POST':
         data = request.json
+        print(data)
         depart = data['depart']
         departTime = data['departTime']
         departDay = data['departDay']
         arrive = data['arrive']
         arriveTime = data['arriveTime']
         arriveDay = data['arriveDay']
+        rain = data['rain']
+        temp = data['temp']
+        hum = data['hum']
 
-        depart = [depart] + [int(departTime)] + departDay
-        arrive = [arrive] + [int(arriveTime)] + arriveDay
+        depart = [depart] + [int(departTime)] + departDay + [int(rain)] + [int(temp)] + [int(hum)]
+        arrive = [arrive] + [int(arriveTime)] + arriveDay + [int(rain)] + [int(temp)] + [int(hum)]
+
 
         # import model for depart station
         with open(f'./models/{depart[0]}.pkl', 'rb') as file:
@@ -145,49 +150,49 @@ def predict():
 @app.route('/stations')
 def stations():
     # this won't work on campus without an SSH tunnel but should be okay at home 
-    try:
-        conn = mysql.connector.connect(
-        host=DB,
-        user=DB_USER,
-        password=DB_PW,
-        database=CITY
-        )
+    # try:
+    #     conn = mysql.connector.connect(
+    #     host=DB,
+    #     user=DB_USER,
+    #     password=DB_PW,
+    #     database=CITY
+    #     )
 
-        cursor = conn.cursor()
+    #     cursor = conn.cursor()
 
-        query = (
-            "SELECT * "
-            "FROM stations"
-        )
+    #     query = (
+    #         "SELECT * "
+    #         "FROM stations"
+    #     )
 
-        cursor.execute(query)
+    #     cursor.execute(query)
 
-        columns = [desc[0] for desc in cursor.description]
+    #     columns = [desc[0] for desc in cursor.description]
 
-        # Fetch all rows
-        rows = cursor.fetchall()
+    #     # Fetch all rows
+    #     rows = cursor.fetchall()
 
-        # Combine column names and data into a list of dictionaries
-        results = []
-        for row in rows:
-            result = {}
-            for i in range(len(columns)):
-                result[columns[i]] = row[i]
-            results.append(result)
+    #     # Combine column names and data into a list of dictionaries
+    #     results = []
+    #     for row in rows:
+    #         result = {}
+    #         for i in range(len(columns)):
+    #             result[columns[i]] = row[i]
+    #         results.append(result)
 
-        # with open('static/stations.json', 'w') as json_file:
-        #     json.dump(results, json_file)
+    #     # with open('static/stations.json', 'w') as json_file:
+    #     #     json.dump(results, json_file)
 
-        cursor.close()
-        conn.close()
-        print("Data fetched from databse")
-        return jsonify(data=results)
+    #     cursor.close()
+    #     conn.close()
+    #     print("Data fetched from databse")
+    #     return jsonify(data=results)
 
-    except:
-        print("Error fetching from DB, parsing local file")
-        with open('stations/dublin_stations.json', 'r') as file:
-            data = json.load(file)
-        return data['stations']
+    # except:
+    print("Error fetching from DB, parsing local file")
+    with open('stations.json', 'r') as file:
+        data = json.load(file)
+    return jsonify(data=data)
     
 @app.route('/realtime')
 def realtime():
@@ -195,39 +200,38 @@ def realtime():
     for each station
     return for pop-up UI"""
 
-    try:
-        conn = mysql.connector.connect(
-        host=DB,
-        user=DB_USER,
-        password=DB_PW,
-        database=CITY
-        )
+    # try:
+    #     conn = mysql.connector.connect(
+    #     host=DB,
+    #     user=DB_USER,
+    #     password=DB_PW,
+    #     database=CITY
+    #     )
 
-        cursor = conn.cursor()
+    #     cursor = conn.cursor()
 
-        query = (
-            """SELECT number, available_bikes, MAX(last_update) AS time
-            FROM availability
-            GROUP BY number;
-            """
-        )
+    #     query = (
+    #         """SELECT number, available_bikes, MAX(last_update) AS time
+    #         FROM availability
+    #         GROUP BY number;
+    #         """
+    #     )
 
-        cursor.execute(query)
-        rows = cursor.fetchall()
+    #     cursor.execute(query)
+    #     results = cursor.fetchall()
+    #     cursor.close()
+    #     conn.close()
+    #     print("Succesfully got realtime")
+    #     return jsonify(results)
 
-        stationIds = [row[0] for row in rows]
-        availability = [row[1] for row in rows]
+    # except:
+    #     print("Error fetching realtime")
+    #     return 'FAILURE realtime'
 
-        results = {id: avail for id, avail in zip(stationIds, availability)}
-
-        cursor.close()
-        conn.close()
-        print("Succesfully got realtime")
-        return jsonify(results)
-
-    except:
-        print("Error fetching realtime")
-        return 'FAILURE realtime'
+    print("Error fetching from DB, parsing local file")
+    with open('realtime.json', 'r') as file:
+        data = json.load(file)
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(debug=True)
