@@ -24,36 +24,6 @@ async function initMap() {
         componentRestrictions: { country: 'ie' }, // Restrict to Ireland
         types: ['geocode'], // This restricts search to geographical location types.
     };
-    let input = document.getElementById('searchInput');
-    let searchBox = new google.maps.places.SearchBox(input);
-
-    searchBox.addListener('places_changed', function () {
-        var places = searchBox.getPlaces();
-        if (places.length == 0) {
-            return;
-        }
-        var bounds = new google.maps.LatLngBounds();
-        places.forEach(function (place) {
-            if (!place.geometry) {
-                console.log("Returned place contains no geometry");
-                return;
-            }
-            if (place.geometry.viewport) {
-                bounds.union(place.geometry.viewport);
-            } else {
-                bounds.extend(place.geometry.location);
-            }
-        });
-        map.fitBounds(bounds);
-
-        var closestMarker = findClosestMarker(places[0].geometry.location);
-        if (closestMarker) {
-            // Do something with the closestMarker, like display directions
-            calculateAndDisplayRoute(closestMarker)
-        }
-
-
-    });
 
     function calculateAndDisplayRoute(directionsService, directionsRenderer, travelMode, origin, destination) {
         directionsService.route({
