@@ -24,6 +24,9 @@ async function fetchStations() {
 }
 
 async function createMarkers(stations) {
+    // createMarkers now takes the stations array
+    // and creates a marker object as an attribute
+    // of each station, linking them together
     let currentInfoWindow = null; // Variable to store the currently open info window
 
     stations.forEach((station, index) => {
@@ -356,8 +359,8 @@ function findClosestStation(location) {
     // we can pass the station number to the prediction function
     // and just access the station's.marker attributes
     // when we need it 
-    var closestStation = null;
-    var closestDistance = Number.MAX_VALUE;
+    let closestStation = null;
+    let closestDistance = Number.MAX_VALUE;
 
     STATIONS.forEach(station => {
         let marker = station.marker
