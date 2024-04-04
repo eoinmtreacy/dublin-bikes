@@ -1,6 +1,33 @@
-var heatmap;
-var markers =[]
+let markers = []
 const stationsIds = {}
+
+document.addEventListener('DOMContentLoaded', async function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const navbar = document.getElementById('navbar');
+
+    // This function toggles the navbar's visibility
+    function toggleNavbar() {
+        const isNavbarHidden = navbar.style.transform === 'translateX(-100%)';
+        navbar.style.transform = isNavbarHidden ? 'translateX(0)' : 'translateX(-100%)';
+    }
+
+    // Event listener for the bike icon
+    menuToggle.addEventListener('click', function() {
+        toggleNavbar();
+    });
+
+    // Prevent the navbar from hiding when it's clicked
+    navbar.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+
+    const map = await initMap()
+    const realTime = await fetchRealTime()
+    const stations = await fetchStations()
+
+    populateDropdownOptions()
+    fetchRealTimeWeather()
+});
 
 // changed this to async because it wouldn't work otherwise lol
 async function initMap() {
@@ -408,32 +435,6 @@ async function fetchStations() {
 
     return stations; 
 } 
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.getElementById('menuToggle');
-    const navbar = document.getElementById('navbar');
-
-    // This function toggles the navbar's visibility
-    function toggleNavbar() {
-        const isNavbarHidden = navbar.style.transform === 'translateX(-100%)';
-        navbar.style.transform = isNavbarHidden ? 'translateX(0)' : 'translateX(-100%)';
-    }
-
-    // Event listener for the bike icon
-    menuToggle.addEventListener('click', function() {
-        toggleNavbar();
-    });
-
-    // Prevent the navbar from hiding when it's clicked
-    navbar.addEventListener('click', function(event) {
-        event.stopPropagation();
-    });
-
-    populateDropdownOptions()
-    fetchRealTimeWeather()
-});
 
 async function populateDropdownOptions() {
     // fetch dublin.json

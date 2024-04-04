@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UCD Dublin Bikes Info</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+    <!-- <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.js" integrity="sha512-XcsV/45eM/syxTudkE8AoKK1OfxTrlFpOltc9NmHXh3HF+0ZA917G9iG6Fm7B6AzP+UeEzV8pLwnbRNPxdUpfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=visualization,places"></script>
 </head>
 
 <body class="bg-gray-800 text-white">
@@ -151,9 +154,7 @@
 
         </main>
     </div>
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=visualization,places&callback=initMap"></script>
+
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 
