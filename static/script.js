@@ -13,14 +13,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Event listener for the bike icon
-    menuToggle.addEventListener('click', () => toggleNavbar() );
+    menuToggle.addEventListener('click', () => toggleNavbar());
 
     // Prevent the navbar from hiding when it's clicked
     navbar.addEventListener('click', (event) => event.stopPropagation());
 
     const map = await initMap()
     const realTime = await fetchRealTime()
-    let STATIONS = await fetchStations()
+    let STATIONS = await fetchStations(realTime)
 
     populateDropdownOptions()
     fetchRealTimeWeather()
@@ -29,13 +29,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 // changed this to async because it wouldn't work otherwise lol
 async function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 53.349805, lng: -6.26031},
+        center: { lat: 53.349805, lng: -6.26031 },
         zoom: 13
     });
 
     directionsService = new google.maps.DirectionsService();
     directionsRenderer = new google.maps.DirectionsRenderer();
     directionsRenderer.setMap(map);
+
     let autocompleteOptions = {
         componentRestrictions: { country: 'ie' }, // Restrict to Ireland
         types: ['geocode'], // This restricts search to geographical location types.
@@ -43,40 +44,40 @@ async function initMap() {
     let input = document.getElementById('searchInput');
     let searchBox = new google.maps.places.SearchBox(input);
 
-    searchBox.addListener('places_changed', function() {
+    searchBox.addListener('places_changed', function () {
         var places = searchBox.getPlaces();
         if (places.length == 0) {
-          return;
+            return;
         }
         var bounds = new google.maps.LatLngBounds();
-        places.forEach(function(place) {
-          if (!place.geometry) {
-            console.log("Returned place contains no geometry");
-            return;
-          }
-          if (place.geometry.viewport) {
-            bounds.union(place.geometry.viewport);
-          } else {
-            bounds.extend(place.geometry.location);
-          }
+        places.forEach(function (place) {
+            if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+            }
+            if (place.geometry.viewport) {
+                bounds.union(place.geometry.viewport);
+            } else {
+                bounds.extend(place.geometry.location);
+            }
         });
         map.fitBounds(bounds);
 
-        var closestMarker = findClosestMarker(places[0].geometry.location); 
+        var closestMarker = findClosestMarker(places[0].geometry.location);
         if (closestMarker) {
-          // Do something with the closestMarker, like display directions
-          calculateAndDisplayRoute(closestMarker)
+            // Do something with the closestMarker, like display directions
+            calculateAndDisplayRoute(closestMarker)
         }
 
-        
-      });
 
-      function calculateAndDisplayRoute(directionsService, directionsRenderer, travelMode, origin, destination) {
+    });
+
+    function calculateAndDisplayRoute(directionsService, directionsRenderer, travelMode, origin, destination) {
         directionsService.route({
             origin: origin,
             destination: destination,
             travelMode: travelMode
-        }, function(response, status) {
+        }, function (response, status) {
             if (status === 'OK') {
                 directionsRenderer.setDirections(response);
                 // Display distance and duration
@@ -87,50 +88,47 @@ async function initMap() {
             }
         });
     }
-    
-    
-   
-    
+
     // two search boxes with IDs 'startInput' and 'endInput', ie start location end location
     let startInput = document.getElementById('startInput');
     let endInput = document.getElementById('endInput');
     // Replace SearchBox with Autocomplete and include the options for restriction
     let startAutocomplete = new google.maps.places.Autocomplete(startInput, autocompleteOptions);
     let endAutocomplete = new google.maps.places.Autocomplete(endInput, autocompleteOptions);
+
     var countyDublinBounds = new google.maps.LatLngBounds(
         new google.maps.LatLng(53.2987, -6.3871), // Southwest coordinates
         new google.maps.LatLng(53.4116, -6.1298)  // Northeast coordinates
     );
-    
+
     // Set bounds for Autocomplete
     startAutocomplete.setBounds(countyDublinBounds);
     endAutocomplete.setBounds(countyDublinBounds);
-    startAutocomplete.addListener('place_changed', function() {
+    startAutocomplete.addListener('place_changed', function () {
         var place = startAutocomplete.getPlace();
         if (place.geometry) {
             lastSelectedStartPlace = place; // Store the last selected place
         }
     });
-    
-    
-    endAutocomplete.addListener('place_changed', function() {
+
+    endAutocomplete.addListener('place_changed', function () {
         var place = endAutocomplete.getPlace();
         if (place.geometry) {
             lastSelectedEndPlace = place; // Store the last selected place
         }
     });
-    
+
     let lastSelectedStartPlace = null;
     let lastSelectedEndPlace = null;
-    document.getElementById('confirmStartLocation').addEventListener('click', function() {
+    document.getElementById('confirmStartLocation').addEventListener('click', function () {
         if (lastSelectedStartPlace && lastSelectedStartPlace.geometry) {
             var closestMarker = findClosestMarker(lastSelectedStartPlace.geometry.location);
             if (closestMarker) {
                 selectDropdownOptionByMarker(document.getElementById('depart'), closestMarker);
-    
+
                 // Retrieve the selected travel mode from the radio buttons
                 let selectedMode = document.querySelector('input[name="travelMode"]:checked').value;
-    
+
                 let origin = lastSelectedStartPlace.geometry.location;
                 let destination = closestMarker.position;
                 calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
@@ -139,21 +137,21 @@ async function initMap() {
             alert('Please select a start location first.');
         }
     });
-    
-    document.getElementById('confirmEndLocation').addEventListener('click', function() {
+
+    document.getElementById('confirmEndLocation').addEventListener('click', function () {
         if (lastSelectedEndPlace && lastSelectedEndPlace.geometry) {
             var closestMarker = findClosestMarker(lastSelectedEndPlace.geometry.location);
             if (closestMarker) {
                 selectDropdownOptionByMarker(document.getElementById('arrive'), closestMarker);
-    
+
                 // Retrieve the selected travel mode from the radio buttons or dropdown
                 // This assumes  the same travel mode selection for both start and end locations
-                
+
                 let selectedMode = document.querySelector('input[name="endTravelMode"]:checked') ? document.querySelector('input[name="endTravelMode"]:checked').value : document.querySelector('input[name="travelMode"]:checked').value;
-    
+
                 let origin = lastSelectedEndPlace.geometry.location; // This now represents the end location's selected place
                 let destination = closestMarker.position; // The position of the closest marker to the end location
-                
+
                 // Assuming you want to show the route from the end location to the closest station
                 // If you're looking to display the complete route from start to finish, including this segment, adjust accordingly
                 calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
@@ -162,93 +160,90 @@ async function initMap() {
             alert('Please select an end location first.');
         }
     });
-    
-    
-    
+
+
+
     // Function to handle the confirm button click
-    document.getElementById('confirmButton').addEventListener('click', function() {
+    document.getElementById('confirmButton').addEventListener('click', function () {
         var startPlace = startSearchBox.getPlaces();
         var endPlace = endSearchBox.getPlaces();
-    
+
         if (!startPlace || startPlace.length == 0 || !endPlace || endPlace.length == 0) {
             alert('Please select both a start and an end location.');
             return;
         }
-    
-        let selectedMode = 'DRIVING'; 
+
+        let selectedMode = 'DRIVING';
         if (document.getElementById('modeWalk').checked) selectedMode = 'WALKING';
         if (document.getElementById('modeBike').checked) selectedMode = 'BICYCLING';
-    
+
         calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, startPlace[0].geometry.location, endPlace[0].geometry.location);
         if (status === 'OK') {
-    const route = response.routes[0].legs[0];
-    document.getElementById('journeyDistance').textContent = `Distance: ${route.distance.text}`;
-    document.getElementById('journeyTime').textContent = `Time: ${route.duration.text}`;
-} else {
-    console.error('Directions request failed due to ' + status);
-    // update the HTML to indicate the error or that no data could be fetched
-    document.getElementById('journeyDistance').textContent = 'Distance: unavailable due to error';
-    document.getElementById('journeyTime').textContent = 'Time: unavailable due to error';
-}
+            const route = response.routes[0].legs[0];
+            document.getElementById('journeyDistance').textContent = `Distance: ${route.distance.text}`;
+            document.getElementById('journeyTime').textContent = `Time: ${route.duration.text}`;
+        } else {
+            console.error('Directions request failed due to ' + status);
+            // update the HTML to indicate the error or that no data could be fetched
+            document.getElementById('journeyDistance').textContent = 'Distance: unavailable due to error';
+            document.getElementById('journeyTime').textContent = 'Time: unavailable due to error';
+        }
 
     });
 
     // need to fetchRealTime before stations
     // so we can populate markers with the 
     // realtime info as we create them
-    const realTime = await fetchRealTime()
-    fetchStations(realTime); 
     // map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 }
 function findClosestMarker(location) {
     var closestMarker = null;
     var closestDistance = Number.MAX_VALUE;
 
-    markers.forEach(function(marker) {
-      var distance = google.maps.geometry.spherical.computeDistanceBetween(
-        new google.maps.LatLng(marker.position.lat(), marker.position.lng()), location);
+    markers.forEach(function (marker) {
+        var distance = google.maps.geometry.spherical.computeDistanceBetween(
+            new google.maps.LatLng(marker.position.lat(), marker.position.lng()), location);
 
-              if (distance < closestDistance) {
-                closestDistance = distance;
-                closestMarker = marker;
-              }
-            });
-            return closestMarker;
-          }
+        if (distance < closestDistance) {
+            closestDistance = distance;
+            closestMarker = marker;
+        }
+    });
+    return closestMarker;
+}
 
-      function calculateAndDisplayRoute(marker) {  
-        var request = {
-          origin: document.getElementById('searchInput').value,
-          destination: {lat: marker.position.lat(), lng: marker.position.lng()}, // Replace with the selected marker's coordinates
-          travelMode: 'WALKING'
-        };
-  
-        directionsService.route(request, function(response, status) {
-          if (status === 'OK') {
+function calculateAndDisplayRoute(marker) {
+    var request = {
+        origin: document.getElementById('searchInput').value,
+        destination: { lat: marker.position.lat(), lng: marker.position.lng() }, // Replace with the selected marker's coordinates
+        travelMode: 'WALKING'
+    };
+
+    directionsService.route(request, function (response, status) {
+        if (status === 'OK') {
             directionsRenderer.setDirections(response);
-          } else {
+        } else {
             window.alert('Directions request failed due to ' + status);
-          }
-        });
-      }
+        }
+    });
+}
 
-    // need to fetchRealTime before stations
-    // so we can populate markers with the 
-    // realtime info as we create them
-    // map.addListener('zoom_changed', toggleHeatmapAndMarkers);
+// need to fetchRealTime before stations
+// so we can populate markers with the 
+// realtime info as we create them
+// map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 
 async function fetchStations() {
     let currentInfoWindow = null; // Variable to store the currently open info window
 
     const response = await fetch('static/stations.json');
-    const data = await response.json(); 
-    const stations = data.data; 
-    const markers = [];
+    const data = await response.json();
+    const stations = data.data;
 
     console.log(stations);
 
     stations.forEach((station, index) => {
-        
+
         const contentString = `
             <div style='color: black;'>
                 <strong>${station.name}</strong>
@@ -260,7 +255,7 @@ async function fetchStations() {
 
         const marker = new google.maps.Marker({
             position: new google.maps.LatLng(station.position_lat, station.position_lng),
-            map: map, 
+            map: map,
         });
 
         const infoWindow = new google.maps.InfoWindow({
@@ -296,7 +291,7 @@ async function fetchStations() {
                             // pull from /realtime-ish for 1 station, for 
                             // average availabliltiy group by datatime (the hour)
                             // call /predict for every time from now until midnight
-                                // format from /predict 
+                            // format from /predict 
                             data: Array.from({ length: 7 }, () => Math.floor(Math.random() * (15 - 3 + 1)) + 3),
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
@@ -365,7 +360,7 @@ async function fetchStations() {
                 new Chart(ctxHour, {
                     type: 'bar',
                     data: {
-                        labels: Array.from({length: 24}, (_, i) => `${i}:00`), // 0 to 23 hours
+                        labels: Array.from({ length: 24 }, (_, i) => `${i}:00`), // 0 to 23 hours
                         datasets: [{
                             label: 'Bike Availability per Hour',
                             data: Array.from({ length: 24 }, () => Math.floor(Math.random() * (15 - 3 + 1)) + 3),
@@ -388,7 +383,7 @@ async function fetchStations() {
                                 min: 0,
                                 ticks: {
                                     autoSkip: false,
-                                    callback: function(value, index, values) {
+                                    callback: function (value, index, values) {
                                         // Display label for every second hour and format it
                                         if (index % 2 === 0) {
                                             return `${value}:00`;
@@ -421,20 +416,20 @@ async function fetchStations() {
                         }
                     }
                 });
-            }); 
-        }); 
+            });
+        });
         markers.push(marker);
-    }); 
+    });
 
     new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
-    return stations; 
-} 
+    return stations;
+}
 
 async function populateDropdownOptions() {
     // fetch dublin.json
     const options = await fetchDropdownOptions()
-    
+
 
     // parse json
     const stations = options['data']
@@ -443,9 +438,9 @@ async function populateDropdownOptions() {
 
     // Select dropdowns by their IDs
     const depart = document.getElementById('depart');
-    
+
     const arrive = document.getElementById('arrive');
- 
+
 
     // Populate options for each dropdown
     names.forEach(name => {
@@ -492,11 +487,11 @@ function getStationCoordinates(stationName, stationsData) {
 function getText(elementID, value) { // Function to get the text of an option by its value rather than its value. https://www.geeksforgeeks.org/how-to-get-the-text-of-option-tag-by-value-using-javascript/
     Object.values(document.getElementById(
         elementID).options).
-        forEach(function (option){
-        if (option.value === value) {
-            text = option.text;
-        }
-    });
+        forEach(function (option) {
+            if (option.value === value) {
+                text = option.text;
+            }
+        });
     return text; // Return the text of the option
 }
 // Function to create the directions URL and open it in a new tab, changed dropdowns to no longer populate with the time/day and predictions
@@ -515,12 +510,12 @@ function getDirections() {
 async function submitForm() {
     // dayOptions in strange order because that's how the model
     // reads the booleans
-    
+
 
     const depart = document.getElementById("depart").value;
-  
+
     const arrive = document.getElementById("arrive").value;
-   
+
 
     getDirections(); // Call the getDirections function to display the directions button
 
@@ -538,17 +533,17 @@ async function submitForm() {
         },
         body: JSON.stringify({ hour: departTime, day: departDay })
     })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('weather-description').innerText = 'Predicted Weather: ' + data.condition;
-        let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
-        document.getElementById('weather-icon').innerHTML = iconImg;
-        document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c + '°C';
-        document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity + '%';
-        document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm + 'mm';
-        return data
-    })
-    .catch(error => console.error('Error fetching weather:', error));
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('weather-description').innerText = 'Predicted Weather: ' + data.condition;
+            let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
+            document.getElementById('weather-icon').innerHTML = iconImg;
+            document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c + '°C';
+            document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity + '%';
+            document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm + 'mm';
+            return data
+        })
+        .catch(error => console.error('Error fetching weather:', error));
 
     const prediction = await fetch('/predict', {
         method: 'POST',
@@ -567,16 +562,16 @@ async function submitForm() {
             hum: forecast.humidity
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById("result").innerText = JSON.stringify(data);
-        return data
-    })
-    .catch(error => console.error('Error:', error));
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("result").innerText = JSON.stringify(data);
+            return data
+        })
+        .catch(error => console.error('Error:', error));
 
     return prediction
-    }
-    
+}
+
 
 async function fetchRealTime() {
     const request = await fetch('/realtime')
@@ -584,46 +579,45 @@ async function fetchRealTime() {
     return request
 }
 
-async function fetchRealTimeWeather() { 
+async function fetchRealTimeWeather() {
     fetch('/api/CurrentWeather')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-        document.getElementById('weather-description').innerText = 'Current Weather: ' + data.condition;
-        let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
-        document.getElementById('weather-icon').innerHTML = iconImg;
-        document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c;
-        document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity;
-        document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm;
-            })
-            .catch(error => console.error('Error fetching weather:', error));
-        }
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            document.getElementById('weather-description').innerText = 'Current Weather: ' + data.condition;
+            let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
+            document.getElementById('weather-icon').innerHTML = iconImg;
+            document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c;
+            document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity;
+            document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm;
+        })
+        .catch(error => console.error('Error fetching weather:', error));
+}
 
-        document.getElementById('resetButton').addEventListener('click', function() {
-            // Reset text inputs
-            document.getElementById('startInput').value = '';
-            document.getElementById('endInput').value = '';
-        
-            // Reset dropdowns to their first option
-            document.getElementById('depart').selectedIndex = 0;
-            document.getElementById('arrive').selectedIndex = 0;
-            document.getElementById('departTime').selectedIndex = 0;
-            document.getElementById('arriveTime').selectedIndex = 0;
-            document.getElementById('departDay').selectedIndex = 0;
-            document.getElementById('arriveDay').selectedIndex = 0;
-        
-            // reset the travel mode radio buttons to default (first radio button)
-            document.querySelector('input[name="travelMode"][value="DRIVING"]').checked = true;
-        
-            //  map or directions, y reset them as well
-            if (directionsRenderer) {
-                directionsRenderer.setDirections({routes: []});
-            }
-        
-            
-            document.getElementById('directionsButton').style.display = 'none';
-            
-            
-        });
-        
-        
+document.getElementById('resetButton').addEventListener('click', function () {
+    // Reset text inputs
+    document.getElementById('startInput').value = '';
+    document.getElementById('endInput').value = '';
+
+    // Reset dropdowns to their first option
+    document.getElementById('depart').selectedIndex = 0;
+    document.getElementById('arrive').selectedIndex = 0;
+    document.getElementById('departTime').selectedIndex = 0;
+    document.getElementById('arriveTime').selectedIndex = 0;
+    document.getElementById('departDay').selectedIndex = 0;
+    document.getElementById('arriveDay').selectedIndex = 0;
+
+    // reset the travel mode radio buttons to default (first radio button)
+    document.querySelector('input[name="travelMode"][value="DRIVING"]').checked = true;
+
+    //  map or directions, y reset them as well
+    if (directionsRenderer) {
+        directionsRenderer.setDirections({ routes: [] });
+    }
+
+
+    document.getElementById('directionsButton').style.display = 'none';
+
+
+});
+
