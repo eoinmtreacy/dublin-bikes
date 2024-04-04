@@ -93,7 +93,7 @@ async function fetchStations() {
     const response = await fetch('static/stations.json');
     const data = await response.json(); 
     const stations = data.data; 
-    const markers = []; /
+    const markers = [];
 
     console.log(stations);
 
@@ -142,6 +142,11 @@ async function fetchStations() {
                         labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
                         datasets: [{
                             label: 'Bike Availability',
+                            // get time
+                            // pull from /realtime-ish for 1 station, for 
+                            // average availabliltiy group by datatime (the hour)
+                            // call /predict for every time from now until midnight
+                                // format from /predict 
                             data: Array.from({ length: 7 }, () => Math.floor(Math.random() * (15 - 3 + 1)) + 3),
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
