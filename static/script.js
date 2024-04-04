@@ -1,6 +1,6 @@
-let markers = []
 const stationsIds = {}
 let STATIONS
+let depart, arrive
 
 document.addEventListener('DOMContentLoaded', async () => {
     const map = await initMap()
@@ -293,7 +293,9 @@ async function initMap() {
 
                 let origin = lastSelectedStartPlace.geometry.location;
                 let destination = closestStation.marker.position; // e.g. of accessing station.marker attribute
+
                 calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
+                depart = closestStation
             }
         } else {
             alert('Please select a start location first.');
@@ -317,6 +319,7 @@ async function initMap() {
                 // Assuming you want to show the route from the end location to the closest station
                 // If you're looking to display the complete route from start to finish, including this segment, adjust accordingly
                 calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
+                arrive = closestStation
             }
         } else {
             alert('Please select an end location first.');
@@ -332,7 +335,7 @@ async function initMap() {
             alert('Please select both a start and an end location.');
             return;
         }
-        
+
         // changed this to default to walking
         let selectedMode = 'WALKING';
         if (document.getElementById('modeDrive').checked) selectedMode = 'DRIVING';
@@ -391,21 +394,6 @@ function calculateAndDisplayRoute(station) {
     });
 }
 
-function sortedWeekdays() { // Allows for the days to be sorted in the dropdown from Today to Next Week (inclusive)
-    let today = new Date();
-    let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let todayIndex = today.getDay(); // Get today's index (0-6, where 0 is Sunday and 6 is Saturday)
-    let sortedWeekdays = ["Today"]; // Start with "Today" as the first element
-
-    // Add the rest of the week days starting from tomorrow
-    for (let i = 1; i < 7; i++) {
-        let index = (todayIndex + i) % 7; // Calculate index to wrap around the weekdays array
-        sortedWeekdays.push(weekdays[index]);
-    }
-
-    return sortedWeekdays;
-}
-
 function getStationCoordinates(stationName, stationsData) {
     const station = stationsData.find(station => station.name === stationName); // Find station data in json by name: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
     if (station) {
@@ -428,39 +416,21 @@ function getText(elementID, value) { // Function to get the text of an option by
 
 // Function to create the directions URL and open it in a new tab, changed dropdowns to no longer populate with the time/day and predictions
 function getDirections() {
-    const originStationName = getText("depart", document.getElementById("depart").value);
-    const originStationCoordinates = getStationCoordinates(originStationName, STATIONS);
-    const destinationStationName = getText("arrive", document.getElementById("arrive").value);
-    const destinationStationCoordinates = getStationCoordinates(destinationStationName, STATIONS);
-
-    const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=${originStationCoordinates}&destination=${destinationStationCoordinates}&travelmode=bicycling`; // Create the directions URL with the origin and destination coordinates and the travel mode set to bicycling: https://developers.google.com/maps/documentation/urls/get-started#directions-action
+    const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=${arrive.position_lat},${arrive.position_lng}&destination=${depart.position_lat},${depart.position_lng}&travelmode=bicycling`; // Create the directions URL with the origin and destination coordinates and the travel mode set to bicycling: https://developers.google.com/maps/documentation/urls/get-started#directions-action
     const directionsButton = document.getElementById('directionsButton');
     directionsButton.style.display = 'block'; // Display the directions button
     directionsButton.onclick = () => window.open(directionsUrl, '_blank'); // Open the directions URL in a new tab when the button is clicked https://stackoverflow.com/questions/6303964/javascript-open-a-given-url-in-a-new-tab-by-clicking-a-button
 }
 
 async function submitForm() {
-    const depart = document.getElementById("depart").value;
-    const arrive = document.getElementById("arrive").value;
-
-    console.log(depart, arrive);
-
-
     getDirections(); // Call the getDirections function to display the directions button
-
-    // change selected day to 1 (True)
-    const departOptions = dayOptions
-    const arriveOptions = dayOptions
-
-    departOptions[departDay] = 1
-    arriveOptions[arriveDay] = 1
 
     const forecast = await fetch('/api/WeatherForecast', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ hour: departTime, day: departDay })
+        body: JSON.stringify({ hour: new Date().getUTCHours(), day: new Date().getDay()})
     })
         .then(response => response.json())
         .then(data => {
@@ -474,18 +444,22 @@ async function submitForm() {
         })
         .catch(error => console.error('Error fetching weather:', error));
 
+    // TODO get today and pass it to the model in the correct format
+    let days = [0,0,0,0,0,0,0]
+    days[new Date().getDay()] = 1
+
     const prediction = await fetch('/predict', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            depart: stationsIds[depart],
-            departTime: departTime,
-            departDay: Object.values(departOptions),
-            arrive: stationsIds[arrive],
-            arriveTime: arriveTime,
-            arriveDay: Object.values(arriveOptions),
+            depart: depart.number,
+            departTime: new Date().getUTCHours(),
+            departDay: days,
+            arrive: arrive.number,
+            arriveTime: new Date().getUTCHours(),
+            arriveDay: days,
             rain: forecast.precip_mm,
             temp: forecast.temp_c,
             hum: forecast.humidity
