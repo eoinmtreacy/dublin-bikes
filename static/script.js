@@ -1,6 +1,7 @@
 var heatmap;
 var markers =[]
 const stationsIds = {}
+let stationsData;
 
 // changed this to async because it wouldn't work otherwise lol
 async function initMap() {
@@ -219,24 +220,27 @@ function fetchStations(realTime) {
     fetch('/stations')
     .then(response => response.json())
     .then(data => {
-        // the realTime[station.number] wrapping just means instead
-        // of pulling the station number to populate the map
-        // it checks the station number against the realtime
-        // and returns the number of available bikes instead
+        return data['data']
+    })
 
-        markers.forEach(marker => marker.setMap(null));
-        stationsData = data['data'] // Assign the data to the global variable
+    if (realTime) {
+        stations.map(station => station['available_bikes'] = realTime[station.number])
+    }
 
-        data['data'].forEach(station => {
-            
-            let markerColor;
-            if (realTime[station.number] === 0) {
-                markerColor = 'red'; 
-            } else if (realTime[station.number] > 0 && realTime[station.number] <= 5) { 
-                markerColor = 'yellow';
-            } else {
-                markerColor = 'green'; 
-            }
+    else {
+        stations.map(station => station['available_bikes'] = 6)
+    }
+    
+    stations.forEach(station => {
+        
+        let markerColor;
+        if (station.available_bikes / station.bike_stands < 0.1) {
+            markerColor = 'red'; 
+        } else if (0.1 < station.available_bikes / station.bike_stands < 0.33) { 
+            markerColor = 'yellow';
+        } else {
+            markerColor = 'green'; 
+        }
 
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(station.position_lat, station.position_lng),
@@ -251,28 +255,26 @@ function fetchStations(realTime) {
                 }
             });
 
-            var infoWindow = new google.maps.InfoWindow({
-                content: `<div style='color: black'><strong>${station.name}</strong><p>Station Number: ${station.number}</p></div>`
-            });
-
-            marker.addListener('mouseover', function() {
-                console.log(infoWindow);
-                infoWindow.open(map, marker);
-            });
-
-            marker.addListener('mouseout', function() {
-                infoWindow.close();
-            });
-
-            markers.push(marker);
+        var infoWindow = new google.maps.InfoWindow({
+            content: `<div style='color: black'><strong>${station.name}</strong><p>Station Number: ${station.number}</p></div>`
         });
 
-        let markerCluster = new MarkerClusterer(map, markers,
-            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+        marker.addListener('mouseover', function() {
+            infoWindow.open(map, marker);
+        });
 
-    })
-    .catch(error => console.error('Error fetching stations:', error));
+        marker.addListener('mouseout', function() {
+            infoWindow.close();
+        });
 
+        markers.push(marker);
+    });
+
+    new MarkerClusterer(map,
+                    markers,
+                    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+    return stations
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -296,7 +298,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     populateDropdownOptions()
-    fetchRealTime()
     fetchRealTimeWeather()
 });
 
@@ -326,14 +327,21 @@ async function populateDropdownOptions() {
     for (let i = 0; i < numbers.length; i++) {
         stationsIds[names[i].toLowerCase().replace(/\s+/g, '')] = numbers[i]
     }
-
-    console.log(stationsIds);
 }
+function sortedWeekdays() { // Allows for the days to be sorted in the dropdown from Today to Next Week (inclusive)
+    let today = new Date();
+    let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let todayIndex = today.getDay(); // Get today's index (0-6, where 0 is Sunday and 6 is Saturday)
+    let sortedWeekdays = ["Today"]; // Start with "Today" as the first element
 
+    // Add the rest of the week days starting from tomorrow
+    for (let i = 1; i < 7; i++) {
+        let index = (todayIndex + i) % 7; // Calculate index to wrap around the weekdays array
+        sortedWeekdays.push(weekdays[index]);
+    }
 
-
-
-
+    return sortedWeekdays;
+}
 
 async function fetchDropdownOptions() {
     const options = await fetch('static/stations.json')
@@ -346,11 +354,9 @@ async function fetchDropdownOptions() {
 function getStationCoordinates(stationName, stationsData) {
     const station = stationsData.find(station => station.name === stationName); // Find station data in json by name: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
     if (station) {
-        console.log("Station Found:", station);
         return `${station.position_lat},${station.position_lng}`; // Return the coordinates as a string in the format required by Google Maps API
     }
     else
-        console.error("Station not found", stationName);
         return null; // Return null if station not found
 }
 function getText(elementID, value) { // Function to get the text of an option by its value rather than its value. https://www.geeksforgeeks.org/how-to-get-the-text-of-option-tag-by-value-using-javascript/
@@ -432,23 +438,9 @@ function submitForm() {
     
 
 async function fetchRealTime() {
-    // first route the app calls after '/' is /realtime
-    // it means we will have realtime data to 
-    // populate the markers with
-
-    // create object that we will eventually return
-    const realTime = {}
     const request = await fetch('/realtime')
         .then((response) => response.json())
-            .then((data) => {
-                data.forEach(station => {
-                    // populate the object with
-                    // KEY station number: VALUE available bikes
-                    realTime[station[0]] = station[1]
-                })
-            })
-
-    return realTime
+    return request
 }
 
 async function fetchRealTimeWeather() { 
