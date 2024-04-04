@@ -18,7 +18,7 @@ async function fetchRealTime() {
 async function fetchStations() {
     let currentInfoWindow = null; // Variable to store the currently open info window
 
-    const response = await fetch('static/stations.json');
+    const response = await fetch('/stations');
     const data = await response.json();
     const stations = data.data;
 
@@ -378,8 +378,6 @@ function calculateAndDisplayRoute(marker) {
     });
 }
 
-
-
 function sortedWeekdays() { // Allows for the days to be sorted in the dropdown from Today to Next Week (inclusive)
     let today = new Date();
     let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -395,7 +393,6 @@ function sortedWeekdays() { // Allows for the days to be sorted in the dropdown 
     return sortedWeekdays;
 }
 
-// Function to get the coordinates of a station by its name
 function getStationCoordinates(stationName, stationsData) {
     const station = stationsData.find(station => station.name === stationName); // Find station data in json by name: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
     if (station) {
@@ -404,6 +401,7 @@ function getStationCoordinates(stationName, stationsData) {
     else
         return null; // Return null if station not found
 }
+
 function getText(elementID, value) { // Function to get the text of an option by its value rather than its value. https://www.geeksforgeeks.org/how-to-get-the-text-of-option-tag-by-value-using-javascript/
     Object.values(document.getElementById(
         elementID).options).
@@ -414,6 +412,7 @@ function getText(elementID, value) { // Function to get the text of an option by
         });
     return text; // Return the text of the option
 }
+
 // Function to create the directions URL and open it in a new tab, changed dropdowns to no longer populate with the time/day and predictions
 function getDirections() {
     const originStationName = getText("depart", document.getElementById("depart").value);
@@ -524,9 +523,5 @@ document.getElementById('resetButton').addEventListener('click', function () {
         directionsRenderer.setDirections({ routes: [] });
     }
 
-
     document.getElementById('directionsButton').style.display = 'none';
-
-
 });
-
