@@ -124,7 +124,7 @@ async function initMap() {
         if (lastSelectedStartPlace && lastSelectedStartPlace.geometry) {
             var closestMarker = findClosestMarker(lastSelectedStartPlace.geometry.location);
             if (closestMarker) {
-                selectDropdownOptionByMarker(document.getElementById('depart'), closestMarker);
+                // TODO return nearest station with free bikes
 
                 // Retrieve the selected travel mode from the radio buttons
                 let selectedMode = document.querySelector('input[name="travelMode"]:checked').value;
@@ -142,7 +142,7 @@ async function initMap() {
         if (lastSelectedEndPlace && lastSelectedEndPlace.geometry) {
             var closestMarker = findClosestMarker(lastSelectedEndPlace.geometry.location);
             if (closestMarker) {
-                selectDropdownOptionByMarker(document.getElementById('arrive'), closestMarker);
+                // TODO return nearest station with free parking
 
                 // Retrieve the selected travel mode from the radio buttons or dropdown
                 // This assumes  the same travel mode selection for both start and end locations
@@ -426,33 +426,6 @@ async function fetchStations() {
     return stations;
 }
 
-async function populateDropdownOptions() {
-    // fetch dublin.json
-    const options = await fetchDropdownOptions()
-
-
-    // parse json
-    const stations = options['data']
-    const numbers = stations.map(station => station['number'])
-    const names = stations.map(station => station['name'])
-
-    // Select dropdowns by their IDs
-    const depart = document.getElementById('depart');
-
-    const arrive = document.getElementById('arrive');
-
-
-    // Populate options for each dropdown
-    names.forEach(name => {
-        depart.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
-        arrive.innerHTML += `<option value="${name.toLowerCase().replace(/\s+/g, '')}">${name}</option>`;
-    });
-
-
-    for (let i = 0; i < numbers.length; i++) {
-        stationsIds[names[i].toLowerCase().replace(/\s+/g, '')] = numbers[i]
-    }
-}
 function sortedWeekdays() { // Allows for the days to be sorted in the dropdown from Today to Next Week (inclusive)
     let today = new Date();
     let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -466,13 +439,6 @@ function sortedWeekdays() { // Allows for the days to be sorted in the dropdown 
     }
 
     return sortedWeekdays;
-}
-
-async function fetchDropdownOptions() {
-    const options = await fetch('static/stations.json')
-        .then((response) => response.json())
-
-    return options
 }
 
 // Function to get the coordinates of a station by its name
