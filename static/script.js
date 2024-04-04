@@ -1,7 +1,6 @@
 var heatmap;
 var markers =[]
 const stationsIds = {}
-let stationsData;
 
 // changed this to async because it wouldn't work otherwise lol
 async function initMap() {
