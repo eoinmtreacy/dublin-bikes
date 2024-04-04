@@ -3,21 +3,6 @@ const stationsIds = {}
 let STATIONS
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const menuToggle = document.getElementById('menuToggle');
-    const navbar = document.getElementById('navbar');
-
-    // This function toggles the navbar's visibility
-    function toggleNavbar() {
-        const isNavbarHidden = navbar.style.transform === 'translateX(-100%)';
-        navbar.style.transform = isNavbarHidden ? 'translateX(0)' : 'translateX(-100%)';
-    }
-
-    // Event listener for the bike icon
-    menuToggle.addEventListener('click', () => toggleNavbar());
-
-    // Prevent the navbar from hiding when it's clicked
-    navbar.addEventListener('click', (event) => event.stopPropagation());
-
     const map = await initMap()
     const realTime = await fetchRealTime()
     let STATIONS = await fetchStations(realTime)
