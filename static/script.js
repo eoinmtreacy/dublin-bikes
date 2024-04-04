@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const map = await initMap()
     const realTime = await fetchRealTime()
     let STATIONS = await fetchStations(realTime)
+    STATIONS = await createMarkers(STATIONS)
     fetchRealTimeWeather()
 });
 
@@ -16,14 +17,16 @@ async function fetchRealTime() {
 }
 
 async function fetchStations() {
-    let currentInfoWindow = null; // Variable to store the currently open info window
-
     const response = await fetch('/stations');
     const data = await response.json();
     const stations = data.data;
+    return stations
+}
+
+async function createMarkers(stations) {
+    let currentInfoWindow = null; // Variable to store the currently open info window
 
     stations.forEach((station, index) => {
-
         const contentString = `
             <div style='color: black;'>
                 <strong>${station.name}</strong>
@@ -198,12 +201,16 @@ async function fetchStations() {
                 });
             });
         });
-        markers.push(marker);
+
+        station['marker'] = marker
     });
 
-    new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    markers = stations.map(station => {
+        return station.marker
+    })
 
-    return stations;
+    new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    return stations
 }
 
 // changed this to async because it wouldn't work otherwise lol
