@@ -5,8 +5,8 @@ let depart, arrive
 document.addEventListener('DOMContentLoaded', async () => {
     const map = await initMap()
     const realTime = await fetchRealTime()
-    STATIONS = await fetchStations(realTime)
-    STATIONS = await createMarkers(STATIONS)
+    STATIONS = await fetchStations(realTime) // STATIONS created from fetch
+    STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
     fetchRealTimeWeather()
 });
 
@@ -66,7 +66,7 @@ async function createMarkers(stations) {
 
             google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
                 // First chart: Bike availability by day
-                var ctxDay = document.getElementById(`chart-day-${index}`).getContext('2d');
+                let ctxDay = document.getElementById(`chart-day-${index}`).getContext('2d');
                 new Chart(ctxDay, {
                     type: 'bar',
                     data: {
@@ -142,7 +142,7 @@ async function createMarkers(stations) {
                 });
 
                 // Second chart: Bike availability by hour
-                var ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
+                let ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
                 new Chart(ctxHour, {
                     type: 'bar',
                     data: {
@@ -233,7 +233,7 @@ async function initMap() {
     let startAutocomplete = new google.maps.places.Autocomplete(startInput, autocompleteOptions);
     let endAutocomplete = new google.maps.places.Autocomplete(endInput, autocompleteOptions);
 
-    var countyDublinBounds = new google.maps.LatLngBounds(
+    let countyDublinBounds = new google.maps.LatLngBounds(
         new google.maps.LatLng(53.2987, -6.3871), // Southwest coordinates
         new google.maps.LatLng(53.4116, -6.1298)  // Northeast coordinates
     );
@@ -247,14 +247,14 @@ async function initMap() {
 
     // SEARCH EVENT LISTENERS
     startAutocomplete.addListener('place_changed', function () {
-        var place = startAutocomplete.getPlace();
+        let place = startAutocomplete.getPlace();
         if (place.geometry) {
             lastSelectedStartPlace = place; // Store the last selected place
         }
     });
 
     endAutocomplete.addListener('place_changed', function () {
-        var place = endAutocomplete.getPlace();
+        let place = endAutocomplete.getPlace();
         if (place.geometry) {
             lastSelectedEndPlace = place; // Store the last selected place
         }
@@ -328,8 +328,8 @@ async function initMap() {
 
     // Function to handle the confirm button click
     document.getElementById('confirmButton').addEventListener('click', function () {
-        var startPlace = startSearchBox.getPlaces();
-        var endPlace = endSearchBox.getPlaces();
+        let startPlace = startSearchBox.getPlaces();
+        let endPlace = endSearchBox.getPlaces();
 
         if (!startPlace || startPlace.length == 0 || !endPlace || endPlace.length == 0) {
             alert('Please select both a start and an end location.');
@@ -358,7 +358,7 @@ async function initMap() {
 
 // UTILITY FUNCTIONS
 function findClosestStation(location) {
-    // by return closest station and not closest marker
+    // by returning closest station and not closest marker
     // we can pass the station number to the prediction function
     // and just access the station's.marker attributes
     // when we need it 
@@ -379,7 +379,7 @@ function findClosestStation(location) {
 }
 
 function calculateAndDisplayRoute(station) {
-    var request = {
+    let request = {
         origin: document.getElementById('searchInput').value,
         destination: { lat: station.marker.position.lat(), lng: station.marker.position.lng() }, // Replace with the selected marker's coordinates
         travelMode: 'WALKING'
