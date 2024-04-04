@@ -5,7 +5,7 @@ let STATIONS
 document.addEventListener('DOMContentLoaded', async () => {
     const map = await initMap()
     const realTime = await fetchRealTime()
-    let STATIONS = await fetchStations(realTime)
+    STATIONS = await fetchStations(realTime)
     STATIONS = await createMarkers(STATIONS)
     fetchRealTimeWeather()
 });
@@ -205,9 +205,7 @@ async function createMarkers(stations) {
         station['marker'] = marker
     });
 
-    markers = stations.map(station => {
-        return station.marker
-    })
+    markers = stations.map(station => station.marker)
 
     new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
     return stations
@@ -283,15 +281,15 @@ async function initMap() {
 
     document.getElementById('confirmStartLocation').addEventListener('click', function () {
         if (lastSelectedStartPlace && lastSelectedStartPlace.geometry) {
-            var closestMarker = findClosestMarker(lastSelectedStartPlace.geometry.location);
-            if (closestMarker) {
+            let closestStation = findClosestStation(lastSelectedStartPlace.geometry.location);
+            if (closestStation) {
                 // TODO return nearest station with free bikes
 
                 // Retrieve the selected travel mode from the radio buttons
                 let selectedMode = document.querySelector('input[name="travelMode"]:checked').value;
 
                 let origin = lastSelectedStartPlace.geometry.location;
-                let destination = closestMarker.position;
+                let destination = closestStation.marker.position; // e.g. of accessing station.marker attribute
                 calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
             }
         } else {
@@ -301,8 +299,8 @@ async function initMap() {
 
     document.getElementById('confirmEndLocation').addEventListener('click', function () {
         if (lastSelectedEndPlace && lastSelectedEndPlace.geometry) {
-            var closestMarker = findClosestMarker(lastSelectedEndPlace.geometry.location);
-            if (closestMarker) {
+            let closestStation = findClosestStation(lastSelectedEndPlace.geometry.location);
+            if (closestStation) {
                 // TODO return nearest station with free parking
 
                 // Retrieve the selected travel mode from the radio buttons or dropdown
@@ -311,7 +309,7 @@ async function initMap() {
                 let selectedMode = document.querySelector('input[name="endTravelMode"]:checked') ? document.querySelector('input[name="endTravelMode"]:checked').value : document.querySelector('input[name="travelMode"]:checked').value;
 
                 let origin = lastSelectedEndPlace.geometry.location; // This now represents the end location's selected place
-                let destination = closestMarker.position; // The position of the closest marker to the end location
+                let destination = closestStation.marker.position; // The position of the closest marker to the end location
 
                 // Assuming you want to show the route from the end location to the closest station
                 // If you're looking to display the complete route from start to finish, including this segment, adjust accordingly
@@ -353,26 +351,31 @@ async function initMap() {
 }
 
 // UTILITY FUNCTIONS
-function findClosestMarker(location) {
-    var closestMarker = null;
+function findClosestStation(location) {
+    // by return closest station and not closest marker
+    // we can pass the station number to the prediction function
+    // and just access the station's.marker attributes
+    // when we need it 
+    var closestStation = null;
     var closestDistance = Number.MAX_VALUE;
 
-    markers.forEach(function (marker) {
-        var distance = google.maps.geometry.spherical.computeDistanceBetween(
+    STATIONS.forEach(station => {
+        let marker = station.marker
+        let distance = google.maps.geometry.spherical.computeDistanceBetween(
             new google.maps.LatLng(marker.position.lat(), marker.position.lng()), location);
 
         if (distance < closestDistance) {
             closestDistance = distance;
-            closestMarker = marker;
+            closestStation = station;
         }
     });
-    return closestMarker;
+    return closestStation;
 }
 
-function calculateAndDisplayRoute(marker) {
+function calculateAndDisplayRoute(station) {
     var request = {
         origin: document.getElementById('searchInput').value,
-        destination: { lat: marker.position.lat(), lng: marker.position.lng() }, // Replace with the selected marker's coordinates
+        destination: { lat: station.marker.position.lat(), lng: station.marker.position.lng() }, // Replace with the selected marker's coordinates
         travelMode: 'WALKING'
     };
 
