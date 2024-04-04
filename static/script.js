@@ -1,7 +1,8 @@
 let markers = []
 const stationsIds = {}
+let STATIONS
 
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async () => {
     const menuToggle = document.getElementById('menuToggle');
     const navbar = document.getElementById('navbar');
 
@@ -12,18 +13,14 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 
     // Event listener for the bike icon
-    menuToggle.addEventListener('click', function() {
-        toggleNavbar();
-    });
+    menuToggle.addEventListener('click', () => toggleNavbar() );
 
     // Prevent the navbar from hiding when it's clicked
-    navbar.addEventListener('click', function(event) {
-        event.stopPropagation();
-    });
+    navbar.addEventListener('click', (event) => event.stopPropagation());
 
     const map = await initMap()
     const realTime = await fetchRealTime()
-    const stations = await fetchStations()
+    let STATIONS = await fetchStations()
 
     populateDropdownOptions()
     fetchRealTimeWeather()
@@ -35,8 +32,6 @@ async function initMap() {
         center: {lat: 53.349805, lng: -6.26031},
         zoom: 13
     });
-
-    stationsData = await fetchStations();
 
     directionsService = new google.maps.DirectionsService();
     directionsRenderer = new google.maps.DirectionsRenderer();
@@ -507,9 +502,9 @@ function getText(elementID, value) { // Function to get the text of an option by
 // Function to create the directions URL and open it in a new tab, changed dropdowns to no longer populate with the time/day and predictions
 function getDirections() {
     const originStationName = getText("depart", document.getElementById("depart").value);
-    const originStationCoordinates = getStationCoordinates(originStationName, stationsData);
+    const originStationCoordinates = getStationCoordinates(originStationName, STATIONS);
     const destinationStationName = getText("arrive", document.getElementById("arrive").value);
-    const destinationStationCoordinates = getStationCoordinates(destinationStationName, stationsData);
+    const destinationStationCoordinates = getStationCoordinates(destinationStationName, STATIONS);
 
     const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=${originStationCoordinates}&destination=${destinationStationCoordinates}&travelmode=bicycling`; // Create the directions URL with the origin and destination coordinates and the travel mode set to bicycling: https://developers.google.com/maps/documentation/urls/get-started#directions-action
     const directionsButton = document.getElementById('directionsButton');
