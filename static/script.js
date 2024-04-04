@@ -468,7 +468,7 @@ async function submitForm() {
     })
         .then(response => response.json())
         .then(data => {
-            document.getElementById("result").innerText = JSON.stringify(data);
+            console.log(data);
             return data
         })
         .catch(error => console.error('Error:', error));
