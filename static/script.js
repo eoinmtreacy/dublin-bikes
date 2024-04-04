@@ -9,11 +9,7 @@ async function initMap() {
         zoom: 13
     });
 
-
-    console.log('Calling fetchStations'); // Diagnostic log before the call
     stationsData = await fetchStations();
-    console.log('fetchStations called', stationsData); // Diagnostic log to confirm it's called and log data
-    console.log('Called fetchStations'); // Diagnostic log before the call
 
     directionsService = new google.maps.DirectionsService();
     directionsRenderer = new google.maps.DirectionsRenderer();
@@ -218,7 +214,7 @@ function findClosestMarker(location) {
     // so we can populate markers with the 
     // realtime info as we create them
     // map.addListener('zoom_changed', toggleHeatmapAndMarkers);
-    
+
 async function fetchStations() {
     let currentInfoWindow = null; // Variable to store the currently open info window
 
