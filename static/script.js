@@ -1,4 +1,3 @@
-const stationsIds = {}
 let STATIONS
 let depart, arrive
 
