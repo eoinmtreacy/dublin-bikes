@@ -9,181 +9,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     fetchRealTimeWeather()
 });
 
-// changed this to async because it wouldn't work otherwise lol
-async function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 53.349805, lng: -6.26031 },
-        zoom: 13
-    });
-
-    directionsService = new google.maps.DirectionsService();
-    directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(map);
-
-    let autocompleteOptions = {
-        componentRestrictions: { country: 'ie' }, // Restrict to Ireland
-        types: ['geocode'], // This restricts search to geographical location types.
-    };
-
-    function calculateAndDisplayRoute(directionsService, directionsRenderer, travelMode, origin, destination) {
-        directionsService.route({
-            origin: origin,
-            destination: destination,
-            travelMode: travelMode
-        }, function (response, status) {
-            if (status === 'OK') {
-                directionsRenderer.setDirections(response);
-                // Display distance and duration
-                const route = response.routes[0].legs[0];
-                alert(`Distance: ${route.distance.text}, Duration: ${route.duration.text}`);
-            } else {
-                window.alert('Directions request failed due to ' + status);
-            }
-        });
-    }
-
-    // two search boxes with IDs 'startInput' and 'endInput', ie start location end location
-    let startInput = document.getElementById('startInput');
-    let endInput = document.getElementById('endInput');
-    // Replace SearchBox with Autocomplete and include the options for restriction
-    let startAutocomplete = new google.maps.places.Autocomplete(startInput, autocompleteOptions);
-    let endAutocomplete = new google.maps.places.Autocomplete(endInput, autocompleteOptions);
-
-    var countyDublinBounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(53.2987, -6.3871), // Southwest coordinates
-        new google.maps.LatLng(53.4116, -6.1298)  // Northeast coordinates
-    );
-
-    // Set bounds for Autocomplete
-    startAutocomplete.setBounds(countyDublinBounds);
-    endAutocomplete.setBounds(countyDublinBounds);
-    startAutocomplete.addListener('place_changed', function () {
-        var place = startAutocomplete.getPlace();
-        if (place.geometry) {
-            lastSelectedStartPlace = place; // Store the last selected place
-        }
-    });
-
-    endAutocomplete.addListener('place_changed', function () {
-        var place = endAutocomplete.getPlace();
-        if (place.geometry) {
-            lastSelectedEndPlace = place; // Store the last selected place
-        }
-    });
-
-    let lastSelectedStartPlace = null;
-    let lastSelectedEndPlace = null;
-    document.getElementById('confirmStartLocation').addEventListener('click', function () {
-        if (lastSelectedStartPlace && lastSelectedStartPlace.geometry) {
-            var closestMarker = findClosestMarker(lastSelectedStartPlace.geometry.location);
-            if (closestMarker) {
-                // TODO return nearest station with free bikes
-                // Retrieve the selected travel mode from the radio buttons
-                let selectedMode = document.querySelector('input[name="travelMode"]:checked').value;
-
-                let origin = lastSelectedStartPlace.geometry.location;
-                let destination = closestMarker.position;
-                calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
-            }
-        } else {
-            alert('Please select a start location first.');
-        }
-    });
-
-    document.getElementById('confirmEndLocation').addEventListener('click', function () {
-        if (lastSelectedEndPlace && lastSelectedEndPlace.geometry) {
-            var closestMarker = findClosestMarker(lastSelectedEndPlace.geometry.location);
-            if (closestMarker) {
-                // TODO return nearest station with free parking
-
-                // Retrieve the selected travel mode from the radio buttons or dropdown
-                // This assumes  the same travel mode selection for both start and end locations
-
-                let selectedMode = document.querySelector('input[name="endTravelMode"]:checked') ? document.querySelector('input[name="endTravelMode"]:checked').value : document.querySelector('input[name="travelMode"]:checked').value;
-
-                let origin = lastSelectedEndPlace.geometry.location; // This now represents the end location's selected place
-                let destination = closestMarker.position; // The position of the closest marker to the end location
-
-                // Assuming you want to show the route from the end location to the closest station
-                // If you're looking to display the complete route from start to finish, including this segment, adjust accordingly
-                calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
-            }
-        } else {
-            alert('Please select an end location first.');
-        }
-    });
-
-
-
-    // Function to handle the confirm button click
-    document.getElementById('confirmButton').addEventListener('click', function () {
-        var startPlace = startSearchBox.getPlaces();
-        var endPlace = endSearchBox.getPlaces();
-
-        if (!startPlace || startPlace.length == 0 || !endPlace || endPlace.length == 0) {
-            alert('Please select both a start and an end location.');
-            return;
-        }
-
-        let selectedMode = 'DRIVING';
-        if (document.getElementById('modeWalk').checked) selectedMode = 'WALKING';
-        if (document.getElementById('modeBike').checked) selectedMode = 'BICYCLING';
-
-        calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, startPlace[0].geometry.location, endPlace[0].geometry.location);
-        if (status === 'OK') {
-            const route = response.routes[0].legs[0];
-            document.getElementById('journeyDistance').textContent = `Distance: ${route.distance.text}`;
-            document.getElementById('journeyTime').textContent = `Time: ${route.duration.text}`;
-        } else {
-            console.error('Directions request failed due to ' + status);
-            // update the HTML to indicate the error or that no data could be fetched
-            document.getElementById('journeyDistance').textContent = 'Distance: unavailable due to error';
-            document.getElementById('journeyTime').textContent = 'Time: unavailable due to error';
-        }
-
-    });
-
-    // need to fetchRealTime before stations
-    // so we can populate markers with the 
-    // realtime info as we create them
-    // map.addListener('zoom_changed', toggleHeatmapAndMarkers);
+async function fetchRealTime() {
+    const request = await fetch('/realtime')
+        .then((response) => response.json())
+    return request
 }
-function findClosestMarker(location) {
-    var closestMarker = null;
-    var closestDistance = Number.MAX_VALUE;
-
-    markers.forEach(function (marker) {
-        var distance = google.maps.geometry.spherical.computeDistanceBetween(
-            new google.maps.LatLng(marker.position.lat(), marker.position.lng()), location);
-
-        if (distance < closestDistance) {
-            closestDistance = distance;
-            closestMarker = marker;
-        }
-    });
-    return closestMarker;
-}
-
-function calculateAndDisplayRoute(marker) {
-    var request = {
-        origin: document.getElementById('searchInput').value,
-        destination: { lat: marker.position.lat(), lng: marker.position.lng() }, // Replace with the selected marker's coordinates
-        travelMode: 'WALKING'
-    };
-
-    directionsService.route(request, function (response, status) {
-        if (status === 'OK') {
-            directionsRenderer.setDirections(response);
-        } else {
-            window.alert('Directions request failed due to ' + status);
-        }
-    });
-}
-
-// need to fetchRealTime before stations
-// so we can populate markers with the 
-// realtime info as we create them
-// map.addListener('zoom_changed', toggleHeatmapAndMarkers);
 
 async function fetchStations() {
     let currentInfoWindow = null; // Variable to store the currently open info window
@@ -376,6 +206,180 @@ async function fetchStations() {
     return stations;
 }
 
+// changed this to async because it wouldn't work otherwise lol
+async function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 53.349805, lng: -6.26031 },
+        zoom: 13
+    });
+
+    // AUTOCOMPLETE PARAMS
+    const autocompleteOptions = {
+        componentRestrictions: { country: 'ie' }, // Restrict to Ireland
+        types: ['geocode'], // This restricts search to geographical location types.
+    };
+
+    let startInput = document.getElementById('startInput');
+    let endInput = document.getElementById('endInput');
+
+    let startAutocomplete = new google.maps.places.Autocomplete(startInput, autocompleteOptions);
+    let endAutocomplete = new google.maps.places.Autocomplete(endInput, autocompleteOptions);
+
+    var countyDublinBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(53.2987, -6.3871), // Southwest coordinates
+        new google.maps.LatLng(53.4116, -6.1298)  // Northeast coordinates
+    );
+
+    startAutocomplete.setBounds(countyDublinBounds);
+    endAutocomplete.setBounds(countyDublinBounds);
+
+    // PLACEHOLDERS FOR START AND END VALUES
+    let lastSelectedStartPlace = null;
+    let lastSelectedEndPlace = null;
+
+    // SEARCH EVENT LISTENERS
+    startAutocomplete.addListener('place_changed', function () {
+        var place = startAutocomplete.getPlace();
+        if (place.geometry) {
+            lastSelectedStartPlace = place; // Store the last selected place
+        }
+    });
+
+    endAutocomplete.addListener('place_changed', function () {
+        var place = endAutocomplete.getPlace();
+        if (place.geometry) {
+            lastSelectedEndPlace = place; // Store the last selected place
+        }
+    });
+
+    // DIRECTION SERVICES
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+
+    function calculateAndDisplayRoute(directionsService, directionsRenderer, travelMode, origin, destination) {
+        directionsService.route({
+            origin: origin,
+            destination: destination,
+            travelMode: travelMode
+        }, function (response, status) {
+            if (status === 'OK') {
+                directionsRenderer.setDirections(response);
+                // Display distance and duration
+                const route = response.routes[0].legs[0];
+                alert(`Distance: ${route.distance.text}, Duration: ${route.duration.text}`);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
+
+    document.getElementById('confirmStartLocation').addEventListener('click', function () {
+        if (lastSelectedStartPlace && lastSelectedStartPlace.geometry) {
+            var closestMarker = findClosestMarker(lastSelectedStartPlace.geometry.location);
+            if (closestMarker) {
+                // TODO return nearest station with free bikes
+
+                // Retrieve the selected travel mode from the radio buttons
+                let selectedMode = document.querySelector('input[name="travelMode"]:checked').value;
+
+                let origin = lastSelectedStartPlace.geometry.location;
+                let destination = closestMarker.position;
+                calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
+            }
+        } else {
+            alert('Please select a start location first.');
+        }
+    });
+
+    document.getElementById('confirmEndLocation').addEventListener('click', function () {
+        if (lastSelectedEndPlace && lastSelectedEndPlace.geometry) {
+            var closestMarker = findClosestMarker(lastSelectedEndPlace.geometry.location);
+            if (closestMarker) {
+                // TODO return nearest station with free parking
+
+                // Retrieve the selected travel mode from the radio buttons or dropdown
+                // This assumes  the same travel mode selection for both start and end locations
+
+                let selectedMode = document.querySelector('input[name="endTravelMode"]:checked') ? document.querySelector('input[name="endTravelMode"]:checked').value : document.querySelector('input[name="travelMode"]:checked').value;
+
+                let origin = lastSelectedEndPlace.geometry.location; // This now represents the end location's selected place
+                let destination = closestMarker.position; // The position of the closest marker to the end location
+
+                // Assuming you want to show the route from the end location to the closest station
+                // If you're looking to display the complete route from start to finish, including this segment, adjust accordingly
+                calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
+            }
+        } else {
+            alert('Please select an end location first.');
+        }
+    });
+
+    // Function to handle the confirm button click
+    document.getElementById('confirmButton').addEventListener('click', function () {
+        var startPlace = startSearchBox.getPlaces();
+        var endPlace = endSearchBox.getPlaces();
+
+        if (!startPlace || startPlace.length == 0 || !endPlace || endPlace.length == 0) {
+            alert('Please select both a start and an end location.');
+            return;
+        }
+        
+        // changed this to default to walking
+        let selectedMode = 'WALKING';
+        if (document.getElementById('modeDrive').checked) selectedMode = 'DRIVING';
+        if (document.getElementById('modeBike').checked) selectedMode = 'BICYCLING';
+
+        calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, startPlace[0].geometry.location, endPlace[0].geometry.location);
+        if (status === 'OK') {
+            const route = response.routes[0].legs[0];
+            document.getElementById('journeyDistance').textContent = `Distance: ${route.distance.text}`;
+            document.getElementById('journeyTime').textContent = `Time: ${route.duration.text}`;
+        } else {
+            console.error('Directions request failed due to ' + status);
+            // update the HTML to indicate the error or that no data could be fetched
+            document.getElementById('journeyDistance').textContent = 'Distance: unavailable due to error';
+            document.getElementById('journeyTime').textContent = 'Time: unavailable due to error';
+        }
+
+    });
+}
+
+// UTILITY FUNCTIONS
+function findClosestMarker(location) {
+    var closestMarker = null;
+    var closestDistance = Number.MAX_VALUE;
+
+    markers.forEach(function (marker) {
+        var distance = google.maps.geometry.spherical.computeDistanceBetween(
+            new google.maps.LatLng(marker.position.lat(), marker.position.lng()), location);
+
+        if (distance < closestDistance) {
+            closestDistance = distance;
+            closestMarker = marker;
+        }
+    });
+    return closestMarker;
+}
+
+function calculateAndDisplayRoute(marker) {
+    var request = {
+        origin: document.getElementById('searchInput').value,
+        destination: { lat: marker.position.lat(), lng: marker.position.lng() }, // Replace with the selected marker's coordinates
+        travelMode: 'WALKING'
+    };
+
+    directionsService.route(request, function (response, status) {
+        if (status === 'OK') {
+            directionsRenderer.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
+}
+
+
+
 function sortedWeekdays() { // Allows for the days to be sorted in the dropdown from Today to Next Week (inclusive)
     let today = new Date();
     let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -483,13 +487,6 @@ async function submitForm() {
         .catch(error => console.error('Error:', error));
 
     return prediction
-}
-
-
-async function fetchRealTime() {
-    const request = await fetch('/realtime')
-        .then((response) => response.json())
-    return request
 }
 
 async function fetchRealTimeWeather() {
