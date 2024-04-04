@@ -197,7 +197,6 @@ function findClosestMarker(location) {
             });
             return closestMarker;
           }
-      });
 
       function calculateAndDisplayRoute(marker) {  
         var request = {
@@ -219,7 +218,7 @@ function findClosestMarker(location) {
     // so we can populate markers with the 
     // realtime info as we create them
     // map.addListener('zoom_changed', toggleHeatmapAndMarkers);
-}
+    
 async function fetchStations() {
     let currentInfoWindow = null; // Variable to store the currently open info window
 
