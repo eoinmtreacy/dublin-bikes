@@ -233,5 +233,53 @@ def realtime():
         data = json.load(file)
     return jsonify(data)
 
+@app.route('/recent', methods=['POST'])
+def recent():
+    # post method that takes a station number
+    # and current time that represents an hour 
+    # and returns an array of the average
+    # availability for the last 12 hours
+    # at that station
+
+    if request.method == 'POST':
+        data = request.json
+        station = data['station_number']
+        try :
+            conn = mysql.connector.connect(
+            host=DB,
+            user=DB_USER,
+            password=DB_PW,
+            database=CITY
+            )
+
+            cursor = conn.cursor()
+
+            query = (
+                f"""
+                SELECT HOUR(FROM_UNIXTIME(last_update)) AS hour_of_day,
+                    AVG(available_bikes) AS average_available_bikes
+                FROM 
+                    availability
+                WHERE 
+                    number = {station}
+                    AND last_update >= UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 12 HOUR))
+                GROUP BY 
+                    HOUR(FROM_UNIXTIME(last_update))
+                ORDER BY 
+                    hour_of_day;
+                """
+            )
+
+            cursor.execute(query)
+            results = cursor.fetchall()
+            cursor.close()
+            conn.close()
+            print("Succesfully got recent data")
+            return jsonify(results)
+
+        except:
+            print("Error fetching recent data")
+            return 'FAILURE realtime'
+
 if __name__ == '__main__':
     app.run(debug=True)

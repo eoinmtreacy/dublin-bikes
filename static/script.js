@@ -47,11 +47,27 @@ async function createMarkers(stations) {
             content: contentString
         });
 
-        marker.addListener('click', () => {
+        marker.addListener('click', async () => {
             // Close the current info window if it exists
             if (currentInfoWindow) {
                 currentInfoWindow.close();
             }
+
+            const recent_avail = await fetch('/recent', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    station_number: station.number
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    return data
+                })
+                .catch(error => console.error('Error:', error));
 
             // Open the info window for the clicked marker
             infoWindow.open({
