@@ -280,6 +280,55 @@ def recent():
         except:
             print("Error fetching recent data")
             return 'FAILURE realtime'
+        
+@app.route('/lastweek', methods=['POST'])
+def last_week():
+    # post method that takes a station number
+    # and current time that represents an hour 
+    # and returns an array of the average
+    # availability for the last 12 hours
+    # at that station
+
+    if request.method == 'POST':
+        data = request.json
+        station = data['station_number']
+        try :
+            conn = mysql.connector.connect(
+            host=DB,
+            user=DB_USER,
+            password=DB_PW,
+            database=CITY
+            )
+
+            cursor = conn.cursor()
+
+            query = (
+                f"""
+                    SELECT DATE(FROM_UNIXTIME(last_update)) AS day,
+                        AVG(available_bikes) AS avg_available_bikes
+                    FROM 
+                        availability
+                    WHERE 
+                        number = {station}
+                        AND FROM_UNIXTIME(last_update) >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK) -- Filter for the last week
+                        AND FROM_UNIXTIME(last_update) < CURDATE() -- Exclude today
+                    GROUP BY 
+                        DATE(FROM_UNIXTIME(last_update))  -- Group by date to get averages for each day
+                    ORDER BY 
+                        day ASC;  -- Order by day in descending order
+                """
+            )
+
+            cursor.execute(query)
+            results = cursor.fetchall()
+            cursor.close()
+            conn.close()
+            print("Succesfully got recent data")
+            return jsonify(results)
+
+        except:
+            print("Error fetching recent data")
+            return 'FAILURE realtime'
 
 if __name__ == '__main__':
     app.run(debug=True)
