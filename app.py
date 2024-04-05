@@ -10,7 +10,7 @@ from datetime import datetime
 import atexit
 import pickle
 import numpy as np
-from sklearn.preprocessing import PolynomialFeatures
+from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 
 # initialise flask app
 app = Flask(__name__)
@@ -118,23 +118,19 @@ def predict():
 
         # Linear model trained on Polynomial
         # transformation of these features
-        poly = PolynomialFeatures(degree=4)
-        X_poly = poly.fit_transform(np.asarray(depart[1:]).reshape(1, -1))
+        scaler = StandardScaler()
+        scaled_X = scaler.fit_transform(np.asarray(depart[1:]).reshape(1,-1))
 
-        # format query corretly for the model
-        departPrediction = model.predict(X_poly)
+        departPrediction = model.predict(scaled_X)
 
         # import model for arrive station
         with open(f'./models/{arrive[0]}.pkl', 'rb') as file:
             model = pickle.load(file)
 
-        # Linear model trained on Polynomial
-        # transformation of these features
-        poly = PolynomialFeatures(degree=4)
-        X_poly = poly.fit_transform(np.asarray(arrive[1:]).reshape(1, -1))
+        scaler = StandardScaler()
+        scaled_X = scaler.fit_transform(np.asarray(arrive[1:]).reshape(1,-1))
 
-        # format query corretly for the model
-        arrivePrediction = model.predict(X_poly)
+        arrivePrediction = model.predict(scaled_X)
 
         # Perform operations with the dropdown values
         # For example, you could process them and return a result
