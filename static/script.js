@@ -303,7 +303,6 @@ async function initMap() {
             let closestStation = findClosestStation(lastSelectedEndPlace.geometry.location);
             if (closestStation) {
                 // TODO return nearest station with free parking
-
                 let origin = lastSelectedEndPlace.geometry.location; // This now represents the end location's selected place
                 let destination = closestStation.marker.position; // The position of the closest marker to the end location
 
@@ -367,22 +366,6 @@ function findClosestStation(location) {
         }
     });
     return closestStation;
-}
-
-function calculateAndDisplayRoute(station) {
-    let request = {
-        origin: document.getElementById('searchInput').value,
-        destination: { lat: station.marker.position.lat(), lng: station.marker.position.lng() }, // Replace with the selected marker's coordinates
-        travelMode: 'WALKING'
-    };
-
-    directionsService.route(request, function (response, status) {
-        if (status === 'OK') {
-            directionsRenderer.setDirections(response);
-        } else {
-            window.alert('Directions request failed due to ' + status);
-        }
-    });
 }
 
 function getStationCoordinates(stationName, stationsData) {
