@@ -287,9 +287,6 @@ async function initMap() {
             if (closestStation) {
                 // TODO return nearest station with free bikes
 
-                // Retrieve the selected travel mode from the radio buttons
-                let selectedMode = document.querySelector('input[name="travelMode"]:checked').value;
-
                 let origin = lastSelectedStartPlace.geometry.location;
                 let destination = closestStation.marker.position; // e.g. of accessing station.marker attribute
 
@@ -306,11 +303,6 @@ async function initMap() {
             let closestStation = findClosestStation(lastSelectedEndPlace.geometry.location);
             if (closestStation) {
                 // TODO return nearest station with free parking
-
-                // Retrieve the selected travel mode from the radio buttons or dropdown
-                // This assumes  the same travel mode selection for both start and end locations
-
-                let selectedMode = document.querySelector('input[name="endTravelMode"]:checked') ? document.querySelector('input[name="endTravelMode"]:checked').value : document.querySelector('input[name="travelMode"]:checked').value;
 
                 let origin = lastSelectedEndPlace.geometry.location; // This now represents the end location's selected place
                 let destination = closestStation.marker.position; // The position of the closest marker to the end location
