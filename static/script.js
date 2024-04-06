@@ -245,8 +245,17 @@ async function initMap() {
     let lastSelectedEndPlace = null;
 
     // SEARCH EVENT LISTENERS
-    startAutocomplete.addListener('place_changed', () => origin = startAutocomplete.getPlace().geometry.location)
-    endAutocomplete.addListener('place_changed', () => destination = endAutocomplete.getPlace().geometry.location)
+    startAutocomplete.addListener('place_changed', () => {
+        origin = startAutocomplete.getPlace().geometry.location
+        depart = findClosestStation(origin)
+        console.log(origin, depart);
+    })
+
+    endAutocomplete.addListener('place_changed', () => {
+        destination = endAutocomplete.getPlace().geometry.location
+        arrive = findClosestStation(destination)
+        console.log(arrive, destination);
+    })
 
     // DIRECTION SERVICES
     function calculateAndDisplayRoute(travelMode, origin, destination, depart, arrive) {
@@ -277,10 +286,10 @@ async function initMap() {
 
         if (!startPlace || startPlace.length == 0 || !endPlace || endPlace.length == 0) {
             alert('Please select both a start and an end location.');
-            return;
         }
-
-        calculateAndDisplayRoute(startPlace[0].geometry.location, endPlace[0].geometry.location);
+        else {
+            calculateAndDisplayRoute(startPlace[0].geometry.location, endPlace[0].geometry.location);
+        }
 
         // if (status === 'OK') {
         //     const route = response.routes[0].legs[0];
