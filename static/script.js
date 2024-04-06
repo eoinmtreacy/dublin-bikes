@@ -290,7 +290,7 @@ async function initMap() {
                 let origin = lastSelectedStartPlace.geometry.location;
                 let destination = closestStation.marker.position; // e.g. of accessing station.marker attribute
 
-                calculateAndDisplayRoute(selectedMode, origin, destination);
+                calculateAndDisplayRoute(origin, destination);
                 depart = closestStation
             }
         } else {
@@ -308,7 +308,7 @@ async function initMap() {
 
                 // Assuming you want to show the route from the end location to the closest station
                 // If you're looking to display the complete route from start to finish, including this segment, adjust accordingly
-                calculateAndDisplayRoute(selectedMode, origin, destination);
+                calculateAndDisplayRoute(origin, destination);
                 arrive = closestStation
             }
         } else {
@@ -326,17 +326,18 @@ async function initMap() {
             return;
         }
 
-        calculateAndDisplayRoute(selectedMode, startPlace[0].geometry.location, endPlace[0].geometry.location);
-        if (status === 'OK') {
-            const route = response.routes[0].legs[0];
-            document.getElementById('journeyDistance').textContent = `Distance: ${route.distance.text}`;
-            document.getElementById('journeyTime').textContent = `Time: ${route.duration.text}`;
-        } else {
-            console.error('Directions request failed due to ' + status);
-            // update the HTML to indicate the error or that no data could be fetched
-            document.getElementById('journeyDistance').textContent = 'Distance: unavailable due to error';
-            document.getElementById('journeyTime').textContent = 'Time: unavailable due to error';
-        }
+        calculateAndDisplayRoute(startPlace[0].geometry.location, endPlace[0].geometry.location);
+
+        // if (status === 'OK') {
+        //     const route = response.routes[0].legs[0];
+        //     document.getElementById('journeyDistance').textContent = `Distance: ${route.distance.text}`;
+        //     document.getElementById('journeyTime').textContent = `Time: ${route.duration.text}`;
+        // } else {
+        //     console.error('Directions request failed due to ' + status);
+        //     // update the HTML to indicate the error or that no data could be fetched
+        //     document.getElementById('journeyDistance').textContent = 'Distance: unavailable due to error';
+        //     document.getElementById('journeyTime').textContent = 'Time: unavailable due to error';
+        // }
 
     });
 }
