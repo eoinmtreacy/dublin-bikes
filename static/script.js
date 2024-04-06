@@ -260,11 +260,11 @@ async function initMap() {
     });
 
     // DIRECTION SERVICES
-    const directionsService = new google.maps.DirectionsService();
-    const directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(map);
+    function calculateAndDisplayRoute(travelMode, origin, destination, depart, arrive) {
+        const directionsService = new google.maps.DirectionsService();
+        const directionsRenderer = new google.maps.DirectionsRenderer();
+        directionsRenderer.setMap(map);
 
-    function calculateAndDisplayRoute(directionsService, directionsRenderer, travelMode, origin, destination) {
         directionsService.route({
             origin: origin,
             destination: destination,
@@ -290,7 +290,7 @@ async function initMap() {
                 let origin = lastSelectedStartPlace.geometry.location;
                 let destination = closestStation.marker.position; // e.g. of accessing station.marker attribute
 
-                calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
+                calculateAndDisplayRoute(selectedMode, origin, destination);
                 depart = closestStation
             }
         } else {
@@ -308,7 +308,7 @@ async function initMap() {
 
                 // Assuming you want to show the route from the end location to the closest station
                 // If you're looking to display the complete route from start to finish, including this segment, adjust accordingly
-                calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
+                calculateAndDisplayRoute(selectedMode, origin, destination);
                 arrive = closestStation
             }
         } else {
@@ -326,12 +326,7 @@ async function initMap() {
             return;
         }
 
-        // changed this to default to walking
-        let selectedMode = 'WALKING';
-        if (document.getElementById('modeDrive').checked) selectedMode = 'DRIVING';
-        if (document.getElementById('modeBike').checked) selectedMode = 'BICYCLING';
-
-        calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, startPlace[0].geometry.location, endPlace[0].geometry.location);
+        calculateAndDisplayRoute(selectedMode, startPlace[0].geometry.location, endPlace[0].geometry.location);
         if (status === 'OK') {
             const route = response.routes[0].legs[0];
             document.getElementById('journeyDistance').textContent = `Distance: ${route.distance.text}`;
