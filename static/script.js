@@ -1,5 +1,5 @@
 let STATIONS
-let depart, arrive
+let origin, depart, arrive, destination
 
 document.addEventListener('DOMContentLoaded', async () => {
     const map = await initMap()
@@ -245,19 +245,8 @@ async function initMap() {
     let lastSelectedEndPlace = null;
 
     // SEARCH EVENT LISTENERS
-    startAutocomplete.addListener('place_changed', function () {
-        let place = startAutocomplete.getPlace();
-        if (place.geometry) {
-            lastSelectedStartPlace = place; // Store the last selected place
-        }
-    });
-
-    endAutocomplete.addListener('place_changed', function () {
-        let place = endAutocomplete.getPlace();
-        if (place.geometry) {
-            lastSelectedEndPlace = place; // Store the last selected place
-        }
-    });
+    startAutocomplete.addListener('place_changed', () => origin = startAutocomplete.getPlace().geometry.location)
+    endAutocomplete.addListener('place_changed', () => destination = endAutocomplete.getPlace().geometry.location)
 
     // DIRECTION SERVICES
     function calculateAndDisplayRoute(travelMode, origin, destination, depart, arrive) {
@@ -280,41 +269,6 @@ async function initMap() {
             }
         });
     }
-
-    document.getElementById('confirmStartLocation').addEventListener('click', function () {
-        if (lastSelectedStartPlace && lastSelectedStartPlace.geometry) {
-            let closestStation = findClosestStation(lastSelectedStartPlace.geometry.location);
-            if (closestStation) {
-                // TODO return nearest station with free bikes
-
-                let origin = lastSelectedStartPlace.geometry.location;
-                let destination = closestStation.marker.position; // e.g. of accessing station.marker attribute
-
-                calculateAndDisplayRoute(origin, destination);
-                depart = closestStation
-            }
-        } else {
-            alert('Please select a start location first.');
-        }
-    });
-
-    document.getElementById('confirmEndLocation').addEventListener('click', function () {
-        if (lastSelectedEndPlace && lastSelectedEndPlace.geometry) {
-            let closestStation = findClosestStation(lastSelectedEndPlace.geometry.location);
-            if (closestStation) {
-                // TODO return nearest station with free parking
-                let origin = lastSelectedEndPlace.geometry.location; // This now represents the end location's selected place
-                let destination = closestStation.marker.position; // The position of the closest marker to the end location
-
-                // Assuming you want to show the route from the end location to the closest station
-                // If you're looking to display the complete route from start to finish, including this segment, adjust accordingly
-                calculateAndDisplayRoute(origin, destination);
-                arrive = closestStation
-            }
-        } else {
-            alert('Please select an end location first.');
-        }
-    });
 
     // Function to handle the confirm button click
     document.getElementById('confirmButton').addEventListener('click', function () {
