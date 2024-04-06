@@ -240,15 +240,11 @@ async function initMap() {
     startAutocomplete.setBounds(countyDublinBounds);
     endAutocomplete.setBounds(countyDublinBounds);
 
-    // PLACEHOLDERS FOR START AND END VALUES
-    let lastSelectedStartPlace = null;
-    let lastSelectedEndPlace = null;
-
     // SEARCH EVENT LISTENERS
     startAutocomplete.addListener('place_changed', () => {
         origin = startAutocomplete.getPlace().geometry.location
         depart = findClosestStation(origin)
-        console.log(origin, depart);
+        console.log(origin, depart.marker.position);
     })
 
     endAutocomplete.addListener('place_changed', () => {
@@ -258,37 +254,75 @@ async function initMap() {
     })
 
     // DIRECTION SERVICES
-    function calculateAndDisplayRoute(travelMode, origin, destination, depart, arrive) {
+    async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
         const directionsService = new google.maps.DirectionsService();
-        const directionsRenderer = new google.maps.DirectionsRenderer();
-        directionsRenderer.setMap(map);
+
+        let firstLeg = new google.maps.DirectionsRenderer()
+        let secondLeg = new google.maps.DirectionsRenderer()
+        let thirdLeg = new google.maps.DirectionsRenderer()
+
+          // Set maps for each renderer
+        firstLeg.setMap(map);
+        secondLeg.setMap(map);
+        thirdLeg.setMap(map);
 
         directionsService.route({
             origin: origin,
-            destination: destination,
-            travelMode: travelMode
+            destination: depart.marker.position,
+            travelMode: 'WALKING'
         }, function (response, status) {
             if (status === 'OK') {
-                directionsRenderer.setDirections(response);
+                console.log(response);
+                firstLeg.setDirections(response);
                 // Display distance and duration
                 const route = response.routes[0].legs[0];
-                alert(`Distance: ${route.distance.text}, Duration: ${route.duration.text}`);
+                // alert(`Distance: ${route.distance.text}, Duration: ${route.duration.text}`);
             } else {
                 window.alert('Directions request failed due to ' + status);
             }
-        });
+        })
+
+        directionsService.route({
+            origin: depart.marker.position,
+            destination: arrive.marker.position,
+            travelMode: 'BICYCLING'
+        }, function (response, status) {
+            if (status === 'OK') {
+                console.log(response);
+                secondLeg.setDirections(response);
+                // Display distance and duration
+                const route = response.routes[0].legs[0];
+                // alert(`Distance: ${route.distance.text}, Duration: ${route.duration.text}`);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        })
+
+        directionsService.route({
+            origin: arrive.marker.position,
+            destination: destination,
+            travelMode: 'WALKING'
+        }, function (response, status) {
+            if (status === 'OK') {
+                console.log(response);
+                thirdLeg.setDirections(response);
+                // Display distance and duration
+                const route = response.routes[0].legs[0];
+                // alert(`Distance: ${route.distance.text}, Duration: ${route.duration.text}`);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        })
     }
 
     // Function to handle the confirm button click
     document.getElementById('confirmButton').addEventListener('click', function () {
-        let startPlace = startSearchBox.getPlaces();
-        let endPlace = endSearchBox.getPlaces();
 
-        if (!startPlace || startPlace.length == 0 || !endPlace || endPlace.length == 0) {
+        if (!origin || !destination) {
             alert('Please select both a start and an end location.');
         }
         else {
-            calculateAndDisplayRoute(startPlace[0].geometry.location, endPlace[0].geometry.location);
+            calculateAndDisplayRoute(origin, depart, arrive, destination);
         }
 
         // if (status === 'OK') {
