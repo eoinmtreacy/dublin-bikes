@@ -10,7 +10,7 @@ from datetime import datetime
 import atexit
 import pickle
 import numpy as np
-from sklearn.preprocessing import PolynomialFeatures
+from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 
 # initialise flask app
 app = Flask(__name__)
@@ -105,11 +105,11 @@ def predict():
         arriveTime = data['arriveTime']
         arriveDay = data['arriveDay']
         rain = data['rain']
-        temp = data['temp']
-        hum = data['hum']
+        temperature = data['temperature']
+        humidity = data['humidity']
 
-        depart = [depart] + [int(departTime)] + departDay + [int(rain)] + [int(temp)] + [int(hum)]
-        arrive = [arrive] + [int(arriveTime)] + arriveDay + [int(rain)] + [int(temp)] + [int(hum)]
+        depart = [depart] + [int(departTime)] + departDay + [int(rain)] + [int(temperature)] + [int(humidity)]
+        arrive = [arrive] + [int(arriveTime)] + arriveDay + [int(rain)] + [int(temperature)] + [int(humidity)]
 
 
         # import model for depart station
@@ -118,11 +118,11 @@ def predict():
 
         # Linear model trained on Polynomial
         # transformation of these features
-        poly = PolynomialFeatures(degree=4)
-        X_poly = poly.fit_transform(np.asarray(depart[1:]).reshape(1, -1))
+        scaler = StandardScaler()
+        scaled_X = scaler.fit_transform(np.asarray(depart[1:]).reshape(1,-1))
 
         # format query corretly for the model
-        departPrediction = model.predict(X_poly)
+        departPrediction = model.predict(scaled_X)
 
         # import model for arrive station
         with open(f'./models/{arrive[0]}.pkl', 'rb') as file:
@@ -130,11 +130,11 @@ def predict():
 
         # Linear model trained on Polynomial
         # transformation of these features
-        poly = PolynomialFeatures(degree=4)
-        X_poly = poly.fit_transform(np.asarray(arrive[1:]).reshape(1, -1))
+        scaler = StandardScaler()
+        scaled_X = scaler.fit_transform(np.asarray(arrive[1:]).reshape(1,-1))
 
         # format query corretly for the model
-        arrivePrediction = model.predict(X_poly)
+        arrivePrediction = model.predict(scaled_X)
 
         # Perform operations with the dropdown values
         # For example, you could process them and return a result
@@ -146,53 +146,88 @@ def predict():
     else:
         return 'Method not allowed'
 
+
+@app.route('/predictHourly', methods=['POST'])
+# Adapted from /predict
+def predictHourly():
+    if request.method == 'POST':
+        data = request.json
+        print(data)
+        station = data['station']
+        time = data['time']
+        rain = data['rain']
+        temperature = data['temperature']
+        humidity = data['humidity']
+
+        hourAvailibility = [station] + [int(time)] + [1, 0, 0, 0, 0, 0, 0] + [int(rain)] + [int(temperature)] + [int(humidity)] # [Station Number + [Hour] + [Today] + [Rainfall] + [Temperature] + [Humidity]
+
+
+        # import model for station
+        with open(f'./models/{hourAvailibility[0]}.pkl', 'rb') as file:
+            model = pickle.load(file)
+
+        # Linear model trained on Polynomial
+        # transformation of these features
+        scaler = StandardScaler()
+        scaled_X = scaler.fit_transform(np.asarray(hourAvailibility[1:]).reshape(1,-1))
+
+        # format query corretly for the model
+        hourAvailibilityPrediction = model.predict(scaled_X)
+
+        result = hourAvailibilityPrediction[0]
+        print("Hour:", time, "Prediction", result)
+        return str(result)
+    else:
+        return 'Method not allowed'
+    
+    
 # Open the JSON file for reading
 @app.route('/stations')
 def stations():
     # this won't work on campus without an SSH tunnel but should be okay at home 
-    # try:
-    #     conn = mysql.connector.connect(
-    #     host=DB,
-    #     user=DB_USER,
-    #     password=DB_PW,
-    #     database=CITY
-    #     )
+    try:
+        conn = mysql.connector.connect(
+        host=DB,
+        user=DB_USER,
+        password=DB_PW,
+        database=CITY
+        )
 
-    #     cursor = conn.cursor()
+        cursor = conn.cursor()
 
-    #     query = (
-    #         "SELECT * "
-    #         "FROM stations"
-    #     )
+        query = (
+            "SELECT * "
+            "FROM stations"
+        )
 
-    #     cursor.execute(query)
+        cursor.execute(query)
 
-    #     columns = [desc[0] for desc in cursor.description]
+        columns = [desc[0] for desc in cursor.description]
 
-    #     # Fetch all rows
-    #     rows = cursor.fetchall()
+        # Fetch all rows
+        rows = cursor.fetchall()
 
-    #     # Combine column names and data into a list of dictionaries
-    #     results = []
-    #     for row in rows:
-    #         result = {}
-    #         for i in range(len(columns)):
-    #             result[columns[i]] = row[i]
-    #         results.append(result)
+        # Combine column names and data into a list of dictionaries
+        results = []
+        for row in rows:
+            result = {}
+            for i in range(len(columns)):
+                result[columns[i]] = row[i]
+            results.append(result)
 
-    #     # with open('static/stations.json', 'w') as json_file:
-    #     #     json.dump(results, json_file)
+        # with open('static/stations.json', 'w') as json_file:
+        #     json.dump(results, json_file)
 
-    #     cursor.close()
-    #     conn.close()
-    #     print("Data fetched from databse")
-    #     return jsonify(data=results)
+        cursor.close()
+        conn.close()
+        print("Data fetched from databse")
+        return jsonify(data=results)
 
-    # except:
-    print("Error fetching from DB, parsing local file")
-    with open('stations.json', 'r') as file:
-        data = json.load(file)
-    return jsonify(data=data)
+    except:
+        print("Error fetching from DB, parsing local file")
+        with open('stations/dublin_stations.json', 'r') as file:
+            data = json.load(file)
+        return data['stations']
     
 @app.route('/realtime')
 def realtime():
@@ -200,38 +235,39 @@ def realtime():
     for each station
     return for pop-up UI"""
 
-    # try:
-    #     conn = mysql.connector.connect(
-    #     host=DB,
-    #     user=DB_USER,
-    #     password=DB_PW,
-    #     database=CITY
-    #     )
+    try:
+        conn = mysql.connector.connect(
+        host=DB,
+        user=DB_USER,
+        password=DB_PW,
+        database=CITY
+        )
 
-    #     cursor = conn.cursor()
+        cursor = conn.cursor()
 
-    #     query = (
-    #         """SELECT number, available_bikes, MAX(last_update) AS time
-    #         FROM availability
-    #         GROUP BY number;
-    #         """
-    #     )
+        query = (
+            """SELECT number, available_bikes, MAX(last_update) AS time
+            FROM availability
+            GROUP BY number;
+            """
+        )
 
-    #     cursor.execute(query)
-    #     results = cursor.fetchall()
-    #     cursor.close()
-    #     conn.close()
-    #     print("Succesfully got realtime")
-    #     return jsonify(results)
+        cursor.execute(query)
+        rows = cursor.fetchall()
 
-    # except:
-    #     print("Error fetching realtime")
-    #     return 'FAILURE realtime'
+        stationIds = [row[0] for row in rows]
+        availability = [row[1] for row in rows]
 
-    print("Error fetching from DB, parsing local file")
-    with open('realtime.json', 'r') as file:
-        data = json.load(file)
-    return jsonify(data)
+        results = {id: avail for id, avail in zip(stationIds, availability)}
+
+        cursor.close()
+        conn.close()
+        print("Succesfully got realtime")
+        return jsonify(results)
+
+    except:
+        print("Error fetching realtime")
+        return 'FAILURE realtime'
 
 if __name__ == '__main__':
     app.run(debug=True)
