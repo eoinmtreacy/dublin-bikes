@@ -256,6 +256,17 @@ async function initMap() {
         zoom: 13
     });
 
+    var noPoi = [
+        {
+            featureType: "poi",
+            stylers: [
+              { visibility: "off" }
+            ]   
+          }
+        ];
+        
+    map.setOptions({styles: noPoi});
+
     // AUTOCOMPLETE PARAMS
     const autocompleteOptions = {
         componentRestrictions: { country: 'ie' }, // Restrict to Ireland
