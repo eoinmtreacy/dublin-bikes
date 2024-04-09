@@ -54,7 +54,7 @@ def main(arg):
     headers = {"accept": "application/json"}
     url = f"http://api.weatherapi.com/v1/forecast.json?key={WEATHER_API_KEY}=Dublin&aqi=no&alerts=no" # 7 day forecast including realtime
     r_weather = requests.get(url, headers=headers)
-    
+
     if r_weather.status != 200:
         print(f"Failed to fetch from weather API. Status Code: {r_weather.status_code}")
     else: 
@@ -62,13 +62,30 @@ def main(arg):
         response_dictionary = r_weather.json()
         weather_data_cache = response_dictionary
 
-        current_data = weather_data_cache['current']
-        weather_data = {
-            'last_update': current_data['last_updated_epoch'],
-            'rain': current_data['precip_mm'],
-            'temp': current_data['temp_c'],
-            'hum': current_data['humidity']
-        }
+        try:
+            conn = mysql.connector.connect(
+                host=DB,
+                user=DB_USER,
+                password=DB_PW,
+                database=arg
+            )
+
+            cursor = conn.cursor()
+
+            current_data = weather_data_cache['current']
+
+            cursor.execute("""
+                    INSERT INTO weather (last_update, rain, temp, hum)
+                    VALUES (%s, %s, %s, %s)
+                """, (current_data['last_updated_epoch'],
+                      current_data['precip_mm'],
+                      current_data['temp_c'],
+                      current_data['humidity']))
+
+            conn.commit()
+        
+        except mysql.connector.Error as e:
+            print(e)
 
 if __name__ == "__main__":
     # Check if there is exactly one command-line argument (excluding the script name)
