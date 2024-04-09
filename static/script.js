@@ -68,6 +68,22 @@ async function createMarkers(stations) {
                 })
                 .catch(error => console.error('Error:', error));
 
+            const last_week = await fetch('/lastweek', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    station_number: station.number
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    return data
+                })
+                .catch(error => console.error('Error:', error));
+
             // Open the info window for the clicked marker
             infoWindow.open({
                 anchor: marker,
@@ -84,7 +100,7 @@ async function createMarkers(stations) {
                 new Chart(ctxDay, {
                     type: 'bar',
                     data: {
-                        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                        labels: last_week.map(l => l[0].slice(0,3)),
                         datasets: [{
                             label: 'Bike Availability',
                             // get time
