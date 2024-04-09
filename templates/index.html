@@ -7,8 +7,11 @@
     <title>UCD Dublin Bikes Info</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.js" integrity="sha512-XcsV/45eM/syxTudkE8AoKK1OfxTrlFpOltc9NmHXh3HF+0ZA917G9iG6Fm7B6AzP+UeEzV8pLwnbRNPxdUpfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.js"
+        integrity="sha512-XcsV/45eM/syxTudkE8AoKK1OfxTrlFpOltc9NmHXh3HF+0ZA917G9iG6Fm7B6AzP+UeEzV8pLwnbRNPxdUpfA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+        src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=visualization,places,geometry&callback=initMap"></script>
 </head>
@@ -17,7 +20,7 @@
     <header class="bg-slate-200 py-3 px-4 flex items-center justify-between">
         <div class="flex items-center">
             <ion-icon name="menu-outline" class="text-black text-4xl pr-4" id="menuToggle"></ion-icon>
-            
+
         </div>
         <div class="weather-info flex items-center text-xl font-semibold text-gray-800">
             <span id="weather-description" class="mr-4">Loading weather data...</span>
@@ -26,8 +29,8 @@
             <span id="weather-humidity" class="mr-4">Humidity: ...%</span>
             <span id="weather-precipitation">Precipitation: ...mm</span>
         </div>
-        
-        
+
+
         <!-- <select id="markerSelect">
             <option value="">Select a marker</option>
         </select> -->
@@ -35,107 +38,113 @@
     <div class="flex">
         <div class="flex">
             <nav id="navbar"
-     class="bg-slate-200 transform top-0 left-0 w-64 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
-     style="transform: translateX(-100%)">
+                class="bg-slate-200 transform top-0 left-0 w-64 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
+                style="transform: translateX(-100%)">
 
-    <div class="flex flex-col items-center pt-8">
-        <ion-icon name="bicycle-outline" class="text-black text-4xl mb-8"></ion-icon>
-        
-       
+                <div class="flex flex-col items-center pt-8">
+                    <ion-icon name="bicycle-outline" class="text-black text-4xl mb-8"></ion-icon>
+
+
+                </div>
         </div>
+
     </div>
-     
-                                    </div>
-                                    <!-- Google Maps Direction button, styled to appear to the right of Submit button. Hidden. Becomes Visible when form is submitted-->
-                                    
-    
-</nav>
+    <!-- Google Maps Direction button, styled to appear to the right of Submit button. Hidden. Becomes Visible when form is submitted-->
+
+
+    </nav>
+    </div>
+    <main id="main-content" class="flex-1 p-4">
+        <div id="map" class="w-full h-screen rounded-lg" style="height: calc(100vh - 64px);"></div>
+        <div class="text-white text-3xl font-bold text-center my-4">
+            Journey Planner
         </div>
-        <main id="main-content" class="flex-1 p-4">
-            <div id="map" class="w-full h-screen rounded-lg" style="height: calc(100vh - 64px);"></div>
-            <div class="text-white text-3xl font-bold text-center my-4">
-    Journey Planner
-</div>
 
 
 
-            <!--  Planning Panel -->
-            <div class="mt-auto"></div>
-            <div class="bg-gray-900 p-8 rounded-lg shadow-lg mx-4 mb-4">
-                <form id="myForm" class="space-y-4">
-                    <div class="text-white text-lg mb-2">
-                        Choose your start destination location then hit accept to find nearest station to you and navigation
+        <!--  Planning Panel -->
+        <div class="mt-auto"></div>
+        <div class="bg-gray-900 p-8 rounded-lg shadow-lg mx-4 mb-4">
+            <form id="myForm" class="space-y-4">
+                <div class="text-white text-lg mb-2">
+                    Choose your start destination location then hit accept to find nearest station to you and navigation
+                </div>
+                <!-- Start Location Row -->
+                <div class="flex flex-wrap items-center -mx-2">
+                    <div class="px-2 w-full sm:w-1/2">
+                        <label for="startInput" class="block text-sm font-medium text-white mb-1">Start:</label>
+                        <input id="startInput" type="text" placeholder="Start location"
+                            class="w-full p-2 bg-gray-200 rounded text-black">
                     </div>
-                    <!-- Start Location Row -->
-                    <div class="flex flex-wrap items-center -mx-2">
-                        <div class="px-2 w-full sm:w-1/2">
-                            <label for="startInput" class="block text-sm font-medium text-white mb-1">Start:</label>
-                            <input id="startInput" type="text" placeholder="Start location" class="w-full p-2 bg-gray-200 rounded text-black">
-                        </div>
-                    </div>
-                    
-                    <!-- Start Time and Day Row -->
-                    
-                    <div class="text-white text-lg mb-2 mt-4">
-                        Choose your end destination and hit accept for the nearest station and navigation
-                    </div>
-                    <!-- End Location Row -->
-                    <div class="flex flex-wrap items-center -mx-2">
-                        <div class="px-2 w-full sm:w-1/2">
-                            <label for="endInput" class="block text-sm font-medium text-white mb-1">End:</label>
-                            <input id="endInput" type="text" placeholder="End location" class="w-full p-2 bg-gray-200 rounded text-black">
-                        </div>
-                    </div>
-                    
-                    <!-- End Time and Day Row -->
-                    
+                </div>
 
+                <!-- Start Time and Day Row -->
+
+                <div class="text-white text-lg mb-2 mt-4">
+                    Choose your end destination and hit accept for the nearest station and navigation
+                </div>
+                <!-- End Location Row -->
+                <div class="flex flex-wrap items-center -mx-2">
+                    <div class="px-2 w-full sm:w-1/2">
+                        <label for="endInput" class="block text-sm font-medium text-white mb-1">End:</label>
+                        <input id="endInput" type="text" placeholder="End location"
+                            class="w-full p-2 bg-gray-200 rounded text-black">
+                    </div>
+                </div>
+
+                <!-- End Time and Day Row -->
+
+
+                <div class="px-2">
+                    <button id="resetButton" type="button"
+                        class="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
+                        <ion-icon name="refresh-outline" class="text-xl"></ion-icon>
+                    </button>
+                </div>
+                <div class="text-white text-lg mb-4 text-right">
+                    Click here for station to station directions
+                </div>
+                <!-- Buttons Row -->
+                <div class="flex flex-wrap items-center justify-between -mx-2">
                     <div class="px-2">
-                        <button id="resetButton" type="button" class="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
-                            <ion-icon name="refresh-outline" class="text-xl"></ion-icon>
+                        <button id="confirmButton" type="button"
+                            class="bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-700 focus:ring-opacity-50">
+                            Confirm
                         </button>
                     </div>
-                    <div class="text-white text-lg mb-4 text-right">
-                        Click here for station to station directions
+                    <div class="px-2">
+                        <button id="directionsButton" type="button" class="bg-gray-800 text-white px-4 py-2 rounded-md"
+                            style="display: none;">
+                            Directions
+                        </button>
                     </div>
-                    <!-- Buttons Row -->
-                    <div class="flex flex-wrap items-center justify-between -mx-2">
-                        <div class="px-2">
-                            <button id="confirmButton" type="button" class="bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-700 focus:ring-opacity-50">
-                                Confirm
-                            </button>
-                        </div>
-                        <div class="px-2">
-                            <button id="directionsButton" type="button" class="bg-gray-800 text-white px-4 py-2 rounded-md" style="display: none;">
-                                Directions
-                            </button>
-                        </div>
-                        <div class="px-2">
-                            <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded-md" onclick="submitForm()">
-                                Submit
-                            </button>
-                        </div>
+                    <div class="px-2">
+                        <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded-md"
+                            onclick="submitForm()">
+                            Submit
+                        </button>
                     </div>
-                </form>
-            </div>
-                <!---added info for legs of journey planning -->
-            <div class="bg-gray-900 p-8 rounded-lg shadow-lg mx-4 mb-4">
-                <div class="text-white text-lg mb-2">
-                    Route Details
                 </div>
-                <div id="route-info" class="space-y-2">
-                    <p id="first-leg-info" class="text-sm text-white">Walk to bike station: ...</p>
-                    <p id="second-leg-info" class="text-sm text-white">Bike to destination station: ...</p>
-                    <p id="third-leg-info" class="text-sm text-white">Walk to final destination: ...</p>
-                </div>
+            </form>
+        </div>
+        <!---added info for legs of journey planning -->
+        <div class="bg-gray-900 p-8 rounded-lg shadow-lg mx-4 mb-4">
+            <div class="text-white text-lg mb-2">
+                Route Details
             </div>
-            
-            
-            
-                            
-            <!-- End Planning Panel -->
+            <div id="route-info" class="space-y-2">
+                <p id="first-leg-info" class="text-sm text-white">Walk to bike station: ...</p>
+                <p id="second-leg-info" class="text-sm text-white">Bike to destination station: ...</p>
+                <p id="third-leg-info" class="text-sm text-white">Walk to final destination: ...</p>
+            </div>
+        </div>
 
-        </main>
+
+
+
+        <!-- End Planning Panel -->
+
+    </main>
     </div>
 
 
