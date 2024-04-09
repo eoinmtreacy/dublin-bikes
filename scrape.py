@@ -55,7 +55,7 @@ def main(arg):
     url = f"http://api.weatherapi.com/v1/forecast.json?key={WEATHER_API_KEY}=Dublin&aqi=no&alerts=no" # 7 day forecast including realtime
     r_weather = requests.get(url, headers=headers)
 
-    if r_weather.status != 200:
+    if r_weather.status_code != 200:
         print(f"Failed to fetch from weather API. Status Code: {r_weather.status_code}")
     else: 
         print("Successful fetch from weather API.")
