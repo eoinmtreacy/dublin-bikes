@@ -1,5 +1,6 @@
 let STATIONS
 let origin, depart, arrive, destination
+let map;
 
 document.addEventListener('DOMContentLoaded', async () => {
     const map = await initMap()
@@ -10,9 +11,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 async function fetchRealTime() {
-    const request = await fetch('/realtime')
-        .then((response) => response.json())
-    return request
+    try {
+        const response = await fetch('/realtime');
+        return await response.json();
+    } catch (error) {
+        console.error('fetchRealTime failed:', error);
+        return null; // Changed to see if my load errors where fetch errors also 
+    }
 }
 
 async function fetchStations() {
@@ -257,9 +262,28 @@ async function initMap() {
     async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
         const directionsService = new google.maps.DirectionsService();
 
-        let firstLeg = new google.maps.DirectionsRenderer()
-        let secondLeg = new google.maps.DirectionsRenderer()
-        let thirdLeg = new google.maps.DirectionsRenderer()
+        let firstLeg = new google.maps.DirectionsRenderer(
+            {
+                map:map,
+                polylineOptions :{
+                    strokeColor: "yellow"
+                }
+            }
+        )
+        let secondLeg = new google.maps.DirectionsRenderer(
+            {
+                map: map,
+                polylineOptions:{
+                    strokeColor:'RED'
+                }
+            }
+        )
+        let thirdLeg = new google.maps.DirectionsRenderer({
+            map:map,
+            polylineOptions:{
+                strokeColor:"blue"
+            }
+        })
 
           // Set maps for each renderer
         firstLeg.setMap(map);
@@ -276,7 +300,7 @@ async function initMap() {
                 firstLeg.setDirections(response);
                 // Display distance and duration
                 const route = response.routes[0].legs[0];
-                // alert(`Distance: ${route.distance.text}, Duration: ${route.duration.text}`);
+                document.getElementById("first-leg-info").innerHTML = `Walk to bike station: ${route.distance.text}, time ${route.duration.text}.`;//Changed from alert window to display in JP
             } else {
                 window.alert('Directions request failed due to ' + status);
             }
@@ -292,7 +316,8 @@ async function initMap() {
                 secondLeg.setDirections(response);
                 // Display distance and duration
                 const route = response.routes[0].legs[0];
-                // alert(`Distance: ${route.distance.text}, Duration: ${route.duration.text}`);
+                document.getElementById("second-leg-info").innerHTML = `Bike to destination station: ${route.distance.text}, time ${route.duration.text}.`;
+                // again changed to display journey info in JP rather than an alert 
             } else {
                 window.alert('Directions request failed due to ' + status);
             }
@@ -308,23 +333,48 @@ async function initMap() {
                 thirdLeg.setDirections(response);
                 // Display distance and duration
                 const route = response.routes[0].legs[0];
-                // alert(`Distance: ${route.distance.text}, Duration: ${route.duration.text}`);
+                document.getElementById("third-leg-info").innerHTML = `Walk to final destination: ${route.distance.text}, time ${route.duration.text}.`;
+                //again changed as discussed above.
             } else {
                 window.alert('Directions request failed due to ' + status);
             }
         })
     }
 
-    // Function to handle the confirm button click
-    document.getElementById('confirmButton').addEventListener('click', function () {
-
-        if (!origin || !destination) {
-            alert('Please select both a start and an end location.');
+    // Function to handle the confirm button click // Implemented 
+    async function handleConfirmButtonClick() {
+        try {
+            if (!origin || !destination) {
+                alert('Please select both a start and an end location.');
+                return;
+            }
+    
+            // Perform the route calculation
+            await calculateAndDisplayRoute(origin, depart, arrive, destination);
+    
+            // Adjust the visibility of markers
+            STATIONS.forEach(station => {
+                if (station.marker) {
+                    // Hide all markers initially
+                    station.marker.setVisible(false);
+                }
+            });
+    
+            // Show only the relevant markers
+            if (depart && depart.marker) depart.marker.setVisible(true);
+            if (arrive && arrive.marker) arrive.marker.setVisible(true);
+    
+        } catch (error) {
+            console.error('Error in handleConfirmButtonClick:', error);
         }
-        else {
-            calculateAndDisplayRoute(origin, depart, arrive, destination);
-        }
-
+    }
+    
+    // Event listener for the confirm button
+    document.getElementById('confirmButton').addEventListener('click', async function() {
+        handleConfirmButtonClick(); // Call the async function
+    });
+    
+       
         // if (status === 'OK') {
         //     const route = response.routes[0].legs[0];
         //     document.getElementById('journeyDistance').textContent = `Distance: ${route.distance.text}`;
@@ -336,7 +386,7 @@ async function initMap() {
         //     document.getElementById('journeyTime').textContent = 'Time: unavailable due to error';
         // }
 
-    });
+    
 }
 
 // UTILITY FUNCTIONS
@@ -477,6 +527,17 @@ document.getElementById('resetButton').addEventListener('click', function () {
     if (directionsRenderer) {
         directionsRenderer.setDirections({ routes: [] });
     }
+
+    [firstLeg, secondLeg, thirdLeg].forEach(leg => {
+        if (leg) leg.setDirections({ routes: [] });
+    });
+
+    //reset the markers
+    STATIONS.forEach(station => {
+        if (station.marker) {
+            station.marker.setVisible(true);
+        }
+    });
 
     document.getElementById('directionsButton').style.display = 'none';
 });
