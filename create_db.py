@@ -90,6 +90,23 @@ def create_availability_table(conn, cursor):
         print(e)
         return False
     
+def create_weather_table(conn, cursor):
+    try:
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS weather (
+                last_update BIGINT PRIMARY KEY,
+                       rain FLOAT,
+                       temp FLOAT,
+                       hum FLOAT
+        )
+    """)
+        conn.commit()
+        return True
+        
+    except mysql.connector.Error as e:
+        print(e)
+        return False
+    
 def main(arg):
     if fetch_city_static(arg):
         print(f"static data saved in stations/{arg})station.json")
@@ -116,6 +133,8 @@ def main(arg):
                     print(f"stations table in  database {arg} succesfully populated")
                     if create_availability_table(conn, cursor):
                         print(f"availability table created in database {arg}")
+                        if create_weather_table(conn, cursor):
+                            print(f"weathe table succesfully created for database {arg}")
 
         conn.close()
         cursor.close()
