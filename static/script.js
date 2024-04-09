@@ -47,11 +47,26 @@ async function createMarkers(stations) {
             content: contentString
         });
 
-        marker.addListener('click', () => {
+        marker.addListener('click', async () => {
             // Close the current info window if it exists
             if (currentInfoWindow) {
                 currentInfoWindow.close();
             }
+
+            const recent_avail = await fetch('/recent', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    station_number: station.number
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    return data
+                })
+                .catch(error => console.error('Error:', error));
 
             // Open the info window for the clicked marker
             infoWindow.open({
@@ -145,10 +160,10 @@ async function createMarkers(stations) {
                 new Chart(ctxHour, {
                     type: 'bar',
                     data: {
-                        labels: Array.from({ length: 24 }, (_, i) => `${i}:00`), // 0 to 23 hours
+                        labels: recent_avail.map(r => r[0]), // you'll need to add the labels of the predicted ones too
                         datasets: [{
                             label: 'Bike Availability per Hour',
-                            data: Array.from({ length: 24 }, () => Math.floor(Math.random() * (15 - 3 + 1)) + 3),
+                            data: recent_avail.map(r => r[1]), // and the predicted values of course
                             backgroundColor: 'rgba(54, 162, 235, 0.2)',
                             borderColor: 'rgb(54, 162, 235)',
                             borderWidth: 1
@@ -164,7 +179,7 @@ async function createMarkers(stations) {
                                 }
                             },
                             x: {
-                                max: 25,
+                                max: 25, // i think these will have to change too but I tried and don't understand what's happening here
                                 min: 0,
                                 ticks: {
                                     autoSkip: false,
