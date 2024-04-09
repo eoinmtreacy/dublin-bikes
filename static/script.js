@@ -300,121 +300,118 @@ async function initMap() {
         console.log(arrive, destination);
     })
 
-    // DIRECTION SERVICES
-    async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
-        const directionsService = new google.maps.DirectionsService();
+}
 
-        let firstLeg = new google.maps.DirectionsRenderer(
-            {
-                map:map,
-                polylineOptions :{
-                    strokeColor: "yellow"
-                }
-            }
-        )
-        let secondLeg = new google.maps.DirectionsRenderer(
-            {
-                map: map,
-                polylineOptions:{
-                    strokeColor:'RED'
-                }
-            }
-        )
-        let thirdLeg = new google.maps.DirectionsRenderer({
+// DIRECTION SERVICES
+async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
+    const directionsService = new google.maps.DirectionsService();
+
+    let firstLeg = new google.maps.DirectionsRenderer(
+        {
             map:map,
+            polylineOptions :{
+                strokeColor: "yellow"
+            }
+        }
+    )
+    let secondLeg = new google.maps.DirectionsRenderer(
+        {
+            map: map,
             polylineOptions:{
-                strokeColor:"blue"
+                strokeColor:'RED'
             }
-        })
+        }
+    )
+    let thirdLeg = new google.maps.DirectionsRenderer({
+        map:map,
+        polylineOptions:{
+            strokeColor:"blue"
+        }
+    })
 
-          // Set maps for each renderer
-        firstLeg.setMap(map);
-        secondLeg.setMap(map);
-        thirdLeg.setMap(map);
+        // Set maps for each renderer
+    firstLeg.setMap(map);
+    secondLeg.setMap(map);
+    thirdLeg.setMap(map);
 
-        directionsService.route({
-            origin: origin,
-            destination: depart.marker.position,
-            travelMode: 'WALKING'
-        }, function (response, status) {
-            if (status === 'OK') {
-                console.log(response);
-                firstLeg.setDirections(response);
-                // Display distance and duration
-                const route = response.routes[0].legs[0];
-                document.getElementById("first-leg-info").innerHTML = `Walk to bike station: ${route.distance.text}, time ${route.duration.text}.`;//Changed from alert window to display in JP
-            } else {
-                window.alert('Directions request failed due to ' + status);
-            }
-        })
+    directionsService.route({
+        origin: origin,
+        destination: depart.marker.position,
+        travelMode: 'WALKING'
+    }, function (response, status) {
+        if (status === 'OK') {
+            console.log(response);
+            firstLeg.setDirections(response);
+            // Display distance and duration
+            const route = response.routes[0].legs[0];
+            document.getElementById("first-leg-info").innerHTML = `Walk to bike station: ${route.distance.text}, time ${route.duration.text}.`;//Changed from alert window to display in JP
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    })
 
-        directionsService.route({
-            origin: depart.marker.position,
-            destination: arrive.marker.position,
-            travelMode: 'BICYCLING'
-        }, function (response, status) {
-            if (status === 'OK') {
-                console.log(response);
-                secondLeg.setDirections(response);
-                // Display distance and duration
-                const route = response.routes[0].legs[0];
-                document.getElementById("second-leg-info").innerHTML = `Bike to destination station: ${route.distance.text}, time ${route.duration.text}.`;
-                // again changed to display journey info in JP rather than an alert 
-            } else {
-                window.alert('Directions request failed due to ' + status);
-            }
-        })
+    directionsService.route({
+        origin: depart.marker.position,
+        destination: arrive.marker.position,
+        travelMode: 'BICYCLING'
+    }, function (response, status) {
+        if (status === 'OK') {
+            console.log(response);
+            secondLeg.setDirections(response);
+            // Display distance and duration
+            const route = response.routes[0].legs[0];
+            document.getElementById("second-leg-info").innerHTML = `Bike to destination station: ${route.distance.text}, time ${route.duration.text}.`;
+            // again changed to display journey info in JP rather than an alert 
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    })
 
-        directionsService.route({
-            origin: arrive.marker.position,
-            destination: destination,
-            travelMode: 'WALKING'
-        }, function (response, status) {
-            if (status === 'OK') {
-                console.log(response);
-                thirdLeg.setDirections(response);
-                // Display distance and duration
-                const route = response.routes[0].legs[0];
-                document.getElementById("third-leg-info").innerHTML = `Walk to final destination: ${route.distance.text}, time ${route.duration.text}.`;
-                //again changed as discussed above.
-            } else {
-                window.alert('Directions request failed due to ' + status);
-            }
-        })
-    }
+    directionsService.route({
+        origin: arrive.marker.position,
+        destination: destination,
+        travelMode: 'WALKING'
+    }, function (response, status) {
+        if (status === 'OK') {
+            console.log(response);
+            thirdLeg.setDirections(response);
+            // Display distance and duration
+            const route = response.routes[0].legs[0];
+            document.getElementById("third-leg-info").innerHTML = `Walk to final destination: ${route.distance.text}, time ${route.duration.text}.`;
+            //again changed as discussed above.
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    })
+}
 
     // Function to handle the confirm button click // Implemented 
-    async function handleConfirmButtonClick() {
-        try {
-            if (!origin || !destination) {
-                alert('Please select both a start and an end location.');
-                return;
-            }
-    
-            // Perform the route calculation
-            await calculateAndDisplayRoute(origin, depart, arrive, destination);
-    
-            // Adjust the visibility of markers
-            STATIONS.forEach(station => {
-                if (station.marker) {
-                    // Hide all markers initially
-                    station.marker.setVisible(false);
-                }
-            });
-    
-            // Show only the relevant markers
-            if (depart && depart.marker) depart.marker.setVisible(true);
-            if (arrive && arrive.marker) arrive.marker.setVisible(true);
-    
-        } catch (error) {
-            console.error('Error in handleConfirmButtonClick:', error);
+async function handleConfirmButtonClick() {
+    try {
+        if (!origin || !destination) {
+            alert('Please select both a start and an end location.');
+            return;
         }
+
+        // Perform the route calculation
+        await calculateAndDisplayRoute(origin, depart, arrive, destination);
+
+        // Adjust the visibility of markers
+        STATIONS.forEach(station => {
+            if (station.marker) {
+                // Hide all markers initially
+                station.marker.setVisible(false);
+            }
+        });
+
+        // Show only the relevant markers
+        if (depart && depart.marker) depart.marker.setVisible(true);
+        if (arrive && arrive.marker) arrive.marker.setVisible(true);
+
+    } catch (error) {
+        console.error('Error in handleConfirmButtonClick:', error);
     }
-    
-    // Event listener for the confirm button
-    document.getElementById('confirmButton').addEventListener('click', async function() {
-        handleConfirmButtonClick(); // Call the async function
-    });
+}
     
        
         // if (status === 'OK') {
@@ -428,8 +425,6 @@ async function initMap() {
         //     document.getElementById('journeyTime').textContent = 'Time: unavailable due to error';
         // }
 
-    
-}
 
 // UTILITY FUNCTIONS
 function findClosestStation(location) {
@@ -483,6 +478,7 @@ function getDirections() {
 
 async function submitForm() {
     getDirections(); // Call the getDirections function to display the directions button
+    handleConfirmButtonClick();
     const days_letters = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     let days = [0,0,0,0,0,0,0]
     days[new Date().getDay()] = 1
