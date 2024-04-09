@@ -1,5 +1,6 @@
 let STATIONS
-let depart, arrive
+let origin, depart, arrive, destination
+let map;
 
 document.addEventListener('DOMContentLoaded', async () => {
     const map = await initMap()
@@ -10,9 +11,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 async function fetchRealTime() {
-    const request = await fetch('/realtime')
-        .then((response) => response.json())
-    return request
+    try {
+        const response = await fetch('/realtime');
+        return await response.json();
+    } catch (error) {
+        console.error('fetchRealTime failed:', error);
+        return null; // Changed to see if my load errors where fetch errors also 
+    }
 }
 
 async function fetchStations() {
@@ -271,119 +276,148 @@ async function initMap() {
     startAutocomplete.setBounds(countyDublinBounds);
     endAutocomplete.setBounds(countyDublinBounds);
 
-    // PLACEHOLDERS FOR START AND END VALUES
-    let lastSelectedStartPlace = null;
-    let lastSelectedEndPlace = null;
-
     // SEARCH EVENT LISTENERS
-    startAutocomplete.addListener('place_changed', function () {
-        let place = startAutocomplete.getPlace();
-        if (place.geometry) {
-            lastSelectedStartPlace = place; // Store the last selected place
-        }
-    });
+    startAutocomplete.addListener('place_changed', () => {
+        origin = startAutocomplete.getPlace().geometry.location
+        depart = findClosestStation(origin)
+        console.log(origin, depart.marker.position);
+    })
 
-    endAutocomplete.addListener('place_changed', function () {
-        let place = endAutocomplete.getPlace();
-        if (place.geometry) {
-            lastSelectedEndPlace = place; // Store the last selected place
-        }
-    });
+    endAutocomplete.addListener('place_changed', () => {
+        destination = endAutocomplete.getPlace().geometry.location
+        arrive = findClosestStation(destination)
+        console.log(arrive, destination);
+    })
 
     // DIRECTION SERVICES
-    const directionsService = new google.maps.DirectionsService();
-    const directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(map);
+    async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
+        const directionsService = new google.maps.DirectionsService();
 
-    function calculateAndDisplayRoute(directionsService, directionsRenderer, travelMode, origin, destination) {
+        let firstLeg = new google.maps.DirectionsRenderer(
+            {
+                map:map,
+                polylineOptions :{
+                    strokeColor: "yellow"
+                }
+            }
+        )
+        let secondLeg = new google.maps.DirectionsRenderer(
+            {
+                map: map,
+                polylineOptions:{
+                    strokeColor:'RED'
+                }
+            }
+        )
+        let thirdLeg = new google.maps.DirectionsRenderer({
+            map:map,
+            polylineOptions:{
+                strokeColor:"blue"
+            }
+        })
+
+          // Set maps for each renderer
+        firstLeg.setMap(map);
+        secondLeg.setMap(map);
+        thirdLeg.setMap(map);
+
         directionsService.route({
             origin: origin,
-            destination: destination,
-            travelMode: travelMode
+            destination: depart.marker.position,
+            travelMode: 'WALKING'
         }, function (response, status) {
             if (status === 'OK') {
-                directionsRenderer.setDirections(response);
+                console.log(response);
+                firstLeg.setDirections(response);
                 // Display distance and duration
                 const route = response.routes[0].legs[0];
-                alert(`Distance: ${route.distance.text}, Duration: ${route.duration.text}`);
+                document.getElementById("first-leg-info").innerHTML = `Walk to bike station: ${route.distance.text}, time ${route.duration.text}.`;//Changed from alert window to display in JP
             } else {
                 window.alert('Directions request failed due to ' + status);
             }
-        });
+        })
+
+        directionsService.route({
+            origin: depart.marker.position,
+            destination: arrive.marker.position,
+            travelMode: 'BICYCLING'
+        }, function (response, status) {
+            if (status === 'OK') {
+                console.log(response);
+                secondLeg.setDirections(response);
+                // Display distance and duration
+                const route = response.routes[0].legs[0];
+                document.getElementById("second-leg-info").innerHTML = `Bike to destination station: ${route.distance.text}, time ${route.duration.text}.`;
+                // again changed to display journey info in JP rather than an alert 
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        })
+
+        directionsService.route({
+            origin: arrive.marker.position,
+            destination: destination,
+            travelMode: 'WALKING'
+        }, function (response, status) {
+            if (status === 'OK') {
+                console.log(response);
+                thirdLeg.setDirections(response);
+                // Display distance and duration
+                const route = response.routes[0].legs[0];
+                document.getElementById("third-leg-info").innerHTML = `Walk to final destination: ${route.distance.text}, time ${route.duration.text}.`;
+                //again changed as discussed above.
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        })
     }
 
-    document.getElementById('confirmStartLocation').addEventListener('click', function () {
-        if (lastSelectedStartPlace && lastSelectedStartPlace.geometry) {
-            let closestStation = findClosestStation(lastSelectedStartPlace.geometry.location);
-            if (closestStation) {
-                // TODO return nearest station with free bikes
-
-                // Retrieve the selected travel mode from the radio buttons
-                let selectedMode = document.querySelector('input[name="travelMode"]:checked').value;
-
-                let origin = lastSelectedStartPlace.geometry.location;
-                let destination = closestStation.marker.position; // e.g. of accessing station.marker attribute
-
-                calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
-                depart = closestStation
+    // Function to handle the confirm button click // Implemented 
+    async function handleConfirmButtonClick() {
+        try {
+            if (!origin || !destination) {
+                alert('Please select both a start and an end location.');
+                return;
             }
-        } else {
-            alert('Please select a start location first.');
+    
+            // Perform the route calculation
+            await calculateAndDisplayRoute(origin, depart, arrive, destination);
+    
+            // Adjust the visibility of markers
+            STATIONS.forEach(station => {
+                if (station.marker) {
+                    // Hide all markers initially
+                    station.marker.setVisible(false);
+                }
+            });
+    
+            // Show only the relevant markers
+            if (depart && depart.marker) depart.marker.setVisible(true);
+            if (arrive && arrive.marker) arrive.marker.setVisible(true);
+    
+        } catch (error) {
+            console.error('Error in handleConfirmButtonClick:', error);
         }
+    }
+    
+    // Event listener for the confirm button
+    document.getElementById('confirmButton').addEventListener('click', async function() {
+        handleConfirmButtonClick(); // Call the async function
     });
+    
+       
+        // if (status === 'OK') {
+        //     const route = response.routes[0].legs[0];
+        //     document.getElementById('journeyDistance').textContent = `Distance: ${route.distance.text}`;
+        //     document.getElementById('journeyTime').textContent = `Time: ${route.duration.text}`;
+        // } else {
+        //     console.error('Directions request failed due to ' + status);
+        //     // update the HTML to indicate the error or that no data could be fetched
+        //     document.getElementById('journeyDistance').textContent = 'Distance: unavailable due to error';
+        //     document.getElementById('journeyTime').textContent = 'Time: unavailable due to error';
+        // }
 
-    document.getElementById('confirmEndLocation').addEventListener('click', function () {
-        if (lastSelectedEndPlace && lastSelectedEndPlace.geometry) {
-            let closestStation = findClosestStation(lastSelectedEndPlace.geometry.location);
-            if (closestStation) {
-                // TODO return nearest station with free parking
-
-                // Retrieve the selected travel mode from the radio buttons or dropdown
-                // This assumes  the same travel mode selection for both start and end locations
-
-                let selectedMode = document.querySelector('input[name="endTravelMode"]:checked') ? document.querySelector('input[name="endTravelMode"]:checked').value : document.querySelector('input[name="travelMode"]:checked').value;
-
-                let origin = lastSelectedEndPlace.geometry.location; // This now represents the end location's selected place
-                let destination = closestStation.marker.position; // The position of the closest marker to the end location
-
-                // Assuming you want to show the route from the end location to the closest station
-                // If you're looking to display the complete route from start to finish, including this segment, adjust accordingly
-                calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, origin, destination);
-                arrive = closestStation
-            }
-        } else {
-            alert('Please select an end location first.');
-        }
-    });
-
-    // Function to handle the confirm button click
-    document.getElementById('confirmButton').addEventListener('click', function () {
-        let startPlace = startSearchBox.getPlaces();
-        let endPlace = endSearchBox.getPlaces();
-
-        if (!startPlace || startPlace.length == 0 || !endPlace || endPlace.length == 0) {
-            alert('Please select both a start and an end location.');
-            return;
-        }
-
-        // changed this to default to walking
-        let selectedMode = 'WALKING';
-        if (document.getElementById('modeDrive').checked) selectedMode = 'DRIVING';
-        if (document.getElementById('modeBike').checked) selectedMode = 'BICYCLING';
-
-        calculateAndDisplayRoute(directionsService, directionsRenderer, selectedMode, startPlace[0].geometry.location, endPlace[0].geometry.location);
-        if (status === 'OK') {
-            const route = response.routes[0].legs[0];
-            document.getElementById('journeyDistance').textContent = `Distance: ${route.distance.text}`;
-            document.getElementById('journeyTime').textContent = `Time: ${route.duration.text}`;
-        } else {
-            console.error('Directions request failed due to ' + status);
-            // update the HTML to indicate the error or that no data could be fetched
-            document.getElementById('journeyDistance').textContent = 'Distance: unavailable due to error';
-            document.getElementById('journeyTime').textContent = 'Time: unavailable due to error';
-        }
-
-    });
+    
 }
 
 // UTILITY FUNCTIONS
@@ -406,22 +440,6 @@ function findClosestStation(location) {
         }
     });
     return closestStation;
-}
-
-function calculateAndDisplayRoute(station) {
-    let request = {
-        origin: document.getElementById('searchInput').value,
-        destination: { lat: station.marker.position.lat(), lng: station.marker.position.lng() }, // Replace with the selected marker's coordinates
-        travelMode: 'WALKING'
-    };
-
-    directionsService.route(request, function (response, status) {
-        if (status === 'OK') {
-            directionsRenderer.setDirections(response);
-        } else {
-            window.alert('Directions request failed due to ' + status);
-        }
-    });
 }
 
 function getStationCoordinates(stationName, stationsData) {
@@ -540,6 +558,17 @@ document.getElementById('resetButton').addEventListener('click', function () {
     if (directionsRenderer) {
         directionsRenderer.setDirections({ routes: [] });
     }
+
+    [firstLeg, secondLeg, thirdLeg].forEach(leg => {
+        if (leg) leg.setDirections({ routes: [] });
+    });
+
+    //reset the markers
+    STATIONS.forEach(station => {
+        if (station.marker) {
+            station.marker.setVisible(true);
+        }
+    });
 
     document.getElementById('directionsButton').style.display = 'none';
 });
