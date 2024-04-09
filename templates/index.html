@@ -89,24 +89,18 @@
                             </div> -->
                             <!-- Buttons Row -->
                             <div class="flex flex-wrap items-center justify-between -mx-2">
-                                <div class="px-2">
-                                    <button id="confirmButton" type="button"
-                                        class="bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-700 focus:ring-opacity-50">
+                                <div class="flex flex-col">
+                                    <button id="confirmButton" type="button" class="bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-700 focus:ring-opacity-50 w-full mb-2">
                                         Confirm
                                     </button>
-                                </div>
-                                <div class="px-2">
-                                    <button id="directionsButton" type="button" class="bg-gray-800 text-white px-4 py-2 rounded-md"
-                                        style="display: none;">
+                                    <button id="directionsButton" type="button" class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-opacity-50 w-full mb-2" style="display: none;">
                                         Directions
                                     </button>
-                                </div>
-                                <div class="px-2">
-                                    <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded-md"
-                                        onclick="submitForm()">
+                                    <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 w-full mb-2" onclick="submitForm()">
                                         Submit
                                     </button>
                                 </div>
+                                
                             </div>
                         </form>
                     </div>
@@ -132,7 +126,7 @@
     </nav>
     </div>
     <main id="main-content" class="flex-1 p-4">
-        <div id="map" class="w-full h-screen rounded-lg" style="height: calc(100vh - 64px);"></div>
+        <div id="map" class="w-full h-screen rounded-lg" style="height: calc(100vh - 100px);"></div>
 
 
 
