@@ -5,6 +5,8 @@ var currentStyle = "light"; // Default mode is Light Mode
 let darkMapStyle;
 let lightMapStyle;
 
+const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
 document.addEventListener('DOMContentLoaded', async () => {
     lightMapStyle = await fetchStatic("static/light.json"); 
     darkMapStyle = await fetchStatic("static/dark.json");
@@ -203,7 +205,7 @@ async function createMarkers(stations) {
                             // average availabliltiy group by datatime (the hour)
                             // call /predict for every time from now until midnight
                             // format from /predict 
-                            data: Array.from({ length: 7 }, () => Math.floor(Math.random() * (15 - 3 + 1)) + 3),
+                            data: last_week.map(l => l[0]),
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(255, 159, 64, 0.2)',
@@ -267,14 +269,30 @@ async function createMarkers(stations) {
                 });
 
                 // Second chart: Bike availability by hour
+                async function getHourlyPrediction(station) {
+                    let predicted_avail = [];
+                    for (let i = 0; i < 12; i++) {
+                        var day = new Date().getDay(); // Ensure that the day is set to today
+                        let currentHour = new Date().getHours(); // Get the current hour
+                        let predictHour = (currentHour + i) % 24; // Adjust for 24-hour clock
+                        if (currentHour + i >= 24) { //If the hour is in the next day 
+                            day = (day + 1) % 7; // ensure the day is set to tomorrow and Adjust for 7-day week
+                        }
+                        var prediction = await getPrediction(station, day, predictHour);
+                        var formattedPrediction = `${predictHour}:${prediction.availability}`;
+                        predicted_avail.push(formattedPrediction);
+                    }
+                    console.log(predicted_avail);
+                    return predicted_avail}
+                var predicted_avail = getHourlyPrediction(station.number);
                 let ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
                 new Chart(ctxHour, {
                     type: 'bar',
                     data: {
-                        labels: recent_avail.map(r => r[0]), // you'll need to add the labels of the predicted ones too
+                        labels: recent_avail.map(r => r[0]).concat(predicted_avail.map(p => p[0])), // Combine the recent and the predicted hours labels
                         datasets: [{
                             label: 'Bike Availability per Hour',
-                            data: recent_avail.map(r => r[1]), // and the predicted values of course
+                            data: recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p[1])), // Combine the recent and the predicted values of course
                             backgroundColor: 'rgba(54, 162, 235, 0.2)',
                             borderColor: 'rgb(54, 162, 235)',
                             borderWidth: 1
@@ -562,6 +580,31 @@ function getDirections() {
 }
 
 async function submitForm() {
+    // As the db is not pulling from my end, I had to use submitForm to test my code 
+    // console.log('submitting form');
+    // console.log('day:', days_letters[new Date().getDay()], 'hour:', String(new Date().getHours()));
+    // console.log("Predicitons runnung")
+    // let predicted = [];
+
+    // for (let i = 0; i < 12; i++) {
+    //     console.log('i:', i)
+
+    //     var day = new Date().getDay(); // Ensure that the day is set to today
+    //     let currentHour = new Date().getHours(); // Get the current hour
+    //     let predictHour = (currentHour + i) % 24; // Adjust for 24-hour clock
+    //     console.log('day:', day)
+    //     console.log('currentHour:', currentHour)
+    //     console.log('predictHour:', predictHour)
+    //     if (currentHour + i >= 24) { //If the hour is in the next day 
+    //         day = (day + 1) % 7; // ensure the day is set to tomorrow and Adjust for 7-day week
+    //     }
+    //     var prediction = await getPrediction(2, day, predictHour);
+    //     console.log('prediction:', prediction)
+    //     var formattedPrediction = `${predictHour}:${prediction.availability}`;
+    //     predicted.push(formattedPrediction);
+    // }
+    // console.log(predicted);
+    await fetchWeatherForecast(days_letters[new Date().getDay()],new Date().getHours()); // Call the fetchWeatherForecast function to display the weather forecast
     getDirections(); // Call the getDirections function to display the directions button
     const availability = await Promise.all([
         getPrediction(depart.number, new Date().getDay(),new Date().getHours()),
@@ -571,9 +614,11 @@ async function submitForm() {
     availability.map(a => console.log(a))
 }
 
+
+
 async function getPrediction(station, day, hour) {
     // changes HTML elements as a side effect
-    const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    
 
     const forecast = await fetch('/api/WeatherForecast', {
         method: 'POST',
@@ -584,12 +629,6 @@ async function getPrediction(station, day, hour) {
     })
         .then(response => response.json())
         .then(data => {
-            document.getElementById('weather-description').innerText = 'Predicted Weather: ' + data.condition;
-            let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
-            document.getElementById('weather-icon').innerHTML = iconImg;
-            document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c + '°C';
-            document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity + '%';
-            document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm + 'mm';
             return data
         })
         .catch(error => console.error('Error fetching weather:', error));
@@ -632,6 +671,30 @@ async function fetchRealTimeWeather() {
             document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm;
         })
         .catch(error => console.error('Error fetching weather:', error));
+}
+async function fetchWeatherForecast(day, hour) {
+    try {
+        const response = await fetch('/api/WeatherForecast', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ hour: hour, day: day})
+        });
+
+        const data = await response.json();
+
+        document.getElementById('weather-description').innerText = 'Predicted Weather: ' + data.condition;
+        let iconImg = '<img src="https:' + data.condition_icon + '" alt="Weather Icon">';
+        document.getElementById('weather-icon').innerHTML = iconImg;
+        document.getElementById('weather-temperature').innerText = 'Temperature: ' + data.temp_c + '°C';
+        document.getElementById('weather-humidity').innerText = 'Humidity: ' + data.humidity + '%';
+        document.getElementById('weather-precipitation').innerText = 'Precipitation: ' + data.precip_mm + 'mm';
+        
+        return data;
+    } catch (error) {
+        console.error('Error fetching weather:', error);
+    }
 }
 
 document.getElementById('resetButton').addEventListener('click', function () {
