@@ -472,9 +472,8 @@ function getDirections() {
 
 async function submitForm() {
     getDirections(); // Call the getDirections function to display the directions button
-    const days_letters = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    let days = [0,0,0,0,0,0,0]
-    days[new Date().getDay()] = 1
+    const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    const day = (new Date().getDay() + 6) % 7
 
     const forecast = await fetch('/api/WeatherForecast', {
         method: 'POST',
@@ -503,15 +502,13 @@ async function submitForm() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            depart: depart.number,
-            departTime: new Date().getUTCHours(),
-            departDay: days,
-            arrive: arrive.number,
-            arriveTime: new Date().getUTCHours(),
-            arriveDay: days,
-            rain: forecast.precip_mm,
-            temp: forecast.temp_c,
-            hum: forecast.humidity
+            station: depart.number,
+            params: [(new Date().getDay() + 6) % 7,
+                new Date().getHours(),
+                forecast.precip_mm,
+                forecast.temp_c,
+                forecast.humidity
+            ]
         })
     })
         .then(response => response.json())
@@ -521,7 +518,7 @@ async function submitForm() {
         })
         .catch(error => console.error('Error:', error));
 
-    return prediction
+    // return prediction
 }
 
 async function fetchRealTimeWeather() {
