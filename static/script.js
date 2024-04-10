@@ -472,8 +472,12 @@ function getDirections() {
 
 async function submitForm() {
     getDirections(); // Call the getDirections function to display the directions button
-    let depart_avail = getPrediction(depart.number, new Date().getDay(),new Date().getHours()) 
-    let arrive_avail = getPrediction(arrive.number, new Date().getDay(),new Date().getHours())
+    const availability = await Promise.all([
+        getPrediction(depart.number, new Date().getDay(),new Date().getHours()),
+        getPrediction(arrive.number, new Date().getDay(),new Date().getHours())
+    ])
+
+    availability.map(a => console.log(a))
 }
 
 async function getPrediction(station, day, hour) {
