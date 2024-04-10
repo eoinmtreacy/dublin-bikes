@@ -13,10 +13,10 @@
         src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=visualization,places,geometry&callback=initMap"></script>
 </head>
 
-<body class="bg-gray-800 text-white">
-    <header class="bg-slate-200 py-3 px-4 flex items-center justify-between">
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-gray-300 py-3 px-4 flex items-center justify-between">
         <div class="flex items-center">
-            <ion-icon name="menu-outline" class="text-black text-4xl pr-4" id="menuToggle"></ion-icon>
+            <ion-icon name="menu-outline" class="text-gray-800 text-4xl pr-4" id="menuToggle"></ion-icon>
             
         </div>
         <div class="weather-info flex items-center text-xl font-semibold text-gray-800">
@@ -26,7 +26,9 @@
             <span id="weather-humidity" class="mr-4">Humidity: ...%</span>
             <span id="weather-precipitation">Precipitation: ...mm</span>
         </div>
-        
+        <div class="view-mode flex items-center" onclick="toggleMapStyle()">
+            <ion-icon name="moon-outline" class="text-black text-2xl pr-4"></ion-icon>
+        </div>
         
         <!-- <select id="markerSelect">
             <option value="">Select a marker</option>
@@ -52,8 +54,8 @@
 </nav>
         </div>
         <main id="main-content" class="flex-1 p-4">
-            <div id="map" class="w-full h-screen rounded-lg" style="height: calc(100vh - 64px);"></div>
-            <div class="text-white text-3xl font-bold text-center my-4">
+            <div id="map" class="bg-gray-200 w-full h-screen rounded-lg" style="height: calc(100vh - 64px);"></div>
+            <div class="text-3xl font-bold text-center my-4">
     Journey Planner
 </div>
 
@@ -61,29 +63,29 @@
 
             <!--  Planning Panel -->
             <div class="mt-auto"></div>
-            <div class="bg-gray-900 p-8 rounded-lg shadow-lg mx-4 mb-4">
+            <div id="journey-planner" class="bg-gray-200 p-8 rounded-lg shadow-lg mx-4 mb-4">
                 <form id="myForm" class="space-y-4">
-                    <div class="text-white text-lg mb-2">
+                    <div class=" text-lg mb-2">
                         Choose your start destination location then hit accept to find nearest station to you and navigation
                     </div>
                     <!-- Start Location Row -->
                     <div class="flex flex-wrap items-center -mx-2">
                         <div class="px-2 w-full sm:w-1/2">
-                            <label for="startInput" class="block text-sm font-medium text-white mb-1">Start:</label>
-                            <input id="startInput" type="text" placeholder="Start location" class="w-full p-2 bg-gray-200 rounded text-black">
+                            <label for="startInput" class="block text-sm font-medium  mb-1">Start:</label>
+                            <input id="startInput" type="text" placeholder="Start location" class="w-full p-2 bg-gray-50 rounded text-gray-800">
                         </div>
                     </div>
                     
                     <!-- Start Time and Day Row -->
                     
-                    <div class="text-white text-lg mb-2 mt-4">
+                    <div class=" text-lg mb-2 mt-4">
                         Choose your end destination and hit accept for the nearest station and navigation
                     </div>
                     <!-- End Location Row -->
                     <div class="flex flex-wrap items-center -mx-2">
                         <div class="px-2 w-full sm:w-1/2">
-                            <label for="endInput" class="block text-sm font-medium text-white mb-1">End:</label>
-                            <input id="endInput" type="text" placeholder="End location" class="w-full p-2 bg-gray-200 rounded text-black">
+                            <label for="endInput" class="block text-sm font-medium  mb-1">End:</label>
+                            <input id="endInput" type="text" placeholder="End location" class="w-full p-2 bg-gray-50 rounded text-gray-800">
                         </div>
                     </div>
                     
@@ -91,27 +93,27 @@
                     
 
                     <div class="px-2">
-                        <button id="resetButton" type="button" class="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
+                        <button id="resetButton" type="button" class="bg-blue-500  p-2 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
                             <ion-icon name="refresh-outline" class="text-xl"></ion-icon>
                         </button>
                     </div>
-                    <div class="text-white text-lg mb-4 text-right">
+                    <div class=" text-lg mb-4 text-right">
                         Click here for station to station directions
                     </div>
                     <!-- Buttons Row -->
                     <div class="flex flex-wrap items-center justify-between -mx-2">
                         <div class="px-2">
-                            <button id="confirmButton" type="button" class="bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-700 focus:ring-opacity-50">
+                            <button id="confirmButton" type="button" class="bg-teal-500  px-4 py-2 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-700 focus:ring-opacity-50">
                                 Confirm
                             </button>
                         </div>
                         <div class="px-2">
-                            <button id="directionsButton" type="button" class="bg-gray-800 text-white px-4 py-2 rounded-md" style="display: none;">
+                            <button id="directionsButton" type="button" class="bg-gray-800  px-4 py-2 rounded-md" style="display: none;">
                                 Directions
                             </button>
                         </div>
                         <div class="px-2">
-                            <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded-md" onclick="submitForm()">
+                            <button type="button" class="bg-blue-500  px-4 py-2 rounded-md" onclick="submitForm()">
                                 Submit
                             </button>
                         </div>
@@ -119,14 +121,14 @@
                 </form>
             </div>
                 <!---added info for legs of journey planning -->
-            <div class="bg-gray-900 p-8 rounded-lg shadow-lg mx-4 mb-4">
-                <div class="text-white text-lg mb-2">
+            <div id= "route-info" class="bg-gray-200 p-8 rounded-lg shadow-lg mx-4 mb-4">
+                <div class=" text-lg mb-2">
                     Route Details
                 </div>
                 <div id="route-info" class="space-y-2">
-                    <p id="first-leg-info" class="text-sm text-white">Walk to bike station: ...</p>
-                    <p id="second-leg-info" class="text-sm text-white">Bike to destination station: ...</p>
-                    <p id="third-leg-info" class="text-sm text-white">Walk to final destination: ...</p>
+                    <p id="first-leg-info" class="text-sm ">Walk to bike station: ...</p>
+                    <p id="second-leg-info" class="text-sm ">Bike to destination station: ...</p>
+                    <p id="third-leg-info" class="text-sm ">Walk to final destination: ...</p>
                 </div>
             </div>
             
