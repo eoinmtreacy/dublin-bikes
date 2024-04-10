@@ -109,8 +109,9 @@ def predict():
         print("params", params)
 
         prediction = model.predict(params)
+        print("prediction", prediction)
 
-        return jsonify(data=prediction)
+        return jsonify(data={'availability': prediction[0]})
     else:
         return 'Method not allowed'
 

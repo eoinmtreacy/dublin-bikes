@@ -513,8 +513,8 @@ async function submitForm() {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-            return data
+            console.log(data.data);
+            return data.data
         })
         .catch(error => console.error('Error:', error));
 
