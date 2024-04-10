@@ -472,15 +472,20 @@ function getDirections() {
 
 async function submitForm() {
     getDirections(); // Call the getDirections function to display the directions button
+    let depart_avail = getPrediction(depart.number, new Date().getDay(),new Date().getHours()) 
+    let arrive_avail = getPrediction(arrive.number, new Date().getDay(),new Date().getHours())
+}
+
+async function getPrediction(station, day, hour) {
+    // changes HTML elements as a side effect
     const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    const day = (new Date().getDay() + 6) % 7
 
     const forecast = await fetch('/api/WeatherForecast', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ hour: new Date().getUTCHours(), day: days_letters[new Date().getDay()]})
+        body: JSON.stringify({ hour: hour, day: days_letters[day]})
     })
         .then(response => response.json())
         .then(data => {
@@ -496,15 +501,15 @@ async function submitForm() {
 
     // TODO get today and pass it to the model in the correct format
 
-    const prediction = await fetch('/predict', {
+    const prediction = await fetch(`/predict/${station}?day=${day}&hour=${hour}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            station: depart.number,
-            params: [(new Date().getDay() + 6) % 7,
-                new Date().getHours(),
+            station: station,
+            params: [day,
+                hour,
                 forecast.precip_mm,
                 forecast.temp_c,
                 forecast.humidity
@@ -513,12 +518,11 @@ async function submitForm() {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data.data);
             return data.data
         })
         .catch(error => console.error('Error:', error));
 
-    // return prediction
+        return prediction
 }
 
 async function fetchRealTimeWeather() {

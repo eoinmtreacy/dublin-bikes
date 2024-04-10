@@ -93,8 +93,8 @@ def landing():
         
     return render_template('index.html', google_maps_api_key=GOOGLE_MAPS_API_KEY, )
 
-@app.route('/predict', methods=['POST'])
-def predict():
+@app.route('/predict/<station>', methods=['POST'])
+def predict(station):
     if request.method == 'POST':
         data = request.json
 
