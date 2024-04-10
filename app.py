@@ -93,52 +93,25 @@ def landing():
         
     return render_template('index.html', google_maps_api_key=GOOGLE_MAPS_API_KEY, )
 
-@app.route('/predict', methods=['POST'])
-def predict():
+@app.route('/predict/<station>', methods=['POST'])
+def predict(station):
     if request.method == 'POST':
         data = request.json
-        print(data)
-        depart = data['depart']
-        departTime = data['departTime']
-        departDay = data['departDay']
-        arrive = data['arrive']
-        arriveTime = data['arriveTime']
-        arriveDay = data['arriveDay']
-        rain = data['rain']
-        temp = data['temp']
-        hum = data['hum']
-
-        depart = [depart] + [int(departTime)] + departDay + [int(rain)] + [int(temp)] + [int(hum)]
-        arrive = [arrive] + [int(arriveTime)] + arriveDay + [int(rain)] + [int(temp)] + [int(hum)]
-
 
         # import model for depart station
-        with open(f'./models/{depart[0]}.pkl', 'rb') as file:
+        with open(f"./models/{data['station']}.pkl", 'rb') as file:
             model = pickle.load(file)
 
-        # Linear model trained on Polynomial
-        # transformation of these features
-        scaler = StandardScaler()
-        scaled_X = scaler.fit_transform(np.asarray(depart[1:]).reshape(1,-1))
+        params = [float(p) for p in data['params']]
 
-        departPrediction = model.predict(scaled_X)
+        params = np.asarray(params).reshape(1,-1)
+        
+        print("params", params)
 
-        # import model for arrive station
-        with open(f'./models/{arrive[0]}.pkl', 'rb') as file:
-            model = pickle.load(file)
+        prediction = model.predict(params)
+        print("prediction", prediction)
 
-        scaler = StandardScaler()
-        scaled_X = scaler.fit_transform(np.asarray(arrive[1:]).reshape(1,-1))
-
-        arrivePrediction = model.predict(scaled_X)
-
-        # Perform operations with the dropdown values
-        # For example, you could process them and return a result
-        result = {
-            'departAvailability': departPrediction[0],
-            'arriveAvailability': arrivePrediction[0]
-        }
-        return jsonify(result)
+        return jsonify(data={'availability': prediction[0]})
     else:
         return 'Method not allowed'
 

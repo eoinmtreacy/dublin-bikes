@@ -472,16 +472,24 @@ function getDirections() {
 
 async function submitForm() {
     getDirections(); // Call the getDirections function to display the directions button
-    const days_letters = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    let days = [0,0,0,0,0,0,0]
-    days[new Date().getDay()] = 1
+    const availability = await Promise.all([
+        getPrediction(depart.number, new Date().getDay(),new Date().getHours()),
+        getPrediction(arrive.number, new Date().getDay(),new Date().getHours())
+    ])
+
+    availability.map(a => console.log(a))
+}
+
+async function getPrediction(station, day, hour) {
+    // changes HTML elements as a side effect
+    const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
     const forecast = await fetch('/api/WeatherForecast', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ hour: new Date().getUTCHours(), day: days_letters[new Date().getDay()]})
+        body: JSON.stringify({ hour: hour, day: days_letters[day]})
     })
         .then(response => response.json())
         .then(data => {
@@ -497,31 +505,28 @@ async function submitForm() {
 
     // TODO get today and pass it to the model in the correct format
 
-    const prediction = await fetch('/predict', {
+    const prediction = await fetch(`/predict/${station}?day=${day}&hour=${hour}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            depart: depart.number,
-            departTime: new Date().getUTCHours(),
-            departDay: days,
-            arrive: arrive.number,
-            arriveTime: new Date().getUTCHours(),
-            arriveDay: days,
-            rain: forecast.precip_mm,
-            temp: forecast.temp_c,
-            hum: forecast.humidity
+            station: station,
+            params: [day,
+                hour,
+                forecast.precip_mm,
+                forecast.temp_c,
+                forecast.humidity
+            ]
         })
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-            return data
+            return data.data
         })
         .catch(error => console.error('Error:', error));
 
-    return prediction
+        return prediction
 }
 
 async function fetchRealTimeWeather() {
