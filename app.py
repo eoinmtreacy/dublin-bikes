@@ -136,33 +136,23 @@ def stations():
 
         columns = [desc[0] for desc in cursor.description]
 
-        # Fetch all rows
         rows = cursor.fetchall()
 
-        # Combine column names and data into a list of dictionaries
-        results = []
-        for row in rows:
-            result = {}
-            for i in range(len(columns)):
-                result[columns[i]] = row[i]
-            results.append(result)
+        results = [{columns[i]: row[i] for i in range(len(columns))} for row in rows]
 
-        results = cursor.fetchall()
         cursor.close()
         conn.close()
-        print(results)
+        print("Succesfull fetched stations from database")
 
         return jsonify(results)
 
-    # except: 
-    #     print("Data fetched from databse")
-    #     with open('static/stations.json', 'w') as json_file:
-    #         json.dump(results, json_file)
-    #     return jsonify(data=results)
-
     except pymysql.Error as e:
-        print(e)
-        return False
+        print("Error fetching stations from databse", e)
+        print("Using local data")
+        with open('stations/dublin_stations.json', 'r') as json_file:
+            local_data = json.load(json_file)
+
+        return jsonify(local_data)
     
 @app.route('/realtime')
 def realtime():
