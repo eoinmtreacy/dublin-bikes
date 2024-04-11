@@ -92,27 +92,12 @@ function toggleMapStyle() {
     }
 }
 
-
-
-
-
-
 async function fetchRealTime() {
-    try {
-        const response = await fetch('/realtime');
-        return await response.json();
-    } catch (error) {
-        console.error('fetchRealTime failed:', error);
-        return null; // Changed to see if my load errors where fetch errors also 
-    }
+    return await fetch('/realtime').then(response => response.json())
 }
 
-
 async function fetchStations() {
-    const response = await fetch('/stations');
-    const data = await response.json();
-    console.log(data);
-    return stations
+    return await fetch('/stations').then(response => response.json())
 }
 
 async function createMarkers(stations) {

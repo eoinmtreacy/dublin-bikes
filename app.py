@@ -160,38 +160,35 @@ def realtime():
     for each station
     return for pop-up UI"""
 
-    # try:
-    #     conn = mysql.connector.connect(
-    #     host=DB,
-    #     user=DB_USER,
-    #     password=DB_PW,
-    #     database=CITY
-    #     )
+    try:
+        conn = pymysql.connect(
+        host=DB,
+        user=DB_USER,
+        password=DB_PW,
+        database=CITY
+        )
 
-    #     cursor = conn.cursor()
+        cursor = conn.cursor()
 
-    #     query = (
-    #         """SELECT number, available_bikes, MAX(last_update) AS time
-    #         FROM availability
-    #         GROUP BY number;
-    #         """
-    #     )
+        query = (
+            """SELECT number, available_bikes, MAX(last_update) AS time
+            FROM availability
+            GROUP BY number;
+            """
+        )
 
-    #     cursor.execute(query)
-    #     results = cursor.fetchall()
-    #     cursor.close()
-    #     conn.close()
-    #     print("Succesfully got realtime")
-    #     return jsonify(results)
-
-    # except:
-    #     print("Error fetching realtime")
-    #     return 'FAILURE realtime'
-
-    print("Error fetching from DB, parsing local file")
-    with open('realtime.json', 'r') as file:
-        data = json.load(file)
-    return jsonify(data)
+        cursor.execute(query)
+        results = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        print("Succesfully got realtime")
+        return jsonify(results)
+    
+    except pymysql.Error as e:
+        print("Error fetching from DB, parsing local file")
+        with open('realtime.json', 'r') as json_file:
+            local_data = json.load(json_file)
+        return jsonify(local_data)
 
 @app.route('/recent', methods=['POST'])
 def recent():
