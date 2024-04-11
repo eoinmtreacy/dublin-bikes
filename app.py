@@ -106,11 +106,8 @@ def predict(station):
         params = [float(p) for p in data['params']]
 
         params = np.asarray(params).reshape(1,-1)
-        
-        print("params", params)
 
         prediction = model.predict(params)
-        print("prediction", prediction)
 
         return jsonify(data={'availability': prediction[0]})
     else:
@@ -120,49 +117,52 @@ def predict(station):
 @app.route('/stations')
 def stations():
     # this won't work on campus without an SSH tunnel but should be okay at home 
-    # try:
-    #     conn = mysql.connector.connect(
-    #     host=DB,
-    #     user=DB_USER,
-    #     password=DB_PW,
-    #     database=CITY
-    #     )
+    try:
+        conn = pymysql.connect(
+        host=DB,
+        user=DB_USER,
+        password=DB_PW,
+        database=CITY
+        )
 
-    #     cursor = conn.cursor()
+        cursor = conn.cursor()
 
-    #     query = (
-    #         "SELECT * "
-    #         "FROM stations"
-    #     )
+        query = (
+            "SELECT * "
+            "FROM stations"
+        )
 
-    #     cursor.execute(query)
+        cursor.execute(query)
 
-    #     columns = [desc[0] for desc in cursor.description]
+        columns = [desc[0] for desc in cursor.description]
 
-    #     # Fetch all rows
-    #     rows = cursor.fetchall()
+        # Fetch all rows
+        rows = cursor.fetchall()
 
-    #     # Combine column names and data into a list of dictionaries
-    #     results = []
-    #     for row in rows:
-    #         result = {}
-    #         for i in range(len(columns)):
-    #             result[columns[i]] = row[i]
-    #         results.append(result)
+        # Combine column names and data into a list of dictionaries
+        results = []
+        for row in rows:
+            result = {}
+            for i in range(len(columns)):
+                result[columns[i]] = row[i]
+            results.append(result)
 
-    #     # with open('static/stations.json', 'w') as json_file:
-    #     #     json.dump(results, json_file)
+        results = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        print(results)
 
-    #     cursor.close()
-    #     conn.close()
+        return jsonify(results)
+
+    # except: 
     #     print("Data fetched from databse")
+    #     with open('static/stations.json', 'w') as json_file:
+    #         json.dump(results, json_file)
     #     return jsonify(data=results)
 
-    # except:
-    print("Error fetching from DB, parsing local file")
-    with open('stations.json', 'r') as file:
-        data = json.load(file)
-    return jsonify(data=data)
+    except pymysql.Error as e:
+        print(e)
+        return False
     
 @app.route('/realtime')
 def realtime():
@@ -247,7 +247,7 @@ def recent():
             print("Succesfully got recent data")
             return jsonify(results)
 
-        except mysql.connector.Error as e:
+        except pymysql.Error as e:
             print(e)
             return False
         
@@ -263,7 +263,7 @@ def last_week():
         data = request.json
         station = data['station_number']
         try :
-            conn = mysql.connector.connect(
+            conn = pymysql.connect(
             host=DB,
             user=DB_USER,
             password=DB_PW,
@@ -296,7 +296,7 @@ def last_week():
             print("Succesfully got recent data")
             return jsonify(results)
 
-        except mysql.connector.Error as e:
+        except pymysql.Error as e:
             print(e)
             return False
         

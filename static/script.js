@@ -111,7 +111,7 @@ async function fetchRealTime() {
 async function fetchStations() {
     const response = await fetch('/stations');
     const data = await response.json();
-    const stations = data.data;
+    console.log(data);
     return stations
 }
 
