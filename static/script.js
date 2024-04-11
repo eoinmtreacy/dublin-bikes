@@ -226,10 +226,10 @@ async function createMarkers(stations) {
                 new Chart(ctxHour, {
                     type: 'bar',
                     data: {
-                        labels: recent_avail.map(r => r[0]).concat(recent_avail.map(r => (r[0] + 12) % 24)), // Combine the recent and the predicted hours labels
+                        labels: recent_avail.map(r => r[0]).concat(recent_avail.map(r => (r[0] + 12) % 24)),
                         datasets: [{
                             label: 'Bike Availability per Hour',
-                            data: recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p['availability'] * station.bike_stands)), // Combine the recent and the predicted values of course
+                            data: recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p['availability'] * station.bike_stands)),
                             backgroundColor: 'rgba(54, 162, 235, 0.2)',
                             borderColor: 'rgb(54, 162, 235)',
                             borderWidth: 1
@@ -237,51 +237,24 @@ async function createMarkers(stations) {
                     },
                     options: {
                         scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Number of Bikes Available'
-                                }
-                            },
+                            y: { beginAtZero: true, title: { display: true, text: 'Number of Bikes Available' } },
                             x: {
-                                max: 25, // i think these will have to change too but I tried and don't understand what's happening here
-                                min: 0,
+                                max: 25, min: 0,
                                 ticks: {
                                     autoSkip: false,
                                     callback: function (value, index, values) {
-                                        // Display label for every second hour and format it
-                                        if (index % 2 === 0) {
-                                            return `${value}:00`;
-                                        } else {
-                                            return '';
-                                        }
+                                        if (index % 2 === 0) { return `${value}:00`; } else { return ''; }
                                     }
                                 },
                                 beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Hour of the Day'
-                                }
+                                title: { display: true, text: 'Hour of the Day' }
                             }
                         },
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top',
-                            },
-                            tooltip: {
-                                enabled: true,
-                                mode: 'index',
-                                intersect: false,
-                            }
-                        },
-                        animation: {
-                            duration: 1000,
-                            easing: 'easeOutBounce'
-                        }
+                        plugins: { legend: { display: true, position: 'top' }, tooltip: { enabled: true, mode: 'index', intersect: false } },
+                        animation: { duration: 1000, easing: 'easeOutBounce' }
                     }
                 });
+                
             });
         });
 
