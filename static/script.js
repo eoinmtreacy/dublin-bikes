@@ -300,6 +300,8 @@ async function initMap() {
         console.log(arrive, destination);
     })
 
+    setupNavbarToggle();
+
 }
 
 // DIRECTION SERVICES
@@ -413,7 +415,19 @@ async function handleConfirmButtonClick() {
     }
 }
     
-       
+function setupNavbarToggle() {
+    const menuToggle = document.getElementById('menuToggle');
+    const navbar = document.getElementById('navbar');
+
+    // Ensure the navbar is not hidden on page load
+    navbar.classList.remove('hidden');
+
+    menuToggle.addEventListener('click', function () {
+        // Toggle the 'hidden' class on click
+        navbar.classList.toggle('hidden');
+    });
+}
+
         // if (status === 'OK') {
         //     const route = response.routes[0].legs[0];
         //     document.getElementById('journeyDistance').textContent = `Distance: ${route.distance.text}`;
@@ -578,4 +592,7 @@ document.getElementById('resetButton').addEventListener('click', function () {
     });
 
     document.getElementById('directionsButton').style.display = 'none';
+
+    
+    
 });

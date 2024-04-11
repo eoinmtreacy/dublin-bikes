@@ -16,114 +16,89 @@
         src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=visualization,places,geometry&callback=initMap"></script>
 </head>
 
-<body class="bg-gray-800 text-white">
-    <header class="bg-slate-200 py-3 px-4 flex items-center justify-between">
+<body class="bg-gray-800 ">
+    <header class="bg-slate-100 py-3 px-4 flex items-center justify-between fixed top-0 left-0 right-0 z-40 shadow-xl">
         <div class="flex items-center">
-            <ion-icon name="menu-outline" class="text-black text-4xl pr-4" id="menuToggle"></ion-icon>
-
+            <ion-icon name="menu-outline" class="text-gray-800 text-4xl pr-4 cursor-pointer" id="menuToggle"></ion-icon>
+            <ion-icon name="bicycle" class="text-light-blue-400 text-4xl cursor-pointer"></ion-icon>
         </div>
         <div class="weather-info flex items-center text-xl font-semibold text-gray-800">
-            <span id="weather-description" class="mr-4">Loading weather data...</span>
+            <span id="weather-description">Loading weather data...</span>
             <span id="weather-icon" class="mx-4 flex items-center justify-center"></span>
             <span id="weather-temperature" class="mr-4"></span>
-            <span id="weather-humidity" class="mr-4">Humidity: ...%</span>
+            <span id="weather-humidity">Humidity: ...%</span>
             <span id="weather-precipitation">Precipitation: ...mm</span>
         </div>
-
-
-        <!-- <select id="markerSelect">
-            <option value="">Select a marker</option>
-        </select> -->
     </header>
     <div class="flex">
         <div class="flex">
-            <nav id="navbar"
-                class="bg-slate-200 transform top-0 left-0 w-64 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30">
+            <nav id="navbar" class="bg-slate-100 fixed top-14 left-0 w-64 h-full overflow-auto ease-in-out transition-all duration-300 z-30 shadow-xl">
 
-                <div class="flex flex-col items-center pt-8">
-                    <ion-icon name="bicycle-outline" class="text-black text-4xl mb-8"></ion-icon>
-                    <div class="text-black text-3xl font-bold text-center my-4">
-                        Journey Planner
-                    </div>
 
-                    <div class="mt-auto"></div>
-                    <div class="bg-light-gray-900 p-8 rounded-lg shadow-lg mx-4 mb-4">
-                        <form id="myForm" class="space-y-4">
-
-                            <!-- Start Location Row -->
-                            <div class="flex flex-wrap items-center -mx-2">
-                                <div class="px-2 w-full">
-                                    <label for="startInput"
-                                        class="block text-sm font-medium text-black mb-1">Start:</label>
-                                    <input id="startInput" type="text" placeholder="Start location"
-                                        class="w-full p-2 bg-gray-200 rounded text-black border border-black">
+                    <div class="flex flex-col items-center py-8">
+                        <!-- Icon and Title -->
+                        <div class="text-5xl text-blue-600 mb-4">
+                            <ion-icon name="bicycle-outline"></ion-icon>
+                        </div>
+                        <h1 class="text-2xl font-semibold text-gray-800 mb-6">
+                            Journey Planner
+                        </h1>
+                
+                        <!-- Journey Planner Form -->
+                        <div class="w-full px-6">
+                            <form id="myForm" class="space-y-6">
+                                <div>
+                                    <label for="startInput" class="text-sm font-medium text-gray-800">Start:</label>
+                                    <input id="startInput" type="text" placeholder="Start location" class="mt-1 w-full p-3 bg-white rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                                 </div>
-                            </div>
-                            <!-- End Location Row -->
-                            <div class="flex flex-wrap items-center -mx-2 mt-4">
-                                <div class="px-2 w-full">
-                                    <label for="endInput" class="block text-sm font-medium text-black mb-1">End:</label>
-                                    <input id="endInput" type="text" placeholder="End location"
-                                        class="w-full p-2 bg-gray-200 rounded text-black border border-black">
+                
+                                <div>
+                                    <label for="endInput" class="text-sm font-medium text-gray-800">End:</label>
+                                    <input id="endInput" type="text" placeholder="End location" class="mt-1 w-full p-3 bg-white rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                                 </div>
-                            </div>
-
-
-
-                            <div class="px-2">
-                                <button id="resetButton" type="button"
-                                    class="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
-                                    <ion-icon name="refresh-outline" class="text-xl"></ion-icon>
+                
+                                <button type="button" onclick="submitForm()" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                    Submit
                                 </button>
-                            </div>
-                            <!-- <div class="text-white text-lg mb-4 text-right">
-                                Click here for station to station directions
-                            </div> -->
-                            <!-- Buttons Row -->
-                            <div class="flex flex-wrap items-center justify-between -mx-2">
-                                <div class="flex flex-col">
-                                    <button id="directionsButton" type="button"
-                                        class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-opacity-50 w-full mb-2"
-                                        style="display: none;">
-                                        Directions
+
+                                
+                                    <button type="button" onclick="resetButton()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium rounded-lg text-sm p-2.5 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                                        <ion-icon name="refresh-outline" class="text-xl"></ion-icon>
                                     </button>
-                                    <button type="button"
-                                        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 w-full mb-2"
-                                        onclick="submitForm()">
-                                        Submit
-                                    </button>
+                            </form>
+                        </div>
+                
+                        <!-- Route Details -->
+                        <div class="bg-white mt-8 p-6 rounded-lg shadow-xl w-full mx-6">
+                            <h2 class="text-lg font-semibold text-gray-800 mb-4">
+                                Route Details
+                            </h2>
+                            <div id="route-info" class="text-sm">
+                                <div class="flex items-center mb-2">
+                                    <div class="bg-yellow-500 w-3 h-3 inline-block mr-2"></div>
+                                    <p id="first-leg-info" class="text-gray-700">Walk</p>
                                 </div>
-
+                                <div class="flex items-center mb-2">
+                                    <div class="bg-red-500 w-3 h-3 inline-block mr-2"></div>
+                                    <p id="second-leg-info" class="text-gray-700">Ride</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="bg-blue-500 w-3 h-3 inline-block mr-2"></div>
+                                    <p id="third-leg-info" class="text-gray-700">Walk</p>
+                                </div>
                             </div>
-                        </form>
-                    </div>
-                    <!---added info for legs of journey planning -->
-                    <div class="bg-gray-700 p-8 rounded-lg shadow-lg mx-4 mb-4">
-                        <div class="text-white text-lg mb-2">
-                            Route Details
-                        </div>
-                        <div id="route-info" class="space-y-0">
-                            <p id="first-leg-info" class="text-sm text-white">Walk</p>
-                            <p id="first-leg-avail" class="text-sm text-white"></p>
-                            <p id="second-leg-info" class="text-sm text-white">Ride</p>
-                            <p id="second-leg-avail" class="text-sm text-white"></p>
-                            <p id="third-leg-info" class="text-sm text-white">Walk</p>
                         </div>
                     </div>
-
-                </div>
-        </div>
-
-    </div>
+                </nav>
+                
     <!-- Google Maps Direction button, styled to appear to the right of Submit button. Hidden. Becomes Visible when form is submitted-->
 
-
+    
     </nav>
     </div>
-    <main id="main-content" class="flex-1 p-4">
-        <div id="map" class="w-full h-screen rounded-lg" style="height: calc(100vh - 100px);"></div>
-
-
+    
+        <div id="map" class="flex-1" style="height: calc(100vh - (0vh));"></div>
+    </main>
 
 
         <!--  Planning Panel -->
