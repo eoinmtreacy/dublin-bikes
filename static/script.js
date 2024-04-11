@@ -181,6 +181,26 @@ async function createMarkers(stations) {
                 })
                 .catch(error => console.error('Error:', error));
 
+            // Second chart: Bike availability by hour
+            const promiseAvail = [];
+                var day = new Date().getDay(); // Ensure that the day is set to today
+                let currentHour = new Date().getHours(); // Get the current hour
+                
+                for (let i = 0; i < 12; i++) {
+                    let predictHour = (currentHour + i) % 24; // Adjust for 24-hour clock
+                    if (currentHour + i >= 24) { //If the hour is in the next day 
+                        day = (day + 1) % 7; // ensure the day is set to tomorrow and Adjust for 7-day week
+                    }
+                    var promise = getPrediction(station.number, day, predictHour);
+                    // var formattedPrediction = `${predictHour}:${prediction.availability}`;
+                    promiseAvail.push(promise);
+                }
+
+            const predicted_avail = await Promise.all(promiseAvail)
+            console.log(recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p['availability'] * station.bike_stands)));
+
+            // var predicted_avail = getHourlyPrediction(station.number);
+
             // Open the info window for the clicked marker
             infoWindow.open({
                 anchor: marker,
@@ -268,31 +288,14 @@ async function createMarkers(stations) {
                     }
                 });
 
-                // Second chart: Bike availability by hour
-                async function getHourlyPrediction(station) {
-                    let predicted_avail = [];
-                    for (let i = 0; i < 12; i++) {
-                        var day = new Date().getDay(); // Ensure that the day is set to today
-                        let currentHour = new Date().getHours(); // Get the current hour
-                        let predictHour = (currentHour + i) % 24; // Adjust for 24-hour clock
-                        if (currentHour + i >= 24) { //If the hour is in the next day 
-                            day = (day + 1) % 7; // ensure the day is set to tomorrow and Adjust for 7-day week
-                        }
-                        var prediction = await getPrediction(station, day, predictHour);
-                        var formattedPrediction = `${predictHour}:${prediction.availability}`;
-                        predicted_avail.push(formattedPrediction);
-                    }
-                    console.log(predicted_avail);
-                    return predicted_avail}
-                var predicted_avail = getHourlyPrediction(station.number);
                 let ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
                 new Chart(ctxHour, {
                     type: 'bar',
                     data: {
-                        labels: recent_avail.map(r => r[0]).concat(predicted_avail.map(p => p[0])), // Combine the recent and the predicted hours labels
+                        labels: recent_avail.map(r => r[0]).concat(recent_avail.map(r => (r[0] + 12) % 24)), // Combine the recent and the predicted hours labels
                         datasets: [{
                             label: 'Bike Availability per Hour',
-                            data: recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p[1])), // Combine the recent and the predicted values of course
+                            data: recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p['availability'] * station.bike_stands)), // Combine the recent and the predicted values of course
                             backgroundColor: 'rgba(54, 162, 235, 0.2)',
                             borderColor: 'rgb(54, 162, 235)',
                             borderWidth: 1
