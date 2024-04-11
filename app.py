@@ -295,9 +295,9 @@ def last_week():
             print("Succesfully got recent data")
             return jsonify(results)
 
-        except:
-            print("Error fetching recent data")
-            return 'FAILURE realtime'
-
+        except mysql.connector.Error as e:
+            print(e)
+            return False
+        
 if __name__ == '__main__':
     app.run(debug=True)
