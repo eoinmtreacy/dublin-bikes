@@ -246,9 +246,9 @@ def recent():
             print("Succesfully got recent data")
             return jsonify(results)
 
-        except:
-            print("Error fetching recent data")
-            return 'FAILURE realtime'
+        except mysql.connector.Error as e:
+            print(e)
+            return False
         
 @app.route('/lastweek', methods=['POST'])
 def last_week():
