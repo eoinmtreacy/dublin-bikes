@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import json
 from flask_cors import CORS
+import pymysql
 from constants import *
 # from local_constants import * 
 import requests
@@ -214,7 +215,7 @@ def recent():
         data = request.json
         station = data['station_number']
         try :
-            conn = mysql.connector.connect(
+            conn = pymysql.connect(
             host=DB,
             user=DB_USER,
             password=DB_PW,
