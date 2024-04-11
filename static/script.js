@@ -1,14 +1,99 @@
 let STATIONS
 let origin, depart, arrive, destination
 let map;
+var currentStyle = "light"; // Default mode is Light Mode
+let darkMapStyle;
+let lightMapStyle;
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const map = await initMap()
+    lightMapStyle = await fetchStatic("static/light.json"); 
+    darkMapStyle = await fetchStatic("static/dark.json");
+    const map = await initMap(lightMapStyle) // initalise the map with Light Mode style
     const realTime = await fetchRealTime()
     STATIONS = await fetchStations(realTime) // STATIONS created from fetch
     STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
     fetchRealTimeWeather()
 });
+
+
+async function fetchStatic(path) {
+    const response = await fetch(path);
+    const data = await response.json();
+    return data;
+}
+
+
+
+async function fetchMapStyles() {
+    darkMapStyle = await fetchStatic("static/dark.json");
+    lightMapStyle = await fetchStatic("static/light.json");
+}
+
+function toggleMapStyle() {
+    const viewModeDiv = document.querySelector(".view-mode"); // The toggle button for changing between light and dark mode  -Reference: https://www.w3schools.com/jsref/met_document_queryselector.asp
+    const icon = viewModeDiv.querySelector("ion-icon"); // The icon of the toggle button
+    const bodyElement = document.body; // The body element of the HTML document
+    const headerElement = document.querySelector("header"); // The header element of the HTML document
+    const weatherInfoTextElements = document.querySelectorAll(".weather-info span:not(#weather-icon)"); // The weather information text elements (do not want to impact weather icon)
+    const menuIcon = document.getElementById("menuToggle"); // The menu icon (hamburger icon)
+    const journeyPlannerContainer = document.getElementById("journey-planner"); // The journey planner container
+    const routeInfoContainer = document.getElementById("route-info"); // The route information container
+
+
+
+
+    if (currentStyle === "light") {
+        map.setOptions({styles: darkMapStyle});
+        currentStyle = "dark";
+        icon.setAttribute("name", "sunny-outline"); //Reference: https://www.w3schools.com/jsref/met_element_setattribute.asp
+        icon.classList.remove("text-black"); //Reference: https://www.w3schools.com/jsref/prop_element_classlist.asp
+        icon.classList.add("text-white");
+
+        // Switch to dark mode styles
+        bodyElement.className = "bg-gray-700 text-gray-50";
+        headerElement.classList.remove("bg-gray-300");
+        headerElement.classList.add("bg-gray-900");
+        weatherInfoTextElements.forEach(element => {
+            element.classList.add("text-white");
+        });
+        menuIcon.classList.remove("text-black");
+        menuIcon.classList.add("text-white");
+        journeyPlannerContainer.classList.remove("bg-gray-200");
+        journeyPlannerContainer.classList.add("bg-gray-900");
+        routeInfoContainer.classList.remove("bg-gray-200");
+        routeInfoContainer.classList.add("bg-gray-900");
+        
+
+        
+    } else {
+        //Switch to light mode styles (default)
+        map.setOptions({styles: lightMapStyle});
+        currentStyle = "light";
+        icon.setAttribute("name", "moon-outline");
+        icon.classList.remove("text-white");
+        icon.classList.add("text-black");
+
+        bodyElement.className = "bg-gray-100 text-gray-800";
+        headerElement.classList.remove("bg-gray-900");
+        headerElement.classList.add("bg-gray-300");
+        
+        weatherInfoTextElements.forEach(element => {
+            element.classList.remove("text-white"); 
+        });
+        menuIcon.classList.remove("text-white");
+        menuIcon.classList.add("text-black");
+        journeyPlannerContainer.classList.remove("bg-gray-900");
+        journeyPlannerContainer.classList.add("bg-gray-200");
+        routeInfoContainer.classList.remove("bg-gray-900");
+        routeInfoContainer.classList.add("bg-gray-200");
+
+    }
+}
+
+
+
+
+
 
 async function fetchRealTime() {
     try {
@@ -19,6 +104,7 @@ async function fetchRealTime() {
         return null; // Changed to see if my load errors where fetch errors also 
     }
 }
+
 
 async function fetchStations() {
     const response = await fetch('/stations');
@@ -38,6 +124,10 @@ async function createMarkers(stations) {
             <div style='color: black;'>
                 <strong>${station.name}</strong>
                 <p>Station Number: ${station.number}</p>
+                <p>Credit Card: ${station.banking ? 'Available' : 'Not Available'}</p>
+                <p>Available Bikes: ${station.available_bikes}</p>
+                <p>Available Stands: ${station.available_bike_stands}</p>
+                <p>Overall Capacity: ${station.bike_stands}</p>
                 <canvas id="chart-day-${index}" width="400" height="200"></canvas>
                 <canvas id="chart-hour-${index}" width="400" height="200" style="margin-top: 20px;"></canvas>
             </div>
@@ -250,10 +340,11 @@ async function createMarkers(stations) {
 }
 
 // changed this to async because it wouldn't work otherwise lol
-async function initMap() {
+async function initMap(mapChoice) {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 53.349805, lng: -6.26031 },
-        zoom: 13
+        zoom: 13,
+        styles: mapChoice
     });
 
     var noPoi = [
@@ -492,17 +583,24 @@ function getDirections() {
 
 async function submitForm() {
     getDirections(); // Call the getDirections function to display the directions button
-    handleConfirmButtonClick();
-    const days_letters = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    let days = [0,0,0,0,0,0,0]
-    days[new Date().getDay()] = 1
+    const availability = await Promise.all([
+        getPrediction(depart.number, new Date().getDay(),new Date().getHours()),
+        getPrediction(arrive.number, new Date().getDay(),new Date().getHours())
+    ])
+
+    availability.map(a => console.log(a))
+}
+
+async function getPrediction(station, day, hour) {
+    // changes HTML elements as a side effect
+    const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
     const forecast = await fetch('/api/WeatherForecast', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ hour: new Date().getUTCHours(), day: days_letters[new Date().getDay()]})
+        body: JSON.stringify({ hour: hour, day: days_letters[day]})
     })
         .then(response => response.json())
         .then(data => {
@@ -518,31 +616,28 @@ async function submitForm() {
 
     // TODO get today and pass it to the model in the correct format
 
-    const prediction = await fetch('/predict', {
+    const prediction = await fetch(`/predict/${station}?day=${day}&hour=${hour}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            depart: depart.number,
-            departTime: new Date().getUTCHours(),
-            departDay: days,
-            arrive: arrive.number,
-            arriveTime: new Date().getUTCHours(),
-            arriveDay: days,
-            rain: forecast.precip_mm,
-            temp: forecast.temp_c,
-            hum: forecast.humidity
+            station: station,
+            params: [day,
+                hour,
+                forecast.precip_mm,
+                forecast.temp_c,
+                forecast.humidity
+            ]
         })
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-            return data
+            return data.data
         })
         .catch(error => console.error('Error:', error));
 
-    return prediction
+        return prediction
 }
 
 async function fetchRealTimeWeather() {
