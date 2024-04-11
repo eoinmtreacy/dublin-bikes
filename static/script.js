@@ -629,6 +629,7 @@ async function submitForm() {
     // console.log(predicted);
     await fetchWeatherForecast(days_letters[new Date().getDay()],new Date().getHours()); // Call the fetchWeatherForecast function to display the weather forecast
     getDirections(); // Call the getDirections function to display the directions button
+    handleConfirmButtonClick()
     const availability = await Promise.all([
         getPrediction(depart.number, new Date().getDay(),new Date().getHours()),
         getPrediction(arrive.number, new Date().getDay(),new Date().getHours())
