@@ -198,81 +198,30 @@ async function createMarkers(stations) {
 
             google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
                 // First chart: Bike availability by day
-                // let ctxDay = document.getElementById(`chart-day-${index}`).getContext('2d');
-                // new Chart(ctxDay, {
-                //     type: 'bar',
-                //     data: {
-                //         labels: last_week.map(l => l[0].slice(0,3)),
-                //         datasets: [{
-                //             label: 'Bike Availability',
-                //             // get time
-                //             // pull from /realtime-ish for 1 station, for 
-                //             // average availabliltiy group by datatime (the hour)
-                //             // call /predict for every time from now until midnight
-                //             // format from /predict 
-                //             data: last_week.map(l => l[0]),
-                //             backgroundColor: [
-                //                 'rgba(255, 99, 132, 0.2)',
-                //                 'rgba(255, 159, 64, 0.2)',
-                //                 'rgba(255, 205, 86, 0.2)',
-                //                 'rgba(75, 192, 192, 0.2)',
-                //                 'rgba(54, 162, 235, 0.2)',
-                //                 'rgba(153, 102, 255, 0.2)',
-                //                 'rgba(201, 203, 207, 0.2)'
-                //             ],
-                //             borderColor: [
-                //                 'rgb(255, 99, 132)',
-                //                 'rgb(255, 159, 64)',
-                //                 'rgb(255, 205, 86)',
-                //                 'rgb(75, 192, 192)',
-                //                 'rgb(54, 162, 235)',
-                //                 'rgb(153, 102, 255)',
-                //                 'rgb(201, 203, 207)'
-                //             ],
-                //             borderWidth: 1
-                //         }]
-                //     },
-                //     options: {
-                //         scales: {
-                //             y: {
-                //                 ticks: {
-                //                     stepSize: 5,
-                //                     autoSkip: false
-                //                 },
-                //                 beginAtZero: true,
-                //                 title: {
-                //                     display: true,
-                //                     text: 'Number of Bikes Available'
-                //                 }
-                //             },
-                //             x: {
-                //                 ticks: {
-                //                     autoSkip: false
-                //                 },
-                //                 title: {
-                //                     display: true,
-                //                     text: 'Day of the Week'
-                //                 }
-                //             }
-                //         },
-                //         plugins: {
-                //             legend: {
-                //                 display: true,
-                //                 position: 'top',
-                //             },
-                //             tooltip: {
-                //                 enabled: true,
-                //                 mode: 'index',
-                //                 intersect: false,
-                //             }
-                //         },
-                //         animation: {
-                //             duration: 1000,
-                //             easing: 'easeOutBounce'
-                //         }
-                //     }
-                // });
-
+                let ctxDay = document.getElementById(`chart-day-${index}`).getContext('2d');
+                new Chart(ctxDay, {
+                    type: 'bar',
+                    data: {
+                        labels: last_week.map(l => l[0].slice(0,3)),
+                        datasets: [{
+                            label: 'Bike Availability',
+                            data: last_week.map(l => l[0]),
+                            backgroundColor: ['rgba(255,99,132,0.2)','rgba(255,159,64,0.2)','rgba(255,205,86,0.2)','rgba(75,192,192,0.2)','rgba(54,162,235,0.2)','rgba(153,102,255,0.2)','rgba(201,203,207,0.2)'],
+                            borderColor: ['rgb(255,99,132)','rgb(255,159,64)','rgb(255,205,86)','rgb(75,192,192)','rgb(54,162,235)','rgb(153,102,255)','rgb(201,203,207)'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: { ticks: { stepSize: 5, autoSkip: false }, beginAtZero: true, title: { display: true, text: 'Number of Bikes Available' } },
+                            x: { ticks: { autoSkip: false }, title: { display: true, text: 'Day of the Week' } }
+                        },
+                        plugins: { legend: { display: true, position: 'top' }, tooltip: { enabled: true, mode: 'index', intersect: false } },
+                        animation: { duration: 1000, easing: 'easeOutBounce' }
+                    }
+                });
+                
+                // Second chart, hourly availability
                 let ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
                 new Chart(ctxHour, {
                     type: 'bar',
