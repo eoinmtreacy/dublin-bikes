@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     darkMapStyle = await fetchStatic("static/dark.json");
     const map = await initMap(lightMapStyle) // initalise the map with Light Mode style
     const realTime = await fetchRealTime()
+    console.log('Real Time Data:', realTime);  // I dont think the db is pulling the data we need for bike availability so this is debug log 1/2
     STATIONS = await fetchStations(realTime) // STATIONS created from fetch
+    console.log('Stations:', STATIONS); // I dont think the db is pulling the data we need for bike availability so this is debug log 1/2
     STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
     fetchRealTimeWeather()
 });
@@ -111,7 +113,7 @@ async function createMarkers(stations) {
             <div style='color: black;'>
                 <strong>${station.name}</strong>
                 <p>Station Number: ${station.number}</p>
-                <p>Credit Card: ${station.banking ? 'Available' : 'Not Available'}</p>
+                <p>Credit Card: ${station.banking === 1 ? 'Available' : 'Not Available'}</p> 
                 <p>Available Bikes: ${station.available_bikes}</p>
                 <p>Available Stands: ${station.available_bike_stands}</p>
                 <p>Overall Capacity: ${station.bike_stands}</p>
@@ -171,7 +173,7 @@ async function createMarkers(stations) {
                 var day = new Date().getDay(); // Ensure that the day is set to today
                 let currentHour = new Date().getHours(); // Get the current hour
                 
-                for (let i = 0; i < 12; i++) {
+                for (let i = 0; i <= 12; i++) { // changing from less than 12 to less than / equal to 12 - Was only predicting 11 hours
                     let predictHour = (currentHour + i) % 24; // Adjust for 24-hour clock
                     if (currentHour + i >= 24) { //If the hour is in the next day 
                         day = (day + 1) % 7; // ensure the day is set to tomorrow and Adjust for 7-day week
@@ -205,9 +207,9 @@ async function createMarkers(stations) {
                         labels: last_week.map(l => l[0].slice(0,3)),
                         datasets: [{
                             label: 'Bike Availability',
-                            data: last_week.map(l => l[1]),
-                            backgroundColor: ['rgba(255,99,132,0.2)','rgba(255,159,64,0.2)','rgba(255,205,86,0.2)','rgba(75,192,192,0.2)','rgba(54,162,235,0.2)','rgba(153,102,255,0.2)','rgba(201,203,207,0.2)'],
-                            borderColor: ['rgb(255,99,132)','rgb(255,159,64)','rgb(255,205,86)','rgb(75,192,192)','rgb(54,162,235)','rgb(153,102,255)','rgb(201,203,207)'],
+                            data: last_week.map(l => Math.round(l[1])), // Round the availibility to nearest whole number
+                            backgroundColor: ['rgba(255,99,132,0.2)','rgba(255,159,64,0.2)','rgba(255,205,86,0.2)','rgba(75,192,192,0.2)','rgba(54,162,235,0.2)','rgba(153,102,255,0.2)','rgba(205,127,50,0.2)'], //These colours came from the Chart.js docs
+                            borderColor: ['rgb(255,99,132)','rgb(255,159,64)','rgb(255,205,86)','rgb(75,192,192)','rgb(54,162,235)','rgb(153,102,255)','rgb(205,127,50)'],
                             borderWidth: 1
                         }]
                     },
@@ -222,15 +224,17 @@ async function createMarkers(stations) {
                 });
                 
                 // Second chart, hourly availability
+                const backgroundColours = Array(24).fill('rgba(54, 162, 235, 0.2)');
+                backgroundColours[currentHour] = 'rgba(54, 162, 235, 0.6)'; // Current Hour appears darker
                 let ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
                 new Chart(ctxHour, {
                     type: 'bar',
                     data: {
-                        labels: Array.from({length: 24}, (_, i) => i),
+                        labels: Array.from({length: 24}, (_, i) => `${i}:00`),
                         datasets: [{
                             label: 'Bike Availability per Hour',
-                            data: recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p['availability'] * station.bike_stands)),
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            data: recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))), // Round the availibility to nearest whole number
+                            backgroundColor: backgroundColours,
                             borderColor: 'rgb(54, 162, 235)',
                             borderWidth: 1
                         }]
@@ -510,30 +514,6 @@ function getDirections() {
 }
 
 async function submitForm() {
-    // As the db is not pulling from my end, I had to use submitForm to test my code 
-    // console.log('submitting form');
-    // console.log('day:', days_letters[new Date().getDay()], 'hour:', String(new Date().getHours()));
-    // console.log("Predicitons runnung")
-    // let predicted = [];
-
-    // for (let i = 0; i < 12; i++) {
-    //     console.log('i:', i)
-
-    //     var day = new Date().getDay(); // Ensure that the day is set to today
-    //     let currentHour = new Date().getHours(); // Get the current hour
-    //     let predictHour = (currentHour + i) % 24; // Adjust for 24-hour clock
-    //     console.log('day:', day)
-    //     console.log('currentHour:', currentHour)
-    //     console.log('predictHour:', predictHour)
-    //     if (currentHour + i >= 24) { //If the hour is in the next day 
-    //         day = (day + 1) % 7; // ensure the day is set to tomorrow and Adjust for 7-day week
-    //     }
-    //     var prediction = await getPrediction(2, day, predictHour);
-    //     console.log('prediction:', prediction)
-    //     var formattedPrediction = `${predictHour}:${prediction.availability}`;
-    //     predicted.push(formattedPrediction);
-    // }
-    // console.log(predicted);
     await fetchWeatherForecast(days_letters[new Date().getDay()],new Date().getHours()); // Call the fetchWeatherForecast function to display the weather forecast
     getDirections(); // Call the getDirections function to display the directions button
     handleConfirmButtonClick()
@@ -548,8 +528,6 @@ async function submitForm() {
 
 
 async function getPrediction(station, day, hour) {
-    // changes HTML elements as a side effect
-    
 
     const forecast = await fetch('/api/WeatherForecast', {
         method: 'POST',
@@ -564,7 +542,6 @@ async function getPrediction(station, day, hour) {
         })
         .catch(error => console.error('Error fetching weather:', error));
 
-    // TODO get today and pass it to the model in the correct format
 
     const prediction = await fetch(`/predict/${station}?day=${day}&hour=${hour}`, {
         method: 'POST',
