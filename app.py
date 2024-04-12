@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import json
 from flask_cors import CORS
+import pymysql
 from constants import *
 # from local_constants import * 
 import requests
@@ -105,11 +106,8 @@ def predict(station):
         params = [float(p) for p in data['params']]
 
         params = np.asarray(params).reshape(1,-1)
-        
-        print("params", params)
 
         prediction = model.predict(params)
-        print("prediction", prediction)
 
         return jsonify(data={'availability': prediction[0]})
     else:
@@ -119,49 +117,42 @@ def predict(station):
 @app.route('/stations')
 def stations():
     # this won't work on campus without an SSH tunnel but should be okay at home 
-    # try:
-    #     conn = mysql.connector.connect(
-    #     host=DB,
-    #     user=DB_USER,
-    #     password=DB_PW,
-    #     database=CITY
-    #     )
+    try:
+        conn = pymysql.connect(
+        host=DB,
+        user=DB_USER,
+        password=DB_PW,
+        database=CITY
+        )
 
-    #     cursor = conn.cursor()
+        cursor = conn.cursor()
 
-    #     query = (
-    #         "SELECT * "
-    #         "FROM stations"
-    #     )
+        query = (
+            "SELECT * "
+            "FROM stations"
+        )
 
-    #     cursor.execute(query)
+        cursor.execute(query)
 
-    #     columns = [desc[0] for desc in cursor.description]
+        columns = [desc[0] for desc in cursor.description]
 
-    #     # Fetch all rows
-    #     rows = cursor.fetchall()
+        rows = cursor.fetchall()
 
-    #     # Combine column names and data into a list of dictionaries
-    #     results = []
-    #     for row in rows:
-    #         result = {}
-    #         for i in range(len(columns)):
-    #             result[columns[i]] = row[i]
-    #         results.append(result)
+        results = [{columns[i]: row[i] for i in range(len(columns))} for row in rows]
 
-    #     # with open('static/stations.json', 'w') as json_file:
-    #     #     json.dump(results, json_file)
+        cursor.close()
+        conn.close()
+        print("Succesfull fetched stations from database")
 
-    #     cursor.close()
-    #     conn.close()
-    #     print("Data fetched from databse")
-    #     return jsonify(data=results)
+        return jsonify(results)
 
-    # except:
-    print("Error fetching from DB, parsing local file")
-    with open('stations.json', 'r') as file:
-        data = json.load(file)
-    return jsonify(data=data)
+    except pymysql.Error as e:
+        print("Error fetching stations from databse", e)
+        print("Using local data")
+        with open('stations/dublin_stations.json', 'r') as json_file:
+            local_data = json.load(json_file)
+
+        return jsonify(local_data)
     
 @app.route('/realtime')
 def realtime():
@@ -169,38 +160,35 @@ def realtime():
     for each station
     return for pop-up UI"""
 
-    # try:
-    #     conn = mysql.connector.connect(
-    #     host=DB,
-    #     user=DB_USER,
-    #     password=DB_PW,
-    #     database=CITY
-    #     )
+    try:
+        conn = pymysql.connect(
+        host=DB,
+        user=DB_USER,
+        password=DB_PW,
+        database=CITY
+        )
 
-    #     cursor = conn.cursor()
+        cursor = conn.cursor()
 
-    #     query = (
-    #         """SELECT number, available_bikes, MAX(last_update) AS time
-    #         FROM availability
-    #         GROUP BY number;
-    #         """
-    #     )
+        query = (
+            """SELECT number, available_bikes, MAX(last_update) AS time
+            FROM availability
+            GROUP BY number;
+            """
+        )
 
-    #     cursor.execute(query)
-    #     results = cursor.fetchall()
-    #     cursor.close()
-    #     conn.close()
-    #     print("Succesfully got realtime")
-    #     return jsonify(results)
-
-    # except:
-    #     print("Error fetching realtime")
-    #     return 'FAILURE realtime'
-
-    print("Error fetching from DB, parsing local file")
-    with open('realtime.json', 'r') as file:
-        data = json.load(file)
-    return jsonify(data)
+        cursor.execute(query)
+        results = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        print("Succesfully got realtime")
+        return jsonify(results)
+    
+    except pymysql.Error as e:
+        print("Error fetching from DB, parsing local file")
+        with open('realtime.json', 'r') as json_file:
+            local_data = json.load(json_file)
+        return jsonify(local_data)
 
 @app.route('/recent', methods=['POST'])
 def recent():
@@ -214,7 +202,7 @@ def recent():
         data = request.json
         station = data['station_number']
         try :
-            conn = mysql.connector.connect(
+            conn = pymysql.connect(
             host=DB,
             user=DB_USER,
             password=DB_PW,
@@ -246,9 +234,9 @@ def recent():
             print("Succesfully got recent data")
             return jsonify(results)
 
-        except:
-            print("Error fetching recent data")
-            return 'FAILURE realtime'
+        except pymysql.Error as e:
+            print(e)
+            return False
         
 @app.route('/lastweek', methods=['POST'])
 def last_week():
@@ -262,7 +250,7 @@ def last_week():
         data = request.json
         station = data['station_number']
         try :
-            conn = mysql.connector.connect(
+            conn = pymysql.connect(
             host=DB,
             user=DB_USER,
             password=DB_PW,
@@ -295,9 +283,9 @@ def last_week():
             print("Succesfully got recent data")
             return jsonify(results)
 
-        except:
-            print("Error fetching recent data")
-            return 'FAILURE realtime'
-
+        except pymysql.Error as e:
+            print(e)
+            return False
+        
 if __name__ == '__main__':
     app.run(debug=True)

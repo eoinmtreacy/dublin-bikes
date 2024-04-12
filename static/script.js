@@ -92,27 +92,12 @@ function toggleMapStyle() {
     }
 }
 
-
-
-
-
-
 async function fetchRealTime() {
-    try {
-        const response = await fetch('/realtime');
-        return await response.json();
-    } catch (error) {
-        console.error('fetchRealTime failed:', error);
-        return null; // Changed to see if my load errors where fetch errors also 
-    }
+    return await fetch('/realtime').then(response => response.json())
 }
 
-
 async function fetchStations() {
-    const response = await fetch('/stations');
-    const data = await response.json();
-    const stations = data.data;
-    return stations
+    return await fetch('/stations').then(response => response.json())
 }
 
 async function createMarkers(stations) {
@@ -220,82 +205,31 @@ async function createMarkers(stations) {
                         labels: last_week.map(l => l[0].slice(0,3)),
                         datasets: [{
                             label: 'Bike Availability',
-                            // get time
-                            // pull from /realtime-ish for 1 station, for 
-                            // average availabliltiy group by datatime (the hour)
-                            // call /predict for every time from now until midnight
-                            // format from /predict 
-                            data: last_week.map(l => l[0]),
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(255, 159, 64, 0.2)',
-                                'rgba(255, 205, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(201, 203, 207, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgb(255, 99, 132)',
-                                'rgb(255, 159, 64)',
-                                'rgb(255, 205, 86)',
-                                'rgb(75, 192, 192)',
-                                'rgb(54, 162, 235)',
-                                'rgb(153, 102, 255)',
-                                'rgb(201, 203, 207)'
-                            ],
+                            data: last_week.map(l => l[1]),
+                            backgroundColor: ['rgba(255,99,132,0.2)','rgba(255,159,64,0.2)','rgba(255,205,86,0.2)','rgba(75,192,192,0.2)','rgba(54,162,235,0.2)','rgba(153,102,255,0.2)','rgba(201,203,207,0.2)'],
+                            borderColor: ['rgb(255,99,132)','rgb(255,159,64)','rgb(255,205,86)','rgb(75,192,192)','rgb(54,162,235)','rgb(153,102,255)','rgb(201,203,207)'],
                             borderWidth: 1
                         }]
                     },
                     options: {
                         scales: {
-                            y: {
-                                ticks: {
-                                    stepSize: 5,
-                                    autoSkip: false
-                                },
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Number of Bikes Available'
-                                }
-                            },
-                            x: {
-                                ticks: {
-                                    autoSkip: false
-                                },
-                                title: {
-                                    display: true,
-                                    text: 'Day of the Week'
-                                }
-                            }
+                            y: { ticks: { stepSize: 5, autoSkip: false }, beginAtZero: true, title: { display: true, text: 'Number of Bikes Available' } },
+                            x: { ticks: { autoSkip: false }, title: { display: true, text: 'Day of the Week' } }
                         },
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top',
-                            },
-                            tooltip: {
-                                enabled: true,
-                                mode: 'index',
-                                intersect: false,
-                            }
-                        },
-                        animation: {
-                            duration: 1000,
-                            easing: 'easeOutBounce'
-                        }
+                        plugins: { legend: { display: true, position: 'top' }, tooltip: { enabled: true, mode: 'index', intersect: false } },
+                        animation: { duration: 1000, easing: 'easeOutBounce' }
                     }
                 });
-
+                
+                // Second chart, hourly availability
                 let ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
                 new Chart(ctxHour, {
                     type: 'bar',
                     data: {
-                        labels: recent_avail.map(r => r[0]).concat(recent_avail.map(r => (r[0] + 12) % 24)), // Combine the recent and the predicted hours labels
+                        labels: Array.from({length: 24}, (_, i) => i),
                         datasets: [{
                             label: 'Bike Availability per Hour',
-                            data: recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p['availability'] * station.bike_stands)), // Combine the recent and the predicted values of course
+                            data: recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p['availability'] * station.bike_stands)),
                             backgroundColor: 'rgba(54, 162, 235, 0.2)',
                             borderColor: 'rgb(54, 162, 235)',
                             borderWidth: 1
@@ -303,51 +237,24 @@ async function createMarkers(stations) {
                     },
                     options: {
                         scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Number of Bikes Available'
-                                }
-                            },
+                            y: { beginAtZero: true, title: { display: true, text: 'Number of Bikes Available' } },
                             x: {
-                                max: 25, // i think these will have to change too but I tried and don't understand what's happening here
-                                min: 0,
+                                max: 25, min: 0,
                                 ticks: {
                                     autoSkip: false,
                                     callback: function (value, index, values) {
-                                        // Display label for every second hour and format it
-                                        if (index % 2 === 0) {
-                                            return `${value}:00`;
-                                        } else {
-                                            return '';
-                                        }
+                                        if (index % 2 === 0) { return `${value}:00`; } else { return ''; }
                                     }
                                 },
                                 beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Hour of the Day'
-                                }
+                                title: { display: true, text: 'Hour of the Day' }
                             }
                         },
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top',
-                            },
-                            tooltip: {
-                                enabled: true,
-                                mode: 'index',
-                                intersect: false,
-                            }
-                        },
-                        animation: {
-                            duration: 1000,
-                            easing: 'easeOutBounce'
-                        }
+                        plugins: { legend: { display: true, position: 'top' }, tooltip: { enabled: true, mode: 'index', intersect: false } },
+                        animation: { duration: 1000, easing: 'easeOutBounce' }
                     }
                 });
+                
             });
         });
 
