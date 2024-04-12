@@ -134,14 +134,14 @@ async function createMarkers(stations) {
 
     stations.forEach((station, index) => {
         const availableBikes = getStationAvailability(bikes, station.number, RTDATA, STATIONS);
-        const availablStands = getStationAvailability(stands, station.number, RTDATA, STATIONS);
+        const availableStands = getStationAvailability(stands, station.number, RTDATA, STATIONS);
         const contentString = `
             <div style='color: black;'>
                 <strong>${station.name}</strong>
                 <p>Station Number: ${station.number}</p>
                 <p>Credit Card: ${station.banking === 1 ? 'Available' : 'Not Available'}</p>
                 <p>Available Bikes: ${availableBikes}</p>
-                <p>Available Stands: ${availablStands}</p>
+                <p>Available Stands: ${availableStands}</p>
                 <p>Overall Capacity: ${station.bike_stands} </p>
                 <canvas id="chart-day-${index}" width="400" height="200"></canvas>
                 <canvas id="chart-hour-${index}" width="400" height="200" style="margin-top: 20px;"></canvas>
@@ -174,6 +174,7 @@ async function createMarkers(stations) {
             })
                 .then(response => response.json())
                 .then(data => { 
+                    console.log('Recent:', data);
                     return data
                 })
                 .catch(error => console.error('Error:', error));
@@ -189,7 +190,7 @@ async function createMarkers(stations) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
+                    console.log('last week:', data);
                     return data
                 })
                 .catch(error => console.error('Error:', error));
@@ -199,7 +200,7 @@ async function createMarkers(stations) {
                 var day = new Date().getDay(); // Ensure that the day is set to today
                 let currentHour = new Date().getHours(); // Get the current hour
                 
-                for (let i = 0; i <= 12; i++) { // changing from less than 12 to less than / equal to 12 - Was only predicting 11 hours
+                for (let i = 0; i < 12; i++) { // changing from less than 12 to less than / equal to 12 - Was only predicting 11 hours
                     let predictHour = (currentHour + i) % 24; // Adjust for 24-hour clock
                     if (currentHour + i >= 24) { //If the hour is in the next day 
                         day = (day + 1) % 7; // ensure the day is set to tomorrow and Adjust for 7-day week
@@ -210,6 +211,11 @@ async function createMarkers(stations) {
                 }
 
             const predicted_avail = await Promise.all(promiseAvail)
+            predicted_avail.forEach((array, index) => {
+                array['Hour'] = currentHour + index;
+            });
+            console.log("predicts:", predicted_avail);
+
             console.log(recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p['availability'] * station.bike_stands)));
 
             // var predicted_avail = getHourlyPrediction(station.number);
@@ -227,15 +233,42 @@ async function createMarkers(stations) {
             google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
                 // First chart: Bike availability by day
                 let ctxDay = document.getElementById(`chart-day-${index}`).getContext('2d');
+                var sorted_last_week = Array(7);
+
+                // Loop through the last_week array to arange current day in middle
+                for (let i = 0; i < last_week.length; i++) {
+                    sorted_last_week[(i + 3) % 7] = last_week[i];
+                }
+                
+                let dayBgColours = [];
+                let dayBorderColours = [];
+                let dayData = sorted_last_week.map(l => Math.round(l[1]));  // Round the availibility to nearest whole number
+
+                for (let i = 0; i < dayData.length; i++) {
+                    let ratio = dayData[i] / station.bike_stands;
+
+                    if (ratio < 0.25) {
+                        dayBgColours.push('rgba(255,99,132,0.2)');
+                        dayBorderColours.push('rgba(255,99,132');
+                    } else if (ratio < 0.5) {
+                        dayBgColours.push('rgba(255,159,64,0.2)');
+                        dayBorderColours.push('rgba(255,159,64');
+                    } else {
+                        dayBgColours.push('rgba(75,192,192,0.2)');
+                        dayBorderColours.push('rgba(75,192,192');
+                    }
+                    
+                }
+                dayBgColours[3] = dayBgColours[3].replace('0.2', '0.6');
                 new Chart(ctxDay, {
                     type: 'bar',
                     data: {
-                        labels: last_week.map(l => l[0].slice(0,3)),
+                        labels: sorted_last_week.map(l => l[0].slice(0,3)),
                         datasets: [{
-                            label: 'Bike Availability',
-                            data: last_week.map(l => Math.round(l[1])),  // Round the availibility to nearest whole number
-                            backgroundColor: ['rgba(255,99,132,0.2)','rgba(255,159,64,0.2)','rgba(255,205,86,0.2)','rgba(75,192,192,0.2)','rgba(54,162,235,0.2)','rgba(153,102,255,0.2)','rgba(205,127,50,0.2)'], //These colours came from the Chart.js docs
-                            borderColor: ['rgb(255,99,132)','rgb(255,159,64)','rgb(255,205,86)','rgb(75,192,192)','rgb(54,162,235)','rgb(153,102,255)','rgb(205,127,50)'],
+                            label: 'Bike Availability per Day',
+                            data: dayData,
+                            backgroundColor: dayBgColours,
+                            borderColor: dayBorderColours,
                             borderWidth: 1
                         }]
                     },
@@ -244,24 +277,62 @@ async function createMarkers(stations) {
                             y: { ticks: { stepSize: 5, autoSkip: false }, beginAtZero: true, title: { display: true, text: 'Number of Bikes Available' } },
                             x: { ticks: { autoSkip: false }, title: { display: true, text: 'Day of the Week' } }
                         },
-                        plugins: { legend: { display: true, position: 'top' }, tooltip: { enabled: true, mode: 'index', intersect: false } },
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                        plugins: { legend: {
+                            labels: {
+                                boxWidth: 0, // Set the box width to 0 to effectively hide the colored box
+                                usePointStyle: false, // Ensure standard box style isn't used
+                            }
+                        }, tooltip: { enabled: true, mode: 'index', intersect: false } },
                         animation: { duration: 1000, easing: 'easeOutBounce' }
                     }
                 });
                 
                 // Second chart, hourly availability
-                const backgroundColours = Array(24).fill('rgba(54, 162, 235, 0.2)');
-                backgroundColours[currentHour] = 'rgba(54, 162, 235, 0.6)'; // Current Hour appears darker
                 let ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
+                let hourBgColours = [];
+                let hourBorderColours = [];
+                let hourData = recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))); // Round the availibility to nearest whole number
+                
+const shiftAmount = (12 - currentHour + 24) % 24;
+// Create labels variable with old index numbers
+const hourLabels = hourData.map((_, index) => {
+    const hour = (index - shiftAmount + 24) % 24;
+    return hour.toString().padStart(2, '0') + ':00';
+});
+console.log("labels:", hourLabels);
+console.log("hourData:", hourData);
+
+
+
+
+                for (let i = 0; i < hourData.length; i++) {
+                    let ratio = hourData[i] / station.bike_stands;
+
+                    if (ratio < 0.25) {
+                        hourBgColours.push('rgba(255,99,132,0.2)');
+                        hourBorderColours.push('rgba(255,99,132');
+                    } else if (ratio < 0.5) {
+                        hourBgColours.push('rgba(255,159,64,0.2)');
+                        hourBorderColours.push('rgba(255,159,64');
+                    } else {
+                        hourBgColours.push('rgba(75,192,192,0.2)');
+                        hourBorderColours.push('rgba(75,192,192');
+                    }
+                }
+                hourBgColours[12] = hourBgColours[12].replace('0.2', '0.6');
                 new Chart(ctxHour, {
                     type: 'bar',
                     data: {
-                        labels: Array.from({length: 24}, (_, i) => `${i}:00`),
+                        labels: hourLabels,
                         datasets: [{
                             label: 'Bike Availability per Hour',
-                            data: recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))), // Round the availibility to nearest whole number
-                            backgroundColor: backgroundColours,
-                            borderColor: 'rgb(54, 162, 235)',
+                            data: recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))),
+                            backgroundColor: hourBgColours,
+                            borderColor: hourBorderColours,
                             borderWidth: 1
                         }]
                     },
@@ -269,18 +340,25 @@ async function createMarkers(stations) {
                         scales: {
                             y: { beginAtZero: true, title: { display: true, text: 'Number of Bikes Available' } },
                             x: {
-                                max: 25, min: 0,
                                 ticks: {
                                     autoSkip: false,
-                                    callback: function (value, index, values) {
-                                        if (index % 2 === 0) { return `${value}:00`; } else { return ''; }
-                                    }
+                                    callback: function(value, index, values) {
+                                        // Using the hourLabels array directly to map index to the correct time label
+                                        if (index % 2 === 0) {
+                                            return hourLabels[index];
+                                        } else {
+                                            return '';}}
                                 },
-                                beginAtZero: true,
+                                beginAtZero: false,
                                 title: { display: true, text: 'Hour of the Day' }
                             }
                         },
-                        plugins: { legend: { display: true, position: 'top' }, tooltip: { enabled: true, mode: 'index', intersect: false } },
+                        plugins: { legend: {
+                            labels: {
+                                boxWidth: 0, // Set the box width to 0 to effectively hide the colored box
+                                usePointStyle: false, // Ensure standard box style isn't used
+                            }
+                        }, tooltip: { enabled: true, mode: 'index', intersect: false } },
                         animation: { duration: 1000, easing: 'easeOutBounce' }
                     }
                 });
