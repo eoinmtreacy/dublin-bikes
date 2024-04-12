@@ -297,14 +297,14 @@ async function createMarkers(stations) {
                 let hourBorderColours = [];
                 let hourData = recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))); // Round the availibility to nearest whole number
                 
-const shiftAmount = (12 - currentHour + 24) % 24;
-// Create labels variable with old index numbers
-const hourLabels = hourData.map((_, index) => {
-    const hour = (index - shiftAmount + 24) % 24;
-    return hour.toString().padStart(2, '0') + ':00';
-});
-console.log("labels:", hourLabels);
-console.log("hourData:", hourData);
+                const shiftAmount = (12 - currentHour + 24) % 24;
+                // Create labels variable with old index numbers
+                const hourLabels = hourData.map((_, index) => {
+                    const hour = (index - shiftAmount + 24) % 24;
+                    return hour.toString().padStart(2, '0') + ':00';
+                });
+                console.log("labels:", hourLabels);
+                console.log("hourData:", hourData);
 
 
 
