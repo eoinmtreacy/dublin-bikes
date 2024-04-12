@@ -4,6 +4,10 @@ let map;
 var currentStyle = "light"; // Default mode is Light Mode
 let darkMapStyle;
 let lightMapStyle;
+let RTDATA;
+// Needs to be explitictly initialised for the getStationAvailability function
+const bikes = 'bikes';
+const stands = 'stands';
 
 const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
@@ -12,9 +16,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     darkMapStyle = await fetchStatic("static/dark.json");
     const map = await initMap(lightMapStyle) // initalise the map with Light Mode style
     const realTime = await fetchRealTime()
-    console.log('Real Time Data:', realTime);  // I dont think the db is pulling the data we need for bike availability so this is debug log 1/2
+    RTDATA = realTime
+    console.log('Real Time Data:', realTime); 
     STATIONS = await fetchStations(realTime) // STATIONS created from fetch
-    console.log('Stations:', STATIONS); // I dont think the db is pulling the data we need for bike availability so this is debug log 1/2
+    console.log('Stations:', STATIONS);
     STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
     fetchRealTimeWeather()
 });
@@ -101,6 +106,25 @@ async function fetchRealTime() {
 async function fetchStations() {
     return await fetch('/stations').then(response => response.json())
 }
+function getStationAvailability(dataSelect, stationNumber, realTimeData, stations) {
+    const station = stations[stationNumber];
+    if (station) {
+        const stationData = realTimeData.find(data => data[0] === stationNumber);
+        if (stationData) {
+        if (dataSelect === 'stands') {
+          return stationData[2]; // Index 2 represents available stands
+        } else if (dataSelect === 'bikes') {
+          return stationData[1]; // Index 1 represents available bikes
+        } else {
+            return "Invalid data selected specified";
+        }
+      } else {
+        return "Data not available for the station";
+      }
+    } else {
+      return "Station not found";
+    }
+  }
 
 async function createMarkers(stations) {
     // createMarkers now takes the stations array
@@ -109,14 +133,16 @@ async function createMarkers(stations) {
     let currentInfoWindow = null; // Variable to store the currently open info window
 
     stations.forEach((station, index) => {
+        const availableBikes = getStationAvailability(bikes, station.number, RTDATA, STATIONS);
+        const availablStands = getStationAvailability(stands, station.number, RTDATA, STATIONS);
         const contentString = `
             <div style='color: black;'>
                 <strong>${station.name}</strong>
                 <p>Station Number: ${station.number}</p>
-                <p>Credit Card: ${station.banking === 1 ? 'Available' : 'Not Available'}</p> 
-                <p>Available Bikes: ${station.available_bikes}</p>
-                <p>Available Stands: ${station.available_bike_stands}</p>
-                <p>Overall Capacity: ${station.bike_stands}</p>
+                <p>Credit Card: ${station.banking === 1 ? 'Available' : 'Not Available'}</p>
+                <p>Available Bikes: ${availableBikes}</p>
+                <p>Available Stands: ${availablStands}</p>
+                <p>Overall Capacity: ${station.bike_stands} </p>
                 <canvas id="chart-day-${index}" width="400" height="200"></canvas>
                 <canvas id="chart-hour-${index}" width="400" height="200" style="margin-top: 20px;"></canvas>
             </div>
@@ -147,7 +173,7 @@ async function createMarkers(stations) {
                 })
             })
                 .then(response => response.json())
-                .then(data => {
+                .then(data => { 
                     return data
                 })
                 .catch(error => console.error('Error:', error));
@@ -207,7 +233,7 @@ async function createMarkers(stations) {
                         labels: last_week.map(l => l[0].slice(0,3)),
                         datasets: [{
                             label: 'Bike Availability',
-                            data: last_week.map(l => Math.round(l[1])), // Round the availibility to nearest whole number
+                            data: last_week.map(l => Math.round(l[1])),  // Round the availibility to nearest whole number
                             backgroundColor: ['rgba(255,99,132,0.2)','rgba(255,159,64,0.2)','rgba(255,205,86,0.2)','rgba(75,192,192,0.2)','rgba(54,162,235,0.2)','rgba(153,102,255,0.2)','rgba(205,127,50,0.2)'], //These colours came from the Chart.js docs
                             borderColor: ['rgb(255,99,132)','rgb(255,159,64)','rgb(255,205,86)','rgb(75,192,192)','rgb(54,162,235)','rgb(153,102,255)','rgb(205,127,50)'],
                             borderWidth: 1
