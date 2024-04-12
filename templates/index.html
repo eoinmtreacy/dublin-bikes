@@ -39,7 +39,7 @@
     </header>
     <div class="flex">
         <div class="flex">
-            <nav id="navbar" class="bg-slate-100 fixed top-16 left-0 w-64 h-full overflow-auto ease-in-out transition-all duration-300 z-30 shadow-xl">
+            <nav id="navbar" class="bg-slate-100 fixed top-16 left-0 w84 h-full overflow-auto ease-in-out transition-all duration-300 z-30 shadow-xl">
 
 
                     <div class="flex flex-col items-center py-8">
@@ -54,6 +54,37 @@
                         <!-- Journey Planner Form -->
                         <div class="w-full px-6">
                             <form id="myForm" class="space-y-6">
+                                <!-- radio buttons for day selection -->
+                                <div class="flex-container">
+                                    <div class="flex items-center">
+                                        <input type="radio" id="today" name="date" value="today" checked>
+                                        <label for="today" class="ml-2">Today</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="radio" id="tomorrow" name="date" value="tomorrow">
+                                        <label for="tomorrow" class="ml-2">Tomorrow</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="radio" id="nextDay" name="date" value="nextDay">
+                                        <label for="nextDay" class="ml-2">The Next Day</label>
+                                    </div>
+                                </div>
+
+                                <input type="time" id="timeInput" class="text-center">
+
+                                <script>
+                                    // Create a new Date object
+                                    var now = new Date();
+                                    var hours = now.getHours();
+                                    var minutes = now.getMinutes();
+
+                                    // Format time with leading zeros
+                                    var formattedTime = (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
+
+                                    // Set the value of the time input
+                                    document.getElementById("timeInput").value = formattedTime;
+                                </script>
+
                                 <div>
                                     <label for="startInput" class="text-sm font-medium text-gray-800">Start:</label>
                                     <input id="startInput" type="text" placeholder="Start location" class="mt-1 w-full p-3 bg-white rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
