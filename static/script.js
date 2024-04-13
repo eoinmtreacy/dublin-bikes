@@ -403,31 +403,13 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
 }
 
     // Function to handle the confirm button click // Implemented 
-async function handleConfirmButtonClick() {
-    try {
-        if (!origin || !destination) {
-            alert('Please select both a start and an end location.');
-            return;
-        }
-
-        // Perform the route calculation
-        await calculateAndDisplayRoute(origin, depart, arrive, destination);
-
+async function hideOtherMarkers() {
         // Adjust the visibility of markers
-        STATIONS.forEach(station => {
-            if (station.marker) {
-                // Hide all markers initially
-                station.marker.setVisible(false);
-            }
-        });
+        STATIONS.map(station => station.marker.setVisible(false))
 
         // Show only the relevant markers
         if (depart && depart.marker) depart.marker.setVisible(true);
         if (arrive && arrive.marker) arrive.marker.setVisible(true);
-
-    } catch (error) {
-        console.error('Error in handleConfirmButtonClick:', error);
-    }
 }
     
 function setupNavbarToggle() {
@@ -494,16 +476,27 @@ function getDirections() {
 }
 
 async function submitForm() {
-    await fetchWeatherForecast(days_letters[new Date().getDay()],new Date().getHours()); // Call the fetchWeatherForecast function to display the weather forecast
+    // find the value of the radio buttons, 0 == today, 1 == tomorrow etc. 
+    const day = Array.from(document.getElementsByName("date")).find(date => date.checked).value % 7
+    // get the hours from the clock
+    const hour = document.getElementById('timeInput').value.split(':')[0]
+
+    // Call the fetchWeatherForecast function to display the weather forecast
+    await fetchWeatherForecast(days_letters[day], hour)
     getDirections(); // Call the getDirections function to display the directions button
-    handleConfirmButtonClick()
-    await Promise.all([
-        getPrediction(depart.number, new Date().getDay(),new Date().getHours()),
-        getPrediction(arrive.number, new Date().getDay(),new Date().getHours())
+    await calculateAndDisplayRoute(origin, depart, arrive, destination);
+    await hideOtherMarkers()
+
+
+    
+    const availability = await Promise.all([
+        getPrediction(depart.number, day, hour),
+        getPrediction(arrive.number, day, hour)
     ])
+
+    document.getElementById("depart-avail").innerHTML= `<b>Depart Station Bikes:</b>   ${Math.round(depart.bike_stands * availability[0].availability)}`
+    document.getElementById("arrive-avail").innerHTML = `<b>Arrive Station Parking:</b>   ${Math.round(arrive.bike_stands - arrive.bike_stands * availability[1].availability)}`
 }
-
-
 
 async function getPrediction(station, day, hour) {
 
