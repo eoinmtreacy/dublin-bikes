@@ -1,5 +1,6 @@
 let STATIONS
 let origin, depart, arrive, destination
+let firstLeg, secondLeg, thirdLeg
 let map;
 var currentStyle = "light"; // Default mode is Light Mode
 let darkMapStyle;
@@ -10,11 +11,9 @@ const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 document.addEventListener('DOMContentLoaded', async () => {
     lightMapStyle = await fetchStatic("static/light.json"); 
     darkMapStyle = await fetchStatic("static/dark.json");
-    const map = await initMap(lightMapStyle) // initalise the map with Light Mode style
+    map = await initMap(lightMapStyle) // initalise the map with Light Mode style
     const realTime = await fetchRealTime()
-    console.log('Real Time Data:', realTime);  // I dont think the db is pulling the data we need for bike availability so this is debug log 1/2
     STATIONS = await fetchStations(realTime) // STATIONS created from fetch
-    console.log('Stations:', STATIONS); // I dont think the db is pulling the data we need for bike availability so this is debug log 1/2
     STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
     fetchRealTimeWeather()
 });
@@ -163,7 +162,6 @@ async function createMarkers(stations) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
                     return data
                 })
                 .catch(error => console.error('Error:', error));
@@ -184,7 +182,6 @@ async function createMarkers(stations) {
                 }
 
             const predicted_avail = await Promise.all(promiseAvail)
-            console.log(recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p['availability'] * station.bike_stands)));
 
             // var predicted_avail = getHourlyPrediction(station.number);
 
@@ -314,24 +311,22 @@ async function initMap(mapChoice) {
     startAutocomplete.addListener('place_changed', () => {
         origin = startAutocomplete.getPlace().geometry.location
         depart = findClosestStation(origin)
-        console.log(origin, depart.marker.position);
     })
 
     endAutocomplete.addListener('place_changed', () => {
         destination = endAutocomplete.getPlace().geometry.location
         arrive = findClosestStation(destination)
-        console.log(arrive, destination);
     })
 
     setupNavbarToggle();
-
+    return map
 }
 
 // DIRECTION SERVICES
 async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
     const directionsService = new google.maps.DirectionsService();
 
-    let firstLeg = new google.maps.DirectionsRenderer(
+    firstLeg = new google.maps.DirectionsRenderer(
         {
             map:map,
             polylineOptions :{
@@ -339,7 +334,7 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
             }
         }
     )
-    let secondLeg = new google.maps.DirectionsRenderer(
+    secondLeg = new google.maps.DirectionsRenderer(
         {
             map: map,
             polylineOptions:{
@@ -347,7 +342,7 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
             }
         }
     )
-    let thirdLeg = new google.maps.DirectionsRenderer({
+    thirdLeg = new google.maps.DirectionsRenderer({
         map:map,
         polylineOptions:{
             strokeColor:"blue"
@@ -365,7 +360,6 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
         travelMode: 'WALKING'
     }, function (response, status) {
         if (status === 'OK') {
-            console.log(response);
             firstLeg.setDirections(response);
             // Display distance and duration
             const route = response.routes[0].legs[0];
@@ -381,7 +375,6 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
         travelMode: 'BICYCLING'
     }, function (response, status) {
         if (status === 'OK') {
-            console.log(response);
             secondLeg.setDirections(response);
             // Display distance and duration
             const route = response.routes[0].legs[0];
@@ -398,7 +391,6 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
         travelMode: 'WALKING'
     }, function (response, status) {
         if (status === 'OK') {
-            console.log(response);
             thirdLeg.setDirections(response);
             // Display distance and duration
             const route = response.routes[0].legs[0];
@@ -450,18 +442,6 @@ function setupNavbarToggle() {
         navbar.classList.toggle('hidden');
     });
 }
-
-        // if (status === 'OK') {
-        //     const route = response.routes[0].legs[0];
-        //     document.getElementById('journeyDistance').textContent = `Distance: ${route.distance.text}`;
-        //     document.getElementById('journeyTime').textContent = `Time: ${route.duration.text}`;
-        // } else {
-        //     console.error('Directions request failed due to ' + status);
-        //     // update the HTML to indicate the error or that no data could be fetched
-        //     document.getElementById('journeyDistance').textContent = 'Distance: unavailable due to error';
-        //     document.getElementById('journeyTime').textContent = 'Time: unavailable due to error';
-        // }
-
 
 // UTILITY FUNCTIONS
 function findClosestStation(location) {
@@ -517,12 +497,10 @@ async function submitForm() {
     await fetchWeatherForecast(days_letters[new Date().getDay()],new Date().getHours()); // Call the fetchWeatherForecast function to display the weather forecast
     getDirections(); // Call the getDirections function to display the directions button
     handleConfirmButtonClick()
-    const availability = await Promise.all([
+    await Promise.all([
         getPrediction(depart.number, new Date().getDay(),new Date().getHours()),
         getPrediction(arrive.number, new Date().getDay(),new Date().getHours())
     ])
-
-    availability.map(a => console.log(a))
 }
 
 
@@ -610,25 +588,10 @@ document.getElementById('resetButton').addEventListener('click', function () {
     document.getElementById('startInput').value = '';
     document.getElementById('endInput').value = '';
 
-    // Reset dropdowns to their first option
-    document.getElementById('depart').selectedIndex = 0;
-    document.getElementById('arrive').selectedIndex = 0;
-    document.getElementById('departTime').selectedIndex = 0;
-    document.getElementById('arriveTime').selectedIndex = 0;
-    document.getElementById('departDay').selectedIndex = 0;
-    document.getElementById('arriveDay').selectedIndex = 0;
-
-    // reset the travel mode radio buttons to default (first radio button)
-    document.querySelector('input[name="travelMode"][value="DRIVING"]').checked = true;
-
-    //  map or directions, y reset them as well
-    if (directionsRenderer) {
-        directionsRenderer.setDirections({ routes: [] });
-    }
-
-    [firstLeg, secondLeg, thirdLeg].forEach(leg => {
-        if (leg) leg.setDirections({ routes: [] });
-    });
+    [origin, depart, arrive, destination].map(each => null)
+    console.log(firstLeg, secondLeg, thirdLeg); // below map won't work without a log for whatever reason
+    [firstLeg, secondLeg, thirdLeg].map(leg => leg.setMap(null))
+    map.setZoom(13)
 
     //reset the markers
     STATIONS.forEach(station => {
