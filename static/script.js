@@ -492,14 +492,22 @@ function getDirections() {
 }
 
 async function submitForm() {
+    // find the value of the radio buttons, 0 == today, 1 == tomorrow etc. 
+    const day = Array.from(document.getElementsByName("date")).find(date => date.checked).value % 7
+    // get the hours from the clock
+    const hour = document.getElementById('timeInput').value.split(':')[0]
+
     // Call the fetchWeatherForecast function to display the weather forecast
-    await fetchWeatherForecast(days_letters[new Date().getDay()],new Date().getHours())
+    await fetchWeatherForecast(days_letters[day], hour)
     getDirections(); // Call the getDirections function to display the directions button
     await calculateAndDisplayRoute(origin, depart, arrive, destination);
     await hideOtherMarkers()
+
+
+    
     const availability = await Promise.all([
-        getPrediction(depart.number, new Date().getDay(),new Date().getHours()),
-        getPrediction(arrive.number, new Date().getDay(),new Date().getHours())
+        getPrediction(depart.number, day, hour),
+        getPrediction(arrive.number, day, hour)
     ])
 
     availability.map(a => console.log(a))
