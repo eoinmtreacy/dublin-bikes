@@ -5,6 +5,9 @@ var currentStyle = "light"; // Default mode is Light Mode
 let darkMapStyle;
 let lightMapStyle;
 let RTDATA;
+let defaultChartColor = '#000';
+var gridColor = Chart.defaults.borderColor;
+var chartColor = Chart.defaults.Color;
 // Needs to be explitictly initialised for the getStationAvailability function
 const bikes = 'bikes';
 const stands = 'stands';
@@ -45,9 +48,19 @@ function toggleMapStyle() {
     const headerElement = document.querySelector("header"); // The header element of the HTML document
     const weatherInfoTextElements = document.querySelectorAll(".weather-info span:not(#weather-icon)"); // The weather information text elements (do not want to impact weather icon)
     const menuIcon = document.getElementById("menuToggle"); // The menu icon (hamburger icon)
-    const journeyPlannerContainer = document.getElementById("journey-planner"); // The journey planner container
+    const navBar = document.getElementById("navbar"); // The journey planner container
     const routeInfoContainer = document.getElementById("route-info"); // The route information container
+    const bicycleIcon = document.getElementById("bicycle-icon"); // The bicycle icon
+    const navBar2 = document.getElementById("navbar2"); // The journey planner container
+    const startInput = document.getElementById("startInput"); // The start location input
+    const endInput = document.getElementById("endInput"); // The end location input
+    const refreshButton = document.getElementById("refresh-button"); // The refresh button
+    const root = document.documentElement;
+    const markerPopup = document.getElementById('marker-popup');
 
+
+
+    
 
 
 
@@ -67,10 +80,61 @@ function toggleMapStyle() {
         });
         menuIcon.classList.remove("text-black");
         menuIcon.classList.add("text-white");
-        journeyPlannerContainer.classList.remove("bg-gray-200");
-        journeyPlannerContainer.classList.add("bg-gray-900");
+        navBar.classList.remove("bg-slate-100");
+        navBar.classList.add("bg-gray-700");
+        navBar2.classList.remove("bg-white");
+        navBar2.classList.add("bg-gray-800");
         routeInfoContainer.classList.remove("bg-gray-200");
-        routeInfoContainer.classList.add("bg-gray-900");
+        routeInfoContainer.classList.add("bg-gray-800");
+        bicycleIcon.classList.remove("text-light-blue-400");
+        bicycleIcon.classList.add("text-cyan-800");
+        startInput.classList.remove("bg-white");
+        startInput.classList.add("bg-slate-200");
+        endInput.classList.remove("bg-white");
+        endInput.classList.add("bg-slate-200");
+        document.getElementById('startInput').style.setProperty('color', 'rgb(71, 85, 105)', 'important');
+        document.getElementById('endInput').style.setProperty('color', 'rgb(71, 85, 105)', 'important');
+        refreshButton.classList.remove("bg-gray-300",  "hover:bg-gray-400");
+        refreshButton.classList.add("bg-gray-400", "hover:bg-gray-500");
+        root.style.setProperty('--background-color', 'rgb(30 41 59)');
+        console.log("dark mode BG:", root.style.getPropertyValue('--background-color'));
+        gridColor = 'rgba(241, 245, 249, 0.2)';
+        chartColor = 'rgba(251,191,36, 1)';
+
+        
+        dayChart.options.scales.x.grid.color = gridColor; 
+        dayChart.options.scales.y.grid.color = gridColor; 
+        dayChart.options.color = chartColor;
+        dayChart.options.scales.y.ticks.color = chartColor; 
+        dayChart.options.scales.x.ticks.color = chartColor; 
+        dayChart.options.scales.x.title.color = chartColor; 
+        dayChart.options.scales.y.title.color = chartColor; 
+        hourChart.options.scales.x.grid.color = gridColor;
+        hourChart.options.scales.y.grid.color = gridColor; 
+        hourChart.options.scales.y.ticks.color = chartColor;
+        hourChart.options.scales.x.ticks.color = chartColor;
+        hourChart.options.color = chartColor; 
+        hourChart.options.scales.x.title.color = chartColor;
+        hourChart.options.scales.y.title.color = chartColor; 
+        hourChart.options.color = chartColor; 
+        markerPopup.style.color = chartColor;
+
+        // Update the chart to reflect the changes
+        dayChart.update();
+        hourChart.update();
+        
+
+        // Log the updated grid color to the console
+        console.log("Dark mode grid:", gridColor);
+        console.log("Dark mode chart:", chartColor);
+
+        
+
+        
+
+
+
+
         
 
         
@@ -91,10 +155,56 @@ function toggleMapStyle() {
         });
         menuIcon.classList.remove("text-white");
         menuIcon.classList.add("text-black");
-        journeyPlannerContainer.classList.remove("bg-gray-900");
-        journeyPlannerContainer.classList.add("bg-gray-200");
+        navBar.classList.remove("bg-gray-700");
+        navBar.classList.add("bg-slate-100");
+        navBar2.classList.remove("bg-gray-800");
+        navBar2.classList.add("bg-white");
         routeInfoContainer.classList.remove("bg-gray-900");
         routeInfoContainer.classList.add("bg-gray-200");
+        startInput.classList.remove("bg-slate-200");
+        startInput.classList.add("bg-white");
+        endInput.classList.remove("bg-slate-200");
+        endInput.classList.add("bg-white");
+        document.getElementById('startInput').style.setProperty('color', '', 'important');
+        document.getElementById('startInput').style.setProperty('color', '', 'important');
+
+        refreshButton.classList.remove("bg-gray-400", "hover:bg-gray-500");
+        refreshButton.classList.add("bg-gray-300", "hover:bg-gray-400");
+
+       
+        root.style.setProperty('--background-color', '#FFFFFF');
+        gridColor = Chart.defaults.borderColor;
+        chartColor = defaultChartColor;
+        
+        dayChart.options.scales.x.grid.color = gridColor; 
+        dayChart.options.scales.y.grid.color = gridColor; 
+        dayChart.options.color = chartColor;
+        dayChart.options.scales.y.ticks.color = chartColor; 
+        dayChart.options.scales.x.ticks.color = chartColor; 
+        dayChart.options.scales.x.title.color = chartColor; 
+        dayChart.options.scales.y.title.color = chartColor; 
+        hourChart.options.scales.x.grid.color = gridColor;
+        hourChart.options.scales.y.grid.color = gridColor; 
+        hourChart.options.scales.y.ticks.color = chartColor;
+        hourChart.options.scales.x.ticks.color = chartColor;
+        hourChart.options.color = chartColor; 
+        hourChart.options.scales.x.title.color = chartColor;
+        hourChart.options.scales.y.title.color = chartColor; 
+        hourChart.options.color = chartColor; 
+        markerPopup.style.color = chartColor;
+
+        
+        
+
+        // Update the chart to reflect the changes
+        dayChart.update();
+        hourChart.update();
+        
+
+
+        // Log the updated grid color to the console
+        console.log("Light mode grid:", gridColor);
+        console.log("Light mode chart:", chartColor);
 
     }
 }
@@ -126,6 +236,7 @@ function getStationAvailability(dataSelect, stationNumber, realTimeData, station
     }
   }
 
+
 async function createMarkers(stations) {
     // createMarkers now takes the stations array
     // and creates a marker object as an attribute
@@ -136,16 +247,17 @@ async function createMarkers(stations) {
         const availableBikes = getStationAvailability(bikes, station.number, RTDATA, STATIONS);
         const availableStands = getStationAvailability(stands, station.number, RTDATA, STATIONS);
         const contentString = `
-            <div style='color: black;'>
-                <strong>${station.name}</strong>
-                <p>Station Number: ${station.number}</p>
-                <p>Credit Card: ${station.banking === 1 ? 'Available' : 'Not Available'}</p>
-                <p>Available Bikes: ${availableBikes}</p>
-                <p>Available Stands: ${availableStands}</p>
-                <p>Overall Capacity: ${station.bike_stands} </p>
-                <canvas id="chart-day-${index}" width="400" height="200"></canvas>
-                <canvas id="chart-hour-${index}" width="400" height="200" style="margin-top: 20px;"></canvas>
-            </div>
+        <div style='color: black;' id='marker-popup'>
+            <strong>${station.name}</strong>
+            <p><strong>Station Number:</strong> ${station.number}</p>
+            <p><strong>Credit Card:</strong> ${station.banking === 1 ? 'Available' : 'Not Available'}</p>
+            <p><strong>Available Bikes:</strong> ${availableBikes}</p>
+            <p><strong>Available Stands:</strong> ${availableStands}</p>
+            <p><strong>Overall Capacity:</strong> ${station.bike_stands}</p>
+            <canvas id="chart-day-${index}" width="400" height="200"></canvas>
+            <canvas id="chart-hour-${index}" width="400" height="200" style="margin-top: 20px;"></canvas>
+        </div>
+    
         `;
 
         const marker = new google.maps.Marker({
@@ -161,6 +273,9 @@ async function createMarkers(stations) {
             // Close the current info window if it exists
             if (currentInfoWindow) {
                 currentInfoWindow.close();
+                dayChart.destroy();
+                hourChart.destroy();
+
             }
 
             const recent_avail = await fetch('/recent', {
@@ -232,7 +347,7 @@ async function createMarkers(stations) {
 
             google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
                 // First chart: Bike availability by day
-                let ctxDay = document.getElementById(`chart-day-${index}`).getContext('2d');
+                var ctxDay = document.getElementById(`chart-day-${index}`).getContext('2d');
                 var sorted_last_week = Array(7);
 
                 // Loop through the last_week array to arange current day in middle
@@ -260,7 +375,7 @@ async function createMarkers(stations) {
                     
                 }
                 dayBgColours[3] = dayBgColours[3].replace('0.2', '0.6');
-                new Chart(ctxDay, {
+                var dayChart = new Chart(ctxDay, {
                     type: 'bar',
                     data: {
                         labels: sorted_last_week.map(l => l[0].slice(0,3)),
@@ -274,8 +389,8 @@ async function createMarkers(stations) {
                     },
                     options: {
                         scales: {
-                            y: { ticks: { stepSize: 5, autoSkip: false }, beginAtZero: true, title: { display: true, text: 'Number of Bikes Available' } },
-                            x: { ticks: { autoSkip: false }, title: { display: true, text: 'Day of the Week' } }
+                            y: { ticks: { stepSize: 5, autoSkip: false }, beginAtZero: true, title: { display: true, text: 'Number of Bikes Available' }},
+                            x: { ticks: { autoSkip: false }, title: { display: true, text: 'Day of the Week' }}
                         },
                         legend: {
                             display: true,
@@ -290,9 +405,10 @@ async function createMarkers(stations) {
                         animation: { duration: 1000, easing: 'easeOutBounce' }
                     }
                 });
-                
+                var chartCanvasId = dayChart.id;
+                console.log('Chart ID:', chartCanvasId);
                 // Second chart, hourly availability
-                let ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
+                var ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
                 let hourBgColours = [];
                 let hourBorderColours = [];
                 let hourData = recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))); // Round the availibility to nearest whole number
@@ -324,7 +440,7 @@ async function createMarkers(stations) {
                     }
                 }
                 hourBgColours[12] = hourBgColours[12].replace('0.2', '0.6');
-                new Chart(ctxHour, {
+                var hourChart = new Chart(ctxHour, {
                     type: 'bar',
                     data: {
                         labels: hourLabels,
