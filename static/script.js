@@ -510,31 +510,8 @@ function getDirections() {
 }
 
 async function submitForm() {
-    // As the db is not pulling from my end, I had to use submitForm to test my code 
-    // console.log('submitting form');
-    // console.log('day:', days_letters[new Date().getDay()], 'hour:', String(new Date().getHours()));
-    // console.log("Predicitons runnung")
-    // let predicted = [];
-
-    // for (let i = 0; i < 12; i++) {
-    //     console.log('i:', i)
-
-    //     var day = new Date().getDay(); // Ensure that the day is set to today
-    //     let currentHour = new Date().getHours(); // Get the current hour
-    //     let predictHour = (currentHour + i) % 24; // Adjust for 24-hour clock
-    //     console.log('day:', day)
-    //     console.log('currentHour:', currentHour)
-    //     console.log('predictHour:', predictHour)
-    //     if (currentHour + i >= 24) { //If the hour is in the next day 
-    //         day = (day + 1) % 7; // ensure the day is set to tomorrow and Adjust for 7-day week
-    //     }
-    //     var prediction = await getPrediction(2, day, predictHour);
-    //     console.log('prediction:', prediction)
-    //     var formattedPrediction = `${predictHour}:${prediction.availability}`;
-    //     predicted.push(formattedPrediction);
-    // }
-    // console.log(predicted);
-    await fetchWeatherForecast(days_letters[new Date().getDay()],new Date().getHours()); // Call the fetchWeatherForecast function to display the weather forecast
+    // Call the fetchWeatherForecast function to display the weather forecast
+    await fetchWeatherForecast(days_letters[new Date().getDay()],new Date().getHours())
     getDirections(); // Call the getDirections function to display the directions button
     handleConfirmButtonClick()
     const availability = await Promise.all([
