@@ -178,10 +178,22 @@ def realtime():
         )
 
         cursor.execute(query)
-        results = cursor.fetchall()
+
+        columns = [desc[0] for desc in cursor.description]
+
+        rows = cursor.fetchall()
+
+    # Transforming the data into the desired dictionary format
+        results = {}
+        for row in rows:
+            bike_data = {'available_bikes': row[columns.index('available_bikes')]}
+            results[row[columns.index('number')]] = bike_data
+
         cursor.close()
         conn.close()
+        print(results)
         print("Succesfully got realtime")
+
         return jsonify(results)
     
     except pymysql.Error as e:
