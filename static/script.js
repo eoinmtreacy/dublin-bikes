@@ -514,7 +514,8 @@ async function submitForm() {
         getPrediction(arrive.number, day, hour)
     ])
 
-    availability.map(a => console.log(a))
+    document.getElementById("depart-avail").innerHTML= `<b>Depart Station Bikes:</b>   ${Math.round(depart.bike_stands * availability[0].availability)}`
+    document.getElementById("arrive-avail").innerHTML = `<b>Arrive Station Parking:</b>   ${Math.round(arrive.bike_stands - arrive.bike_stands * availability[1].availability)}`
 }
 
 async function getPrediction(station, day, hour) {
