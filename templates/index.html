@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UCD Dublin Bikes Info</title>
+    <title>DublinBikes</title>
+    <!--Reference: https://www.geeksforgeeks.org/how-to-create-dark-mode-using-prefer-color-scheme-media-query/ -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon-light.svg') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon-dark.svg') }}" media="(prefers-color-scheme: dark)">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.js"
