@@ -407,31 +407,13 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
 }
 
     // Function to handle the confirm button click // Implemented 
-async function handleConfirmButtonClick() {
-    try {
-        if (!origin || !destination) {
-            alert('Please select both a start and an end location.');
-            return;
-        }
-
-        // Perform the route calculation
-        await calculateAndDisplayRoute(origin, depart, arrive, destination);
-
+async function hideOtherMarkers() {
         // Adjust the visibility of markers
-        STATIONS.forEach(station => {
-            if (station.marker) {
-                // Hide all markers initially
-                station.marker.setVisible(false);
-            }
-        });
+        STATIONS.map(station => station.marker.setVisible(false))
 
         // Show only the relevant markers
         if (depart && depart.marker) depart.marker.setVisible(true);
         if (arrive && arrive.marker) arrive.marker.setVisible(true);
-
-    } catch (error) {
-        console.error('Error in handleConfirmButtonClick:', error);
-    }
 }
     
 function setupNavbarToggle() {
@@ -513,7 +495,8 @@ async function submitForm() {
     // Call the fetchWeatherForecast function to display the weather forecast
     await fetchWeatherForecast(days_letters[new Date().getDay()],new Date().getHours())
     getDirections(); // Call the getDirections function to display the directions button
-    handleConfirmButtonClick()
+    await calculateAndDisplayRoute(origin, depart, arrive, destination);
+    await hideOtherMarkers()
     const availability = await Promise.all([
         getPrediction(depart.number, new Date().getDay(),new Date().getHours()),
         getPrediction(arrive.number, new Date().getDay(),new Date().getHours())
@@ -521,8 +504,6 @@ async function submitForm() {
 
     availability.map(a => console.log(a))
 }
-
-
 
 async function getPrediction(station, day, hour) {
     // changes HTML elements as a side effect
