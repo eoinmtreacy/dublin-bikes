@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     STATIONS = await fetchStations(realTime) // STATIONS created from fetch
     STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
     fetchRealTimeWeather()
+    setClock()
 });
 
 
@@ -576,10 +577,28 @@ async function fetchWeatherForecast(day, hour) {
     }
 }
 
+function setClock() {
+    // sets clock to current time
+    // Create a new Date object
+    let now = new Date();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+
+    // Format time with leading zeros
+    let formattedTime = (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
+
+    // Set the value of the time input
+    document.getElementById("timeInput").value = formattedTime;
+}
+
 document.getElementById('resetButton').addEventListener('click', function () {
     // Reset text inputs
     document.getElementById('startInput').value = '';
     document.getElementById('endInput').value = '';
+    document.getElementById('depart-avail').innerHTML = '';
+    document.getElementById('arrive-avail').innerHTML = '';
+
+    setClock()
 
     [origin, depart, arrive, destination].map(each => null)
     console.log(firstLeg, secondLeg, thirdLeg); // below map won't work without a log for whatever reason
@@ -595,6 +614,4 @@ document.getElementById('resetButton').addEventListener('click', function () {
 
     document.getElementById('directionsButton').style.display = 'none';
 
-    
-    
 });

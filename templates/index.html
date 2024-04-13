@@ -75,19 +75,6 @@
 
                                 <input type="time" id="timeInput" class="text-center">
 
-                                <script>
-                                    // Create a new Date object
-                                    var now = new Date();
-                                    var hours = now.getHours();
-                                    var minutes = now.getMinutes();
-
-                                    // Format time with leading zeros
-                                    var formattedTime = (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
-
-                                    // Set the value of the time input
-                                    document.getElementById("timeInput").value = formattedTime;
-                                </script>
-
                                 <div>
                                     <label for="startInput" class="text-sm font-medium text-gray-800">Start:</label>
                                     <input id="startInput" type="text" placeholder="Start location" class="mt-1 w-full p-3 bg-white rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
