@@ -1,4 +1,4 @@
-let STATIONS
+var STATIONS = [];
 let origin, depart, arrive, destination
 let firstLeg, secondLeg, thirdLeg
 let map;
@@ -211,17 +211,11 @@ function toggleMapStyle() {
     }
 }
 
+// Need to implement Error Handling again
 async function fetchRealTime() {
-    const realTime = await fetch('/realtime')
-        .then(response => response.json())
-
-    if (realTime.error) {
-        addToQueue(realTime.error)
-    }
-
-    return realTime.data
-
+    return await fetch('/realtime').then(response => response.json())
 }
+
 
 async function fetchStations() {
     return await fetch('/stations').then(response => response.json())
@@ -261,8 +255,9 @@ async function createMarkers(stations) {
     // createMarkers now takes the stations array
     // and creates a marker object as an attribute
     // of each station, linking them together
+    console.log('Creating markers:', stations);
     let currentInfoWindow = null; // Variable to store the currently open info window
-
+    
     stations.forEach((station, index) => {
         const availableBikes = getStationAvailability(bikes, station.number, RTDATA, STATIONS);
         const availableStands = getStationAvailability(stands, station.number, RTDATA, STATIONS);
