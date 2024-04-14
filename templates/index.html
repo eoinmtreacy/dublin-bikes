@@ -75,19 +75,6 @@
 
                                 <input type="time" id="timeInput" class="text-center">
 
-                                <script>
-                                    // Create a new Date object
-                                    var now = new Date();
-                                    var hours = now.getHours();
-                                    var minutes = now.getMinutes();
-
-                                    // Format time with leading zeros
-                                    var formattedTime = (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
-
-                                    // Set the value of the time input
-                                    document.getElementById("timeInput").value = formattedTime;
-                                </script>
-
                                 <div>
                                     <label for="startInput" class="text-sm font-medium text-gray-800">Start:</label>
                                     <input id="startInput" type="text" placeholder="Start location" class="mt-1 w-full p-3 bg-white rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
@@ -102,12 +89,12 @@
                                     Submit
                                 </button>
 
-                                <button id="directionsButton" type="button" onclick="submitForm()" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                <button id="directionsButton" type="button" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                     Directions
                                 </button>
 
                                 
-                                    <button type="button" onclick="resetButton()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium rounded-lg text-sm p-2.5 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                                    <button id="resetButton" type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium rounded-lg text-sm p-2.5 focus:outline-none focus:ring-4 focus:ring-gray-300">
                                         <ion-icon name="refresh-outline" class="text-xl"></ion-icon>
                                     </button>
                             </form>
