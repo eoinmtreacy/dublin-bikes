@@ -20,11 +20,19 @@
 </head>
 
 <body class="bg-gray-800 ">
+
     <header class="bg-slate-100 py-3 px-4 flex items-center justify-between fixed top-0 left-0 right-0 z-40 shadow-xl">
+
         <div class="flex items-center">
             <ion-icon name="menu-outline" class="text-gray-800 text-4xl pr-4 cursor-pointer" id="menuToggle"></ion-icon>
             <ion-icon name="bicycle" class="text-light-blue-400 text-4xl cursor-pointer"></ion-icon>
         </div>
+
+        <div id="status-bar" class="flex items-center justify-center w-full max-w-md">
+            loading...
+        </div>
+        
+
         <div class="weather-info flex items-center text-xl font-semibold text-gray-800">
             <span id="weather-description">Loading weather data...</span>
             <span id="weather-icon" class="mx-4 flex items-center justify-center"></span>
@@ -32,6 +40,7 @@
             <span id="weather-humidity" class="mr-4">Humidity: ...%</span>
             <span id="weather-precipitation">Precipitation: ...mm</span>
         </div>
+
         <div class="view-mode flex items-center" onclick="toggleMapStyle()">
             <ion-icon name="moon-outline" class="text-black text-2xl pr-4"></ion-icon>
         </div>
