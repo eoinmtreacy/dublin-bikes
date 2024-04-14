@@ -98,8 +98,10 @@ async function fetchRealTime() {
     return await fetch('/realtime').then(response => response.json())
 }
 
-async function fetchStations() {
-    return await fetch('/stations').then(response => response.json())
+async function fetchStations(realTime) {
+    STATIONS = await fetch('/stations').then(response => response.json())
+    STATIONS.map(station => station['available_bikes'] = realTime[station.number]['available_bikes'])
+    return STATIONS
 }
 
 async function createMarkers(stations) {
@@ -115,7 +117,6 @@ async function createMarkers(stations) {
                 <p>Station Number: ${station.number}</p>
                 <p>Credit Card: ${station.banking === 1 ? 'Available' : 'Not Available'}</p> 
                 <p>Available Bikes: ${station.available_bikes}</p>
-                <p>Available Stands: ${station.available_bike_stands}</p>
                 <p>Overall Capacity: ${station.bike_stands}</p>
                 <canvas id="chart-day-${index}" width="400" height="200"></canvas>
                 <canvas id="chart-hour-${index}" width="400" height="200" style="margin-top: 20px;"></canvas>
