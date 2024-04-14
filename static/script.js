@@ -104,13 +104,21 @@ async function fetchRealTime() {
         addToQueue(realTime.error)
     }
 
-    console.log(realTime.data);
     return realTime.data
 
 }
 
 async function fetchStations(realTime) {
-    STATIONS = await fetch('/stations').then(response => response.json())
+    const fetchedStations = await fetch('/stations')
+        .then(response => response.json())
+
+        if (realTime.error) {
+            addToQueue(realTime.error)
+        }
+
+    STATIONS = fetchedStations.data
+    console.log(fetchedStations.data);
+
     STATIONS.map(station => station['available_bikes'] = realTime[station.number]['available_bikes'])
     return STATIONS
 }

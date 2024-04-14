@@ -142,17 +142,16 @@ def stations():
 
         cursor.close()
         conn.close()
-        print("Succesfull fetched stations from database")
+        print("Succesful fetched stations from database")
 
-        return jsonify(results)
-
+        return jsonify({"data": results})
+    
     except pymysql.Error as e:
-        print("Error fetching stations from databse", e)
-        print("Using local data")
-        with open('stations/dublin_stations.json', 'r') as json_file:
+        print(e)
+        with open('dublin_stations.json', 'r') as json_file:
             local_data = json.load(json_file)
-
-        return jsonify(local_data)
+        return jsonify({"data": local_data, 
+                        "error": "Error fetching up-to-date stations, ploting static data"})
     
 @app.route('/realtime')
 def realtime():
