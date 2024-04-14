@@ -2,6 +2,7 @@ var STATIONS = [];
 let origin, depart, arrive, destination
 let firstLeg, secondLeg, thirdLeg
 let map;
+const root = document.documentElement;
 
 const STATUS_QUEUE = []
 
@@ -10,8 +11,8 @@ let darkMapStyle;
 let lightMapStyle;
 let RTDATA;
 let defaultChartColor = '#000';
-var gridColor = Chart.defaults.borderColor;
-var chartColor = Chart.defaults.Color;
+var gridColor = 'rgba(0,0,0,0.1)';
+var chartColor = '#666';
 var dayChart;
 var hourChart;
 // Needs to be explitictly initialised for the getStationAvailability function
@@ -58,9 +59,9 @@ function toggleMapStyle() {
     const navBar = document.getElementById("navbar"); // The journey planner container
     const bicycleIcon = document.getElementById("bicycle-icon"); // The bicycle icon
     const navBar2 = document.getElementById("navbar2"); // The journey planner container
-
+    
     const refreshButton = document.getElementById("resetButton"); // The refresh button
-    const root = document.documentElement;
+    
     const markerPopup = document.getElementById('marker-popup');
 
 
@@ -100,36 +101,38 @@ function toggleMapStyle() {
         refreshButton.classList.remove("bg-gray-300",  "hover:bg-gray-400");
         refreshButton.classList.add("bg-gray-400", "hover:bg-gray-500");
         root.style.setProperty('--background-color', 'rgb(30 41 59)');
+        root.style.setProperty('--color', 'rgba(249, 250, 251, 1)');
+        root.style.setProperty('--grid-color', 'rgba(241, 245, 249, 0.2)');
         console.log("dark mode BG:", root.style.getPropertyValue('--background-color'));
         gridColor = 'rgba(241, 245, 249, 0.2)';
         chartColor = 'rgba(249, 250, 251, 1)';
-
         if (markerPopup) {
-        dayChart.options.scales.x.grid.color = gridColor; 
-        dayChart.options.scales.y.grid.color = gridColor; 
-        dayChart.options.color = chartColor;
-        dayChart.options.scales.y.ticks.color = chartColor; 
-        dayChart.options.scales.x.ticks.color = chartColor; 
-        dayChart.options.scales.x.title.color = chartColor; 
-        dayChart.options.scales.y.title.color = chartColor; 
-        hourChart.options.scales.x.grid.color = gridColor;
-        hourChart.options.scales.y.grid.color = gridColor; 
-        hourChart.options.scales.y.ticks.color = chartColor;
-        hourChart.options.scales.x.ticks.color = chartColor;
-        hourChart.options.color = chartColor; 
-        hourChart.options.scales.x.title.color = chartColor;
-        hourChart.options.scales.y.title.color = chartColor; 
-        hourChart.options.color = chartColor; 
-        markerPopup.style.color = chartColor;
-
-        // Update the chart to reflect the changes
-        dayChart.update();
-        hourChart.update();
+            dayChart.options.scales.x.grid.color = gridColor; 
+            dayChart.options.scales.y.grid.color = gridColor; 
+            dayChart.options.color = chartColor;
+            dayChart.options.scales.y.ticks.color = chartColor; 
+            dayChart.options.scales.x.ticks.color = chartColor; 
+            dayChart.options.scales.x.title.color = chartColor; 
+            dayChart.options.scales.y.title.color = chartColor; 
+            hourChart.options.scales.x.grid.color = gridColor;
+            hourChart.options.scales.y.grid.color = gridColor; 
+            hourChart.options.scales.y.ticks.color = chartColor;
+            hourChart.options.scales.x.ticks.color = chartColor;
+            hourChart.options.color = chartColor; 
+            hourChart.options.scales.x.title.color = chartColor;
+            hourChart.options.scales.y.title.color = chartColor; 
+            hourChart.options.color = chartColor; 
+            markerPopup.style.color = chartColor;
+    
+            // Update the chart to reflect the changes
+            dayChart.update();
+            hourChart.update();
         
 
         // Log the updated grid color to the console
-        console.log("Dark mode grid:", gridColor);
-        console.log("Dark mode chart:", chartColor);
+        console.log("Dark mode grid:", getComputedStyle(root).getPropertyValue('--grid-color'));
+        console.log("Dark mode chart:", getComputedStyle(root).getPropertyValue('--color'));
+        console.log("Defaults:", Chart.defaults.borderColor, Chart.defaults.color)
         }
         
 
@@ -175,38 +178,42 @@ function toggleMapStyle() {
         refreshButton.classList.add("bg-gray-300", "hover:bg-gray-400");
 
         root.style.setProperty('--background-color', '#FFFFFF');
-        gridColor = Chart.defaults.borderColor;
-        chartColor = defaultChartColor;
+        root.style.setProperty('--color', '#666');
+        root.style.setProperty('--grid-color', 'rgba(0,0,0,0.1)');
+        gridColor = 'rgba(0,0,0,0.1)';
+        chartColor = '#666';
         if (markerPopup) {
-        dayChart.options.scales.x.grid.color = gridColor; 
-        dayChart.options.scales.y.grid.color = gridColor; 
-        dayChart.options.color = chartColor;
-        dayChart.options.scales.y.ticks.color = chartColor; 
-        dayChart.options.scales.x.ticks.color = chartColor; 
-        dayChart.options.scales.x.title.color = chartColor; 
-        dayChart.options.scales.y.title.color = chartColor; 
-        hourChart.options.scales.x.grid.color = gridColor;
-        hourChart.options.scales.y.grid.color = gridColor; 
-        hourChart.options.scales.y.ticks.color = chartColor;
-        hourChart.options.scales.x.ticks.color = chartColor;
-        hourChart.options.color = chartColor; 
-        hourChart.options.scales.x.title.color = chartColor;
-        hourChart.options.scales.y.title.color = chartColor; 
-        hourChart.options.color = chartColor; 
-        markerPopup.style.color = chartColor;
-
-        
-        
-
-        // Update the chart to reflect the changes
-        dayChart.update();
-        hourChart.update();
-        }
+            dayChart.options.scales.x.grid.color = gridColor; 
+            dayChart.options.scales.y.grid.color = gridColor; 
+            dayChart.options.color = chartColor;
+            dayChart.options.scales.y.ticks.color = chartColor; 
+            dayChart.options.scales.x.ticks.color = chartColor; 
+            dayChart.options.scales.x.title.color = chartColor; 
+            dayChart.options.scales.y.title.color = chartColor; 
+            hourChart.options.scales.x.grid.color = gridColor;
+            hourChart.options.scales.y.grid.color = gridColor; 
+            hourChart.options.scales.y.ticks.color = chartColor;
+            hourChart.options.scales.x.ticks.color = chartColor;
+            hourChart.options.color = chartColor; 
+            hourChart.options.scales.x.title.color = chartColor;
+            hourChart.options.scales.y.title.color = chartColor; 
+            hourChart.options.color = chartColor; 
+            markerPopup.style.color = chartColor;
+    
+            // Update the chart to reflect the changes
+            dayChart.update();
+            hourChart.update();
+            
+    
+            // Log the updated grid color to the console
+            console.log("Light mode grid:", getComputedStyle(root).getPropertyValue('--grid-color'));
+            console.log("Light mode chart:", getComputedStyle(root).getPropertyValue('--color'));
+            console.log("Defaults:", Chart.defaults.borderColor, Chart.defaults.color)
+            }
 
 
         // Log the updated grid color to the console
-        console.log("Light mode grid:", gridColor);
-        console.log("Light mode chart:", chartColor);
+       
 
     }
 }
@@ -240,7 +247,7 @@ function getStationAvailability(dataSelect, stationNumber, realTimeData, station
     }
   }
 
-
+// Raises an error in JS console when currentInfoWindow is not defined - this is fine
 function closeInfoWindow() {
     if (currentInfoWindow) {
         if (dayChart && hourChart) {
@@ -366,7 +373,6 @@ async function createMarkers(stations) {
                 // First chart: Bike availability by day
                 var ctxDay = document.getElementById(`chart-day-${index}`).getContext('2d');
                 var sorted_last_week = Array(7);
-
                 // Loop through the last_week array to arange current day in middle
                 for (let i = 0; i < last_week.length; i++) {
                     sorted_last_week[(i + 3) % 7] = last_week[i];
@@ -405,9 +411,10 @@ async function createMarkers(stations) {
                         }]
                     },
                     options: {
+                        color: getComputedStyle(root).getPropertyValue('--color'),
                         scales: {
-                            y: { ticks: { stepSize: 5, autoSkip: false }, beginAtZero: true, max: Math.ceil(station.bike_stands / 10) * 10, title: { display: true, text: 'Number of Bikes Available' }},
-                            x: { ticks: { autoSkip: false }, title: { display: true, text: 'Day of the Week' }}
+                            y: { ticks: { stepSize: 5, autoSkip: false, color: getComputedStyle(root).getPropertyValue('--color') }, beginAtZero: true, max: Math.ceil(station.bike_stands / 10) * 10, title: { display: true, text: 'Number of Bikes Available' ,color: getComputedStyle(root).getPropertyValue('--color')}, grid: { color: getComputedStyle(root).getPropertyValue('--grid-color')}},
+                            x: { ticks: { autoSkip: false, color: getComputedStyle(root).getPropertyValue('--color') }, title: { display: true, text: 'Day of the Week', color: getComputedStyle(root).getPropertyValue('--color') }, grid: { color: getComputedStyle(root).getPropertyValue('--grid-color') }},
                         },
                         legend: {
                             display: true,
@@ -471,10 +478,13 @@ async function createMarkers(stations) {
                         }]
                     },
                     options: {
+                        color: getComputedStyle(root).getPropertyValue('--color'),
                         scales: {
-                            y: { beginAtZero: true, max: Math.ceil(station.bike_stands / 10) * 10, title: { display: true, text: 'Number of Bikes Available' } },
+                            y: { ticks: { color: getComputedStyle(root).getPropertyValue('--color')}, beginAtZero: true, max: Math.ceil(station.bike_stands / 10) * 10, title: { display: true, text: 'Number of Bikes Available', color: getComputedStyle(root).getPropertyValue('--color') } , grid: { color: getComputedStyle(root).getPropertyValue('--grid-color'),
+                        },},
                             x: {
                                 ticks: {
+                                    color: getComputedStyle(root).getPropertyValue('--color'),
                                     autoSkip: false,
                                     callback: function(value, index, values) {
                                         // Using the hourLabels array directly to map index to the correct time label
@@ -484,7 +494,8 @@ async function createMarkers(stations) {
                                             return '';}}
                                 },
                                 beginAtZero: false,
-                                title: { display: true, text: 'Hour of the Day' }
+                                title: { display: true, text: 'Hour of the Day', color: getComputedStyle(root).getPropertyValue('--color') },
+                                grid: { color: getComputedStyle(root).getPropertyValue('--grid-color') },
                             }
                         },
                         plugins: { legend: {
@@ -569,7 +580,7 @@ async function initMap(mapChoice) {
 async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
     const directionsService = new google.maps.DirectionsService();
 
-    let firstLeg = new google.maps.DirectionsRenderer(
+    firstLeg = new google.maps.DirectionsRenderer(
         {
             map:map,
             polylineOptions :{
@@ -577,7 +588,7 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
             }
         }
     )
-    let secondLeg = new google.maps.DirectionsRenderer(
+    secondLeg = new google.maps.DirectionsRenderer(
         {
             map: map,
             polylineOptions:{
@@ -585,7 +596,7 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
             }
         }
     )
-    let thirdLeg = new google.maps.DirectionsRenderer({
+    thirdLeg = new google.maps.DirectionsRenderer({
         map:map,
         polylineOptions:{
             strokeColor:"blue"
@@ -603,7 +614,6 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
         travelMode: 'WALKING'
     }, function (response, status) {
         if (status === 'OK') {
-            console.log(response);
             firstLeg.setDirections(response);
             // Display distance and duration
             const route = response.routes[0].legs[0];
@@ -619,7 +629,6 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
         travelMode: 'BICYCLING'
     }, function (response, status) {
         if (status === 'OK') {
-            console.log(response);
             secondLeg.setDirections(response);
             // Display distance and duration
             const route = response.routes[0].legs[0];
@@ -636,7 +645,6 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
         travelMode: 'WALKING'
     }, function (response, status) {
         if (status === 'OK') {
-            console.log(response);
             thirdLeg.setDirections(response);
             // Display distance and duration
             const route = response.routes[0].legs[0];
@@ -878,22 +886,6 @@ document.getElementById('resetButton').addEventListener('click', function () {
     document.getElementById('depart-avail').innerHTML = '';
     document.getElementById('arrive-avail').innerHTML = '';
 
-    // Reset dropdowns to their first option
-    
-    document.getElementById('depart').selectedIndex = 0;
-    document.getElementById('arrive').selectedIndex = 0;
-    document.getElementById('departTime').selectedIndex = 0;
-    document.getElementById('arriveTime').selectedIndex = 0;
-    document.getElementById('departDay').selectedIndex = 0;
-    document.getElementById('arriveDay').selectedIndex = 0;
-
-    // reset the travel mode radio buttons to default (first radio button)
-    document.querySelector('input[name="travelMode"][value="DRIVING"]').checked = true;
-
-    //  map or directions, y reset them as well
-    if (directionsRenderer) {
-        directionsRenderer.setDirections({ routes: [] });
-    }
     setClock()
 
     origin = null;
