@@ -12,6 +12,8 @@ let lightMapStyle;
 const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 document.addEventListener('DOMContentLoaded', async () => {
+    displayMessages()
+    addToQueue("Ready!")
     lightMapStyle = await fetchStatic("static/light.json"); 
     darkMapStyle = await fetchStatic("static/dark.json");
     map = await initMap(lightMapStyle) // initalise the map with Light Mode style
@@ -20,7 +22,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
     fetchRealTimeWeather()
     setClock()
-    displayMessages()
 });
 
 
@@ -117,7 +118,6 @@ async function fetchStations(realTime) {
         }
 
     STATIONS = fetchedStations.data
-    console.log(fetchedStations.data);
 
     STATIONS.map(station => station['available_bikes'] = realTime[station.number]['available_bikes'])
     return STATIONS
