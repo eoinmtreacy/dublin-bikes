@@ -899,6 +899,9 @@ document.getElementById('resetButton').addEventListener('click', function () {
     document.getElementById('endInput').value = '';
     document.getElementById('depart-avail').innerHTML = '';
     document.getElementById('arrive-avail').innerHTML = '';
+    document.getElementById("first-leg-info").innerHTML = 'Walk';
+    document.getElementById("second-leg-info").innerHTML = 'Ride';
+    document.getElementById("third-leg-info").innerHTML = 'Walk';
     scrollJourneyPlanner('up');
 
     setClock()
