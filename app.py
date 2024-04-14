@@ -83,15 +83,6 @@ def fetchWeatherForecast():
 # create landing page
 @app.route('/')
 def landing():
-    """serve landing page html from /templates folder
-    calls weather api
-    """
-    # TODO uncomment
-    # headers = {"accept": "application/json"}
-    # url = f"https://api.tomorrow.io/v4/weather/realtime?location={CITY}&units=metric&apikey={WEATHER_API_KEY}"
-
-    # response = requests.get(url, headers=headers)
-        
     return render_template('index.html', google_maps_api_key=GOOGLE_MAPS_API_KEY, )
 
 @app.route('/predict/<station>', methods=['POST'])
@@ -173,30 +164,19 @@ def realtime():
         cursor = conn.cursor()
 
         query = (
-            """SELECT number, available_bikes, MAX(last_update) AS time
+            """SELECT number, available_bikes, available_bike_stands, MAX(last_update) AS time
             FROM availability
             GROUP BY number;
             """
         )
 
         cursor.execute(query)
-
-        columns = [desc[0] for desc in cursor.description]
-
-        rows = cursor.fetchall()
-
-    # Transforming the data into the desired dictionary format
-        results = {}
-        for row in rows:
-            bike_data = {'available_bikes': row[columns.index('available_bikes')]}
-            results[row[columns.index('number')]] = bike_data
-
+        results = cursor.fetchall()
         cursor.close()
         conn.close()
-        print(results)
         print("Succesfully got realtime")
+        return jsonify(results)
 
-        return jsonify({"data": results})
     
     except pymysql.Error as e:
         print(e)
@@ -234,7 +214,7 @@ def recent():
                     availability
                 WHERE 
                     number = {station}
-                    AND last_update >= UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 12 HOUR))
+                    AND last_update >= UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 11 HOUR))
                 GROUP BY 
                     HOUR(FROM_UNIXTIME(last_update))
                 ORDER BY 
