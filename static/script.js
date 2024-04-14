@@ -2,7 +2,10 @@ let STATIONS
 let origin, depart, arrive, destination
 let firstLeg, secondLeg, thirdLeg
 let map;
-var currentStyle = "light"; // Default mode is Light Mode
+
+const STATUS_QUEUE = []
+
+let currentStyle = "light"; // Default mode is Light Mode
 let darkMapStyle;
 let lightMapStyle;
 
@@ -17,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
     fetchRealTimeWeather()
     setClock()
+    displayMessages()
 });
 
 
@@ -25,8 +29,6 @@ async function fetchStatic(path) {
     const data = await response.json();
     return data;
 }
-
-
 
 async function fetchMapStyles() {
     darkMapStyle = await fetchStatic("static/dark.json");
@@ -616,3 +618,24 @@ document.getElementById('resetButton').addEventListener('click', function () {
     document.getElementById('directionsButton').style.display = 'none';
 
 });
+
+// status message and error handling display
+
+function addToQueue(message) {
+    STATUS_QUEUE.push(message);
+  }
+  
+async function displayMessages() {
+    if (STATUS_QUEUE.length > 0) {
+        showMessage(STATUS_QUEUE.shift())
+    }
+
+    setTimeout(displayMessages, 1000)
+}
+
+// Function to display a message
+function showMessage(message) {
+    const statusElement = document.getElementById('status-bar');
+    statusElement.innerText = message;
+}
+  
