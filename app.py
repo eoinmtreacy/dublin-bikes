@@ -138,7 +138,7 @@ def stations():
         conn.close()
         print("Succesful fetched stations from database")
 
-        return jsonify({"data": results})
+        return jsonify(results)
     
     except pymysql.Error as e:
         print(e)
