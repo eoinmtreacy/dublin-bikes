@@ -5,15 +5,27 @@ let map;
 var currentStyle = "light"; // Default mode is Light Mode
 let darkMapStyle;
 let lightMapStyle;
+let RTDATA;
+let defaultChartColor = '#000';
+var gridColor = Chart.defaults.borderColor;
+var chartColor = Chart.defaults.Color;
+var dayChart;
+var hourChart;
+// Needs to be explitictly initialised for the getStationAvailability function
+const bikes = 'bikes';
+const stands = 'stands';
 
 const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 document.addEventListener('DOMContentLoaded', async () => {
     lightMapStyle = await fetchStatic("static/light.json"); 
     darkMapStyle = await fetchStatic("static/dark.json");
-    map = await initMap(lightMapStyle) // initalise the map with Light Mode style
+    const map = await initMap(lightMapStyle) // initalise the map with Light Mode style
     const realTime = await fetchRealTime()
+    RTDATA = realTime
+    console.log('Real Time Data:', realTime); 
     STATIONS = await fetchStations(realTime) // STATIONS created from fetch
+    console.log('Stations:', STATIONS);
     STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
     fetchRealTimeWeather()
     setClock()
@@ -40,9 +52,17 @@ function toggleMapStyle() {
     const headerElement = document.querySelector("header"); // The header element of the HTML document
     const weatherInfoTextElements = document.querySelectorAll(".weather-info span:not(#weather-icon)"); // The weather information text elements (do not want to impact weather icon)
     const menuIcon = document.getElementById("menuToggle"); // The menu icon (hamburger icon)
-    const journeyPlannerContainer = document.getElementById("journey-planner"); // The journey planner container
-    const routeInfoContainer = document.getElementById("route-info"); // The route information container
+    const navBar = document.getElementById("navbar"); // The journey planner container
+    const bicycleIcon = document.getElementById("bicycle-icon"); // The bicycle icon
+    const navBar2 = document.getElementById("navbar2"); // The journey planner container
 
+    const refreshButton = document.getElementById("resetButton"); // The refresh button
+    const root = document.documentElement;
+    const markerPopup = document.getElementById('marker-popup');
+
+
+
+    
 
 
 
@@ -60,12 +80,61 @@ function toggleMapStyle() {
         weatherInfoTextElements.forEach(element => {
             element.classList.add("text-white");
         });
-        menuIcon.classList.remove("text-black");
-        menuIcon.classList.add("text-white");
-        journeyPlannerContainer.classList.remove("bg-gray-200");
-        journeyPlannerContainer.classList.add("bg-gray-900");
-        routeInfoContainer.classList.remove("bg-gray-200");
-        routeInfoContainer.classList.add("bg-gray-900");
+        menuIcon.classList.remove("text-grey-800");
+        menuIcon.classList.add("text-gray-50");
+        navBar.classList.remove("bg-slate-100");
+        navBar.classList.add("bg-gray-700");
+        navBar2.classList.remove("bg-white");
+        navBar2.classList.add("bg-gray-800");
+        bicycleIcon.classList.remove("text-grey-800");
+        bicycleIcon.classList.add("text-gray-50");
+        document.getElementById('startInput').style.setProperty('background-color', 'rgb(226 232 240)', 'important');
+        document.getElementById('endInput').style.setProperty('background-color', 'rgb(226 232 240)', 'important');
+        document.getElementById('timeInput').style.setProperty('background-color', 'rgb(226 232 240)', 'important');
+        document.getElementById('startInput').style.setProperty('color', 'rgb(71, 85, 105)', 'important');
+        document.getElementById('endInput').style.setProperty('color', 'rgb(71, 85, 105)', 'important');
+        document.getElementById('timeInput').style.setProperty('color', 'rgb(71, 85, 105)', 'important');
+        refreshButton.classList.remove("bg-gray-300",  "hover:bg-gray-400");
+        refreshButton.classList.add("bg-gray-400", "hover:bg-gray-500");
+        root.style.setProperty('--background-color', 'rgb(30 41 59)');
+        console.log("dark mode BG:", root.style.getPropertyValue('--background-color'));
+        gridColor = 'rgba(241, 245, 249, 0.2)';
+        chartColor = 'rgba(249, 250, 251, 1)';
+
+        if (markerPopup) {
+        dayChart.options.scales.x.grid.color = gridColor; 
+        dayChart.options.scales.y.grid.color = gridColor; 
+        dayChart.options.color = chartColor;
+        dayChart.options.scales.y.ticks.color = chartColor; 
+        dayChart.options.scales.x.ticks.color = chartColor; 
+        dayChart.options.scales.x.title.color = chartColor; 
+        dayChart.options.scales.y.title.color = chartColor; 
+        hourChart.options.scales.x.grid.color = gridColor;
+        hourChart.options.scales.y.grid.color = gridColor; 
+        hourChart.options.scales.y.ticks.color = chartColor;
+        hourChart.options.scales.x.ticks.color = chartColor;
+        hourChart.options.color = chartColor; 
+        hourChart.options.scales.x.title.color = chartColor;
+        hourChart.options.scales.y.title.color = chartColor; 
+        hourChart.options.color = chartColor; 
+        markerPopup.style.color = chartColor;
+
+        // Update the chart to reflect the changes
+        dayChart.update();
+        hourChart.update();
+        
+
+        // Log the updated grid color to the console
+        console.log("Dark mode grid:", gridColor);
+        console.log("Dark mode chart:", chartColor);
+        }
+        
+
+        
+
+
+
+
         
 
         
@@ -84,12 +153,57 @@ function toggleMapStyle() {
         weatherInfoTextElements.forEach(element => {
             element.classList.remove("text-white"); 
         });
-        menuIcon.classList.remove("text-white");
-        menuIcon.classList.add("text-black");
-        journeyPlannerContainer.classList.remove("bg-gray-900");
-        journeyPlannerContainer.classList.add("bg-gray-200");
-        routeInfoContainer.classList.remove("bg-gray-900");
-        routeInfoContainer.classList.add("bg-gray-200");
+        menuIcon.classList.remove("text-gray-50");
+        menuIcon.classList.add("text-grey-800");
+        navBar.classList.remove("bg-gray-700");
+        navBar.classList.add("bg-slate-100");
+        navBar2.classList.remove("bg-gray-800");
+        navBar2.classList.add("bg-white");
+        bicycleIcon.classList.remove("text-gray-50");
+        bicycleIcon.classList.add("text-grey-800");
+        document.getElementById('startInput').style.setProperty('background-color', '', 'important');
+        document.getElementById('endInput').style.setProperty('background-color', '', 'important');
+        document.getElementById('timeInput').style.setProperty('background-color', '', 'important');
+        document.getElementById('startInput').style.setProperty('color', '', 'important');
+        document.getElementById('startInput').style.setProperty('color', '', 'important');
+        document.getElementById('timeInput').style.setProperty('color', '', 'important');
+
+        refreshButton.classList.remove("bg-gray-400", "hover:bg-gray-500");
+        refreshButton.classList.add("bg-gray-300", "hover:bg-gray-400");
+
+        root.style.setProperty('--background-color', '#FFFFFF');
+        gridColor = Chart.defaults.borderColor;
+        chartColor = defaultChartColor;
+        if (markerPopup) {
+        dayChart.options.scales.x.grid.color = gridColor; 
+        dayChart.options.scales.y.grid.color = gridColor; 
+        dayChart.options.color = chartColor;
+        dayChart.options.scales.y.ticks.color = chartColor; 
+        dayChart.options.scales.x.ticks.color = chartColor; 
+        dayChart.options.scales.x.title.color = chartColor; 
+        dayChart.options.scales.y.title.color = chartColor; 
+        hourChart.options.scales.x.grid.color = gridColor;
+        hourChart.options.scales.y.grid.color = gridColor; 
+        hourChart.options.scales.y.ticks.color = chartColor;
+        hourChart.options.scales.x.ticks.color = chartColor;
+        hourChart.options.color = chartColor; 
+        hourChart.options.scales.x.title.color = chartColor;
+        hourChart.options.scales.y.title.color = chartColor; 
+        hourChart.options.color = chartColor; 
+        markerPopup.style.color = chartColor;
+
+        
+        
+
+        // Update the chart to reflect the changes
+        dayChart.update();
+        hourChart.update();
+        }
+
+
+        // Log the updated grid color to the console
+        console.log("Light mode grid:", gridColor);
+        console.log("Light mode chart:", chartColor);
 
     }
 }
@@ -98,10 +212,39 @@ async function fetchRealTime() {
     return await fetch('/realtime').then(response => response.json())
 }
 
-async function fetchStations(realTime) {
-    STATIONS = await fetch('/stations').then(response => response.json())
-    STATIONS.map(station => station['available_bikes'] = realTime[station.number]['available_bikes'])
-    return STATIONS
+
+async function fetchStations() {
+    return await fetch('/stations').then(response => response.json())
+}
+function getStationAvailability(dataSelect, stationNumber, realTimeData, stations) {
+    const station = stations[stationNumber];
+    if (station) {
+        const stationData = realTimeData.find(data => data[0] === stationNumber);
+        if (stationData) {
+        if (dataSelect === 'stands') {
+          return stationData[2]; // Index 2 represents available stands
+        } else if (dataSelect === 'bikes') {
+          return stationData[1]; // Index 1 represents available bikes
+        } else {
+            return "Invalid data selected specified";
+        }
+      } else {
+        return "Data not available for the station";
+      }
+    } else {
+      return "Station not found";
+    }
+  }
+
+
+function closeInfoWindow() {
+    if (currentInfoWindow) {
+        if (dayChart && hourChart) {
+            dayChart.destroy();
+            hourChart.destroy();
+        }
+        currentInfoWindow.close();
+    }
 }
 
 async function createMarkers(stations) {
@@ -111,16 +254,20 @@ async function createMarkers(stations) {
     let currentInfoWindow = null; // Variable to store the currently open info window
 
     stations.forEach((station, index) => {
+        const availableBikes = getStationAvailability(bikes, station.number, RTDATA, STATIONS);
+        const availableStands = getStationAvailability(stands, station.number, RTDATA, STATIONS);
         const contentString = `
-            <div style='color: black;'>
-                <strong>${station.name}</strong>
-                <p>Station Number: ${station.number}</p>
-                <p>Credit Card: ${station.banking === 1 ? 'Available' : 'Not Available'}</p> 
-                <p>Available Bikes: ${station.available_bikes}</p>
-                <p>Overall Capacity: ${station.bike_stands}</p>
-                <canvas id="chart-day-${index}" width="400" height="200"></canvas>
-                <canvas id="chart-hour-${index}" width="400" height="200" style="margin-top: 20px;"></canvas>
-            </div>
+        <div style='color: black;' id='marker-popup'>
+            <strong>${station.name}</strong>
+            <p><strong>Station Number:</strong> ${station.number}</p>
+            <p><strong>Credit Card:</strong> ${station.banking === 1 ? 'Available' : 'Not Available'}</p>
+            <p><strong>Available Bikes:</strong> ${availableBikes}</p>
+            <p><strong>Available Stands:</strong> ${availableStands}</p>
+            <p><strong>Overall Capacity:</strong> ${station.bike_stands}</p>
+            <canvas id="chart-day-${index}" width="400" height="200"></canvas>
+            <canvas id="chart-hour-${index}" width="400" height="200" style="margin-top: 20px;"></canvas>
+        </div>
+    
         `;
 
         const marker = new google.maps.Marker({
@@ -135,7 +282,12 @@ async function createMarkers(stations) {
         marker.addListener('click', async () => {
             // Close the current info window if it exists
             if (currentInfoWindow) {
+                if (dayChart && hourChart) {
+                    dayChart.destroy();
+                    hourChart.destroy();}
                 currentInfoWindow.close();
+
+
             }
 
             const recent_avail = await fetch('/recent', {
@@ -148,7 +300,8 @@ async function createMarkers(stations) {
                 })
             })
                 .then(response => response.json())
-                .then(data => {
+                .then(data => { 
+                    console.log('Recent:', data);
                     return data
                 })
                 .catch(error => console.error('Error:', error));
@@ -164,6 +317,7 @@ async function createMarkers(stations) {
             })
                 .then(response => response.json())
                 .then(data => {
+                    console.log('last week:', data);
                     return data
                 })
                 .catch(error => console.error('Error:', error));
@@ -173,7 +327,7 @@ async function createMarkers(stations) {
                 var day = new Date().getDay(); // Ensure that the day is set to today
                 let currentHour = new Date().getHours(); // Get the current hour
                 
-                for (let i = 0; i <= 12; i++) { // changing from less than 12 to less than / equal to 12 - Was only predicting 11 hours
+                for (let i = 0; i < 12; i++) { 
                     let predictHour = (currentHour + i) % 24; // Adjust for 24-hour clock
                     if (currentHour + i >= 24) { //If the hour is in the next day 
                         day = (day + 1) % 7; // ensure the day is set to tomorrow and Adjust for 7-day week
@@ -184,6 +338,12 @@ async function createMarkers(stations) {
                 }
 
             const predicted_avail = await Promise.all(promiseAvail)
+            predicted_avail.forEach((array, index) => {
+                array['Hour'] = currentHour + index;
+            });
+            console.log("predicts:", predicted_avail);
+
+            console.log(recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p['availability'] * station.bike_stands)));
 
             // var predicted_avail = getHourlyPrediction(station.number);
 
@@ -199,61 +359,134 @@ async function createMarkers(stations) {
 
             google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
                 // First chart: Bike availability by day
-                let ctxDay = document.getElementById(`chart-day-${index}`).getContext('2d');
-                new Chart(ctxDay, {
+                var ctxDay = document.getElementById(`chart-day-${index}`).getContext('2d');
+                var sorted_last_week = Array(7);
+
+                // Loop through the last_week array to arange current day in middle
+                for (let i = 0; i < last_week.length; i++) {
+                    sorted_last_week[(i + 3) % 7] = last_week[i];
+                }
+                
+                let dayBgColours = [];
+                let dayBorderColours = [];
+                let dayData = sorted_last_week.map(l => Math.round(l[1]));  // Round the availibility to nearest whole number
+
+                for (let i = 0; i < dayData.length; i++) {
+                    let ratio = dayData[i] / station.bike_stands;
+
+                    if (ratio < 0.25) {
+                        dayBgColours.push('rgba(255,0,0,0.2)');
+                        dayBorderColours.push('rgba(255,0,0');
+                    } else if (ratio < 0.5) {
+                        dayBgColours.push('rgba(255,140,0,0.2)');
+                        dayBorderColours.push('rgba(255,140,0');
+                    } else {
+                        dayBgColours.push('rgba(50,205,0,0.2)');
+                        dayBorderColours.push('rgba(50,205,0');
+                    }
+                    
+                }
+                dayBgColours[3] = dayBgColours[3].replace('0.2', '0.6');
+                dayChart = new Chart(ctxDay, {
                     type: 'bar',
                     data: {
-                        labels: last_week.map(l => l[0].slice(0,3)),
+                        labels: sorted_last_week.map(l => l[0].slice(0,3)),
                         datasets: [{
-                            label: 'Bike Availability',
-                            data: last_week.map(l => Math.round(l[1])), // Round the availibility to nearest whole number
-                            backgroundColor: ['rgba(255,99,132,0.2)','rgba(255,159,64,0.2)','rgba(255,205,86,0.2)','rgba(75,192,192,0.2)','rgba(54,162,235,0.2)','rgba(153,102,255,0.2)','rgba(205,127,50,0.2)'], //These colours came from the Chart.js docs
-                            borderColor: ['rgb(255,99,132)','rgb(255,159,64)','rgb(255,205,86)','rgb(75,192,192)','rgb(54,162,235)','rgb(153,102,255)','rgb(205,127,50)'],
+                            label: 'Bike Availability per Day',
+                            data: dayData,
+                            backgroundColor: dayBgColours,
+                            borderColor: dayBorderColours,
                             borderWidth: 1
                         }]
                     },
                     options: {
                         scales: {
-                            y: { ticks: { stepSize: 5, autoSkip: false }, beginAtZero: true, title: { display: true, text: 'Number of Bikes Available' } },
-                            x: { ticks: { autoSkip: false }, title: { display: true, text: 'Day of the Week' } }
+                            y: { ticks: { stepSize: 5, autoSkip: false }, beginAtZero: true, max: Math.ceil(station.bike_stands / 10) * 10, title: { display: true, text: 'Number of Bikes Available' }},
+                            x: { ticks: { autoSkip: false }, title: { display: true, text: 'Day of the Week' }}
                         },
-                        plugins: { legend: { display: true, position: 'top' }, tooltip: { enabled: true, mode: 'index', intersect: false } },
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                        plugins: { legend: {
+                            labels: {
+                                boxWidth: 0, // Set the box width to 0 to effectively hide the colored box
+                                usePointStyle: false, // Ensure standard box style isn't used
+                            }
+                        }, tooltip: { enabled: true, mode: 'index', intersect: false } },
                         animation: { duration: 1000, easing: 'easeOutBounce' }
                     }
                 });
-                
+                var chartCanvasId = dayChart.id;
+                console.log('Chart ID:', chartCanvasId);
                 // Second chart, hourly availability
-                const backgroundColours = Array(24).fill('rgba(54, 162, 235, 0.2)');
-                backgroundColours[currentHour] = 'rgba(54, 162, 235, 0.6)'; // Current Hour appears darker
-                let ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
-                new Chart(ctxHour, {
+                var ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
+                let hourBgColours = [];
+                let hourBorderColours = [];
+                let hourData = recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))); // Round the availibility to nearest whole number
+                
+                const shiftAmount = (12 - currentHour + 24) % 24;
+                // Create labels variable with old index numbers
+                const hourLabels = hourData.map((_, index) => {
+                    const hour = (index - shiftAmount + 24) % 24;
+                    return hour.toString().padStart(2, '0') + ':00';
+                });
+                console.log("labels:", hourLabels);
+                console.log("hourData:", hourData);
+
+
+
+
+                for (let i = 0; i < hourData.length; i++) {
+                    let ratio = hourData[i] / station.bike_stands;
+
+                    if (ratio < 0.25) {
+                        hourBgColours.push('rgba(255,0,0,0.2)');
+                        hourBorderColours.push('rgba(255,0,0');
+                    } else if (ratio < 0.5) {
+                        hourBgColours.push('rgba(255,140,0,0.2)');
+                        hourBorderColours.push('rgba(255,140,0');
+                    } else {
+                        hourBgColours.push('rgba(50,205,0,0.2)');
+                        hourBorderColours.push('rgba(50,205,0');
+                    }
+                }
+                hourBgColours[12] = hourBgColours[12].replace('0.2', '0.6');
+                hourChart = new Chart(ctxHour, {
                     type: 'bar',
                     data: {
-                        labels: Array.from({length: 24}, (_, i) => `${i}:00`),
+                        labels: hourLabels,
                         datasets: [{
                             label: 'Bike Availability per Hour',
-                            data: recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))), // Round the availibility to nearest whole number
-                            backgroundColor: backgroundColours,
-                            borderColor: 'rgb(54, 162, 235)',
+                            data: recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))),
+                            backgroundColor: hourBgColours,
+                            borderColor: hourBorderColours,
                             borderWidth: 1
                         }]
                     },
                     options: {
                         scales: {
-                            y: { beginAtZero: true, title: { display: true, text: 'Number of Bikes Available' } },
+                            y: { beginAtZero: true, max: Math.ceil(station.bike_stands / 10) * 10, title: { display: true, text: 'Number of Bikes Available' } },
                             x: {
-                                max: 25, min: 0,
                                 ticks: {
                                     autoSkip: false,
-                                    callback: function (value, index, values) {
-                                        if (index % 2 === 0) { return `${value}:00`; } else { return ''; }
-                                    }
+                                    callback: function(value, index, values) {
+                                        // Using the hourLabels array directly to map index to the correct time label
+                                        if (index % 2 === 0) {
+                                            return hourLabels[index];
+                                        } else {
+                                            return '';}}
                                 },
-                                beginAtZero: true,
+                                beginAtZero: false,
                                 title: { display: true, text: 'Hour of the Day' }
                             }
                         },
-                        plugins: { legend: { display: true, position: 'top' }, tooltip: { enabled: true, mode: 'index', intersect: false } },
+                        plugins: { legend: {
+                            labels: {
+                                boxWidth: 0, // Set the box width to 0 to effectively hide the colored box
+                                usePointStyle: false, // Ensure standard box style isn't used
+                            }
+                        }, tooltip: { enabled: true, mode: 'index', intersect: false } },
                         animation: { duration: 1000, easing: 'easeOutBounce' }
                     }
                 });
@@ -313,22 +546,24 @@ async function initMap(mapChoice) {
     startAutocomplete.addListener('place_changed', () => {
         origin = startAutocomplete.getPlace().geometry.location
         depart = findClosestStation(origin)
+        console.log(origin, depart.marker.position);
     })
 
     endAutocomplete.addListener('place_changed', () => {
         destination = endAutocomplete.getPlace().geometry.location
         arrive = findClosestStation(destination)
+        console.log(arrive, destination);
     })
 
     setupNavbarToggle();
-    return map
+
 }
 
 // DIRECTION SERVICES
 async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
     const directionsService = new google.maps.DirectionsService();
 
-    firstLeg = new google.maps.DirectionsRenderer(
+    let firstLeg = new google.maps.DirectionsRenderer(
         {
             map:map,
             polylineOptions :{
@@ -336,7 +571,7 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
             }
         }
     )
-    secondLeg = new google.maps.DirectionsRenderer(
+    let secondLeg = new google.maps.DirectionsRenderer(
         {
             map: map,
             polylineOptions:{
@@ -344,7 +579,7 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
             }
         }
     )
-    thirdLeg = new google.maps.DirectionsRenderer({
+    let thirdLeg = new google.maps.DirectionsRenderer({
         map:map,
         polylineOptions:{
             strokeColor:"blue"
@@ -362,6 +597,7 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
         travelMode: 'WALKING'
     }, function (response, status) {
         if (status === 'OK') {
+            console.log(response);
             firstLeg.setDirections(response);
             // Display distance and duration
             const route = response.routes[0].legs[0];
@@ -377,6 +613,7 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
         travelMode: 'BICYCLING'
     }, function (response, status) {
         if (status === 'OK') {
+            console.log(response);
             secondLeg.setDirections(response);
             // Display distance and duration
             const route = response.routes[0].legs[0];
@@ -393,6 +630,7 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
         travelMode: 'WALKING'
     }, function (response, status) {
         if (status === 'OK') {
+            console.log(response);
             thirdLeg.setDirections(response);
             // Display distance and duration
             const route = response.routes[0].legs[0];
@@ -404,7 +642,7 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
     })
 }
 
-    // Function to handle the confirm button click // Implemented 
+   // Function to handle the confirm button click // Implemented 
 async function hideOtherMarkers() {
         // Adjust the visibility of markers
         STATIONS.map(station => station.marker.setVisible(false))
@@ -412,6 +650,34 @@ async function hideOtherMarkers() {
         // Show only the relevant markers
         if (depart && depart.marker) depart.marker.setVisible(true);
         if (arrive && arrive.marker) arrive.marker.setVisible(true);
+}
+    
+    // Function to handle the confirm button click // Implemented 
+async function handleConfirmButtonClick() {
+    try {
+        if (!origin || !destination) {
+            alert('Please select both a start and an end location.');
+            return;
+        }
+
+        // Perform the route calculation
+        await calculateAndDisplayRoute(origin, depart, arrive, destination);
+
+        // Adjust the visibility of markers
+        STATIONS.forEach(station => {
+            if (station.marker) {
+                // Hide all markers initially
+                station.marker.setVisible(false);
+            }
+        });
+
+        // Show only the relevant markers
+        if (depart && depart.marker) depart.marker.setVisible(true);
+        if (arrive && arrive.marker) arrive.marker.setVisible(true);
+
+    } catch (error) {
+        console.error('Error in handleConfirmButtonClick:', error);
+    }
 }
     
 function setupNavbarToggle() {
@@ -488,6 +754,7 @@ async function submitForm() {
     getDirections(); // Call the getDirections function to display the directions button
     await calculateAndDisplayRoute(origin, depart, arrive, destination);
     await hideOtherMarkers()
+    closeInfoWindow();
 
 
     
@@ -499,6 +766,8 @@ async function submitForm() {
     document.getElementById("depart-avail").innerHTML= `<b>Depart Station Bikes:</b>   ${Math.round(depart.bike_stands * availability[0].availability)}`
     document.getElementById("arrive-avail").innerHTML = `<b>Arrive Station Parking:</b>   ${Math.round(arrive.bike_stands - arrive.bike_stands * availability[1].availability)}`
 }
+
+
 
 async function getPrediction(station, day, hour) {
 
@@ -599,6 +868,22 @@ document.getElementById('resetButton').addEventListener('click', function () {
     document.getElementById('depart-avail').innerHTML = '';
     document.getElementById('arrive-avail').innerHTML = '';
 
+    // Reset dropdowns to their first option
+    
+    document.getElementById('depart').selectedIndex = 0;
+    document.getElementById('arrive').selectedIndex = 0;
+    document.getElementById('departTime').selectedIndex = 0;
+    document.getElementById('arriveTime').selectedIndex = 0;
+    document.getElementById('departDay').selectedIndex = 0;
+    document.getElementById('arriveDay').selectedIndex = 0;
+
+    // reset the travel mode radio buttons to default (first radio button)
+    document.querySelector('input[name="travelMode"][value="DRIVING"]').checked = true;
+
+    //  map or directions, y reset them as well
+    if (directionsRenderer) {
+        directionsRenderer.setDirections({ routes: [] });
+    }
     setClock()
 
     origin = null;
