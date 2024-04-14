@@ -162,7 +162,7 @@ def realtime():
 
     try:
         conn = pymysql.connect(
-        host=DB,
+        host=DB + " a",
         user=DB_USER,
         password=DB_PW,
         database=CITY
@@ -194,13 +194,14 @@ def realtime():
         print(results)
         print("Succesfully got realtime")
 
-        return jsonify(results)
+        return jsonify({"data": results})
     
     except pymysql.Error as e:
-        print("Error fetching from DB, parsing local file")
+        print(e)
         with open('realtime.json', 'r') as json_file:
             local_data = json.load(json_file)
-        return jsonify(local_data)
+        return jsonify({"data": local_data, 
+                        "error": "Realtime unavailable, current availability is predicted"})
 
 @app.route('/recent', methods=['POST'])
 def recent():

@@ -97,7 +97,16 @@ function toggleMapStyle() {
 }
 
 async function fetchRealTime() {
-    return await fetch('/realtime').then(response => response.json())
+    const realTime = await fetch('/realtime')
+        .then(response => response.json())
+
+    if (realTime.error) {
+        addToQueue(realTime.error)
+    }
+
+    console.log(realTime.data);
+    return realTime.data
+
 }
 
 async function fetchStations(realTime) {
@@ -633,7 +642,6 @@ async function displayMessages() {
     setTimeout(displayMessages, 1000)
 }
 
-// Function to display a message
 function showMessage(message) {
     const statusElement = document.getElementById('status-bar');
     statusElement.innerText = message;
