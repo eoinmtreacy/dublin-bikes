@@ -16,14 +16,38 @@
     <script
         src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=visualization,places,geometry"></script>
+        src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=visualization,places,geometry&callback=initMap"></script>
+        <style>
+            :root {
+                --background-color: #FFFFFF;
+            }
+            .gm-style-iw-d {
+                overflow: hidden !important;
+            }
+            #marker-popup {
+                margin: 20px;
+            }
+            div[role='dialog'] {
+                background-color: var(--background-color) !important;
+            }
+            
+            .gm-style-iw-tc::after {
+                background: var(--background-color) !important;
+            }
+            #navbar {
+                width: 25vw !important;
+            }
+            #timeInput{
+                padding-left: 5px;
+            }
+        </style>
 </head>
 
 <body class="bg-gray-800 ">
     <header class="bg-slate-100 py-3 px-4 flex items-center justify-between fixed top-0 left-0 right-0 z-40 shadow-xl">
         <div class="flex items-center">
             <ion-icon name="menu-outline" class="text-gray-800 text-4xl pr-4 cursor-pointer" id="menuToggle"></ion-icon>
-            <ion-icon name="bicycle" class="text-light-blue-400 text-4xl cursor-pointer"></ion-icon>
+            <ion-icon name="bicycle" class="text-gray-800 text-4xl cursor-pointer" id="bicycle-icon"></ion-icon>
         </div>
         <div class="weather-info flex items-center text-xl font-semibold text-gray-800">
             <span id="weather-description">Loading weather data...</span>
@@ -42,21 +66,17 @@
     </header>
     <div class="flex">
         <div class="flex">
-            <nav id="navbar" class="bg-slate-100 fixed top-16 left-0 w84 h-full overflow-auto ease-in-out transition-all duration-300 z-30 shadow-xl">
+            <nav id="navbar" class="bg-slate-100 fixed top-16 left-0 h-full overflow-auto ease-in-out transition-all duration-300 z-30 shadow-xl">
 
 
                     <div class="flex flex-col items-center py-8">
-                        <!-- Icon and Title -->
-                        <div class="text-5xl text-blue-600 mb-4">
-                            <ion-icon name="bicycle-outline"></ion-icon>
-                        </div>
-                        <h1 class="text-2xl font-semibold text-gray-800 mb-6">
+                        <h2 class="text-2xl font-semibold mb-6">
                             Journey Planner
-                        </h1>
+                        </h2>
                 
-                        <!-- Journey Planner Form -->
-                        <div class="w-full px-6">
-                            <form id="myForm" class="space-y-6">
+                         <!-- Journey Planner Form -->
+                         <div class="w-full px-6">
+                             <form id="myForm" class="space-y-6">
                                 <!-- radio buttons for day selection -->
                                 <div class="flex-container">
                                     <div class="flex items-center">
@@ -73,52 +93,49 @@
                                     </div>
                                 </div>
 
-                                <input type="time" id="timeInput" class="text-center">
+                                <input type="time" id="timeInput" class="text-center bg-white">
 
                                 <div>
-                                    <label for="startInput" class="text-sm font-medium text-gray-800">Start:</label>
-                                    <input id="startInput" type="text" placeholder="Start location" class="mt-1 w-full p-3 bg-white rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                                    <label for="startInput" class="text-sm font-medium">Start:</label>
+                                    <input id="startInput" type="text" placeholder="Start location" class="mt-1 w-full p-3 rounded-lg border shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                                 </div>
-                
                                 <div>
-                                    <label for="endInput" class="text-sm font-medium text-gray-800">End:</label>
-                                    <input id="endInput" type="text" placeholder="End location" class="mt-1 w-full p-3 bg-white rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                                    <label for="endInput" class="text-sm font-medium ">End:</label>
+                                    <input id="endInput" type="text" placeholder="End location" class="mt-1 w-full p-3 rounded-lg border shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                                 </div>
                 
-                                <button type="button" onclick="submitForm()" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                <button type="button" onclick="submitForm()" class="w-full  bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                     Submit
                                 </button>
 
-                                <button id="directionsButton" type="button" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                <button id="directionsButton" type="button" onclick="submitForm()" class="w-full  bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                     Directions
                                 </button>
 
                                 
-                                    <button id="resetButton" type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium rounded-lg text-sm p-2.5 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                                    <button type="button" onclick="resetButton()" class="bg-gray-300 hover:bg-gray-400 font-medium rounded-lg text-sm p-2.5 focus:outline-none focus:ring-4 focus:ring-gray-300" id="resetButton">
                                         <ion-icon name="refresh-outline" class="text-xl"></ion-icon>
                                     </button>
                             </form>
                         </div>
                 
                         <!-- Route Details -->
-                        <div class="bg-white mt-8 p-6 rounded-lg shadow-xl w-full mx-6">
-                            <h2 class="text-lg font-semibold text-gray-800 mb-4">
+                        <div class="bg-white mt-8 p-6 rounded-lg shadow-xl w-full mx-6" id="navbar2">
+                            <h3 class="text-lg font-semibold mb-4">
                                 Route Details
-                            </h2>
-                            <div id="route-info" class="text-lg">
+                            </h3>
+                            <div id="route-info" class="text-sm">
                                 <div class="flex items-center mb-2">
                                     <div class="bg-yellow-500 w-3 h-3 inline-block mr-2"></div>
-                                    <p id="first-leg-info" class="text-gray-700">Walk</p>
+                                    <p id="first-leg-info" class="">Walk</p>
                                 </div>
-                                <div id="depart-avail" class="flex items-center"></div>
                                 <div class="flex items-center mb-2">
                                     <div class="bg-red-500 w-3 h-3 inline-block mr-2"></div>
-                                    <p id="second-leg-info" class="text-gray-700">Ride</p>
+                                    <p id="second-leg-info" class="">Ride</p>
                                 </div>
-                                <div id="arrive-avail" class="flex items-center"></div>
                                 <div class="flex items-center">
                                     <div class="bg-blue-500 w-3 h-3 inline-block mr-2"></div>
-                                    <p id="third-leg-info" class="text-gray-700">Walk</p>
+                                    <p id="third-leg-info" class="">Walk</p>
                                 </div>
                             </div>
                         </div>
