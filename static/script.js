@@ -2,7 +2,10 @@ let STATIONS
 let origin, depart, arrive, destination
 let firstLeg, secondLeg, thirdLeg
 let map;
-var currentStyle = "light"; // Default mode is Light Mode
+
+const STATUS_QUEUE = []
+
+let currentStyle = "light"; // Default mode is Light Mode
 let darkMapStyle;
 let lightMapStyle;
 let RTDATA;
@@ -18,13 +21,15 @@ const stands = 'stands';
 const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 document.addEventListener('DOMContentLoaded', async () => {
+    displayMessages()
+    addToQueue("Ready!")
     lightMapStyle = await fetchStatic("static/light.json"); 
     darkMapStyle = await fetchStatic("static/dark.json");
     const map = await initMap(lightMapStyle) // initalise the map with Light Mode style
     const realTime = await fetchRealTime()
     RTDATA = realTime
     console.log('Real Time Data:', realTime); 
-    STATIONS = await fetchStations(realTime) // STATIONS created from fetch
+    STATIONS = await fetchStations() // STATIONS created from fetch
     console.log('Stations:', STATIONS);
     STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
     fetchRealTimeWeather()
@@ -37,8 +42,6 @@ async function fetchStatic(path) {
     const data = await response.json();
     return data;
 }
-
-
 
 async function fetchMapStyles() {
     darkMapStyle = await fetchStatic("static/dark.json");
@@ -209,9 +212,16 @@ function toggleMapStyle() {
 }
 
 async function fetchRealTime() {
-    return await fetch('/realtime').then(response => response.json())
-}
+    const realTime = await fetch('/realtime')
+        .then(response => response.json())
 
+    if (realTime.error) {
+        addToQueue(realTime.error)
+    }
+
+    return realTime.data
+
+}
 
 async function fetchStations() {
     return await fetch('/stations').then(response => response.json())
@@ -807,6 +817,10 @@ async function getPrediction(station, day, hour) {
         })
         .catch(error => console.error('Error:', error));
 
+        if (prediction.error) {
+            addToQueue(prediction.error)
+        }
+
         return prediction
 }
 
@@ -902,3 +916,23 @@ document.getElementById('resetButton').addEventListener('click', function () {
     document.getElementById('directionsButton').style.display = 'none';
 
 });
+
+// status message and error handling display
+
+function addToQueue(message) {
+    STATUS_QUEUE.push(message);
+  }
+  
+async function displayMessages() {
+    if (STATUS_QUEUE.length > 0) {
+        showMessage(STATUS_QUEUE.shift())
+    }
+
+    setTimeout(displayMessages, 1000)
+}
+
+function showMessage(message) {
+    const statusElement = document.getElementById('status-bar');
+    statusElement.innerText = message;
+}
+  

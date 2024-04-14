@@ -88,21 +88,24 @@ def landing():
 @app.route('/predict/<station>', methods=['POST'])
 def predict(station):
     if request.method == 'POST':
-        data = request.json
 
-        # import model for depart station
-        with open(f"./models/{data['station']}.pkl", 'rb') as file:
-            model = pickle.load(file)
 
-        params = [float(p) for p in data['params']]
+        try:
+            data = request.json
+            # import model for depart station
+            with open(f"./models/{data['station']}.pkl", 'rb') as file:
+                model = pickle.load(file)
 
-        params = np.asarray(params).reshape(1,-1)
+            params = [float(p) for p in data['params']]
 
-        prediction = model.predict(params)
+            params = np.asarray(params).reshape(1,-1)
 
-        return jsonify(data={'availability': prediction[0]})
-    else:
-        return 'Method not allowed'
+            prediction = model.predict(params)
+
+            return jsonify(data={'availability': prediction[0]})
+        except:
+            return jsonify(data={'availability': 0,
+                        'error': 'Predictions unavailable'})
 
 # Open the JSON file for reading
 @app.route('/stations')
@@ -133,17 +136,16 @@ def stations():
 
         cursor.close()
         conn.close()
-        print("Succesfull fetched stations from database")
+        print("Succesful fetched stations from database")
 
-        return jsonify(results)
-
+        return jsonify({"data": results})
+    
     except pymysql.Error as e:
-        print("Error fetching stations from databse", e)
-        print("Using local data")
-        with open('stations/dublin_stations.json', 'r') as json_file:
+        print(e)
+        with open('stations.json', 'r') as json_file:
             local_data = json.load(json_file)
-
-        return jsonify(local_data)
+        return jsonify({"data": local_data, 
+                        "error": "Error fetching up-to-date stations, plotting static data"})
     
 @app.route('/realtime')
 def realtime():
@@ -174,12 +176,14 @@ def realtime():
         conn.close()
         print("Succesfully got realtime")
         return jsonify(results)
+
     
     except pymysql.Error as e:
-        print("Error fetching from DB, parsing local file")
+        print(e)
         with open('realtime.json', 'r') as json_file:
             local_data = json.load(json_file)
-        return jsonify(local_data)
+        return jsonify({"data": local_data, 
+                        "error": "Realtime unavailable, current availability is predicted"})
 
 @app.route('/recent', methods=['POST'])
 def recent():
