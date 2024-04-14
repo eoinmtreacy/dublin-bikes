@@ -148,10 +148,10 @@ def stations():
     
     except pymysql.Error as e:
         print(e)
-        with open('dublin_stations.json', 'r') as json_file:
+        with open('stations.json', 'r') as json_file:
             local_data = json.load(json_file)
         return jsonify({"data": local_data, 
-                        "error": "Error fetching up-to-date stations, ploting static data"})
+                        "error": "Error fetching up-to-date stations, plotting static data"})
     
 @app.route('/realtime')
 def realtime():
@@ -161,7 +161,7 @@ def realtime():
 
     try:
         conn = pymysql.connect(
-        host=DB + " a",
+        host=DB,
         user=DB_USER,
         password=DB_PW,
         database=CITY

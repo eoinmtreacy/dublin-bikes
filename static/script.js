@@ -112,8 +112,8 @@ async function fetchStations(realTime) {
     const fetchedStations = await fetch('/stations')
         .then(response => response.json())
 
-        if (realTime.error) {
-            addToQueue(realTime.error)
+        if (fetchedStations.error) {
+            addToQueue(fetchedStations.error)
         }
 
     STATIONS = fetchedStations.data
