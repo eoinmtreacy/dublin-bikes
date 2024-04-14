@@ -423,7 +423,8 @@ async function createMarkers(stations) {
                 var ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
                 let hourBgColours = [];
                 let hourBorderColours = [];
-                let hourData = recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))); // Round the availibility to nearest whole number
+                var hourData = recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))); // Round the availibility to nearest whole number
+                hourData[12] = availableBikes;
                 
                 const shiftAmount = (12 - currentHour + 24) % 24;
                 // Create labels variable with old index numbers
@@ -458,7 +459,7 @@ async function createMarkers(stations) {
                         labels: hourLabels,
                         datasets: [{
                             label: 'Bike Availability per Hour',
-                            data: recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))),
+                            data: hourData,
                             backgroundColor: hourBgColours,
                             borderColor: hourBorderColours,
                             borderWidth: 1
