@@ -768,7 +768,6 @@ async function submitForm() {
     getDirections(); // Call the getDirections function to display the directions button
     await calculateAndDisplayRoute(origin, depart, arrive, destination);
     await hideOtherMarkers()
-    closeInfoWindow();
 
 
     
@@ -777,8 +776,9 @@ async function submitForm() {
         getPrediction(arrive.number, day, hour)
     ])
 
-    document.getElementById("depart-avail").innerHTML= `<b>Depart Station Bikes:</b>   ${Math.round(depart.bike_stands * availability[0].availability)}`
-    document.getElementById("arrive-avail").innerHTML = `<b>Arrive Station Parking:</b>   ${Math.round(arrive.bike_stands - arrive.bike_stands * availability[1].availability)}`
+    document.getElementById("depart-avail").innerHTML= `<b>Depart Station Bikes: </b>   ${Math.round(depart.bike_stands * availability[0].availability)}`
+    document.getElementById("arrive-avail").innerHTML = `<b>Arrive Station Parking: </b>   ${Math.round(arrive.bike_stands - arrive.bike_stands * availability[1].availability)}`
+    closeInfoWindow();
 }
 
 
