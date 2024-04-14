@@ -97,21 +97,24 @@ def landing():
 @app.route('/predict/<station>', methods=['POST'])
 def predict(station):
     if request.method == 'POST':
-        data = request.json
 
-        # import model for depart station
-        with open(f"./models/{data['station']}.pkl", 'rb') as file:
-            model = pickle.load(file)
 
-        params = [float(p) for p in data['params']]
+        try:
+            data = request.json
+            # import model for depart station
+            with open(f"./models/{data['station']}.pkl", 'rb') as file:
+                model = pickle.load(file)
 
-        params = np.asarray(params).reshape(1,-1)
+            params = [float(p) for p in data['params']]
 
-        prediction = model.predict(params)
+            params = np.asarray(params).reshape(1,-1)
 
-        return jsonify(data={'availability': prediction[0]})
-    else:
-        return 'Method not allowed'
+            prediction = model.predict(params)
+
+            return jsonify(data={'availability': prediction[0]})
+        except:
+            return jsonify(data={'availability': 0,
+                        'error': 'Predictions unavailable'})
 
 # Open the JSON file for reading
 @app.route('/stations')

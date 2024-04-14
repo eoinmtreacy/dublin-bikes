@@ -556,6 +556,10 @@ async function getPrediction(station, day, hour) {
         })
         .catch(error => console.error('Error:', error));
 
+        if (prediction.error) {
+            addToQueue(prediction.error)
+        }
+
         return prediction
 }
 
