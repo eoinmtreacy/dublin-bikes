@@ -601,17 +601,17 @@ document.getElementById('resetButton').addEventListener('click', function () {
 
     setClock()
 
-    [origin, depart, arrive, destination].map(each => null)
-    console.log(firstLeg, secondLeg, thirdLeg); // below map won't work without a log for whatever reason
-    [firstLeg, secondLeg, thirdLeg].map(leg => leg.setMap(null))
+    origin = null;
+    depart = null;
+    arrive = null;
+    destination = null;
+    firstLeg.setMap(null)
+    secondLeg.setMap(null)
+    thirdLeg.setMap(null)
     map.setZoom(13)
 
     //reset the markers
-    STATIONS.forEach(station => {
-        if (station.marker) {
-            station.marker.setVisible(true);
-        }
-    });
+    STATIONS.map(station => station.marker.setVisible(true))
 
     document.getElementById('directionsButton').style.display = 'none';
 
