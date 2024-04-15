@@ -3,6 +3,7 @@ let origin, depart, arrive, destination
 let firstLeg, secondLeg, thirdLeg
 let map;
 const root = document.documentElement;
+let markerClusterer;
 
 const STATUS_QUEUE = []
 
@@ -27,16 +28,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     lightMapStyle = await fetchStatic("static/light.json"); 
     darkMapStyle = await fetchStatic("static/dark.json");
     const map = await initMap(lightMapStyle) // initalise the map with Light Mode style
+    mapSetup()
+    fetchRealTimeWeather()
+    setClock()
+});
+
+async function mapSetup() {
     const realTime = await fetchRealTime()
     RTDATA = realTime
     console.log('Real Time Data:', realTime); 
     STATIONS = await fetchStations() // STATIONS created from fetch
     console.log('Stations:', STATIONS);
     STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
-    fetchRealTimeWeather()
-    setClock()
-});
-
+}
 
 async function fetchStatic(path) {
     const response = await fetch(path);
@@ -516,7 +520,7 @@ async function createMarkers(stations) {
 
     markers = stations.map(station => station.marker)
 
-    new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    markerClusterer = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
     return stations
 }
 
@@ -769,19 +773,29 @@ async function submitForm() {
     await calculateAndDisplayRoute(origin, depart, arrive, destination);
     await hideOtherMarkers()
 
-
     
     const availability = await Promise.all([
         getPrediction(depart.number, day, hour),
         getPrediction(arrive.number, day, hour)
     ])
 
-    document.getElementById("depart-avail").innerHTML= `<b>Depart Station Bikes: </b>   ${Math.round(depart.bike_stands * availability[0].availability)}`
-    document.getElementById("arrive-avail").innerHTML = `<b>Arrive Station Parking: </b>   ${Math.round(arrive.bike_stands - arrive.bike_stands * availability[1].availability)}`
+    document.getElementById("depart-avail").innerHTML= `<b>Depart Station Bikes:&nbsp;</b>   ${Math.round(depart.bike_stands * availability[0].availability)}`
+    document.getElementById("arrive-avail").innerHTML = `<b>Arrive Station Parking:&nbsp; </b>   ${Math.round(arrive.bike_stands - arrive.bike_stands * availability[1].availability)}`
+    setTimeout(scrollJourneyPlanner, 100);
+    markerClusterer.clearMarkers();
     closeInfoWindow();
+    
 }
 
-
+function scrollJourneyPlanner(direction) {
+    const journeyPlanner = document.getElementById('navbar');
+    if (direction === 'up') {
+        journeyPlanner.scrollTop = 0; // Scroll to the top
+    } else {
+        journeyPlanner.scrollTop = journeyPlanner.scrollHeight; // Scroll to the bottom
+    }
+    console.log('scrolling');
+}
 
 async function getPrediction(station, day, hour) {
 
@@ -885,6 +899,10 @@ document.getElementById('resetButton').addEventListener('click', function () {
     document.getElementById('endInput').value = '';
     document.getElementById('depart-avail').innerHTML = '';
     document.getElementById('arrive-avail').innerHTML = '';
+    document.getElementById("first-leg-info").innerHTML = 'Walk';
+    document.getElementById("second-leg-info").innerHTML = 'Ride';
+    document.getElementById("third-leg-info").innerHTML = 'Walk';
+    scrollJourneyPlanner('up');
 
     setClock()
 
@@ -898,7 +916,7 @@ document.getElementById('resetButton').addEventListener('click', function () {
     map.setZoom(13)
 
     //reset the markers
-    STATIONS.map(station => station.marker.setVisible(true))
+    mapSetup()
 
     document.getElementById('directionsButton').style.display = 'none';
 
