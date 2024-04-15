@@ -621,7 +621,7 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
             firstLeg.setDirections(response);
             // Display distance and duration
             const route = response.routes[0].legs[0];
-            document.getElementById("first-leg-info").innerHTML = `Walk to bike station: ${route.distance.text}, time ${route.duration.text}.`;//Changed from alert window to display in JP
+            document.getElementById("first-leg-info").innerHTML = `  ${route.distance.text} in ${route.duration.text}.`;//Changed from alert window to display in JP
         } else {
             window.alert('Directions request failed due to ' + status);
         }
@@ -636,7 +636,7 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
             secondLeg.setDirections(response);
             // Display distance and duration
             const route = response.routes[0].legs[0];
-            document.getElementById("second-leg-info").innerHTML = `Bike to destination station: ${route.distance.text}, time ${route.duration.text}.`;
+            document.getElementById("second-leg-info").innerHTML = ` ${route.distance.text} in  ${route.duration.text}.`;
             // again changed to display journey info in JP rather than an alert 
         } else {
             window.alert('Directions request failed due to ' + status);
@@ -652,7 +652,7 @@ async function calculateAndDisplayRoute(origin, depart, arrive, destination) {
             thirdLeg.setDirections(response);
             // Display distance and duration
             const route = response.routes[0].legs[0];
-            document.getElementById("third-leg-info").innerHTML = `Walk to final destination: ${route.distance.text}, time ${route.duration.text}.`;
+            document.getElementById("third-leg-info").innerHTML = ` ${route.distance.text} in ${route.duration.text}.`;
             //again changed as discussed above.
         } else {
             window.alert('Directions request failed due to ' + status);
@@ -778,7 +778,7 @@ async function submitForm() {
         getPrediction(depart.number, day, hour),
         getPrediction(arrive.number, day, hour)
     ])
-
+    document.getElementById("routeDetailsSection").classList.remove("hidden");
     document.getElementById("depart-avail").innerHTML= `<b>Depart Station Bikes:&nbsp;</b>   ${Math.round(depart.bike_stands * availability[0].availability)}`
     document.getElementById("arrive-avail").innerHTML = `<b>Arrive Station Parking:&nbsp; </b>   ${Math.round(arrive.bike_stands - arrive.bike_stands * availability[1].availability)}`
     setTimeout(scrollJourneyPlanner, 100);
@@ -902,6 +902,7 @@ document.getElementById('resetButton').addEventListener('click', function () {
     document.getElementById("first-leg-info").innerHTML = 'Walk';
     document.getElementById("second-leg-info").innerHTML = 'Ride';
     document.getElementById("third-leg-info").innerHTML = 'Walk';
+    document.getElementById("routeDetailsSection").classList.add("hidden");
     scrollJourneyPlanner('up');
 
     setClock()
