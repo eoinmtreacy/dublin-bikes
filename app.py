@@ -28,7 +28,7 @@ weather_data_cache = {} # Cache for weather data
 @app.route('/api/CurrentWeather')
 def fetchCurrentWeather():
     with app.app_context():  # Push an application context Reference https://flask.palletsprojects.com/en/2.3.x/appcontext/
-        print(f"Fetching weather data from API at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        # print(f"Fetching weather data from API at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         headers = {"accept": "application/json"}
         url = f"http://api.weatherapi.com/v1/forecast.json?key={WEATHER_API_KEY}=Dublin&days=7&aqi=no&alerts=no" # 7 day forecast including realtime
         response = requests.get(url, headers=headers)
@@ -36,7 +36,7 @@ def fetchCurrentWeather():
         global weather_data_cache # Use global variable to store the weather data
         weather_data_cache = response_dictionary
         if response.status_code == 200:
-            print("Successful fetch from weather API.")
+            # print("Successful fetch from weather API.")
             current_data = weather_data_cache['current']
             weather_data = {
                 'humidity': f"{current_data['humidity']}%",
@@ -48,12 +48,12 @@ def fetchCurrentWeather():
             return jsonify(weather_data)  # Adjusted to return JSON for API endpoint
         else:
             error_message = f"Failed to fetch from weather API. Status Code: {response.status_code}"
-            print(error_message)
+            # print(error_message)
 
 @app.route('/api/WeatherForecast', methods=['POST']) # Adjusted to accept POST requests
 def fetchWeatherForecast():
     global weather_data_cache # Use global variable to retrieve the weather data
-    print("Fetching weather forecast")
+    # print("Fetching weather forecast")
     with app.app_context():  # Push an application context Reference https://flask.palletsprojects.com/en/2.3.x/appcontext/
         data = request.json
         Day = data.get('day').title() # Capitalise the day
@@ -66,7 +66,7 @@ def fetchWeatherForecast():
             Day = weekdays.index(Day) # Get the index of the day
             DayIndex = int(Day - today + 7) % 7 # Calculate the index of the day in the forecast data (0-6)
         if not weather_data_cache:  # If the weather data is not available, fetch it
-            print("No weather data available")
+            # print("No weather data available")
             fetchCurrentWeather()
         forecast_data = weather_data_cache['forecast']['forecastday'][int(DayIndex)]['hour'][Time] # Get the forecast data for the specified day and time
         weather_data = {
@@ -136,12 +136,12 @@ def stations():
 
         cursor.close()
         conn.close()
-        print("Succesful fetched stations from database")
+        # print("Succesful fetched stations from database")
 
         return jsonify(results)
     
     except pymysql.Error as e:
-        print(e)
+        # print(e)s
         with open('stations.json', 'r') as json_file:
             local_data = json.load(json_file)
         return jsonify({"data": local_data, 
@@ -174,12 +174,12 @@ def realtime():
         results = cursor.fetchall()
         cursor.close()
         conn.close()
-        print("Succesfully got realtime")
+        # print("Succesfully got realtime")
         return jsonify(results)
 
     
     except pymysql.Error as e:
-        print(e)
+        # print(e)
         with open('realtime.json', 'r') as json_file:
             local_data = json.load(json_file)
         return jsonify({"data": local_data, 
@@ -226,11 +226,11 @@ def recent():
             results = cursor.fetchall()
             cursor.close()
             conn.close()
-            print("Succesfully got recent data")
+            # print("Succesfully got recent data")
             return jsonify(results)
 
         except pymysql.Error as e:
-            print(e)
+            # print(e)
             return False
         
 @app.route('/lastweek', methods=['POST'])
@@ -275,11 +275,11 @@ def last_week():
             results = cursor.fetchall()
             cursor.close()
             conn.close()
-            print("Succesfully got recent data")
+            # print("Succesfully got recent data")
             return jsonify(results)
 
         except pymysql.Error as e:
-            print(e)
+            # print(e)
             return False
         
 if __name__ == '__main__':
