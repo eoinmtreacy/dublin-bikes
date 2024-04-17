@@ -10,6 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import atexit
 import pickle
+import pandas as pd
 import numpy as np
 from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 
@@ -93,12 +94,16 @@ def predict(station):
         try:
             data = request.json
             # import model for depart station
-            with open(f"./models/{data['station']}.pkl", 'rb') as file:
+            with open(f"./models/rfr/__{data['station']}.pkl", 'rb') as file:
                 model = pickle.load(file)
 
-            params = [float(p) for p in data['params']]
-
-            params = np.asarray(params).reshape(1,-1)
+            params = pd.DataFrame({
+                'rain' : 0.1,
+                'temp': 12,
+                'hum' : 45,
+                'day': 3,
+                'hour': 12
+            })
 
             prediction = model.predict(params)
 
