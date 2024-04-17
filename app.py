@@ -94,15 +94,15 @@ def predict(station):
         try:
             data = request.json
             # import model for depart station
-            with open(f"./models/rfr/__{data['station']}.pkl", 'rb') as file:
+            with open(f"./models/rfr/rfr_{data['station']}.pkl", 'rb') as file:
                 model = pickle.load(file)
 
             params = pd.DataFrame({
-                'rain' : 0.1,
-                'temp': 12,
-                'hum' : 45,
-                'day': 3,
-                'hour': 12
+                'rain' : [data['params']['rain']],
+                'temp': [data['params']['temp']],
+                'hum' : [data['params']['hum']],
+                'day': [data['params']['day']],
+                'hour': [data['params']['hour']]
             })
 
             prediction = model.predict(params)
