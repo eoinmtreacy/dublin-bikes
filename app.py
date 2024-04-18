@@ -94,7 +94,7 @@ def predict(station):
         try:
             data = request.json
             # import model for depart station
-            with open(f"models/rfr/rfr_{data['station']}.pkl", 'rb') as file:
+            with open(f"./models/rfr/rfr_{data['station']}.pkl", 'rb') as file:
                 model = pickle.load(file)
 
             params = pd.DataFrame({
@@ -110,7 +110,7 @@ def predict(station):
             return jsonify(data={'availability': prediction[0]})
         except Exception as e:
             print(e)
-            return None
+
             return jsonify(data={'availability': 0,
                         'error': 'Predictions unavailable',
                         'debug' : e})
