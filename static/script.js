@@ -62,7 +62,7 @@ function toggleMapStyle() {
     const menuIcon = document.getElementById("menuToggle"); // The menu icon (hamburger icon)
     const navBar = document.getElementById("navbar"); // The journey planner container
     const bicycleIcon = document.getElementById("bicycle-icon"); // The bicycle icon
-    const navBar2 = document.getElementById("navbar2"); // The journey planner container
+    const navBar2 = document.getElementById("routeDetailsSection"); // The journey planner container
     
     const refreshButton = document.getElementById("resetButton"); // The refresh button
     
@@ -93,7 +93,7 @@ function toggleMapStyle() {
         navBar.classList.remove("bg-slate-100");
         navBar.classList.add("bg-gray-700");
         navBar2.classList.remove("bg-white");
-        navBar2.classList.add("bg-gray-800");
+        navBar2.classList.add("bg-gray-600");
         bicycleIcon.classList.remove("text-grey-800");
         bicycleIcon.classList.add("text-gray-50");
         document.getElementById('startInput').style.setProperty('background-color', 'rgb(226 232 240)', 'important');
@@ -167,7 +167,7 @@ function toggleMapStyle() {
         menuIcon.classList.add("text-grey-800");
         navBar.classList.remove("bg-gray-700");
         navBar.classList.add("bg-slate-100");
-        navBar2.classList.remove("bg-gray-800");
+        navBar2.classList.remove("bg-gray-600");
         navBar2.classList.add("bg-white");
         bicycleIcon.classList.remove("text-gray-50");
         bicycleIcon.classList.add("text-grey-800");
