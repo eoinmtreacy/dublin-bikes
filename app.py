@@ -111,7 +111,8 @@ def predict(station):
         except Exception as e:
             print(e)
             return jsonify(data={'availability': 0,
-                        'error': 'Predictions unavailable'})
+                        'error': 'Predictions unavailable',
+                        'debug' : e})
 
 # Open the JSON file for reading
 @app.route('/stations')

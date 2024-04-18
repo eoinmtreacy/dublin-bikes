@@ -844,6 +844,10 @@ async function getPrediction(station, day, hour) {
             addToQueue(prediction.error)
         }
 
+        if(prediction.debug) {
+            console.log(prediction.debug);
+        }
+
         return prediction
 }
 
