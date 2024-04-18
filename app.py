@@ -108,7 +108,8 @@ def predict(station):
             prediction = model.predict(params)
 
             return jsonify(data={'availability': prediction[0]})
-        except:
+        except Exception as e:
+            print(e)
             return jsonify(data={'availability': 0,
                         'error': 'Predictions unavailable'})
 
