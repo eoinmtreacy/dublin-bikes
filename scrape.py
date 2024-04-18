@@ -1,6 +1,6 @@
 import requests
 import json
-import mysql.connector
+import pymysql
 import time
 import sys
 from datetime import datetime
@@ -16,7 +16,7 @@ def main(arg):
         data = json.loads(r.text)
 
         # connect to database and create curson
-        conn = mysql.connector.connect(
+        conn = pymysql.connect(
             host=DB,
             user=DB_USER,
             password=DB_PW,
@@ -63,7 +63,7 @@ def main(arg):
         weather_data_cache = response_dictionary
 
         try:
-            conn = mysql.connector.connect(
+            conn = pymysql.connect(
                 host=DB,
                 user=DB_USER,
                 password=DB_PW,
@@ -84,7 +84,7 @@ def main(arg):
 
             conn.commit()
         
-        except mysql.connector.Error as e:
+        except pymysql.Error as e:
             print(e)
 
 if __name__ == "__main__":
