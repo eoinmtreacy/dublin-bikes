@@ -332,7 +332,7 @@ async function createMarkers(stations) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log('last week:', data);
+                    // console.log('last week:', data);
                     return data
                 })
                 .catch(error => console.error('Error:', error));
@@ -353,10 +353,9 @@ async function createMarkers(stations) {
                 }
 
             const predicted_avail = await Promise.all(promiseAvail)
-            console.log(predicted_avail);
-            predicted_avail.forEach((array, index) => {
-                array['Hour'] = currentHour + index;
-            });
+            // predicted_avail.forEach((array, index) => {
+            //     array['Hour'] = currentHour + index;
+            // });
             // console.log("predicts:", predicted_avail);
 
             // console.log(recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p['availability'] * station.bike_stands)));
@@ -439,15 +438,19 @@ async function createMarkers(stations) {
                 var ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
                 let hourBgColours = [];
                 let hourBorderColours = [];
-                var hourData = recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))); // Round the availibility to nearest whole number
+                var hourData = recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands)));
+                console.log(hourData); // Round the availibility to nearest whole number
                 hourData[12] = availableBikes;
                 
                 const shiftAmount = (12 - currentHour + 24) % 24;
                 // Create labels variable with old index numbers
-                const hourLabels = hourData.map((_, index) => {
-                    const hour = (index - shiftAmount + 24) % 24;
-                    return hour.toString().padStart(2, '0') + ':00';
-                });
+                // const hourLabels = hourData.map((_, index) => {
+                //     const hour = (index - shiftAmount + 24) % 24;
+                //     return hour.toString().padStart(2, '0') + ':00';
+                // });
+                const now = new Date().getHours()
+                const hourLabels = recent_avail.map(r => r[0]).concat(Array.from({length: 12}, (_, idx) => (now + idx) % 24))
+                console.log(hourLabels);
                 // console.log("labels:", hourLabels);
                 // console.log("hourData:", hourData);
 
@@ -567,7 +570,7 @@ async function initMap(mapChoice) {
     startAutocomplete.addListener('place_changed', () => {
         origin = startAutocomplete.getPlace().geometry.location
         depart = findClosestStation(origin)
-        console.log(origin, depart.marker.position);
+        // console.log(origin, depart.marker.position);
     })
 
     endAutocomplete.addListener('place_changed', () => {
@@ -812,7 +815,7 @@ async function getPrediction(station, day, hour) {
         })
         .catch(error => console.error('Error fetching weather:', error));
 
-    console.log(forecast);
+    // console.log(forecast);
 
 
     const prediction = await fetch(`/predict/${station}?day=${day}&hour=${hour}`, {
