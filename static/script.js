@@ -321,6 +321,8 @@ async function createMarkers(stations) {
                 })
                 .catch(error => console.error('Error:', error));
 
+            console.log(recent_avail);
+
             const last_week = await fetch('/lastweek', {
                 method: 'POST',
                 headers: {

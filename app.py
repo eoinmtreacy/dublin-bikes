@@ -225,8 +225,6 @@ def recent():
                     AND last_update >= UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 11 HOUR))
                 GROUP BY 
                     HOUR(FROM_UNIXTIME(last_update))
-                ORDER BY 
-                    hour_of_day;
                 """
             )
 
