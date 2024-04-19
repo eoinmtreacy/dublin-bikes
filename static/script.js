@@ -4,6 +4,7 @@ let firstLeg, secondLeg, thirdLeg
 let map;
 const root = document.documentElement;
 let markerClusterer;
+let currentInfoWindow
 
 const STATUS_QUEUE = []
 
@@ -267,7 +268,7 @@ async function createMarkers(stations) {
     // and creates a marker object as an attribute
     // of each station, linking them together
     // console.log('Creating markers:', stations);
-    let currentInfoWindow = null; // Variable to store the currently open info window
+    currentInfoWindow = null; // Variable to store the currently open info window
     
     stations.forEach((station, index) => {
         const availableBikes = getStationAvailability(bikes, station.number, RTDATA, STATIONS);
@@ -956,3 +957,6 @@ function showMessage(message) {
     statusElement.innerText = message;
 }
   
+document.addEventListener("click", () => {
+    closeInfoWindow()
+})
