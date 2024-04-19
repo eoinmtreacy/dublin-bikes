@@ -36,9 +36,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function mapSetup() {
     const realTime = await fetchRealTime()
     RTDATA = realTime
-    console.log('Real Time Data:', realTime); 
+    // console.log('Real Time Data:', realTime); 
     STATIONS = await fetchStations() // STATIONS created from fetch
-    console.log('Stations:', STATIONS);
+    // console.log('Stations:', STATIONS);
     STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
 }
 
@@ -62,7 +62,7 @@ function toggleMapStyle() {
     const menuIcon = document.getElementById("menuToggle"); // The menu icon (hamburger icon)
     const navBar = document.getElementById("navbar"); // The journey planner container
     const bicycleIcon = document.getElementById("bicycle-icon"); // The bicycle icon
-    const navBar2 = document.getElementById("navbar2"); // The journey planner container
+    const navBar2 = document.getElementById("routeDetailsSection"); // The journey planner container
     
     const refreshButton = document.getElementById("resetButton"); // The refresh button
     
@@ -93,7 +93,7 @@ function toggleMapStyle() {
         navBar.classList.remove("bg-slate-100");
         navBar.classList.add("bg-gray-700");
         navBar2.classList.remove("bg-white");
-        navBar2.classList.add("bg-gray-800");
+        navBar2.classList.add("bg-gray-600");
         bicycleIcon.classList.remove("text-grey-800");
         bicycleIcon.classList.add("text-gray-50");
         document.getElementById('startInput').style.setProperty('background-color', 'rgb(226 232 240)', 'important');
@@ -107,7 +107,7 @@ function toggleMapStyle() {
         root.style.setProperty('--background-color', 'rgb(30 41 59)');
         root.style.setProperty('--color', 'rgba(249, 250, 251, 1)');
         root.style.setProperty('--grid-color', 'rgba(241, 245, 249, 0.2)');
-        console.log("dark mode BG:", root.style.getPropertyValue('--background-color'));
+        // console.log("dark mode BG:", root.style.getPropertyValue('--background-color'));
         gridColor = 'rgba(241, 245, 249, 0.2)';
         chartColor = 'rgba(249, 250, 251, 1)';
         if (markerPopup) {
@@ -134,9 +134,9 @@ function toggleMapStyle() {
         
 
         // Log the updated grid color to the console
-        console.log("Dark mode grid:", getComputedStyle(root).getPropertyValue('--grid-color'));
-        console.log("Dark mode chart:", getComputedStyle(root).getPropertyValue('--color'));
-        console.log("Defaults:", Chart.defaults.borderColor, Chart.defaults.color)
+        // console.log("Dark mode grid:", getComputedStyle(root).getPropertyValue('--grid-color'));
+        // console.log("Dark mode chart:", getComputedStyle(root).getPropertyValue('--color'));
+        // console.log("Defaults:", Chart.defaults.borderColor, Chart.defaults.color)
         }
         
 
@@ -167,7 +167,7 @@ function toggleMapStyle() {
         menuIcon.classList.add("text-grey-800");
         navBar.classList.remove("bg-gray-700");
         navBar.classList.add("bg-slate-100");
-        navBar2.classList.remove("bg-gray-800");
+        navBar2.classList.remove("bg-gray-600");
         navBar2.classList.add("bg-white");
         bicycleIcon.classList.remove("text-gray-50");
         bicycleIcon.classList.add("text-grey-800");
@@ -210,9 +210,9 @@ function toggleMapStyle() {
             
     
             // Log the updated grid color to the console
-            console.log("Light mode grid:", getComputedStyle(root).getPropertyValue('--grid-color'));
-            console.log("Light mode chart:", getComputedStyle(root).getPropertyValue('--color'));
-            console.log("Defaults:", Chart.defaults.borderColor, Chart.defaults.color)
+            // console.log("Light mode grid:", getComputedStyle(root).getPropertyValue('--grid-color'));
+            // console.log("Light mode chart:", getComputedStyle(root).getPropertyValue('--color'));
+            // console.log("Defaults:", Chart.defaults.borderColor, Chart.defaults.color)
             }
 
 
@@ -266,7 +266,7 @@ async function createMarkers(stations) {
     // createMarkers now takes the stations array
     // and creates a marker object as an attribute
     // of each station, linking them together
-    console.log('Creating markers:', stations);
+    // console.log('Creating markers:', stations);
     let currentInfoWindow = null; // Variable to store the currently open info window
     
     stations.forEach((station, index) => {
@@ -317,7 +317,6 @@ async function createMarkers(stations) {
             })
                 .then(response => response.json())
                 .then(data => { 
-                    console.log('Recent:', data);
                     return data
                 })
                 .catch(error => console.error('Error:', error));
@@ -333,7 +332,7 @@ async function createMarkers(stations) {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log('last week:', data);
+                    // console.log('last week:', data);
                     return data
                 })
                 .catch(error => console.error('Error:', error));
@@ -354,12 +353,12 @@ async function createMarkers(stations) {
                 }
 
             const predicted_avail = await Promise.all(promiseAvail)
-            predicted_avail.forEach((array, index) => {
-                array['Hour'] = currentHour + index;
-            });
-            console.log("predicts:", predicted_avail);
+            // predicted_avail.forEach((array, index) => {
+            //     array['Hour'] = currentHour + index;
+            // });
+            // console.log("predicts:", predicted_avail);
 
-            console.log(recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p['availability'] * station.bike_stands)));
+            // console.log(recent_avail.map(r => r[1]).concat(predicted_avail.map(p => p['availability'] * station.bike_stands)));
 
             // var predicted_avail = getHourlyPrediction(station.number);
 
@@ -434,22 +433,26 @@ async function createMarkers(stations) {
                     }
                 });
                 var chartCanvasId = dayChart.id;
-                console.log('Chart ID:', chartCanvasId);
+                // console.log('Chart ID:', chartCanvasId);
                 // Second chart, hourly availability
                 var ctxHour = document.getElementById(`chart-hour-${index}`).getContext('2d');
                 let hourBgColours = [];
                 let hourBorderColours = [];
-                var hourData = recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands))); // Round the availibility to nearest whole number
+                var hourData = recent_avail.map(r => Math.round(r[1])).concat(predicted_avail.map(p => Math.round(p['availability'] * station.bike_stands)));
+                console.log(hourData); // Round the availibility to nearest whole number
                 hourData[12] = availableBikes;
                 
                 const shiftAmount = (12 - currentHour + 24) % 24;
                 // Create labels variable with old index numbers
-                const hourLabels = hourData.map((_, index) => {
-                    const hour = (index - shiftAmount + 24) % 24;
-                    return hour.toString().padStart(2, '0') + ':00';
-                });
-                console.log("labels:", hourLabels);
-                console.log("hourData:", hourData);
+                // const hourLabels = hourData.map((_, index) => {
+                //     const hour = (index - shiftAmount + 24) % 24;
+                //     return hour.toString().padStart(2, '0') + ':00';
+                // });
+                const now = new Date().getHours()
+                const hourLabels = recent_avail.map(r => r[0]).concat(Array.from({length: 12}, (_, idx) => (now + idx) % 24))
+                console.log(hourLabels);
+                // console.log("labels:", hourLabels);
+                // console.log("hourData:", hourData);
 
 
 
@@ -567,13 +570,13 @@ async function initMap(mapChoice) {
     startAutocomplete.addListener('place_changed', () => {
         origin = startAutocomplete.getPlace().geometry.location
         depart = findClosestStation(origin)
-        console.log(origin, depart.marker.position);
+        // console.log(origin, depart.marker.position);
     })
 
     endAutocomplete.addListener('place_changed', () => {
         destination = endAutocomplete.getPlace().geometry.location
         arrive = findClosestStation(destination)
-        console.log(arrive, destination);
+        // console.log(arrive, destination);
     })
 
     setupNavbarToggle();
@@ -794,7 +797,7 @@ function scrollJourneyPlanner(direction) {
     } else {
         journeyPlanner.scrollTop = journeyPlanner.scrollHeight; // Scroll to the bottom
     }
-    console.log('scrolling');
+    // console.log('scrolling');
 }
 
 async function getPrediction(station, day, hour) {
@@ -812,6 +815,8 @@ async function getPrediction(station, day, hour) {
         })
         .catch(error => console.error('Error fetching weather:', error));
 
+    // console.log(forecast);
+
 
     const prediction = await fetch(`/predict/${station}?day=${day}&hour=${hour}`, {
         method: 'POST',
@@ -820,12 +825,13 @@ async function getPrediction(station, day, hour) {
         },
         body: JSON.stringify({
             station: station,
-            params: [day,
-                hour,
-                forecast.precip_mm,
-                forecast.temp_c,
-                forecast.humidity
-            ]
+            params: {
+                'day': day,
+                'hour': hour,
+                'rain': forecast.precip_mm,
+                'temp': forecast.temp_c,
+                'hum': forecast.humidity
+            }
         })
     })
         .then(response => response.json())
@@ -834,8 +840,14 @@ async function getPrediction(station, day, hour) {
         })
         .catch(error => console.error('Error:', error));
 
+        console.log(prediction);
+
         if (prediction.error) {
             addToQueue(prediction.error)
+        }
+
+        if(prediction.debug) {
+            console.log(prediction.debug);
         }
 
         return prediction

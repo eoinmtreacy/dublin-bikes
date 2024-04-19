@@ -48,19 +48,85 @@
             #timeInput{
                 padding-left: 5px;
             }
+            #dayTimeSelectors {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start; 
+            }
+            #timeDiv {
+                margin-left: auto;
+            }
+            
+            @media (min-width: 1100px) {
+                #dayTimeSelectors {
+                    flex-direction: row; 
+                    justify-content: flex-start; 
+                }
+                #dayTimeSelectors .flex.items-center {
+                    margin-top: 0; 
+                    margin-left: 0; 
+                }
+                #timeDiv {
+                    margin-left: 0px; 
+                }
+            }
+            @media (min-width: 1139px) and (max-width: 1185px) {
+                #journeyPlannerNavBar {
+                    padding-top: 3rem !important; 
+                }
+            }
+            @media (min-width: 600px) and (max-width: 1138px) {
+                #journeyPlannerNavBar {
+                    padding-top: 5rem !important; 
+                }
+            }
+            @media (max-width: 600px) {
+                #journeyPlannerNavBar {
+                    padding-top: 0rem !important; 
+                }
+            }
+            #weather-icon img {
+                width: 64px !important;
+                height: 64px !important;
+                flex-shrink: 0;  
+                flex-grow: 0;    
+            }
+            @media (max-width: 1000px) {
+                header #weather-description,
+                header #weather-icon,
+                header #weather-temperature,
+                header #weather-humidity,
+                header #weather-precipitation,
+                #status-bar {
+                    font-size: 10px; 
+                }
+            }
+            @media (max-width: 600px) {
+                header #weather-icon img,
+                header #weather-humidity,
+                #innerIcons{
+                    display: none; 
+                }
+            }
+            @media (max-width: 655px) {
+                #journeyPlanner{
+                    margin-left: 30px;
+                }
+                }
+            }
         </style>
 </head>
 
 <body class="bg-gray-800 ">
 
-    <header class="bg-slate-100 py-3 px-4 flex items-center justify-between fixed top-0 left-0 right-0 z-40 shadow-xl">
+    <header class="bg-slate-100 py-3 pl-4 flex items-center justify-between fixed top-0 left-0 right-0 z-40 shadow-xl">
 
-        <div class="flex items-center">
+        <div id="innerIcons" class="flex items-center">
             <ion-icon name="menu-outline" class="text-gray-800 text-4xl pr-4 cursor-pointer" id="menuToggle"></ion-icon>
             <ion-icon name="bicycle" class="text-gray-800 text-4xl cursor-pointer" id="bicycle-icon"></ion-icon>
         </div>
 
-        <div id="status-bar" class="flex items-center justify-center w-full max-w-md">
+        <div id="status-bar" class="flex items-center justify-center">
             loading...
         </div>
         
@@ -86,8 +152,8 @@
             <nav id="navbar" class="bg-slate-100 fixed top-16 left-0 h-full overflow-auto ease-in-out transition-all duration-300 z-30 shadow-xl">
 
 
-                    <div class="flex flex-col items-center py-8">
-                        <h2 class="text-2xl font-semibold mb-6">
+                    <div id='journeyPlannerNavBar'class="flex flex-col items-center py-8">
+                        <h2 id='journeyPlanner' class="text-2xl font-semibold mb-6">
                             Journey Planner
                         </h2>
                 
@@ -95,8 +161,8 @@
                          <div class="w-full px-6">
                              <form id="myForm" class="space-y-6">
                                 <!-- radio buttons for day selection -->
-                                <div class="flex-container flex flex-col md:flex-row">
-                                    <div class="flex md:flex-col"> <!-- Container for day selection -->
+                                <div id="dayTimeSelectors" class="flex flex-col">
+                                    <div class="flex flex-col items-start" style="margin-left: 0 !important;"> <!-- Container for day selection -->
                                         <div class="flex items-center">
                                             <input type="radio" id="today" name="date" value="0" checked>
                                             <label for="today" class="ml-2">Today</label>
@@ -110,12 +176,14 @@
                                             <label for="nextDay" class="ml-2">The Next Day</label>
                                         </div>
                                     </div>
-                                
-                                    <div class="flex items-center mt-2 md:mt-0 ml-auto"> <!-- Container for time input -->
+                                    
+                                    <!-- Container for time input-->
+                                    <div id="timeDiv" class="flex flex-grow justify-end items-center mt-2 md:mt-0">
                                         <label for="timeInput" class="mr-2">Time:</label>
                                         <input type="time" id="timeInput" class="text-center bg-white">
                                     </div>
                                 </div>
+                                
                                 
                                 
                                 
@@ -149,26 +217,26 @@
                         <!-- Route Details -->
                         
                         <div  id="routeDetailsSection" class="bg-white mt-8 p-6 rounded-lg shadow-xl w-full mx-6 hidden">
-                            <h2 class="text-lg font-semibold text-gray-800 mb-4">
+                            <h2 class="text-lg font-semibold mb-4">
                                 Route Details
                             </h2>
                             <div id="route-info" class="text-lg">
                                 <div class="flex items-center mb-2">
                                     <div class="bg-yellow-500 w-3 h-3 inline-block mr-2"></div>
                                     <ion-icon name="walk" class="text-yellow-500 mr-2"></ion-icon>
-                                    <p id="first-leg-info" class="text-gray-700">Walk</p>
+                                    <p id="first-leg-info">Walk</p>
                                 </div>
                                 <div id="depart-avail" class="flex items-center"></div>
                                 <div class="flex items-center mb-2">
                                     <div class="bg-red-500 w-3 h-3 inline-block mr-2"></div>
                                     <ion-icon name="bicycle" class="text-red-500 mr-2"></ion-icon>
-                                    <p id="second-leg-info" class="text-gray-700">Ride</p>
+                                    <p id="second-leg-info" >Ride</p>
                                 </div>
                                 <div id="arrive-avail" class="flex items-center"></div>
                                 <div class="flex items-center">
                                     <div class="bg-blue-500 w-3 h-3 inline-block mr-2"></div>
                                     <ion-icon name="walk" class="text-blue-500 mr-2"></ion-icon>
-                                    <p id="third-leg-info" class="text-gray-700">Walk</p>
+                                    <p id="third-leg-info">Walk</p>
                                 </div>
                             </div>
                         </div>
