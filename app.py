@@ -16,7 +16,6 @@ from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 # initialise flask app
 app = Flask(__name__)
 CORS(app)
-app.secret_key = SECRET_KEY
 # app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
 # stop Flask from caching to make sure production changes are represented
 app.config["CACHE_TYPE"] = "null"
