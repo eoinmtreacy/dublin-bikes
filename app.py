@@ -17,11 +17,11 @@ from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 app = Flask(__name__)
 CORS(app)
 app.secret_key = SECRET_KEY
-app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
+# app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
 # stop Flask from caching to make sure production changes are represented
 app.config["CACHE_TYPE"] = "null"
 
-db = SQLAlchemy(app) # Initialize the database
+# db = SQLAlchemy(app) # Initialize the database
 
 weather_data_cache = {} # Cache for weather data
 # Refernce: https://www.digitalocean.com/community/tutorials/how-to-use-flask-sqlalchemy-to-interact-with-databases-in-a-flask-application
