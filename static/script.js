@@ -7,9 +7,6 @@ let markerClusterer;
 
 const STATUS_QUEUE = []
 
-let currentStyle = "light"; // Default mode is Light Mode
-let darkMapStyle;
-let lightMapStyle;
 let RTDATA;
 let defaultChartColor = '#000';
 var gridColor = 'rgba(0,0,0,0.1)';
@@ -25,9 +22,7 @@ const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 document.addEventListener('DOMContentLoaded', async () => {
     displayMessages()
     addToQueue("Ready!")
-    lightMapStyle = await fetchStatic("static/light.json"); 
-    darkMapStyle = await fetchStatic("static/dark.json");
-    const map = await initMap(lightMapStyle) // initalise the map with Light Mode style
+    map = await initMap() // initalise the map with Light Mode style
     mapSetup()
     fetchRealTimeWeather()
     setClock()
@@ -46,180 +41,6 @@ async function fetchStatic(path) {
     const response = await fetch(path);
     const data = await response.json();
     return data;
-}
-
-async function fetchMapStyles() {
-    darkMapStyle = await fetchStatic("static/dark.json");
-    lightMapStyle = await fetchStatic("static/light.json");
-}
-
-function toggleMapStyle() {
-    const viewModeDiv = document.querySelector(".view-mode"); // The toggle button for changing between light and dark mode  -Reference: https://www.w3schools.com/jsref/met_document_queryselector.asp
-    const icon = viewModeDiv.querySelector("ion-icon"); // The icon of the toggle button
-    const bodyElement = document.body; // The body element of the HTML document
-    const headerElement = document.querySelector("header"); // The header element of the HTML document
-    const weatherInfoTextElements = document.querySelectorAll(".weather-info span:not(#weather-icon)"); // The weather information text elements (do not want to impact weather icon)
-    const menuIcon = document.getElementById("menuToggle"); // The menu icon (hamburger icon)
-    const navBar = document.getElementById("navbar"); // The journey planner container
-    const bicycleIcon = document.getElementById("bicycle-icon"); // The bicycle icon
-    const navBar2 = document.getElementById("navbar2"); // The journey planner container
-    
-    const refreshButton = document.getElementById("resetButton"); // The refresh button
-    
-    const markerPopup = document.getElementById('marker-popup');
-
-
-
-    
-
-
-
-    if (currentStyle === "light") {
-        map.setOptions({styles: darkMapStyle});
-        currentStyle = "dark";
-        icon.setAttribute("name", "sunny-outline"); //Reference: https://www.w3schools.com/jsref/met_element_setattribute.asp
-        icon.classList.remove("text-black"); //Reference: https://www.w3schools.com/jsref/prop_element_classlist.asp
-        icon.classList.add("text-white");
-
-        // Switch to dark mode styles
-        bodyElement.className = "bg-gray-700 text-gray-50";
-        headerElement.classList.remove("bg-gray-300");
-        headerElement.classList.add("bg-gray-900");
-        weatherInfoTextElements.forEach(element => {
-            element.classList.add("text-white");
-        });
-        menuIcon.classList.remove("text-grey-800");
-        menuIcon.classList.add("text-gray-50");
-        navBar.classList.remove("bg-slate-100");
-        navBar.classList.add("bg-gray-700");
-        navBar2.classList.remove("bg-white");
-        navBar2.classList.add("bg-gray-800");
-        bicycleIcon.classList.remove("text-grey-800");
-        bicycleIcon.classList.add("text-gray-50");
-        document.getElementById('startInput').style.setProperty('background-color', 'rgb(226 232 240)', 'important');
-        document.getElementById('endInput').style.setProperty('background-color', 'rgb(226 232 240)', 'important');
-        document.getElementById('timeInput').style.setProperty('background-color', 'rgb(226 232 240)', 'important');
-        document.getElementById('startInput').style.setProperty('color', 'rgb(71, 85, 105)', 'important');
-        document.getElementById('endInput').style.setProperty('color', 'rgb(71, 85, 105)', 'important');
-        document.getElementById('timeInput').style.setProperty('color', 'rgb(71, 85, 105)', 'important');
-        refreshButton.classList.remove("bg-gray-300",  "hover:bg-gray-400");
-        refreshButton.classList.add("bg-gray-400", "hover:bg-gray-500");
-        root.style.setProperty('--background-color', 'rgb(30 41 59)');
-        root.style.setProperty('--color', 'rgba(249, 250, 251, 1)');
-        root.style.setProperty('--grid-color', 'rgba(241, 245, 249, 0.2)');
-        console.log("dark mode BG:", root.style.getPropertyValue('--background-color'));
-        gridColor = 'rgba(241, 245, 249, 0.2)';
-        chartColor = 'rgba(249, 250, 251, 1)';
-        if (markerPopup) {
-            dayChart.options.scales.x.grid.color = gridColor; 
-            dayChart.options.scales.y.grid.color = gridColor; 
-            dayChart.options.color = chartColor;
-            dayChart.options.scales.y.ticks.color = chartColor; 
-            dayChart.options.scales.x.ticks.color = chartColor; 
-            dayChart.options.scales.x.title.color = chartColor; 
-            dayChart.options.scales.y.title.color = chartColor; 
-            hourChart.options.scales.x.grid.color = gridColor;
-            hourChart.options.scales.y.grid.color = gridColor; 
-            hourChart.options.scales.y.ticks.color = chartColor;
-            hourChart.options.scales.x.ticks.color = chartColor;
-            hourChart.options.color = chartColor; 
-            hourChart.options.scales.x.title.color = chartColor;
-            hourChart.options.scales.y.title.color = chartColor; 
-            hourChart.options.color = chartColor; 
-            markerPopup.style.color = chartColor;
-    
-            // Update the chart to reflect the changes
-            dayChart.update();
-            hourChart.update();
-        
-
-        // Log the updated grid color to the console
-        console.log("Dark mode grid:", getComputedStyle(root).getPropertyValue('--grid-color'));
-        console.log("Dark mode chart:", getComputedStyle(root).getPropertyValue('--color'));
-        console.log("Defaults:", Chart.defaults.borderColor, Chart.defaults.color)
-        }
-        
-
-        
-
-
-
-
-        
-
-        
-    } else {
-        //Switch to light mode styles (default)
-        map.setOptions({styles: lightMapStyle});
-        currentStyle = "light";
-        icon.setAttribute("name", "moon-outline");
-        icon.classList.remove("text-white");
-        icon.classList.add("text-black");
-
-        bodyElement.className = "bg-gray-100 text-gray-800";
-        headerElement.classList.remove("bg-gray-900");
-        headerElement.classList.add("bg-gray-300");
-        
-        weatherInfoTextElements.forEach(element => {
-            element.classList.remove("text-white"); 
-        });
-        menuIcon.classList.remove("text-gray-50");
-        menuIcon.classList.add("text-grey-800");
-        navBar.classList.remove("bg-gray-700");
-        navBar.classList.add("bg-slate-100");
-        navBar2.classList.remove("bg-gray-800");
-        navBar2.classList.add("bg-white");
-        bicycleIcon.classList.remove("text-gray-50");
-        bicycleIcon.classList.add("text-grey-800");
-        document.getElementById('startInput').style.setProperty('background-color', '', 'important');
-        document.getElementById('endInput').style.setProperty('background-color', '', 'important');
-        document.getElementById('timeInput').style.setProperty('background-color', '', 'important');
-        document.getElementById('startInput').style.setProperty('color', '', 'important');
-        document.getElementById('startInput').style.setProperty('color', '', 'important');
-        document.getElementById('timeInput').style.setProperty('color', '', 'important');
-
-        refreshButton.classList.remove("bg-gray-400", "hover:bg-gray-500");
-        refreshButton.classList.add("bg-gray-300", "hover:bg-gray-400");
-
-        root.style.setProperty('--background-color', '#FFFFFF');
-        root.style.setProperty('--color', '#666');
-        root.style.setProperty('--grid-color', 'rgba(0,0,0,0.1)');
-        gridColor = 'rgba(0,0,0,0.1)';
-        chartColor = '#666';
-        if (markerPopup) {
-            dayChart.options.scales.x.grid.color = gridColor; 
-            dayChart.options.scales.y.grid.color = gridColor; 
-            dayChart.options.color = chartColor;
-            dayChart.options.scales.y.ticks.color = chartColor; 
-            dayChart.options.scales.x.ticks.color = chartColor; 
-            dayChart.options.scales.x.title.color = chartColor; 
-            dayChart.options.scales.y.title.color = chartColor; 
-            hourChart.options.scales.x.grid.color = gridColor;
-            hourChart.options.scales.y.grid.color = gridColor; 
-            hourChart.options.scales.y.ticks.color = chartColor;
-            hourChart.options.scales.x.ticks.color = chartColor;
-            hourChart.options.color = chartColor; 
-            hourChart.options.scales.x.title.color = chartColor;
-            hourChart.options.scales.y.title.color = chartColor; 
-            hourChart.options.color = chartColor; 
-            markerPopup.style.color = chartColor;
-    
-            // Update the chart to reflect the changes
-            dayChart.update();
-            hourChart.update();
-            
-    
-            // Log the updated grid color to the console
-            console.log("Light mode grid:", getComputedStyle(root).getPropertyValue('--grid-color'));
-            console.log("Light mode chart:", getComputedStyle(root).getPropertyValue('--color'));
-            console.log("Defaults:", Chart.defaults.borderColor, Chart.defaults.color)
-            }
-
-
-        // Log the updated grid color to the console
-       
-
-    }
 }
 
 // Need to implement Error Handling again
@@ -525,11 +346,10 @@ async function createMarkers(stations) {
 }
 
 // changed this to async because it wouldn't work otherwise lol
-async function initMap(mapChoice) {
+async function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 53.349805, lng: -6.26031 },
-        zoom: 13,
-        styles: mapChoice
+        zoom: 13
     });
 
     var noPoi = [
