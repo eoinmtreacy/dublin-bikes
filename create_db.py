@@ -95,9 +95,26 @@ def create_weather_table(conn, cursor):
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS weather (
                 last_update BIGINT PRIMARY KEY,
-                       rain FLOAT,
-                       temp FLOAT,
-                       hum FLOAT
+                temp_c FLOAT,
+                temp_f FLOAT,
+                is_day FLOAT,
+                wind_mph FLOAT
+                wind_kph FLOAT,
+                wind_degree FLOAT
+                wind_dir FLOAT,
+                pressure_mb FLOAT,
+                pressure_in FLOAT,
+                precip_mm FLOAT,
+                precip_in FLOAT
+                humidity FLOAT                
+                cloud FLOAT                
+                feelslike_c FLOAT,
+                feelslike_f FLOAT,
+                vis_km FLOAT,
+                vis_miles FLOAT
+                uv FLOAT
+                gust_mph FLOAT,
+                gust_kph FLOAT
         )
     """)
         conn.commit()
@@ -107,41 +124,43 @@ def create_weather_table(conn, cursor):
         print(e)
         return False
     
-def main(arg):
-    if fetch_city_static(arg):
-        print(f"static data saved in stations/{arg})station.json")
-        conn = mysql.connector.connect(host=DB,
-                                    user=DB_USER,
-                                    password=DB_PW
-                                    )
-        cursor = conn.cursor()
+def main():
+    with open("contracts.txt", "r") as contracts:
+        for arg in contracts.readlines():
+            if fetch_city_static(arg):
+                print(f"static data saved in stations/{arg})station.json")
+                conn = mysql.connector.connect(host=DB,
+                                            user=DB_USER,
+                                            password=DB_PW
+                                            )
+                cursor = conn.cursor()
 
-        if create_stations_db(cursor, arg):
-            print(f"Creating/found database {arg}")
-            conn.close()
-            cursor.close()
+                if create_stations_db(cursor, arg):
+                    print(f"Creating/found database {arg}")
+                    conn.close()
+                    cursor.close()
 
-            # create new connection and cursor to database: arg
-            conn = mysql.connector.connect(host=DB,
-                                        user=DB_USER,
-                                        password=DB_PW,
-                                        database=arg)
-            cursor = conn.cursor()
-            if create_stations_table(conn, cursor):
-                print(f"created stations table in database {arg}")
-                if populate_stations_table(conn, cursor, arg):
-                    print(f"stations table in  database {arg} succesfully populated")
-                    if create_availability_table(conn, cursor):
-                        print(f"availability table created in database {arg}")
-                        if create_weather_table(conn, cursor):
-                            print(f"weathe table succesfully created for database {arg}")
+                    # create new connection and cursor to database: arg
+                    conn = mysql.connector.connect(host=DB,
+                                                user=DB_USER,
+                                                password=DB_PW,
+                                                database=arg)
+                    cursor = conn.cursor()
+                    if create_stations_table(conn, cursor):
+                        print(f"created stations table in database {arg}")
+                        if populate_stations_table(conn, cursor, arg):
+                            print(f"stations table in  database {arg} succesfully populated")
+                            if create_availability_table(conn, cursor):
+                                print(f"availability table created in database {arg}")
+                                if create_weather_table(conn, cursor):
+                                    print(f"weathe table succesfully created for database {arg}")
 
-        conn.close()
-        cursor.close()
+                conn.close()
+                cursor.close()
 
-    else:
-         print("Error fetching contract city stations file")
-         print("Error with request to JCDecaux API: check your contract name and API key")
+            else:
+                print(f"Error fetching contract city {arg} stations file")
+                print(f"Error with request to JCDecaux API: check your contract name '{arg}' or API key")
 
 
 if __name__ == "__main__":
