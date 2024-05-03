@@ -3,9 +3,10 @@ from constants import *
 
 try:
     conn = mysql.connector.connect(
-        host=DB,
-        user=DB_USER,
-        password=DB_PW
+        host='localhost',
+        port=3306,
+        user='root',
+        password='mysql',
     )
     print("connected")
 

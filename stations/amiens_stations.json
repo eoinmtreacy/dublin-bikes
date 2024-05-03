@@ -1,0 +1,461 @@
+[
+    {
+        "number": 18,
+        "contract_name": "amiens",
+        "name": "18- PREFECTURE",
+        "address": "2 rue Puvis de Chavannes",
+        "position": {
+            "lat": 49.890229,
+            "lng": 2.295865
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714747997000
+    },
+    {
+        "number": 2,
+        "contract_name": "amiens",
+        "name": "02- LES HALLES",
+        "address": "Rue J Natiere",
+        "position": {
+            "lat": 49.896032388592566,
+            "lng": 2.295043974872919
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714747952000
+    },
+    {
+        "number": 10,
+        "contract_name": "amiens",
+        "name": "10- PALAIS DE JUSTICE",
+        "address": "Place D' Aguesseau",
+        "position": {
+            "lat": 49.8933588618336,
+            "lng": 2.301314220716614
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714747966000
+    },
+    {
+        "number": 4,
+        "contract_name": "amiens",
+        "name": "04- PLACE AU FEURRE",
+        "address": "Place au Feurre",
+        "position": {
+            "lat": 49.89729029741273,
+            "lng": 2.297864452413288
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748010000
+    },
+    {
+        "number": 24,
+        "contract_name": "amiens",
+        "name": "24- COLISEUM",
+        "address": "Boulevard Faidherbe",
+        "position": {
+            "lat": 49.8941349276388,
+            "lng": 2.28705404866028
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714747978000
+    },
+    {
+        "number": 25,
+        "contract_name": "amiens",
+        "name": "25- LA HOTOIE",
+        "address": "Bd des F\u00e9d\u00e9r\u00e9s",
+        "position": {
+            "lat": 49.896862536806346,
+            "lng": 2.282867747579433
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714747902000
+    },
+    {
+        "number": 9,
+        "contract_name": "amiens",
+        "name": "09- CATHEDRALE",
+        "address": "Rue Flatters",
+        "position": {
+            "lat": 49.89508211905397,
+            "lng": 2.299395003901743
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 17,
+        "available_bike_stands": 13,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714747927000
+    },
+    {
+        "number": 3,
+        "contract_name": "amiens",
+        "name": "03- VOGEL",
+        "address": "Bd du jardin des plantes",
+        "position": {
+            "lat": 49.898124385191046,
+            "lng": 2.295195128091815
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714747898000
+    },
+    {
+        "number": 26,
+        "contract_name": "amiens",
+        "name": "26- MARCHE AUX CHEVAUX",
+        "address": "Rue du March\u00e9 aux Chevaux",
+        "position": {
+            "lat": 49.897251288573926,
+            "lng": 2.289247027835661
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714747980000
+    },
+    {
+        "number": 16,
+        "contract_name": "amiens",
+        "name": "16- JOFFRE",
+        "address": "Place du Mar\u00e9chal Joffre",
+        "position": {
+            "lat": 49.88779293086959,
+            "lng": 2.30361108882717
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748094000
+    },
+    {
+        "number": 15,
+        "contract_name": "amiens",
+        "name": "15- JACOBINS",
+        "address": "Rue des Jacobins",
+        "position": {
+            "lat": 49.8909435451942,
+            "lng": 2.300843419403305
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 10,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714747915000
+    },
+    {
+        "number": 14,
+        "contract_name": "amiens",
+        "name": "14- GARE CINEMA",
+        "address": "Passage Alphonse Fiquet",
+        "position": {
+            "lat": 49.8902809262295,
+            "lng": 2.30737558427215
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 7,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748398000
+    },
+    {
+        "number": 19,
+        "contract_name": "amiens",
+        "name": "19- REPUBLIQUE",
+        "address": "R\u00e9publique Gambetta",
+        "position": {
+            "lat": 49.8927200732602,
+            "lng": 2.29707581964189
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714747873000
+    },
+    {
+        "number": 12,
+        "contract_name": "amiens",
+        "name": "12- AMIENS 2",
+        "address": "Bd Alsace Lorraine",
+        "position": {
+            "lat": 49.89223828665915,
+            "lng": 2.30769408025555
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 8,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714747992000
+    },
+    {
+        "number": 20,
+        "contract_name": "amiens",
+        "name": "20- BRANLY",
+        "address": "Bd Maignan Larivi\u00e8re",
+        "position": {
+            "lat": 49.89001551426808,
+            "lng": 2.291227264216073
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 7,
+        "available_bikes": 13,
+        "status": "OPEN",
+        "last_update": 1714747892000
+    },
+    {
+        "number": 22,
+        "contract_name": "amiens",
+        "name": "22- QUATRE CHENES",
+        "address": "Avenue du G\u00e9n\u00e9ral Foy",
+        "position": {
+            "lat": 49.890242,
+            "lng": 2.282163
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714747943000
+    },
+    {
+        "number": 23,
+        "contract_name": "amiens",
+        "name": "23- ST ROCH",
+        "address": "Foch",
+        "position": {
+            "lat": 49.893442525890926,
+            "lng": 2.284525283004338
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714747933000
+    },
+    {
+        "number": 11,
+        "contract_name": "amiens",
+        "name": "11- PORT D' AMONT",
+        "address": "Bd Du Port D' Amont",
+        "position": {
+            "lat": 49.89557785209512,
+            "lng": 2.306191079777315
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748406000
+    },
+    {
+        "number": 28,
+        "contract_name": "amiens",
+        "name": "28 - P+R POLE LICORNE",
+        "address": "AVENUE DE LA LICORNE",
+        "position": {
+            "lat": 49.8976654828627,
+            "lng": 2.26667223493532
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 9,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748011000
+    },
+    {
+        "number": 1,
+        "contract_name": "amiens",
+        "name": "01 - SAINT PIERRE",
+        "address": "Rue Eloi Morel angle bd baraban",
+        "position": {
+            "lat": 49.901646,
+            "lng": 2.303244
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714747955000
+    },
+    {
+        "number": 13,
+        "contract_name": "amiens",
+        "name": "13- GARE JULES BARNI",
+        "address": "Rue Jules Barni",
+        "position": {
+            "lat": 49.889774,
+            "lng": 2.3091
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 12,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748054000
+    },
+    {
+        "number": 7,
+        "contract_name": "amiens",
+        "name": "07- COLLEGE SAINT-MARTIN",
+        "address": "68 rue Delpech \u00e0 proximit\u00e9 du Coll\u00e8ge St Martin",
+        "position": {
+            "lat": 49.8842726,
+            "lng": 2.294836
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 4,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748022000
+    },
+    {
+        "number": 21,
+        "contract_name": "amiens",
+        "name": "21- MAISON DE LA CULTURE",
+        "address": "Place L\u00e9on Gontier",
+        "position": {
+            "lat": 49.89392165574068,
+            "lng": 2.292724729098195
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714747946000
+    },
+    {
+        "number": 17,
+        "contract_name": "amiens",
+        "name": "17- CIRQUE",
+        "address": "Mail Albert 1er",
+        "position": {
+            "lat": 49.8887,
+            "lng": 2.2973
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748390000
+    },
+    {
+        "number": 27,
+        "contract_name": "amiens",
+        "name": "27- CIT\u00c9 SCOLAIRE",
+        "address": "bd saint quentin devant clinique v\u00e9t\u00e9rinaire",
+        "position": {
+            "lat": 49.879239,
+            "lng": 2.296116
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 40,
+        "available_bike_stands": 21,
+        "available_bikes": 19,
+        "status": "OPEN",
+        "last_update": 1714748019000
+    },
+    {
+        "number": 5,
+        "contract_name": "amiens",
+        "name": "05- ST LEU",
+        "address": "66 Rue St Leu",
+        "position": {
+            "lat": 49.8990979,
+            "lng": 2.3005394
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 13,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714747856000
+    },
+    {
+        "number": 6,
+        "contract_name": "amiens",
+        "name": "06- CITADELLE MONTRESCU",
+        "address": "Avenue du g\u00e9n\u00e9ral du Gaulle",
+        "position": {
+            "lat": 49.904325,
+            "lng": 2.30082
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 50,
+        "available_bike_stands": 39,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714747878000
+    }
+]

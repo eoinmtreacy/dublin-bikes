@@ -1,0 +1,512 @@
+[
+    {
+        "number": 16,
+        "contract_name": "besancon",
+        "name": "16 - BEAUREGARD",
+        "address": "Avenue Fontaine Argent angle rue Beauregard",
+        "position": {
+            "lat": 47.244985,
+            "lng": 6.032536
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 11,
+        "available_bike_stands": 10,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748184000
+    },
+    {
+        "number": 30,
+        "contract_name": "besancon",
+        "name": "30 - XAVIER MARMIER",
+        "address": "18 rue Xavier Marmier",
+        "position": {
+            "lat": 47.241652,
+            "lng": 6.007549
+        },
+        "banking": false,
+        "bonus": true,
+        "bike_stands": 12,
+        "available_bike_stands": 7,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748106000
+    },
+    {
+        "number": 2,
+        "contract_name": "besancon",
+        "name": "02 - SQUARE BOUCHOT",
+        "address": "Rue Battant (au niveau du Square Bouchot)",
+        "position": {
+            "lat": 47.243569,
+            "lng": 6.021966
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 4,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748310000
+    },
+    {
+        "number": 26,
+        "contract_name": "besancon",
+        "name": "26 - BERSOT",
+        "address": "Place de la 7\u00e8me Brigade blind\u00e9e",
+        "position": {
+            "lat": 47.238867,
+            "lng": 6.029564
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 8,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748122000
+    },
+    {
+        "number": 14,
+        "contract_name": "besancon",
+        "name": "14 - JACOBINS",
+        "address": "Place Jacobins",
+        "position": {
+            "lat": 47.234525,
+            "lng": 6.033161
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 6,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748269000
+    },
+    {
+        "number": 22,
+        "contract_name": "besancon",
+        "name": "22 - LIBERTE",
+        "address": "Place de la Libert\u00e9",
+        "position": {
+            "lat": 47.247455,
+            "lng": 6.028569
+        },
+        "banking": false,
+        "bonus": true,
+        "bike_stands": 12,
+        "available_bike_stands": 5,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748163000
+    },
+    {
+        "number": 23,
+        "contract_name": "besancon",
+        "name": "23 - RIVOTTE",
+        "address": "Rue Charles NODIER Sortie du tunnel, direction Morne",
+        "position": {
+            "lat": 47.232189,
+            "lng": 6.034991
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 12,
+        "available_bike_stands": 4,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714747881000
+    },
+    {
+        "number": 27,
+        "contract_name": "besancon",
+        "name": "27 - MAIRIE",
+        "address": "Rue Megevand",
+        "position": {
+            "lat": 47.23678,
+            "lng": 6.022275
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748235000
+    },
+    {
+        "number": 24,
+        "contract_name": "besancon",
+        "name": "24 - MEDIATHEQUE",
+        "address": "Rue de la R\u00e9publique angle rue d'Alsace face \u00e0 la m\u00e9diath\u00e8que",
+        "position": {
+            "lat": 47.240083,
+            "lng": 6.027359
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 10,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748151000
+    },
+    {
+        "number": 4,
+        "contract_name": "besancon",
+        "name": "04 - FLORE",
+        "address": "7 rue de la Cassotte",
+        "position": {
+            "lat": 47.245801,
+            "lng": 6.028143
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 11,
+        "available_bike_stands": 4,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748117000
+    },
+    {
+        "number": 1,
+        "contract_name": "besancon",
+        "name": "01 - GARE VIOTTE (CB)",
+        "address": "Parc des Glacis - Entr\u00e9e Avenue de la Paix",
+        "position": {
+            "lat": 47.24656,
+            "lng": 6.022551
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 7,
+        "available_bikes": 23,
+        "status": "OPEN",
+        "last_update": 1714747922000
+    },
+    {
+        "number": 17,
+        "contract_name": "besancon",
+        "name": "17 - PREFECTURE",
+        "address": "Avenue de la Gare d'Eau face commissariat",
+        "position": {
+            "lat": 47.232903,
+            "lng": 6.020116
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 14,
+        "available_bike_stands": 6,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748407000
+    },
+    {
+        "number": 21,
+        "contract_name": "besancon",
+        "name": "21 - DEPORTES (CB)",
+        "address": "Avenue Fontaine Argent angle Bld Diderot",
+        "position": {
+            "lat": 47.247787,
+            "lng": 6.036415
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 12,
+        "available_bike_stands": 11,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714747851000
+    },
+    {
+        "number": 10,
+        "contract_name": "besancon",
+        "name": "10 - 8 SEPTEMBRE (CB)",
+        "address": "Place du 8 Septembre",
+        "position": {
+            "lat": 47.237665,
+            "lng": 6.024203
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714747968000
+    },
+    {
+        "number": 28,
+        "contract_name": "besancon",
+        "name": "28 - LECLERC",
+        "address": "Place Leclerc",
+        "position": {
+            "lat": 47.242273,
+            "lng": 6.014452
+        },
+        "banking": false,
+        "bonus": true,
+        "bike_stands": 10,
+        "available_bike_stands": 5,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748247000
+    },
+    {
+        "number": 15,
+        "contract_name": "besancon",
+        "name": "15 - TASSIGNY",
+        "address": "Place De Lattre de Tassigny, 25000 Besancon",
+        "position": {
+            "lat": 47.231111,
+            "lng": 6.026695
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 6,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748242000
+    },
+    {
+        "number": 9,
+        "contract_name": "besancon",
+        "name": "09 - LA CITY",
+        "address": "Avenue Louise Michel angle rue Plan\u00e7on",
+        "position": {
+            "lat": 47.235425,
+            "lng": 6.015281
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 3,
+        "available_bikes": 17,
+        "status": "OPEN",
+        "last_update": 1714748283000
+    },
+    {
+        "number": 13,
+        "contract_name": "besancon",
+        "name": "13 - VICTOR HUGO",
+        "address": "Place Victor Hugo (au niveau de la porte Noire, entr\u00e9e de la Citadelle)",
+        "position": {
+            "lat": 47.234749,
+            "lng": 6.029566
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 14,
+        "available_bike_stands": 14,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748211000
+    },
+    {
+        "number": 3,
+        "contract_name": "besancon",
+        "name": "03 - MADELEINE (CB)",
+        "address": "Rue de la Madeleine- Face \u00e0 la rue de l'Ecole",
+        "position": {
+            "lat": 47.239978,
+            "lng": 6.019691
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748002000
+    },
+    {
+        "number": 6,
+        "contract_name": "besancon",
+        "name": "06 - MICAUD (CB)",
+        "address": "Avenue Edouard Droz",
+        "position": {
+            "lat": 47.242544,
+            "lng": 6.029782
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 13,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748216000
+    },
+    {
+        "number": 5,
+        "contract_name": "besancon",
+        "name": "05 - ISEMBART",
+        "address": "Quai de Strasbourg (Pont Denfert Rochereau)",
+        "position": {
+            "lat": 47.242756,
+            "lng": 6.02529
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 6,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748175000
+    },
+    {
+        "number": 7,
+        "contract_name": "besancon",
+        "name": "07 - GARE MOUILLERE",
+        "address": "Parvis de la Gare",
+        "position": {
+            "lat": 47.240166,
+            "lng": 6.033729
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 11,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748091000
+    },
+    {
+        "number": 29,
+        "contract_name": "besancon",
+        "name": "29 - BELFORT",
+        "address": "Rue de Belfort angle rue Suard",
+        "position": {
+            "lat": 47.248886,
+            "lng": 6.030818
+        },
+        "banking": false,
+        "bonus": true,
+        "bike_stands": 12,
+        "available_bike_stands": 5,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748127000
+    },
+    {
+        "number": 8,
+        "contract_name": "besancon",
+        "name": "08 - MARULAZ",
+        "address": "Place Marulaz",
+        "position": {
+            "lat": 47.239595,
+            "lng": 6.017044
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 9,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748119000
+    },
+    {
+        "number": 18,
+        "contract_name": "besancon",
+        "name": "18 - SAINT-JACQUES (CB)",
+        "address": "Place Saint Jacques (en face de l'hopital)",
+        "position": {
+            "lat": 47.23526,
+            "lng": 6.021363
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748087000
+    },
+    {
+        "number": 19,
+        "contract_name": "besancon",
+        "name": "19 - BEAUX-ARTS",
+        "address": "Angle de la rue Gustave Courbet et rue Pierre Joseph Proudhon",
+        "position": {
+            "lat": 47.240827,
+            "lng": 6.02527
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 4,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748092000
+    },
+    {
+        "number": 12,
+        "contract_name": "besancon",
+        "name": "12 - GRANVELLE (CB)",
+        "address": "Place Granvelle",
+        "position": {
+            "lat": 47.235437,
+            "lng": 6.025724
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 11,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748094000
+    },
+    {
+        "number": 25,
+        "contract_name": "besancon",
+        "name": "25 - MORAND",
+        "address": "2 rue Morand",
+        "position": {
+            "lat": 47.238133,
+            "lng": 6.026309
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 12,
+        "available_bike_stands": 6,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748285000
+    },
+    {
+        "number": 20,
+        "contract_name": "besancon",
+        "name": "20 - REVOLUTION (CB)",
+        "address": "Place de la R\u00e9volution rue Luc Breton",
+        "position": {
+            "lat": 47.239529,
+            "lng": 6.023377
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748384000
+    },
+    {
+        "number": 11,
+        "contract_name": "besancon",
+        "name": "11 - JEAN CORNET",
+        "address": "Place Jean Cornet",
+        "position": {
+            "lat": 47.236363,
+            "lng": 6.028817
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 8,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748288000
+    }
+]

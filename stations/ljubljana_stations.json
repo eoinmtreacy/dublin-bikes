@@ -1,0 +1,1430 @@
+[
+    {
+        "number": 59,
+        "contract_name": "ljubljana",
+        "name": "LIDL BE\u017dIGRAD",
+        "address": "Be\u017eigrad 11",
+        "position": {
+            "lat": 46.063797,
+            "lng": 14.506854
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748065000
+    },
+    {
+        "number": 54,
+        "contract_name": "ljubljana",
+        "name": "\u0160MARTINSKI PARK",
+        "address": "Smartinska cesta 58",
+        "position": {
+            "lat": 46.065206,
+            "lng": 14.529911
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714747958000
+    },
+    {
+        "number": 45,
+        "contract_name": "ljubljana",
+        "name": "SAVSKO NASELJE 1-\u0160MARTINSKA CESTA",
+        "address": "Savska cesta 1",
+        "position": {
+            "lat": 46.062475,
+            "lng": 14.524321
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748103000
+    },
+    {
+        "number": 68,
+        "contract_name": "ljubljana",
+        "name": "\u010cRNU\u010cE",
+        "address": "Dunajska cesta",
+        "position": {
+            "lat": 46.102446,
+            "lng": 14.530213
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748035000
+    },
+    {
+        "number": 11,
+        "contract_name": "ljubljana",
+        "name": "VILHARJEVA CESTA",
+        "address": "Vilharjeva cesta 23",
+        "position": {
+            "lat": 46.06005,
+            "lng": 14.51302
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748122000
+    },
+    {
+        "number": 10,
+        "contract_name": "ljubljana",
+        "name": "MASARYKOVA DDC",
+        "address": "Masarykova cesta 14",
+        "position": {
+            "lat": 46.05763,
+            "lng": 14.514264
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 15,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748013000
+    },
+    {
+        "number": 2,
+        "contract_name": "ljubljana",
+        "name": "POGA\u010cARJEV TRG-TR\u017dNICA",
+        "address": "Poga\u010darjev trg 3",
+        "position": {
+            "lat": 46.051093,
+            "lng": 14.507186
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 15,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748071000
+    },
+    {
+        "number": 4,
+        "contract_name": "ljubljana",
+        "name": "CANKARJEVA UL.-NAMA",
+        "address": "Cankarjeva cesta 1",
+        "position": {
+            "lat": 46.052431,
+            "lng": 14.503257
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 26,
+        "available_bike_stands": 7,
+        "available_bikes": 19,
+        "status": "OPEN",
+        "last_update": 1714748000000
+    },
+    {
+        "number": 41,
+        "contract_name": "ljubljana",
+        "name": "ANTONOV TRG",
+        "address": "Tr\u017ea\u0161ka 91",
+        "position": {
+            "lat": 46.041753,
+            "lng": 14.477016
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748274000
+    },
+    {
+        "number": 73,
+        "contract_name": "ljubljana",
+        "name": "PRU\u0160NIKOVA",
+        "address": "Pru\u0161nikova ulica",
+        "position": {
+            "lat": 46.090608,
+            "lng": 14.471637
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714747982000
+    },
+    {
+        "number": 76,
+        "contract_name": "ljubljana",
+        "name": "TEHNOLO\u0160KI PARK",
+        "address": "Tehnolo\u0161ki park",
+        "position": {
+            "lat": 46.04843,
+            "lng": 14.461086
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748044000
+    },
+    {
+        "number": 66,
+        "contract_name": "ljubljana",
+        "name": "KOSE\u0160KI BAJER",
+        "address": "Kose\u0161ka cesta",
+        "position": {
+            "lat": 46.068443,
+            "lng": 14.470913
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714747910000
+    },
+    {
+        "number": 19,
+        "contract_name": "ljubljana",
+        "name": "TIVOLI",
+        "address": "Celov\u0161ka cesta 26",
+        "position": {
+            "lat": 46.05952,
+            "lng": 14.4982
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748312000
+    },
+    {
+        "number": 25,
+        "contract_name": "ljubljana",
+        "name": "TR\u017dNICA MOSTE",
+        "address": "Zalo\u0161ka cesta 54",
+        "position": {
+            "lat": 46.055801,
+            "lng": 14.534156
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 21,
+        "available_bike_stands": 13,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714747992000
+    },
+    {
+        "number": 6,
+        "contract_name": "ljubljana",
+        "name": "GRUDNOVO NABRE\u017dJE-KARLOV\u0160KA C.",
+        "address": "Grudnovo nabre\u017eje 3",
+        "position": {
+            "lat": 46.045748,
+            "lng": 14.506196
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 8,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748150000
+    },
+    {
+        "number": 51,
+        "contract_name": "ljubljana",
+        "name": "LIDL-LITIJSKA CESTA",
+        "address": "Litijska cesta 53",
+        "position": {
+            "lat": 46.047689,
+            "lng": 14.547416
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748146000
+    },
+    {
+        "number": 31,
+        "contract_name": "ljubljana",
+        "name": "\u0160PORTNI CENTER STO\u017dICE",
+        "address": "Vojkova cesta 91",
+        "position": {
+            "lat": 46.08259,
+            "lng": 14.52016
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 26,
+        "available_bike_stands": 11,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748288000
+    },
+    {
+        "number": 22,
+        "contract_name": "ljubljana",
+        "name": "\u0160PICA",
+        "address": "Prule 8",
+        "position": {
+            "lat": 46.040213,
+            "lng": 14.512044
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 4,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714747977000
+    },
+    {
+        "number": 80,
+        "contract_name": "ljubljana",
+        "name": "RO\u0160KA - STRELI\u0160KA",
+        "address": "Ro\u0161ka cesta",
+        "position": {
+            "lat": 46.045,
+            "lng": 14.51846
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748221000
+    },
+    {
+        "number": 8,
+        "contract_name": "ljubljana",
+        "name": "BAVARSKI DVOR",
+        "address": "Slovenska cesta 55c",
+        "position": {
+            "lat": 46.05682,
+            "lng": 14.50551
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748230000
+    },
+    {
+        "number": 20,
+        "contract_name": "ljubljana",
+        "name": "STARA CERKEV",
+        "address": "Celov\u0161ka cesta 69",
+        "position": {
+            "lat": 46.06342,
+            "lng": 14.494588
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 14,
+        "available_bike_stands": 8,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748053000
+    },
+    {
+        "number": 46,
+        "contract_name": "ljubljana",
+        "name": "SITULA",
+        "address": "Vilharjeva cesta 44",
+        "position": {
+            "lat": 46.059433,
+            "lng": 14.52051
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748007000
+    },
+    {
+        "number": 17,
+        "contract_name": "ljubljana",
+        "name": "ILIRSKA ULICA",
+        "address": "Ilirska ulica 1",
+        "position": {
+            "lat": 46.053144,
+            "lng": 14.513479
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 10,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748027000
+    },
+    {
+        "number": 72,
+        "contract_name": "ljubljana",
+        "name": "LIDL - RUDNIK",
+        "address": "Betettova cesta",
+        "position": {
+            "lat": 46.020012,
+            "lng": 14.532479
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748100000
+    },
+    {
+        "number": 64,
+        "contract_name": "ljubljana",
+        "name": "KOPALI\u0160\u010cE KOLEZIJA",
+        "address": "Gunduli\u010deva ulica",
+        "position": {
+            "lat": 46.042867,
+            "lng": 14.495239
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 4,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714747986000
+    },
+    {
+        "number": 74,
+        "contract_name": "ljubljana",
+        "name": "POV\u0160ETOVA - KAJUHOVA",
+        "address": "Pov\u0161etova - Kajuhova",
+        "position": {
+            "lat": 46.051512,
+            "lng": 14.539272
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748069000
+    },
+    {
+        "number": 29,
+        "contract_name": "ljubljana",
+        "name": "DUNAJSKA C.-PS MERCATOR",
+        "address": "Dunajska cesta 105",
+        "position": {
+            "lat": 46.074193,
+            "lng": 14.511134
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 9,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748247000
+    },
+    {
+        "number": 34,
+        "contract_name": "ljubljana",
+        "name": "CITYPARK",
+        "address": "Citypark - \u0160martinska 152 g",
+        "position": {
+            "lat": 46.068805,
+            "lng": 14.546257
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748001000
+    },
+    {
+        "number": 32,
+        "contract_name": "ljubljana",
+        "name": "KOPRSKA ULICA",
+        "address": "Koprska ulica 98",
+        "position": {
+            "lat": 46.033408,
+            "lng": 14.482468
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 8,
+        "available_bike_stands": 5,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748132000
+    },
+    {
+        "number": 30,
+        "contract_name": "ljubljana",
+        "name": "LIDL - VOJKOVA CESTA",
+        "address": "",
+        "position": {
+            "lat": 46.07589,
+            "lng": 14.52011
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748125000
+    },
+    {
+        "number": 55,
+        "contract_name": "ljubljana",
+        "name": "POLJANSKA-POTO\u010cNIKOVA",
+        "address": "Poljanska cesta 50",
+        "position": {
+            "lat": 46.048982,
+            "lng": 14.522709
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748266000
+    },
+    {
+        "number": 57,
+        "contract_name": "ljubljana",
+        "name": "POV\u0160ETOVA-GRABLOVI\u010cEVA",
+        "address": "Grabloviceva ulica 60",
+        "position": {
+            "lat": 46.051863,
+            "lng": 14.530349
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 10,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748149000
+    },
+    {
+        "number": 12,
+        "contract_name": "ljubljana",
+        "name": "PARK NAVJE-\u017dELEZNA CESTA",
+        "address": "\u017delezna cesta 18",
+        "position": {
+            "lat": 46.06361,
+            "lng": 14.51315
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 3,
+        "available_bikes": 17,
+        "status": "OPEN",
+        "last_update": 1714748130000
+    },
+    {
+        "number": 71,
+        "contract_name": "ljubljana",
+        "name": "ZALOG",
+        "address": "Zalo\u0161ka cesta",
+        "position": {
+            "lat": 46.06043,
+            "lng": 14.613797
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748043000
+    },
+    {
+        "number": 53,
+        "contract_name": "ljubljana",
+        "name": "CESTA NA RO\u017dNIK",
+        "address": "Cesta na Ro\u017enik 1",
+        "position": {
+            "lat": 46.053241,
+            "lng": 14.486206
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748048000
+    },
+    {
+        "number": 48,
+        "contract_name": "ljubljana",
+        "name": "HOFER-KAJUHOVA",
+        "address": "Kajuhova ulica 42",
+        "position": {
+            "lat": 46.056405,
+            "lng": 14.540901
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748107000
+    },
+    {
+        "number": 27,
+        "contract_name": "ljubljana",
+        "name": "DUNAJSKA C.-PS PETROL",
+        "address": "Dunajska cesta 50",
+        "position": {
+            "lat": 46.065136,
+            "lng": 14.509112
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 3,
+        "available_bikes": 17,
+        "status": "OPEN",
+        "last_update": 1714748109000
+    },
+    {
+        "number": 69,
+        "contract_name": "ljubljana",
+        "name": "STUDENEC",
+        "address": "Zalo\u0161ka cesta",
+        "position": {
+            "lat": 46.054615,
+            "lng": 14.576031
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748155000
+    },
+    {
+        "number": 14,
+        "contract_name": "ljubljana",
+        "name": "PARKIRI\u0160\u010cE NUK 2-FF",
+        "address": "Zoisova cesta 2",
+        "position": {
+            "lat": 46.046377,
+            "lng": 14.501256
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714747992000
+    },
+    {
+        "number": 42,
+        "contract_name": "ljubljana",
+        "name": "BRATOV\u0160EVA PLO\u0160\u010cAD",
+        "address": "Dunajska 211",
+        "position": {
+            "lat": 46.08929,
+            "lng": 14.513751
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714747996000
+    },
+    {
+        "number": 3,
+        "contract_name": "ljubljana",
+        "name": "KONGRESNI TRG-\u0160UBI\u010cEVA ULICA",
+        "address": "Kongresni trg 3",
+        "position": {
+            "lat": 46.050388,
+            "lng": 14.504623
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748179000
+    },
+    {
+        "number": 43,
+        "contract_name": "ljubljana",
+        "name": "BS4-STO\u017dICE",
+        "address": "Dunajska 186",
+        "position": {
+            "lat": 46.086761,
+            "lng": 14.514151
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714747984000
+    },
+    {
+        "number": 78,
+        "contract_name": "ljubljana",
+        "name": "GERBI\u010cEVA - \u0160PORTNI PARK SVOBODA",
+        "address": "Gerbi\u010deva ulica 61",
+        "position": {
+            "lat": 46.039384,
+            "lng": 14.485458
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714747962000
+    },
+    {
+        "number": 52,
+        "contract_name": "ljubljana",
+        "name": "\u017dIVALSKI VRT",
+        "address": "Ve\u010dna pot 70",
+        "position": {
+            "lat": 46.052454,
+            "lng": 14.472149
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714747947000
+    },
+    {
+        "number": 82,
+        "contract_name": "ljubljana",
+        "name": "VOKA - SLOVEN\u010cEVA",
+        "address": "Vodovodna cesta 90",
+        "position": {
+            "lat": 46.075207,
+            "lng": 14.504734
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714747999000
+    },
+    {
+        "number": 35,
+        "contract_name": "ljubljana",
+        "name": "BTC CITY/DVORANA A",
+        "address": "BTC City/Dvorana A",
+        "position": {
+            "lat": 46.065297,
+            "lng": 14.543996
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748042000
+    },
+    {
+        "number": 37,
+        "contract_name": "ljubljana",
+        "name": "TRNOVO",
+        "address": "TRNOVO",
+        "position": {
+            "lat": 46.03784,
+            "lng": 14.50001
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748004000
+    },
+    {
+        "number": 38,
+        "contract_name": "ljubljana",
+        "name": "P+R BARJE",
+        "address": "P+R BARJE",
+        "position": {
+            "lat": 46.02749,
+            "lng": 14.49958
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 20,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748085000
+    },
+    {
+        "number": 26,
+        "contract_name": "ljubljana",
+        "name": "RO\u017dNA DOLINA-\u0160KRAB\u010cEVA UL.",
+        "address": "\u0160krab\u010deva ulica 2",
+        "position": {
+            "lat": 46.051439,
+            "lng": 14.49273
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 6,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748041000
+    },
+    {
+        "number": 21,
+        "contract_name": "ljubljana",
+        "name": "KINO \u0160I\u0160KA",
+        "address": "Celov\u0161ka cesta 111c",
+        "position": {
+            "lat": 46.06928,
+            "lng": 14.48971
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 26,
+        "available_bike_stands": 16,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748164000
+    },
+    {
+        "number": 49,
+        "contract_name": "ljubljana",
+        "name": "BRODARJEV TRG",
+        "address": "Nove Fuzine 8",
+        "position": {
+            "lat": 46.054398,
+            "lng": 14.553319
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714747903000
+    },
+    {
+        "number": 24,
+        "contract_name": "ljubljana",
+        "name": "ZALO\u0160KA C.-GRABLOVI\u010cEVA C.",
+        "address": "Zalo\u0161ka cesta 16",
+        "position": {
+            "lat": 46.05441,
+            "lng": 14.52978
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 4,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748107000
+    },
+    {
+        "number": 79,
+        "contract_name": "ljubljana",
+        "name": "DOLENJSKA C. - STRELI\u0160\u010cE",
+        "address": "Dolenjska c. 11",
+        "position": {
+            "lat": 46.038866,
+            "lng": 14.517605
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 13,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748029000
+    },
+    {
+        "number": 47,
+        "contract_name": "ljubljana",
+        "name": "\u0160TEPANJSKO NASELJE 1-JAK\u010cEVA ULICA",
+        "address": "Jak\u010deva ulica 37",
+        "position": {
+            "lat": 46.053047,
+            "lng": 14.545125
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 12,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748026000
+    },
+    {
+        "number": 75,
+        "contract_name": "ljubljana",
+        "name": "SOSESKA NOVO BRDO",
+        "address": "Pot rde\u010dega kri\u017ea",
+        "position": {
+            "lat": 46.045617,
+            "lng": 14.462281
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748114000
+    },
+    {
+        "number": 58,
+        "contract_name": "ljubljana",
+        "name": "TR\u017dNICA KOSEZE",
+        "address": "Vodnikova cesta 187",
+        "position": {
+            "lat": 46.074315,
+            "lng": 14.475483
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 10,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748002000
+    },
+    {
+        "number": 62,
+        "contract_name": "ljubljana",
+        "name": "ALEJA - CELOV\u0160KA CESTA",
+        "address": "Aleja - Celov\u0161ka Cesta",
+        "position": {
+            "lat": 46.077302,
+            "lng": 14.482581
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748382000
+    },
+    {
+        "number": 33,
+        "contract_name": "ljubljana",
+        "name": "MERCATOR CENTER \u0160I\u0160KA",
+        "address": "Cesta Ljubljanske brigade 33",
+        "position": {
+            "lat": 46.087079,
+            "lng": 14.475439
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 22,
+        "available_bike_stands": 12,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748117000
+    },
+    {
+        "number": 16,
+        "contract_name": "ljubljana",
+        "name": "GH \u0160ENTPETER-NJEGO\u0160EVA C.",
+        "address": "Zalo\u0161ka cesta 1",
+        "position": {
+            "lat": 46.05257,
+            "lng": 14.51928
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 24,
+        "available_bike_stands": 14,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748034000
+    },
+    {
+        "number": 84,
+        "contract_name": "ljubljana",
+        "name": "HOFER - POLJE",
+        "address": "Polje 51",
+        "position": {
+            "lat": 46.053718,
+            "lng": 14.589284
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748089000
+    },
+    {
+        "number": 65,
+        "contract_name": "ljubljana",
+        "name": "VI\u0160KO POLJE",
+        "address": "Cesta na Brdo",
+        "position": {
+            "lat": 46.046189,
+            "lng": 14.469037
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714747918000
+    },
+    {
+        "number": 40,
+        "contract_name": "ljubljana",
+        "name": "BONIFACIJA",
+        "address": "Tr\u017ea\u0161ka 123",
+        "position": {
+            "lat": 46.039641,
+            "lng": 14.472664
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 21,
+        "available_bike_stands": 9,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748227000
+    },
+    {
+        "number": 39,
+        "contract_name": "ljubljana",
+        "name": "P + R DOLGI MOST",
+        "address": "P+R Dolgi most",
+        "position": {
+            "lat": 46.037003,
+            "lng": 14.465229
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748151000
+    },
+    {
+        "number": 67,
+        "contract_name": "ljubljana",
+        "name": "DRAVLJE",
+        "address": "Celov\u0161ka cesta",
+        "position": {
+            "lat": 46.07984,
+            "lng": 14.479952
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714747843000
+    },
+    {
+        "number": 70,
+        "contract_name": "ljubljana",
+        "name": "POLJE",
+        "address": "Zadobrov\u0161ka cesta",
+        "position": {
+            "lat": 46.05722,
+            "lng": 14.583537
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 5,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714747965000
+    },
+    {
+        "number": 83,
+        "contract_name": "ljubljana",
+        "name": "SUPERNOVA LJUBLJANA - RUDNIK",
+        "address": "Jur\u010dkova 223",
+        "position": {
+            "lat": 46.021586,
+            "lng": 14.536745
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748050000
+    },
+    {
+        "number": 56,
+        "contract_name": "ljubljana",
+        "name": "SREDNJA FRIZERSKA \u0160OLA",
+        "address": "Litostrojska cesta 53",
+        "position": {
+            "lat": 46.080522,
+            "lng": 14.491439
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748038000
+    },
+    {
+        "number": 9,
+        "contract_name": "ljubljana",
+        "name": "TRG OF-KOLODVORSKA UL.",
+        "address": "Trg OF 12",
+        "position": {
+            "lat": 46.057421,
+            "lng": 14.510265
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 26,
+        "available_bike_stands": 20,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748151000
+    },
+    {
+        "number": 13,
+        "contract_name": "ljubljana",
+        "name": "TRG MDB",
+        "address": "Trg MDB 9",
+        "position": {
+            "lat": 46.047565,
+            "lng": 14.495687
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 20,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748003000
+    },
+    {
+        "number": 18,
+        "contract_name": "ljubljana",
+        "name": "TR\u017dA\u0160KA C.-ILIRIJA",
+        "address": "Tr\u017ea\u0161ka cesta 37",
+        "position": {
+            "lat": 46.044629,
+            "lng": 14.486699
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 4,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714748144000
+    },
+    {
+        "number": 1,
+        "contract_name": "ljubljana",
+        "name": "PRE\u0160ERNOV TRG-PETKOV\u0160KOVO NABRE\u017dJE",
+        "address": "Pre\u0161ernov trg 6",
+        "position": {
+            "lat": 46.051367,
+            "lng": 14.506542
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 7,
+        "available_bikes": 13,
+        "status": "OPEN",
+        "last_update": 1714747987000
+    },
+    {
+        "number": 60,
+        "contract_name": "ljubljana",
+        "name": "MERCATOR MARKET - CELOV\u0160KA C. 163",
+        "address": "Celov\u0161ka 163",
+        "position": {
+            "lat": 46.073264,
+            "lng": 14.485942
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 13,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748294000
+    },
+    {
+        "number": 44,
+        "contract_name": "ljubljana",
+        "name": "SAVSKO NASELJE 2-LINHARTOVA CESTA",
+        "address": "Topni\u0161ka 54",
+        "position": {
+            "lat": 46.064546,
+            "lng": 14.518013
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 2,
+        "available_bikes": 18,
+        "status": "OPEN",
+        "last_update": 1714748045000
+    },
+    {
+        "number": 5,
+        "contract_name": "ljubljana",
+        "name": "BREG",
+        "address": "Breg 20",
+        "position": {
+            "lat": 46.046498,
+            "lng": 14.505148
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748070000
+    },
+    {
+        "number": 36,
+        "contract_name": "ljubljana",
+        "name": "BTC CITY ATLANTIS",
+        "address": "BTC City Atlantis",
+        "position": {
+            "lat": 46.063081,
+            "lng": 14.547851
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748139000
+    },
+    {
+        "number": 63,
+        "contract_name": "ljubljana",
+        "name": "IKEA",
+        "address": "\u0160vedska ulica 6",
+        "position": {
+            "lat": 46.065175,
+            "lng": 14.539537
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748117000
+    },
+    {
+        "number": 7,
+        "contract_name": "ljubljana",
+        "name": "MIKLO\u0160I\u010cEV PARK",
+        "address": "Miklo\u0161i\u010deva cesta 20",
+        "position": {
+            "lat": 46.054168,
+            "lng": 14.50706
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 1,
+        "available_bikes": 17,
+        "status": "OPEN",
+        "last_update": 1714747990000
+    },
+    {
+        "number": 23,
+        "contract_name": "ljubljana",
+        "name": "BARJANSKA C.-CENTER STAREJ\u0160IH TRNOVO",
+        "address": "Devinska ulica 1a",
+        "position": {
+            "lat": 46.04081,
+            "lng": 14.49951
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748077000
+    },
+    {
+        "number": 81,
+        "contract_name": "ljubljana",
+        "name": "LEK - VEROV\u0160KOVA",
+        "address": "Verov\u0161kova 57",
+        "position": {
+            "lat": 46.076856,
+            "lng": 14.500222
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748108000
+    },
+    {
+        "number": 15,
+        "contract_name": "ljubljana",
+        "name": "AMBRO\u017dEV TRG",
+        "address": "Poljanska cesta 20c",
+        "position": {
+            "lat": 46.049877,
+            "lng": 14.516308
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 11,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748124000
+    },
+    {
+        "number": 77,
+        "contract_name": "ljubljana",
+        "name": "VOJKOVA - GASILSKA BRIGADA",
+        "address": "Vojkova cesta",
+        "position": {
+            "lat": 46.068727,
+            "lng": 14.516858
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748051000
+    },
+    {
+        "number": 61,
+        "contract_name": "ljubljana",
+        "name": "RAKOVNIK",
+        "address": "Rakovnik",
+        "position": {
+            "lat": 46.036284,
+            "lng": 14.522948
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714747962000
+    },
+    {
+        "number": 50,
+        "contract_name": "ljubljana",
+        "name": "PREGLOV TRG",
+        "address": "Nove Fuzine 33",
+        "position": {
+            "lat": 46.054554,
+            "lng": 14.55908
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748058000
+    },
+    {
+        "number": 28,
+        "contract_name": "ljubljana",
+        "name": "PLE\u010cNIKOV STADION",
+        "address": "Dunajska cesta 70",
+        "position": {
+            "lat": 46.06942,
+            "lng": 14.51052
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 6,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748311000
+    }
+]

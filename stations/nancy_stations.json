@@ -1,0 +1,614 @@
+[
+    {
+        "number": 30,
+        "contract_name": "nancy",
+        "name": "00030 - NATIONS",
+        "address": "au milieu du boulevard des Nations \u00a0\u00e0 Vandoeuvre dans le prolongement de l\u2019arr\u00eat de bus Nations devant le centre commercial",
+        "position": {
+            "lat": 48.662356,
+            "lng": 6.173442
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 11,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748310000
+    },
+    {
+        "number": 29,
+        "contract_name": "nancy",
+        "name": "00029 - VELODROME (CB)",
+        "address": "Place du V\u00e9lodrome",
+        "position": {
+            "lat": 48.666721193896,
+            "lng": 6.16661978303466
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 24,
+        "available_bike_stands": 10,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748058000
+    },
+    {
+        "number": 1,
+        "contract_name": "nancy",
+        "name": "00001 - DOMINICAINS - FOURIER (CB)",
+        "address": "Angle rue Pierre FOURIER et rue des Dominicains",
+        "position": {
+            "lat": 48.6924654452072,
+            "lng": 6.18340055389445
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 15,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748034000
+    },
+    {
+        "number": 33,
+        "contract_name": "nancy",
+        "name": "00033 - LAXOU MAIRIE",
+        "address": "9 av Paul D\u00e9roul\u00e8de",
+        "position": {
+            "lat": 48.684954,
+            "lng": 6.154908
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 11,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748261000
+    },
+    {
+        "number": 6,
+        "contract_name": "nancy",
+        "name": "00006 - LES 2 RIVES",
+        "address": "2 rue Emilie du Ch\u00e2telet",
+        "position": {
+            "lat": 48.695420147586,
+            "lng": 6.19522861327582
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 11,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748328000
+    },
+    {
+        "number": 19,
+        "contract_name": "nancy",
+        "name": "00019 - COMMANDERIE - CHALNOT",
+        "address": "Angle rue Pierre CHALNOT et rue de la Commanderie",
+        "position": {
+            "lat": 48.6869197241039,
+            "lng": 6.17234789239391
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 7,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748341000
+    },
+    {
+        "number": 15,
+        "contract_name": "nancy",
+        "name": "00015 - PORT STE CATHERINE",
+        "address": "Angle rue Henri BAZIN et quai Sainte-Catherine",
+        "position": {
+            "lat": 48.6954870039528,
+            "lng": 6.1906794896667
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 16,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748258000
+    },
+    {
+        "number": 28,
+        "contract_name": "nancy",
+        "name": "00028 - MARCH\u00c9 D'HAUSSONVILLE",
+        "address": "Boulevard d'Haussonville",
+        "position": {
+            "lat": 48.67227619793021,
+            "lng": 6.165710709115886
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748375000
+    },
+    {
+        "number": 13,
+        "contract_name": "nancy",
+        "name": "00013 - SAINT NICOLAS - CHARLES III",
+        "address": "71 rue Saint-Nicolas",
+        "position": {
+            "lat": 48.688015,
+            "lng": 6.187451
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 5,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748235000
+    },
+    {
+        "number": 4,
+        "contract_name": "nancy",
+        "name": "00004 - MARCHE CENTRAL (CB)",
+        "address": "Angle rue Saint-Dizier - Rue du Dr SCHMITT",
+        "position": {
+            "lat": 48.6891733257851,
+            "lng": 6.18390463043762
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 9,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748210000
+    },
+    {
+        "number": 18,
+        "contract_name": "nancy",
+        "name": "00018 - GARE SAINT LEON",
+        "address": "Angle rue Saint-L\u00e9on - Esplanade Saint-L\u00e9on",
+        "position": {
+            "lat": 48.689560111075,
+            "lng": 6.17251545229862
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 5,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748380000
+    },
+    {
+        "number": 35,
+        "contract_name": "nancy",
+        "name": "00035 - MON DESERT",
+        "address": "Croisement rue Mon D\u00e9sert et Bd de l'American L\u00e9gion",
+        "position": {
+            "lat": 48.684141,
+            "lng": 6.176525
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748041000
+    },
+    {
+        "number": 12,
+        "contract_name": "nancy",
+        "name": "00012 - ST SEBASTIEN - ST THIEBAUT",
+        "address": "Angle rue Saint-Thiebaut et rue du Grand Rabbin HAGUENAUER",
+        "position": {
+            "lat": 48.6886141256403,
+            "lng": 6.17950010441818
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 22,
+        "available_bike_stands": 4,
+        "available_bikes": 18,
+        "status": "OPEN",
+        "last_update": 1714748292000
+    },
+    {
+        "number": 22,
+        "contract_name": "nancy",
+        "name": "00022 - HOPITAL ST JULIEN",
+        "address": "Angle rue Molitor et rue Foller",
+        "position": {
+            "lat": 48.6858574026886,
+            "lng": 6.19290171469907
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 13,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748354000
+    },
+    {
+        "number": 21,
+        "contract_name": "nancy",
+        "name": "00021 - HOPITAL CENTRAL",
+        "address": "45 avenue du Mar\u00e9chal de Lattre de Tassigny",
+        "position": {
+            "lat": 48.6833502130976,
+            "lng": 6.19029660801914
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748302000
+    },
+    {
+        "number": 5,
+        "contract_name": "nancy",
+        "name": "00005 - PLACE COLONEL DRIANT",
+        "address": "Rue Drouin - Face au n\u00b02",
+        "position": {
+            "lat": 48.6921301,
+            "lng": 6.1872695
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 8,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748289000
+    },
+    {
+        "number": 14,
+        "contract_name": "nancy",
+        "name": "00014 - FAC DE LETTRES",
+        "address": "Place Godefroy de Bouillon",
+        "position": {
+            "lat": 48.6928180794454,
+            "lng": 6.16860978784457
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 15,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714747868000
+    },
+    {
+        "number": 16,
+        "contract_name": "nancy",
+        "name": "00016 - PORTE DE LA CRAFFE",
+        "address": "Angle rue du Haut Bourgeois et place des Bourgets",
+        "position": {
+            "lat": 48.6984724451821,
+            "lng": 6.17798553705909
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748395000
+    },
+    {
+        "number": 9,
+        "contract_name": "nancy",
+        "name": "00009 - PLACE BARROIS",
+        "address": "Place Barrois",
+        "position": {
+            "lat": 48.6995023285111,
+            "lng": 6.20473563987354
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 17,
+        "available_bike_stands": 12,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748353000
+    },
+    {
+        "number": 36,
+        "contract_name": "nancy",
+        "name": "00036 - SAURUPT",
+        "address": "100 Avenue du G\u00e9n\u00e9ral Leclerc",
+        "position": {
+            "lat": 48.680516,
+            "lng": 6.181811
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748410000
+    },
+    {
+        "number": 34,
+        "contract_name": "nancy",
+        "name": "00034 - MALZEVILLE",
+        "address": "Square Waldstetten  en face du 6 rue Maurice Barr\u00e8s MALZEVILLE",
+        "position": {
+            "lat": 48.707187,
+            "lng": 6.185524
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 5,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748053000
+    },
+    {
+        "number": 3,
+        "contract_name": "nancy",
+        "name": "00003 - PLACE DE DOMBASLE",
+        "address": "Rue Stanislas - Face au n\u00b068",
+        "position": {
+            "lat": 48.6919579483934,
+            "lng": 6.17851021950761
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 28,
+        "available_bike_stands": 13,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748252000
+    },
+    {
+        "number": 26,
+        "contract_name": "nancy",
+        "name": "00026 - BAUDRICOURT HAUSSONVILLE",
+        "address": "Rue des 3 Epis Baudricourt",
+        "position": {
+            "lat": 48.675248491826174,
+            "lng": 6.162844844269929
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 13,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748326000
+    },
+    {
+        "number": 24,
+        "contract_name": "nancy",
+        "name": "00024 - 3 MAISONS - CHARLES V (CB)",
+        "address": "rue du faubourg des 3 Maisons - Angle boulevard Charles V",
+        "position": {
+            "lat": 48.701365,
+            "lng": 6.176824
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 23,
+        "available_bike_stands": 20,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748110000
+    },
+    {
+        "number": 23,
+        "contract_name": "nancy",
+        "name": "00023 - PROMENADE DES CANAUX",
+        "address": "Promenade des Canaux",
+        "position": {
+            "lat": 48.6927939742599,
+            "lng": 6.19628435757015
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 14,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748299000
+    },
+    {
+        "number": 7,
+        "contract_name": "nancy",
+        "name": "00007 - PLACE ST EPVRE",
+        "address": "Place du Colonel Fabien",
+        "position": {
+            "lat": 48.6952351,
+            "lng": 6.1798109
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748228000
+    },
+    {
+        "number": 32,
+        "contract_name": "nancy",
+        "name": "00032 - MEDREVILLE",
+        "address": "en face du 1 Boulevard Charlemagne Nancy",
+        "position": {
+            "lat": 48.685497,
+            "lng": 6.161015
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748386000
+    },
+    {
+        "number": 20,
+        "contract_name": "nancy",
+        "name": "00020 - PLACE DES VOSGES",
+        "address": "Angle avenue du G\u00e9n\u00e9ral Leclerc et rue du Mar\u00e9chal De Lattre de Tassigny",
+        "position": {
+            "lat": 48.684781,
+            "lng": 6.187631
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748313000
+    },
+    {
+        "number": 37,
+        "contract_name": "nancy",
+        "name": "00037 - JARDINIERS - TIERCELINS",
+        "address": "En face du 19 rue des Jardiniers",
+        "position": {
+            "lat": 48.691291,
+            "lng": 6.190844
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 12,
+        "available_bike_stands": 6,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748008000
+    },
+    {
+        "number": 31,
+        "contract_name": "nancy",
+        "name": "00031 - ARTEM",
+        "address": "en face du 119 rue du Sergent Blandan",
+        "position": {
+            "lat": 48.674665,
+            "lng": 6.170655
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748360000
+    },
+    {
+        "number": 8,
+        "contract_name": "nancy",
+        "name": "00008 - COURS LEOPOLD - SAINT MICHEL",
+        "address": "Angle rue Saint-Michel et cours L\u00e9opold",
+        "position": {
+            "lat": 48.6956140662607,
+            "lng": 6.17676840786255
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 17,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748177000
+    },
+    {
+        "number": 10,
+        "contract_name": "nancy",
+        "name": "00010 - GARE THIERS (CB)",
+        "address": "Rue Mazagran",
+        "position": {
+            "lat": 48.69037,
+            "lng": 6.175677
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 39,
+        "available_bike_stands": 23,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714748137000
+    },
+    {
+        "number": 2,
+        "contract_name": "nancy",
+        "name": "00002 - PLACE DE LA CARRIERE",
+        "address": "Angle Place de la Carri\u00e8re et rue des Mar\u00e9chaux",
+        "position": {
+            "lat": 48.6945981637388,
+            "lng": 6.18229408637817
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 12,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748346000
+    },
+    {
+        "number": 25,
+        "contract_name": "nancy",
+        "name": "00025 - PLACE COMMANDERIE",
+        "address": "Place de la Commanderie - Face au n\u00b013",
+        "position": {
+            "lat": 48.6859179816784,
+            "lng": 6.1674218161464
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 9,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748390000
+    },
+    {
+        "number": 17,
+        "contract_name": "nancy",
+        "name": "00017 - CONSERVATOIRE - MANUFACTURE",
+        "address": "27 rue Baron Louis - Angle quai Claude le Lorrain",
+        "position": {
+            "lat": 48.6957176856775,
+            "lng": 6.17133838702303
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748254000
+    },
+    {
+        "number": 27,
+        "contract_name": "nancy",
+        "name": "00027 - NANCY THERMAL (CB)",
+        "address": "Rue du Sergent Blandan",
+        "position": {
+            "lat": 48.679501,
+            "lng": 6.167344
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 9,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748057000
+    }
+]

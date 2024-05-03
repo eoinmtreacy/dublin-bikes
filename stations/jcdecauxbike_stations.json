@@ -1,0 +1,189 @@
+[
+    {
+        "number": 501,
+        "contract_name": "jcdecauxbike",
+        "name": "501 - BEE PLAISIR",
+        "address": "",
+        "position": {
+            "lat": 48.799648,
+            "lng": 1.945439
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 1,
+        "available_bike_stands": 1,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1711558433000
+    },
+    {
+        "number": 1191,
+        "contract_name": "jcdecauxbike",
+        "name": "NANCY PLACE STANISLAS",
+        "address": "",
+        "position": {
+            "lat": 48.797631,
+            "lng": 1.963525
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 6,
+        "available_bike_stands": 3,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714660365000
+    },
+    {
+        "number": 5033,
+        "contract_name": "jcdecauxbike",
+        "name": "5033 - VELOV PARC EXPO",
+        "address": "",
+        "position": {
+            "lat": 48.8004066018665,
+            "lng": 1.94832050832529
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 5,
+        "available_bike_stands": 2,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714747878000
+    },
+    {
+        "number": 80,
+        "contract_name": "jcdecauxbike",
+        "name": "80 - BORNE AMIENS",
+        "address": "",
+        "position": {
+            "lat": 49.4865475,
+            "lng": 1.022504
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 1,
+        "available_bike_stands": 0,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1696430886000
+    },
+    {
+        "number": 68,
+        "contract_name": "jcdecauxbike",
+        "name": "68 - MULHOUSE",
+        "address": "48,797631\n1,963525",
+        "position": {
+            "lat": 47.761696,
+            "lng": 7.331624
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 2,
+        "available_bike_stands": 0,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748375000
+    },
+    {
+        "number": 1000,
+        "contract_name": "jcdecauxbike",
+        "name": "1000 - TEST BE LYON",
+        "address": "1,9567462",
+        "position": {
+            "lat": 45.780403,
+            "lng": 4.904869
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 2,
+        "available_bike_stands": 1,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1713505029000
+    },
+    {
+        "number": 2017,
+        "contract_name": "jcdecauxbike",
+        "name": "2017 - LUX PARC EXPO",
+        "address": "",
+        "position": {
+            "lat": 48.800454,
+            "lng": 1.948658
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 5,
+        "available_bike_stands": 1,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714747893000
+    },
+    {
+        "number": 2019,
+        "contract_name": "jcdecauxbike",
+        "name": "2019 - LA CHAINE IOD",
+        "address": "",
+        "position": {
+            "lat": 48.807319,
+            "lng": 1.9518784
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 2,
+        "available_bike_stands": 2,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714747863000
+    },
+    {
+        "number": 10000,
+        "contract_name": "jcdecauxbike",
+        "name": "10000 - TESTDSI TOYAMA",
+        "address": "",
+        "position": {
+            "lat": 36.4217,
+            "lng": 137.12457
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 2,
+        "available_bike_stands": 0,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1708508187000
+    },
+    {
+        "number": 1033,
+        "contract_name": "jcdecauxbike",
+        "name": "1033 - CYCLOBURO BORDEAUX",
+        "address": "",
+        "position": {
+            "lat": 44.868181,
+            "lng": -0.547516
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 0,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714747875000
+    },
+    {
+        "number": 500,
+        "contract_name": "jcdecauxbike",
+        "name": "500 - IT PLAISIR",
+        "address": "",
+        "position": {
+            "lat": 48.799828,
+            "lng": 1.946855
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 1,
+        "available_bike_stands": 0,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1661873402000
+    }
+]

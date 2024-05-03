@@ -1,0 +1,682 @@
+[
+    {
+        "number": 2,
+        "contract_name": "mulhouse",
+        "name": "02 - REPUBLIQUE (CB)",
+        "address": "3 Place de la R\u00e9publique",
+        "position": {
+            "lat": 47.7459607192146,
+            "lng": 7.34141256758124
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 14,
+        "available_bike_stands": 11,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714747950000
+    },
+    {
+        "number": 28,
+        "contract_name": "mulhouse",
+        "name": "28 - SCHUMAN LEFEB",
+        "address": "Face 113 Avenue Robert Schuman angle Rue lefebvre",
+        "position": {
+            "lat": 47.756465,
+            "lng": 7.348388
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748218000
+    },
+    {
+        "number": 22,
+        "contract_name": "mulhouse",
+        "name": "22 - ST SAUVEUR",
+        "address": "Rue de Zillisheim angle Rue St Sauveur",
+        "position": {
+            "lat": 47.742397,
+            "lng": 7.331582
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 11,
+        "available_bike_stands": 9,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748152000
+    },
+    {
+        "number": 14,
+        "contract_name": "mulhouse",
+        "name": "14 - SCHUMANN",
+        "address": "Av Robert Schuman angle Rue de Stalingrad",
+        "position": {
+            "lat": 47.75243,
+            "lng": 7.342944
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 14,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748152000
+    },
+    {
+        "number": 38,
+        "contract_name": "mulhouse",
+        "name": "38 - WANNE",
+        "address": "RUE DE LA WANNE, angle RUE KOECHLIN",
+        "position": {
+            "lat": 47.743132,
+            "lng": 7.352147
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 6,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748210000
+    },
+    {
+        "number": 9,
+        "contract_name": "mulhouse",
+        "name": "09 - NESSEL (CB)",
+        "address": "BOULEVARD CHARLES STOESSEL",
+        "position": {
+            "lat": 47.745105,
+            "lng": 7.329143
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 15,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748323000
+    },
+    {
+        "number": 17,
+        "contract_name": "mulhouse",
+        "name": "17 - PLACE DE LA REUNION (CB)",
+        "address": "Rue de la Lanterne contre Temple St ETIENNE",
+        "position": {
+            "lat": 47.747038,
+            "lng": 7.338923
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 28,
+        "available_bike_stands": 21,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714747897000
+    },
+    {
+        "number": 20,
+        "contract_name": "mulhouse",
+        "name": "20 - FILATURE",
+        "address": "Allee Nathan Katz Parvis de la Filature",
+        "position": {
+            "lat": 47.753533915217425,
+            "lng": 7.348462912266421
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 12,
+        "available_bike_stands": 8,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748173000
+    },
+    {
+        "number": 6,
+        "contract_name": "mulhouse",
+        "name": "06 - PORTE JEUNE (CB)",
+        "address": "Angle av de Colmar / av du President Kennedy devant Porte Jeune",
+        "position": {
+            "lat": 47.7500690513047,
+            "lng": 7.33871413913301
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 13,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748007000
+    },
+    {
+        "number": 3,
+        "contract_name": "mulhouse",
+        "name": "03 - PLACE DE LA CONCORDE",
+        "address": "Place de la Concorde / Angle rue de l'Arsenal",
+        "position": {
+            "lat": 47.746818,
+            "lng": 7.335238
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 12,
+        "available_bike_stands": 7,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748106000
+    },
+    {
+        "number": 8,
+        "contract_name": "mulhouse",
+        "name": "08 - PORTE HAUTE",
+        "address": "Rue Gutenberg angle rue l'Arsenal",
+        "position": {
+            "lat": 47.7469931994958,
+            "lng": 7.33206326834505
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 4,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748258000
+    },
+    {
+        "number": 41,
+        "contract_name": "mulhouse",
+        "name": "#41-STATION SOLAIRE",
+        "address": "Site KM0, 30 Rue Fran\u00e7ois Spoerry\n               Mulhouse",
+        "position": {
+            "lat": 47.738964,
+            "lng": 7.328609
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 11,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714747950000
+    },
+    {
+        "number": 4,
+        "contract_name": "mulhouse",
+        "name": "04 - PARC SALVATOR",
+        "address": "Rue de Metz devant parking Face rue de la SOMME",
+        "position": {
+            "lat": 47.748312192104606,
+            "lng": 7.343104706876782
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 12,
+        "available_bike_stands": 6,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714747990000
+    },
+    {
+        "number": 18,
+        "contract_name": "mulhouse",
+        "name": "18 - CLEMENCEAU",
+        "address": "14 AVENUE AUGUSTE WICKY",
+        "position": {
+            "lat": 47.744426,
+            "lng": 7.340096
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 11,
+        "available_bike_stands": 6,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748150000
+    },
+    {
+        "number": 37,
+        "contract_name": "mulhouse",
+        "name": "37 - TUNNEL",
+        "address": "CHATEAU ZU-RHEIN MULHOUSE",
+        "position": {
+            "lat": 47.74329631548472,
+            "lng": 7.315494395852651
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 12,
+        "available_bike_stands": 11,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748118000
+    },
+    {
+        "number": 32,
+        "contract_name": "mulhouse",
+        "name": "32- CAMPUS (CB)",
+        "address": "Rue Alfred Verner All\u00e9e Brenard Thierry-Mieg",
+        "position": {
+            "lat": 47.7329045,
+            "lng": 7.3155374
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 22,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748028000
+    },
+    {
+        "number": 31,
+        "contract_name": "mulhouse",
+        "name": "31 - KINEPOLIS (CB)",
+        "address": "Cinema Kinepolis Nouveau Bassin",
+        "position": {
+            "lat": 47.76001,
+            "lng": 7.351265
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714747893000
+    },
+    {
+        "number": 7,
+        "contract_name": "mulhouse",
+        "name": "07 - MAIRIE",
+        "address": "Av du Pr\u00e9sident Kennedy angle rue Pierre et Marie Curie devant Credit Mutuel",
+        "position": {
+            "lat": 47.74941110084169,
+            "lng": 7.335779025655298
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748230000
+    },
+    {
+        "number": 15,
+        "contract_name": "mulhouse",
+        "name": "15 - GRAND REX",
+        "address": "Av de Colmar angle Rue Engel Dollfus",
+        "position": {
+            "lat": 47.75243313452126,
+            "lng": 7.337387363569732
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 10,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748380000
+    },
+    {
+        "number": 36,
+        "contract_name": "mulhouse",
+        "name": "36 - MUSEE DE L'AUTO",
+        "address": "RUE DE LA MERTZAU  MULHOUSE",
+        "position": {
+            "lat": 47.75986276611346,
+            "lng": 7.332262051959153
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748036000
+    },
+    {
+        "number": 11,
+        "contract_name": "mulhouse",
+        "name": "11 - PLACE DU PRINTEMPS",
+        "address": "Rue du Printemps angle Rue Courte",
+        "position": {
+            "lat": 47.750127,
+            "lng": 7.348552
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 13,
+        "available_bike_stands": 13,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748170000
+    },
+    {
+        "number": 27,
+        "contract_name": "mulhouse",
+        "name": "27 - CITE ADMINISTRATIVE",
+        "address": "Avenue de Colmar devant Maison des Associations",
+        "position": {
+            "lat": 47.75645059182136,
+            "lng": 7.335962697690334
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 5,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748211000
+    },
+    {
+        "number": 33,
+        "contract_name": "mulhouse",
+        "name": "33 - AUBERGE",
+        "address": "Rue de Brunstatt angle Rue de l'Illberg",
+        "position": {
+            "lat": 47.738321115207405,
+            "lng": 7.317404625830476
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 12,
+        "available_bike_stands": 9,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748126000
+    },
+    {
+        "number": 29,
+        "contract_name": "mulhouse",
+        "name": "29 - LAURENT",
+        "address": "72 Rue Laurent",
+        "position": {
+            "lat": 47.752205822026475,
+            "lng": 7.352306114121824
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 11,
+        "available_bike_stands": 10,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748141000
+    },
+    {
+        "number": 39,
+        "contract_name": "mulhouse",
+        "name": "39 - PORTE DE RIEDISHEIM (CB)",
+        "address": "AVE DE RIEDISHEIM, angle RUE DE LA WANNE",
+        "position": {
+            "lat": 47.746152,
+            "lng": 7.357114
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 14,
+        "available_bike_stands": 8,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714747913000
+    },
+    {
+        "number": 30,
+        "contract_name": "mulhouse",
+        "name": "30 -  HARDT",
+        "address": "Rue de la Hardt face au 40",
+        "position": {
+            "lat": 47.7532,
+            "lng": 7.3554
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 11,
+        "available_bike_stands": 7,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748410000
+    },
+    {
+        "number": 24,
+        "contract_name": "mulhouse",
+        "name": "24 - TIVOLI",
+        "address": "Rue de Tivoli angle Bd Wallack",
+        "position": {
+            "lat": 47.74305508622176,
+            "lng": 7.347364171170129
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 13,
+        "available_bike_stands": 11,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748151000
+    },
+    {
+        "number": 26,
+        "contract_name": "mulhouse",
+        "name": "26 - GOERICH",
+        "address": "Rue Charles Goerich angle Rue Koechlim-Dolfus",
+        "position": {
+            "lat": 47.7432593602607,
+            "lng": 7.32393495955664
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 13,
+        "available_bike_stands": 10,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748182000
+    },
+    {
+        "number": 1,
+        "contract_name": "mulhouse",
+        "name": "01 - PARVIS DE LA GARE (CB)",
+        "address": "Avenue du G\u00e9n\u00e9ral Leclerc",
+        "position": {
+            "lat": 47.742424,
+            "lng": 7.342152
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 40,
+        "available_bike_stands": 27,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748302000
+    },
+    {
+        "number": 35,
+        "contract_name": "mulhouse",
+        "name": "35 - EUROPE",
+        "address": "Rue du Capitaine Dreyfus angle Bd de l'Europe",
+        "position": {
+            "lat": 47.75269193786139,
+            "lng": 7.346458858175643
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 14,
+        "available_bike_stands": 10,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748116000
+    },
+    {
+        "number": 25,
+        "contract_name": "mulhouse",
+        "name": "25 - PALAIS DES SPORTS",
+        "address": "Rue du Ch\u00e2teau Zu-Rhein angle Rue de Hirsingue",
+        "position": {
+            "lat": 47.740487,
+            "lng": 7.320169
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 11,
+        "available_bike_stands": 8,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748100000
+    },
+    {
+        "number": 21,
+        "contract_name": "mulhouse",
+        "name": "21 - FONDERIE (CB)",
+        "address": "Rue de la Locomotive angle Rue des Monteurs",
+        "position": {
+            "lat": 47.73966,
+            "lng": 7.332354
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 27,
+        "available_bike_stands": 13,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748381000
+    },
+    {
+        "number": 10,
+        "contract_name": "mulhouse",
+        "name": "10 - PLACE DE LA PAIX (CB)",
+        "address": "Rue de la SINNE angle rue CH.BRUN devant Eglise St ETIENNE",
+        "position": {
+            "lat": 47.7441863794142,
+            "lng": 7.33572665536391
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 13,
+        "available_bike_stands": 4,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714747978000
+    },
+    {
+        "number": 5,
+        "contract_name": "mulhouse",
+        "name": "05 - METZ",
+        "address": "Angle rue de Metz / AV du President Kennedy devant Chambre des M\u00e9tiers",
+        "position": {
+            "lat": 47.749314,
+            "lng": 7.341124
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 10,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748029000
+    },
+    {
+        "number": 23,
+        "contract_name": "mulhouse",
+        "name": "23 - HASENRAIN",
+        "address": "Avenue d'Altkirch entr\u00e9e hopital",
+        "position": {
+            "lat": 47.736019,
+            "lng": 7.332088
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 14,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748118000
+    },
+    {
+        "number": 16,
+        "contract_name": "mulhouse",
+        "name": "16 - PLACE FRANKLIN",
+        "address": "Rue Engel Dollfus dans le prolongement de la rue de la Filature",
+        "position": {
+            "lat": 47.751456,
+            "lng": 7.33392
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 11,
+        "available_bike_stands": 5,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748331000
+    },
+    {
+        "number": 40,
+        "contract_name": "mulhouse",
+        "name": "40 - GARE DE DORNACH",
+        "address": "RUE LEON JOUHAUX MULHOUSE",
+        "position": {
+            "lat": 47.746490991763224,
+            "lng": 7.308432590232066
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748174000
+    },
+    {
+        "number": 19,
+        "contract_name": "mulhouse",
+        "name": "19 - LES TROIS ROIS",
+        "address": "Rue Jacques Preiss angle rue des Rabbins",
+        "position": {
+            "lat": 47.74409332327696,
+            "lng": 7.333486550613367
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 14,
+        "available_bike_stands": 8,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748174000
+    },
+    {
+        "number": 12,
+        "contract_name": "mulhouse",
+        "name": "12 - STALINGRAD",
+        "address": "Rue de Stalingrad angle rue Savator",
+        "position": {
+            "lat": 47.74929728207385,
+            "lng": 7.346391524337651
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748151000
+    },
+    {
+        "number": 34,
+        "contract_name": "mulhouse",
+        "name": "34 - PATINOIRE",
+        "address": "Boulevard Charles Stoessel entr\u00e9e Parc des Sport Patinoire",
+        "position": {
+            "lat": 47.736212,
+            "lng": 7.31875
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748190000
+    }
+]

@@ -22,7 +22,7 @@ def fetch_city_static(arg: str) -> bool:
 
 def create_stations_db(cursor, arg) -> bool:
     try:
-        cursor.execute(f"CREATE DATABASE IF NOT EXISTS {arg};")
+        cursor.execute(f"CREATE DATABASE IF NOT EXISTS {arg.replace('-','')};")
         return True
     except mysql.connector.Error as e:
         print(e)
@@ -98,21 +98,21 @@ def create_weather_table(conn, cursor):
                 temp_c FLOAT,
                 temp_f FLOAT,
                 is_day FLOAT,
-                wind_mph FLOAT
+                wind_mph FLOAT,
                 wind_kph FLOAT,
-                wind_degree FLOAT
-                wind_dir FLOAT,
+                wind_degree FLOAT,
+                wind_dir CHAR(10),
                 pressure_mb FLOAT,
                 pressure_in FLOAT,
                 precip_mm FLOAT,
-                precip_in FLOAT
-                humidity FLOAT                
-                cloud FLOAT                
+                precip_in FLOAT,
+                humidity FLOAT,              
+                cloud FLOAT,                
                 feelslike_c FLOAT,
                 feelslike_f FLOAT,
                 vis_km FLOAT,
-                vis_miles FLOAT
-                uv FLOAT
+                vis_miles FLOAT,
+                uv FLOAT,
                 gust_mph FLOAT,
                 gust_kph FLOAT
         )
@@ -126,13 +126,16 @@ def create_weather_table(conn, cursor):
     
 def main():
     with open("contracts.txt", "r") as contracts:
-        for arg in contracts.readlines():
+        for contract in contracts.readlines():
+            arg = contract[:-1]
             if fetch_city_static(arg):
-                print(f"static data saved in stations/{arg})station.json")
-                conn = mysql.connector.connect(host=DB,
-                                            user=DB_USER,
-                                            password=DB_PW
-                                            )
+                print(f"static data saved in stations/{arg}_stations.json")
+                conn = mysql.connector.connect(
+                    host='localhost',
+                    port=3306,
+                    user='root',
+                    password='mysql',
+                )
                 cursor = conn.cursor()
 
                 if create_stations_db(cursor, arg):
@@ -141,10 +144,13 @@ def main():
                     cursor.close()
 
                     # create new connection and cursor to database: arg
-                    conn = mysql.connector.connect(host=DB,
-                                                user=DB_USER,
-                                                password=DB_PW,
-                                                database=arg)
+                    conn = mysql.connector.connect(
+                        host='localhost',
+                        port=3306,
+                        user='root',
+                        password='mysql',
+                        database=arg.replace('-', '')
+                    )
                     cursor = conn.cursor()
                     if create_stations_table(conn, cursor):
                         print(f"created stations table in database {arg}")
@@ -165,11 +171,4 @@ def main():
 
 if __name__ == "__main__":
     # Check if there is exactly one command-line argument (excluding the script name)
-    if len(sys.argv) != 2:
-        print("Usage: python static_create.py <city_name>")
-        sys.exit(1)
-
-    else:
-        # Extract the argument
-        arg = sys.argv[1]
-        main(arg)
+    main()

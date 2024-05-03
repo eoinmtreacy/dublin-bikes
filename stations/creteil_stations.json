@@ -1,0 +1,172 @@
+[
+    {
+        "number": 8,
+        "contract_name": "creteil",
+        "name": "08 - ROND POINT HOTEL DE VILLE",
+        "address": "Avenue de la France Libre",
+        "position": {
+            "lat": 48.7773524472175,
+            "lng": 2.45537843175518
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 34,
+        "available_bike_stands": 18,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1712700445000
+    },
+    {
+        "number": 6,
+        "contract_name": "creteil",
+        "name": "06 - AVENUE DE LA BRECHE",
+        "address": "AVENUE DE LA BRECHE",
+        "position": {
+            "lat": 48.78350102672993,
+            "lng": 2.454576358402657
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 24,
+        "available_bike_stands": 17,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748222000
+    },
+    {
+        "number": 1,
+        "contract_name": "creteil",
+        "name": "01 - LATTRE DE TASSIGNY",
+        "address": "AVENUE DU MARECHAL DE LATTRE DE TASSIGNY",
+        "position": {
+            "lat": 48.7988350967829,
+            "lng": 2.45387633773323
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 26,
+        "available_bike_stands": 26,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748257000
+    },
+    {
+        "number": 5,
+        "contract_name": "creteil",
+        "name": "05 - GENERAL LECLERC / BARRAGE",
+        "address": "144 RUE DU GENERAL LECLERC",
+        "position": {
+            "lat": 48.7868389124326,
+            "lng": 2.46856657248876
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 14,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1712711151000
+    },
+    {
+        "number": 3,
+        "contract_name": "creteil",
+        "name": "03 - RUE DU GENERAL LECLERC - CENTRE ANCIEN",
+        "address": "En face du 1 ter rue de joly",
+        "position": {
+            "lat": 48.7907886168279,
+            "lng": 2.46489018474127
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 24,
+        "available_bike_stands": 13,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714606317000
+    },
+    {
+        "number": 7,
+        "contract_name": "creteil",
+        "name": "07- AVENUE DU DOCTEUR PAUL CASALIS",
+        "address": "Avenue du docteur Paul Casalis",
+        "position": {
+            "lat": 48.78021352952279,
+            "lng": 2.469692230994849
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748363000
+    },
+    {
+        "number": 9,
+        "contract_name": "creteil",
+        "name": "09 - EUROPARC",
+        "address": "ALLEE FERNAND POUILLON",
+        "position": {
+            "lat": 48.76603756422197,
+            "lng": 2.471314855226071
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 22,
+        "available_bike_stands": 13,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748206000
+    },
+    {
+        "number": 4,
+        "contract_name": "creteil",
+        "name": "04 - UNIVERSITE - MAIL DES MECHES",
+        "address": "Avenue du G\u00e9n\u00e9ral de Gaulle",
+        "position": {
+            "lat": 48.788110780811415,
+            "lng": 2.446248652158302
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 40,
+        "available_bike_stands": 32,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748271000
+    },
+    {
+        "number": 10,
+        "contract_name": "creteil",
+        "name": "10 - MAGELLAN",
+        "address": "RUE MAGELLAN",
+        "position": {
+            "lat": 48.76895633113984,
+            "lng": 2.456664667660431
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748287000
+    },
+    {
+        "number": 2,
+        "contract_name": "creteil",
+        "name": "02 - HOPITAL INTERCOMMUNAL (CHIC)",
+        "address": "AVENUE DE VERDUN",
+        "position": {
+            "lat": 48.796173633089616,
+            "lng": 2.46370624551545
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 22,
+        "available_bike_stands": 9,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1702113842000
+    }
+]

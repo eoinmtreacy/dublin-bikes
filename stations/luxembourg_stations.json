@@ -1,0 +1,2467 @@
+[
+    {
+        "number": 53,
+        "contract_name": "luxembourg",
+        "name": "#00053-LUDWIG VAN BEETHOVEN",
+        "address": "- LUDWIG VAN BEETHOVEN - RUE LUDWIG VAN BEETHOVEN ( DEVANT N\u00b0 45 )",
+        "position": {
+            "lat": 49.59,
+            "lng": 6.1172
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748344000
+    },
+    {
+        "number": 134,
+        "contract_name": "luxembourg",
+        "name": "#00134-STADE HENRI-DUNANT",
+        "address": "Rue Henri Dunant x Rue de Bastogne",
+        "position": {
+            "lat": 49.646906,
+            "lng": 6.134279
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 7,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748356000
+    },
+    {
+        "number": 24,
+        "contract_name": "luxembourg",
+        "name": "#00024-WEICKER",
+        "address": "WEICKER - AVENUE JF KENNEDY / RUE ALPHONSE WEICKER",
+        "position": {
+            "lat": 49.631952,
+            "lng": 6.17048
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748359000
+    },
+    {
+        "number": 126,
+        "contract_name": "luxembourg",
+        "name": "#00126-SALLES DES F\u00caTES HOLZEM",
+        "address": "Route de Garnich 3",
+        "position": {
+            "lat": 49.615901,
+            "lng": 5.993194
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 7,
+        "available_bikes": 13,
+        "status": "OPEN",
+        "last_update": 1714748222000
+    },
+    {
+        "number": 102,
+        "contract_name": "luxembourg",
+        "name": "#00102-FENTANGE HIEHL",
+        "address": "FENTANGE \"Hiehl\" - RUE DE BETTEMBOURG DEVANT N\u00b075",
+        "position": {
+            "lat": 49.567771,
+            "lng": 6.152463
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 14,
+        "available_bike_stands": 9,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748214000
+    },
+    {
+        "number": 144,
+        "contract_name": "luxembourg",
+        "name": "#00144-WALFERDANGE GARE",
+        "address": "Rue de la Gare 19 - Terminus Bus",
+        "position": {
+            "lat": 49.66151,
+            "lng": 6.135785
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748305000
+    },
+    {
+        "number": 88,
+        "contract_name": "luxembourg",
+        "name": "#00088-SERRA",
+        "address": "SERRA - AVENUE J.F. KENNEDY / CIRCUIT DE LA FOIRE (Arr\u00eat Luxexpo)",
+        "position": {
+            "lat": 49.635423,
+            "lng": 6.176061
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 23,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748371000
+    },
+    {
+        "number": 6,
+        "contract_name": "luxembourg",
+        "name": "#00006-AL BR\u00c9CK",
+        "address": "AL BR\u00c9CK - VIADUC / BOULEVARD DE LA PETRUSSE",
+        "position": {
+            "lat": 49.60481,
+            "lng": 6.133404
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748359000
+    },
+    {
+        "number": 97,
+        "contract_name": "luxembourg",
+        "name": "#00097-HELFENT (PARKING)",
+        "address": "Rue de Luxembourg/Route de Longwy",
+        "position": {
+            "lat": 49.603644,
+            "lng": 6.077783
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748168000
+    },
+    {
+        "number": 47,
+        "contract_name": "luxembourg",
+        "name": "#00047-LEOPOLD GOEBEL",
+        "address": "LEOPOLD GOEBEL - ALLEE LEOPOLD GOEBEL ( DEVANT N\u00b0 109 )",
+        "position": {
+            "lat": 49.6122,
+            "lng": 6.1072
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748367000
+    },
+    {
+        "number": 89,
+        "contract_name": "luxembourg",
+        "name": "#00089-PLACE THORN",
+        "address": "Place Thorn/Bd Marcel Cahen ,50m avant rue B\u00e9atrix",
+        "position": {
+            "lat": 49.60361,
+            "lng": 6.10278
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748384000
+    },
+    {
+        "number": 33,
+        "contract_name": "luxembourg",
+        "name": "#00033-K. ADENAUER",
+        "address": "K. ADENAUER - BOULEVARD KONRAD ADENAUER ( DEVANT BEI )",
+        "position": {
+            "lat": 49.620586,
+            "lng": 6.138998
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 14,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748164000
+    },
+    {
+        "number": 85,
+        "contract_name": "luxembourg",
+        "name": "#00085-EINSTEIN",
+        "address": "Rue Albert Einstein/Bd de Kockelscheuer",
+        "position": {
+            "lat": 49.5842,
+            "lng": 6.1249
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 14,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748380000
+    },
+    {
+        "number": 17,
+        "contract_name": "luxembourg",
+        "name": "#00017-ROBERT SCHUMAN",
+        "address": "ROBERT SCHUMAN - SQUARE SCHUMAN",
+        "position": {
+            "lat": 49.616669,
+            "lng": 6.126069
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 20,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748348000
+    },
+    {
+        "number": 94,
+        "contract_name": "luxembourg",
+        "name": "#00094-HAMM-COLONIE",
+        "address": "Rue de Hamm/Rue des pruniers",
+        "position": {
+            "lat": 49.606983,
+            "lng": 6.154863
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748325000
+    },
+    {
+        "number": 11,
+        "contract_name": "luxembourg",
+        "name": "#00011-WINSTON CHURCHILL",
+        "address": "WINSTON CHURCHILL - PLACE CHURCHILL",
+        "position": {
+            "lat": 49.611317,
+            "lng": 6.120003
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 13,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748227000
+    },
+    {
+        "number": 23,
+        "contract_name": "luxembourg",
+        "name": "#00023-REIMERWEE",
+        "address": "REIMERWEE - BOULEVARD K ADENAUER / RUE K KALERGI",
+        "position": {
+            "lat": 49.629448,
+            "lng": 6.157348
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 16,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748377000
+    },
+    {
+        "number": 108,
+        "contract_name": "luxembourg",
+        "name": "#00108-EDELECK",
+        "address": "EDELECK - RUE DE LUXEMBOURG / EDELECK",
+        "position": {
+            "lat": 49.565477,
+            "lng": 6.079436
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748212000
+    },
+    {
+        "number": 137,
+        "contract_name": "luxembourg",
+        "name": "#00137-PARC GASPERICH",
+        "address": "PARC GASPERICH-RUE CHARLES DARWIN x RUE FRANCOIS HOGENBERG",
+        "position": {
+            "lat": 49.586766,
+            "lng": 6.122404
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748240000
+    },
+    {
+        "number": 121,
+        "contract_name": "luxembourg",
+        "name": "#00121-BARTRENG - RUE KIEM",
+        "address": "RUE KIEM/RUE DE MAMER",
+        "position": {
+            "lat": 49.617394,
+            "lng": 6.047817
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748353000
+    },
+    {
+        "number": 75,
+        "contract_name": "luxembourg",
+        "name": "#00075-BEINCHEN",
+        "address": "BEINCHEN - RUE DU PONT",
+        "position": {
+            "lat": 49.61561,
+            "lng": 6.13097
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748318000
+    },
+    {
+        "number": 45,
+        "contract_name": "luxembourg",
+        "name": "#00045-AUBEPINES",
+        "address": "AUBEPINES - VAL SAINTE CROIX / RUE DES AUBEPINES",
+        "position": {
+            "lat": 49.61212,
+            "lng": 6.09749
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748276000
+    },
+    {
+        "number": 68,
+        "contract_name": "luxembourg",
+        "name": "#00068-UM SCHLASS",
+        "address": "UM SCHLASS - CEINTURE UM SCHLASS",
+        "position": {
+            "lat": 49.57337,
+            "lng": 6.14397
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748332000
+    },
+    {
+        "number": 27,
+        "contract_name": "luxembourg",
+        "name": "#00027-MERCIER",
+        "address": "MERCIER - PLACE DE LA GARE / RUE DU COMMERCE / PARKING",
+        "position": {
+            "lat": 49.5986,
+            "lng": 6.132119
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 3,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748384000
+    },
+    {
+        "number": 143,
+        "contract_name": "luxembourg",
+        "name": "#00143-MAIRIE DE WALFERDANGE",
+        "address": "Pl. de la Mairie",
+        "position": {
+            "lat": 49.658862,
+            "lng": 6.130167
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 5,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748267000
+    },
+    {
+        "number": 62,
+        "contract_name": "luxembourg",
+        "name": "#00062-LEYDENBACH",
+        "address": "LEYDENBACH - RUE LEYDENBACH / RUE DES LABOURS",
+        "position": {
+            "lat": 49.62915,
+            "lng": 6.173101
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748334000
+    },
+    {
+        "number": 115,
+        "contract_name": "luxembourg",
+        "name": "#00115-CENTRE CULTUREL CAP",
+        "address": "CENTRE CULTUREL CAP - ROUTE D'ARLON N\u00b049 / PLACE DE L'EGLISE",
+        "position": {
+            "lat": 49.645239,
+            "lng": 5.987938
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748271000
+    },
+    {
+        "number": 82,
+        "contract_name": "luxembourg",
+        "name": "#00082-GARE CENTS-HAMM",
+        "address": "GARE CENTS-HAMM - RUE DES ALOUETTES / GARE DE CENTS-HAMM",
+        "position": {
+            "lat": 49.614749,
+            "lng": 6.164772
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748313000
+    },
+    {
+        "number": 119,
+        "contract_name": "luxembourg",
+        "name": "#00119-RIEDGEN",
+        "address": "RUE HENRI DUNANT \u00e0 cot\u00e9 du n\u00b045 \u00e0 8024 STRASSEN",
+        "position": {
+            "lat": 49.619953,
+            "lng": 6.063326
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748379000
+    },
+    {
+        "number": 1,
+        "contract_name": "luxembourg",
+        "name": "#00001-LEON XIII",
+        "address": "LEON XIII-RUE DE BONNEVOIE ( DEVANT N\u00b0 103 )",
+        "position": {
+            "lat": 49.598211,
+            "lng": 6.137526
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748369000
+    },
+    {
+        "number": 14,
+        "contract_name": "luxembourg",
+        "name": "#00014-KNUEDLER",
+        "address": "KNUEDLER - PLACE GUILLAUME",
+        "position": {
+            "lat": 49.610126,
+            "lng": 6.132084
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 19,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748311000
+    },
+    {
+        "number": 123,
+        "contract_name": "luxembourg",
+        "name": "#00123-BELLE ETOILE",
+        "address": "Route d'Arlon/Shopping Belle Etoile",
+        "position": {
+            "lat": 49.62187,
+            "lng": 6.051072
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 5,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748256000
+    },
+    {
+        "number": 131,
+        "contract_name": "luxembourg",
+        "name": "#00131-EUROPASCHOUL MAMER",
+        "address": "Rue Gaston Thorn 6",
+        "position": {
+            "lat": 49.618073,
+            "lng": 6.037591
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 20,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748238000
+    },
+    {
+        "number": 8,
+        "contract_name": "luxembourg",
+        "name": "#00008-METZER PLAZ",
+        "address": "METZER PLAZ - PLACE DE METZ",
+        "position": {
+            "lat": 49.607346,
+            "lng": 6.12762
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 20,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748217000
+    },
+    {
+        "number": 118,
+        "contract_name": "luxembourg",
+        "name": "#00118-PESCHER 4",
+        "address": "Rue des Lavandes \u00e0 cot\u00e9 du n\u00b039B \u00e0 8022 STRASSEN",
+        "position": {
+            "lat": 49.622956,
+            "lng": 6.074244
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748249000
+    },
+    {
+        "number": 101,
+        "contract_name": "luxembourg",
+        "name": "#00101-M\u00dcNCHEN-TESCH",
+        "address": "M\u00dcNCHEN-TESCH - RUE M\u00dcNCHEN-TESCH",
+        "position": {
+            "lat": 49.628293,
+            "lng": 6.133301
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748239000
+    },
+    {
+        "number": 38,
+        "contract_name": "luxembourg",
+        "name": "#00038-HELLEG GEESCHT",
+        "address": "HELLEG GEESCHT - PLATEAU SAINT ESPRIT",
+        "position": {
+            "lat": 49.60771,
+            "lng": 6.13456
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748327000
+    },
+    {
+        "number": 19,
+        "contract_name": "luxembourg",
+        "name": "#00019-PHILHARMONIE",
+        "address": "PHILHARMONIE - AVENUE JF KENNEDY / PLACE DE L'EUROPE",
+        "position": {
+            "lat": 49.619345,
+            "lng": 6.143907
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 25,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748209000
+    },
+    {
+        "number": 50,
+        "contract_name": "luxembourg",
+        "name": "#00050-EUROPAPARLAMENT",
+        "address": "EUROPAPARLAMENT - Rue L\u00e9on Hammes, pr\u00e9s de l'arr\u00eat Europaparlament",
+        "position": {
+            "lat": 49.620607,
+            "lng": 6.147885
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748311000
+    },
+    {
+        "number": 135,
+        "contract_name": "luxembourg",
+        "name": "#00135-HAMMES",
+        "address": "Rue Charles-Leon Hammes x Bd Konrad Adenauer",
+        "position": {
+            "lat": 49.623341,
+            "lng": 6.143717
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748090000
+    },
+    {
+        "number": 78,
+        "contract_name": "luxembourg",
+        "name": "#00078-ST MATHIEU",
+        "address": "Rue St.Mathieu/ pr\u00e9s de l'arr\u00eat Pafendall",
+        "position": {
+            "lat": 49.619061,
+            "lng": 6.1323
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 12,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748363000
+    },
+    {
+        "number": 30,
+        "contract_name": "luxembourg",
+        "name": "#00030-MERKELS PLAZ",
+        "address": "- MERKELS PLAZ - RUE JEAN BAPTISTE MERKELS / Bd CHARLES MARX",
+        "position": {
+            "lat": 49.599846,
+            "lng": 6.122565
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 20,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748312000
+    },
+    {
+        "number": 113,
+        "contract_name": "luxembourg",
+        "name": "#00113-EDEMER",
+        "address": "EDEMER - QUARTIER EDEMER / RUE D'ATH\u00c8NES / RUE DE PARIS",
+        "position": {
+            "lat": 49.629363,
+            "lng": 6.017927
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748200000
+    },
+    {
+        "number": 77,
+        "contract_name": "luxembourg",
+        "name": "#00077-FUNICULAIRE",
+        "address": "Avenue J.F.Kennedy/Parvis au Plateau KB pr\u00e9s de l'arr\u00eat Pafendall",
+        "position": {
+            "lat": 49.618823,
+            "lng": 6.136324
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748381000
+    },
+    {
+        "number": 72,
+        "contract_name": "luxembourg",
+        "name": "#00072-AN DER BOURMICHT",
+        "address": "- AN DER BOURMICHT - ZONE INDUSTRIELLE BOURMICHT / RES DES MEROVINGIENS",
+        "position": {
+            "lat": 49.61086,
+            "lng": 6.08097
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748365000
+    },
+    {
+        "number": 125,
+        "contract_name": "luxembourg",
+        "name": "#00125-POLICE CAPELLEN",
+        "address": "Route d'Arlon",
+        "position": {
+            "lat": 49.644089,
+            "lng": 5.992759
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748278000
+    },
+    {
+        "number": 16,
+        "contract_name": "luxembourg",
+        "name": "#00016-AMELIE",
+        "address": "- AMELIE - BOULEVARD ROYAL / AVENUE AMELIE",
+        "position": {
+            "lat": 49.613339,
+            "lng": 6.125794
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748333000
+    },
+    {
+        "number": 22,
+        "contract_name": "luxembourg",
+        "name": "#00022-CAMPUS KIRCHBIERG",
+        "address": "CAMPUS KIRCHBIERG - BOULEVARD JF KENNEDY / RUE K KALERGI",
+        "position": {
+            "lat": 49.6264,
+            "lng": 6.1613
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748153000
+    },
+    {
+        "number": 106,
+        "contract_name": "luxembourg",
+        "name": "#00106-LEUDELANGE CENTRE",
+        "address": "CENTRE - RUE DU LAVOIR",
+        "position": {
+            "lat": 49.567305,
+            "lng": 6.064291
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748351000
+    },
+    {
+        "number": 73,
+        "contract_name": "luxembourg",
+        "name": "#00073-JEANNE D'ARC",
+        "address": "- JEANNE D'ARC - PLACE JEANNE D'ARC",
+        "position": {
+            "lat": 49.59691,
+            "lng": 6.147957
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748234000
+    },
+    {
+        "number": 13,
+        "contract_name": "luxembourg",
+        "name": "#00013-GELLE FRA",
+        "address": "",
+        "position": {
+            "lat": 49.60951,
+            "lng": 6.128503
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 19,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748383000
+    },
+    {
+        "number": 127,
+        "contract_name": "luxembourg",
+        "name": "#00127-MAMBRA",
+        "address": "Route d'Arlon 106",
+        "position": {
+            "lat": 49.63189,
+            "lng": 6.021562
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748321000
+    },
+    {
+        "number": 56,
+        "contract_name": "luxembourg",
+        "name": "#00056-FISCHERHAFF",
+        "address": "FISCHERHAFF- RUE DE CESSANGE 177",
+        "position": {
+            "lat": 49.5911,
+            "lng": 6.1057
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 7,
+        "available_bikes": 17,
+        "status": "OPEN",
+        "last_update": 1714748324000
+    },
+    {
+        "number": 130,
+        "contract_name": "luxembourg",
+        "name": "#00130-LYC\u00c9E JOSY BARTEL MAMER",
+        "address": "Rue Gaston Thorn 4",
+        "position": {
+            "lat": 49.622397,
+            "lng": 6.036232
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748296000
+    },
+    {
+        "number": 25,
+        "contract_name": "luxembourg",
+        "name": "#00025-KIEM",
+        "address": "KIEM - CIRCUIT DE LA FOIRE / RUE ALPHONSE WEICKER",
+        "position": {
+            "lat": 49.634283,
+            "lng": 6.166633
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748266000
+    },
+    {
+        "number": 141,
+        "contract_name": "luxembourg",
+        "name": "#00141-RUE DU PONT BERELDANGE",
+        "address": "Rue du Pont 117 x Route de Luxembourg",
+        "position": {
+            "lat": 49.649839,
+            "lng": 6.127978
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748368000
+    },
+    {
+        "number": 120,
+        "contract_name": "luxembourg",
+        "name": "#00120-A RILSPERT",
+        "address": "",
+        "position": {
+            "lat": 49.60751,
+            "lng": 6.045842
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 13,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748235000
+    },
+    {
+        "number": 48,
+        "contract_name": "luxembourg",
+        "name": "#00048-BGL BNP PARIBAS",
+        "address": "BGL BNP PARIBAS  - RUE EDOUARD STEICHEN ( FACE N\u00b0 10 )",
+        "position": {
+            "lat": 49.632179,
+            "lng": 6.174446
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 20,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748120000
+    },
+    {
+        "number": 80,
+        "contract_name": "luxembourg",
+        "name": "#00080-INS",
+        "address": "Rue du Fort Dumoulin/Rue de Tr\u00e8ves",
+        "position": {
+            "lat": 49.612542,
+            "lng": 6.147918
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748251000
+    },
+    {
+        "number": 65,
+        "contract_name": "luxembourg",
+        "name": "#00065-BEI DER SCHOUL",
+        "address": "BEI DER SCHOUL - RUE FERDINAND KUHN",
+        "position": {
+            "lat": 49.58421,
+            "lng": 6.14202
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748376000
+    },
+    {
+        "number": 104,
+        "contract_name": "luxembourg",
+        "name": "#00104-ITZIG VILLAGE/PLACE MANDERSCHEID",
+        "address": "ITZIG VILLAGE/PLACE MANDERSCHEID - RUE DE HESP\u00c9RANGE N\u00b03",
+        "position": {
+            "lat": 49.58574,
+            "lng": 6.171965
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 3,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748252000
+    },
+    {
+        "number": 122,
+        "contract_name": "luxembourg",
+        "name": "#00122-DICKS",
+        "address": "RUE DE LEUDELANGE",
+        "position": {
+            "lat": 49.604944,
+            "lng": 6.05228
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748118000
+    },
+    {
+        "number": 15,
+        "contract_name": "luxembourg",
+        "name": "#00015-THEATER PLAZ",
+        "address": "THEATER PLAZ - PLACE DU THEATRE ( FACE N\u00b01 )",
+        "position": {
+            "lat": 49.612782,
+            "lng": 6.131208
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748355000
+    },
+    {
+        "number": 129,
+        "contract_name": "luxembourg",
+        "name": "#00129-GARE CAPELLEN",
+        "address": "Rue de la Gare 106",
+        "position": {
+            "lat": 49.638604,
+            "lng": 5.982361
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 7,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748309000
+    },
+    {
+        "number": 7,
+        "contract_name": "luxembourg",
+        "name": "#00007-ROUSEGAERTCHEN",
+        "address": "ROUSEGAERTCHEN - PLACE DES MARTYRS",
+        "position": {
+            "lat": 49.605818,
+            "lng": 6.129062
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 10,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748240000
+    },
+    {
+        "number": 92,
+        "contract_name": "luxembourg",
+        "name": "#00092-BRILL (CESSANGE)",
+        "address": "Rue des Prunelles/Bd du Brill",
+        "position": {
+            "lat": 49.58914,
+            "lng": 6.099213
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748306000
+    },
+    {
+        "number": 52,
+        "contract_name": "luxembourg",
+        "name": "#00052-BEI DER AUER",
+        "address": "BEI DER AUER - RUE DE GASPERICH ( DEVANT N\u00b0 20 )",
+        "position": {
+            "lat": 49.591404,
+            "lng": 6.125333
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748195000
+    },
+    {
+        "number": 84,
+        "contract_name": "luxembourg",
+        "name": "#00084-BITBOURG",
+        "address": "Rue de Bitbourg devant n\u00b020",
+        "position": {
+            "lat": 49.61349,
+            "lng": 6.17066
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748218000
+    },
+    {
+        "number": 37,
+        "contract_name": "luxembourg",
+        "name": "#00037-GAULOIS",
+        "address": "GAULOIS - RUE DES GAULOIS 11",
+        "position": {
+            "lat": 49.60164,
+            "lng": 6.13736
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748146000
+    },
+    {
+        "number": 91,
+        "contract_name": "luxembourg",
+        "name": "#00091-MERSCH (M\u00dcHLENBACH)",
+        "address": "Rue de M\u00fchlenbach/ Rue Jules Mersch",
+        "position": {
+            "lat": 49.627834,
+            "lng": 6.122333
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748371000
+    },
+    {
+        "number": 35,
+        "contract_name": "luxembourg",
+        "name": "#00035-GASTON DIDERICH",
+        "address": "GASTON DIDERICH - AVENUE GASTON DIDERICH",
+        "position": {
+            "lat": 49.609904,
+            "lng": 6.106099
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748357000
+    },
+    {
+        "number": 114,
+        "contract_name": "luxembourg",
+        "name": "#00114-ROND-POINT MOTEL",
+        "address": "ROND-POINT MOTEL - ROUTE D'ARLON N\u00b01 / ROUTE DE KOERICH",
+        "position": {
+            "lat": 49.641375,
+            "lng": 6.001651
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 7,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748213000
+    },
+    {
+        "number": 57,
+        "contract_name": "luxembourg",
+        "name": "#00057-BOUILLON",
+        "address": "BOUILLON - RUE DE BOUILLON / PARKING",
+        "position": {
+            "lat": 49.60001,
+            "lng": 6.10826
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 35,
+        "available_bike_stands": 7,
+        "available_bikes": 26,
+        "status": "OPEN",
+        "last_update": 1714748380000
+    },
+    {
+        "number": 4,
+        "contract_name": "luxembourg",
+        "name": "#00004-ROCADE",
+        "address": "ROCADE-RUE DU LABORATOIRE ( DEVANT VDL )",
+        "position": {
+            "lat": 49.602989,
+            "lng": 6.136083
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 18,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748353000
+    },
+    {
+        "number": 55,
+        "contract_name": "luxembourg",
+        "name": "#00055-SCHAARFEN ECK",
+        "address": "- SCHAARFEN ECK- RUE EMILE BIAN",
+        "position": {
+            "lat": 49.58043,
+            "lng": 6.11465
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748203000
+    },
+    {
+        "number": 132,
+        "contract_name": "luxembourg",
+        "name": "#00132-CENTRE DE TENNIS PAUL GL\u00dcCK",
+        "address": "Rannerwee 13",
+        "position": {
+            "lat": 49.642519,
+            "lng": 5.99179
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748359000
+    },
+    {
+        "number": 86,
+        "contract_name": "luxembourg",
+        "name": "#00086-PWC - BD KOCKELSCHEUER",
+        "address": "Rue Gerhard Mercator n\u00b02/Bd de Kockelscheuer",
+        "position": {
+            "lat": 49.580242,
+            "lng": 6.120862
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 13,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748380000
+    },
+    {
+        "number": 29,
+        "contract_name": "luxembourg",
+        "name": "#00029-MONTEREY",
+        "address": "MONTEREY - AVENUE DE MONTEREY ( FACE N\u00b0 49 )",
+        "position": {
+            "lat": 49.609583,
+            "lng": 6.119523
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748343000
+    },
+    {
+        "number": 103,
+        "contract_name": "luxembourg",
+        "name": "#00103-ALZINGEN G\u00c4SSEL",
+        "address": "ALZINGEN G\u00c4SSEL - RUE DE L'ECOLE ANGLE RUE DE SYREN",
+        "position": {
+            "lat": 49.568074,
+            "lng": 6.163927
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748378000
+    },
+    {
+        "number": 49,
+        "contract_name": "luxembourg",
+        "name": "#00049-MARGUERITES",
+        "address": "MARGUERITES - RUE DES MARGUERITES ( FACE N\u00b0 105 A )",
+        "position": {
+            "lat": 49.623837,
+            "lng": 6.160642
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748331000
+    },
+    {
+        "number": 105,
+        "contract_name": "luxembourg",
+        "name": "#00105-ITZIG PLATEAU/HUBERTUSPAD",
+        "address": "ITZIG PLATEAU/HUBERTUSPAD - RUE DE LA LIB\u00c9RATION N\u00b028",
+        "position": {
+            "lat": 49.587633,
+            "lng": 6.170123
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 14,
+        "available_bike_stands": 5,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748286000
+    },
+    {
+        "number": 12,
+        "contract_name": "luxembourg",
+        "name": "#00012-HAMILIUS",
+        "address": "HAMILIUS - Avenue Monterey",
+        "position": {
+            "lat": 49.610738,
+            "lng": 6.126743
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748322000
+    },
+    {
+        "number": 5,
+        "contract_name": "luxembourg",
+        "name": "#00005-PARAISER PLAZ",
+        "address": "PARAISER PLAZ - Rue Sainte ZITHE devant n\u00b049 angle Place de Paris",
+        "position": {
+            "lat": 49.603694,
+            "lng": 6.130189
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 21,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748286000
+    },
+    {
+        "number": 44,
+        "contract_name": "luxembourg",
+        "name": "#00044-ARELER STROOSS",
+        "address": "ARELER STROOSS - RUE DES AUBEPINES ( FACE N\u00b0 187 )",
+        "position": {
+            "lat": 49.6162,
+            "lng": 6.0984
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 20,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748295000
+    },
+    {
+        "number": 112,
+        "contract_name": "luxembourg",
+        "name": "#00112-PLACE DE L'INDEPENDANCE",
+        "address": "ADMINISTRATION COMMUNALE - RUE DE MARCH\u00c9 / PLACE DE L'IND\u00c9PENDANCE",
+        "position": {
+            "lat": 49.62635,
+            "lng": 6.022996
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748142000
+    },
+    {
+        "number": 124,
+        "contract_name": "luxembourg",
+        "name": "#00124-BARTRENG - CITE RIEDGEN",
+        "address": "CIT\u00c9 RIEDGEN",
+        "position": {
+            "lat": 49.616795,
+            "lng": 6.058614
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 5,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748338000
+    },
+    {
+        "number": 109,
+        "contract_name": "luxembourg",
+        "name": "#00109-FOYER",
+        "address": "FOYER - RUE L\u00c9ON LAVAL N\u00b021",
+        "position": {
+            "lat": 49.569178,
+            "lng": 6.08175
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748339000
+    },
+    {
+        "number": 31,
+        "contract_name": "luxembourg",
+        "name": "#00031-PLACE DE FRANCE",
+        "address": "PLACE DE FRANCE - PLACE DE FRANCE",
+        "position": {
+            "lat": 49.60625,
+            "lng": 6.105961
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 5,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748183000
+    },
+    {
+        "number": 36,
+        "contract_name": "luxembourg",
+        "name": "#00036-J.B. GELLE",
+        "address": "J.B. GELLE - RUE JEAN- BAPTISTE GELLE ( DEVANT N\u00b0 6 )",
+        "position": {
+            "lat": 49.596838,
+            "lng": 6.140615
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748288000
+    },
+    {
+        "number": 95,
+        "contract_name": "luxembourg",
+        "name": "#00095-MAIRIE DE BERTRANGE",
+        "address": "MAIRIE DE BERTRANGE-2 Beim Schlass/ Rue de Leudelange",
+        "position": {
+            "lat": 49.61093,
+            "lng": 6.051527
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 1,
+        "available_bikes": 18,
+        "status": "OPEN",
+        "last_update": 1714748290000
+    },
+    {
+        "number": 10,
+        "contract_name": "luxembourg",
+        "name": "#00010-M\u00c4RELER PARC",
+        "address": "M\u00c4RELER PARC - RUE DU 10 SEPTEMBRE ( DEVANT N\u00b0 108 )",
+        "position": {
+            "lat": 49.608146,
+            "lng": 6.111627
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748327000
+    },
+    {
+        "number": 146,
+        "contract_name": "luxembourg",
+        "name": "#00146-STADE DE LUXEMBOURG",
+        "address": "Route d'Esch",
+        "position": {
+            "lat": 49.57681,
+            "lng": 6.110465
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 11,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748094000
+    },
+    {
+        "number": 39,
+        "contract_name": "luxembourg",
+        "name": "#00039-KRAIZGRENNCHEN",
+        "address": "KRAIZGRENNCHEN - SQUARE DE NEW- YORK",
+        "position": {
+            "lat": 49.613316,
+            "lng": 6.117582
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748350000
+    },
+    {
+        "number": 117,
+        "contract_name": "luxembourg",
+        "name": "#00117-SYRDALL SCHWEMM",
+        "address": "SYRDALL SCHWEMM - ROUTSCHEED N\u00b08",
+        "position": {
+            "lat": 49.65314,
+            "lng": 6.245365
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748310000
+    },
+    {
+        "number": 142,
+        "contract_name": "luxembourg",
+        "name": "#00142-BERELER SCHOUL",
+        "address": "Route de Luxembourg 98",
+        "position": {
+            "lat": 49.653525,
+            "lng": 6.127049
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 10,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748101000
+    },
+    {
+        "number": 34,
+        "contract_name": "luxembourg",
+        "name": "#00034-KOLLEISCH",
+        "address": "- KOLLEISCH - RUE DE BRAGANCE",
+        "position": {
+            "lat": 49.604577,
+            "lng": 6.111927
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 31,
+        "available_bike_stands": 20,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748123000
+    },
+    {
+        "number": 63,
+        "contract_name": "luxembourg",
+        "name": "#00063-LABOURS",
+        "address": "LABOURS - RUE DES LABOURS / BLD J.F.KENNEDY",
+        "position": {
+            "lat": 49.6301,
+            "lng": 6.16843
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748147000
+    },
+    {
+        "number": 76,
+        "contract_name": "luxembourg",
+        "name": "#00076-SAUVAGE",
+        "address": "SAUVAGE - RUE JEAN-PIERRE SAUVAGE",
+        "position": {
+            "lat": 49.62521,
+            "lng": 6.13938
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748202000
+    },
+    {
+        "number": 41,
+        "contract_name": "luxembourg",
+        "name": "#00041-PLACE LAURENT",
+        "address": "PLACE LAURENT - PLACE AUGUSTE LAURENT",
+        "position": {
+            "lat": 49.620066,
+            "lng": 6.122905
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748158000
+    },
+    {
+        "number": 28,
+        "contract_name": "luxembourg",
+        "name": "#00028-CHARLY'S GARE",
+        "address": "CHARLY'S GARE - BOULEVARD PRINCE HENRI",
+        "position": {
+            "lat": 49.61258,
+            "lng": 6.12391
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748237000
+    },
+    {
+        "number": 2,
+        "contract_name": "luxembourg",
+        "name": "#00002-GARE CENTRALE 2",
+        "address": "GARE CENTRALE 2 - PLACE DE LA GARE N\u00b03-5",
+        "position": {
+            "lat": 49.601051,
+            "lng": 6.133744
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 21,
+        "available_bike_stands": 4,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748376000
+    },
+    {
+        "number": 139,
+        "contract_name": "luxembourg",
+        "name": "#00139-HUESCHTERT",
+        "address": "Rue de la Gare 9 x Place Charly 1",
+        "position": {
+            "lat": 49.657941,
+            "lng": 6.231683
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 5,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748353000
+    },
+    {
+        "number": 99,
+        "contract_name": "luxembourg",
+        "name": "#00099-CAMPUS CENTS",
+        "address": "CAMPUS CENTS - RUE L\u00c9ON KAUFFMAN/RUE ROBERT BRUCH",
+        "position": {
+            "lat": 49.617566,
+            "lng": 6.165165
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748370000
+    },
+    {
+        "number": 83,
+        "contract_name": "luxembourg",
+        "name": "#00083-PULVERM\u00dcHL",
+        "address": "Rue de Pulverm\u00fbhl/Rue du Fort Dumoulin",
+        "position": {
+            "lat": 49.608758,
+            "lng": 6.149591
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 7,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748258000
+    },
+    {
+        "number": 51,
+        "contract_name": "luxembourg",
+        "name": "#00051-SAUERWISS",
+        "address": "SAUERWISS - RUE ABBE FRANCOIS LASCOMBE ( DEVANT N\u00b0 54 )",
+        "position": {
+            "lat": 49.594088,
+            "lng": 6.125123
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 13,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748113000
+    },
+    {
+        "number": 90,
+        "contract_name": "luxembourg",
+        "name": "#00090-HUBERTY (M\u00dcHLENBACH)",
+        "address": "Rue de M\u00fchlenbach/Rue Jean-Pierre Huberty",
+        "position": {
+            "lat": 49.6294701613971,
+            "lng": 6.11780413988129
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748368000
+    },
+    {
+        "number": 20,
+        "contract_name": "luxembourg",
+        "name": "#00020-COQUE",
+        "address": "COQUE - AVENUE JF KENNEDY / RUE ERASME",
+        "position": {
+            "lat": 49.62297,
+            "lng": 6.15497
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748321000
+    },
+    {
+        "number": 98,
+        "contract_name": "luxembourg",
+        "name": "#00098-CITY CONCORDE",
+        "address": "CITY CONCORDE - Route de Longwy face n\u00b0 80 (City Concorde)",
+        "position": {
+            "lat": 49.600592,
+            "lng": 6.065794
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748178000
+    },
+    {
+        "number": 58,
+        "contract_name": "luxembourg",
+        "name": "#00058-SCHLUECHTHAUS",
+        "address": "SCHLUECHTHAUS - RUE DE L'ABATTOIR",
+        "position": {
+            "lat": 49.60136,
+            "lng": 6.11581
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748328000
+    },
+    {
+        "number": 71,
+        "contract_name": "luxembourg",
+        "name": "#00071-LES THERMES",
+        "address": "LES THERMES - RUE DU CIMETIERE",
+        "position": {
+            "lat": 49.61489,
+            "lng": 6.07275
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 5,
+        "available_bikes": 13,
+        "status": "OPEN",
+        "last_update": 1714748323000
+    },
+    {
+        "number": 87,
+        "contract_name": "luxembourg",
+        "name": "#00087-NATIONALBIBLIOTHEIK",
+        "address": "NATIONALBIBLIOTHEIK - Bd. KONRAD ADENAUER (Immeuble Biblioth\u00e8que Nationale)",
+        "position": {
+            "lat": 49.629865,
+            "lng": 6.166252
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748156000
+    },
+    {
+        "number": 67,
+        "contract_name": "luxembourg",
+        "name": "#00067-MAIRIE DE HESPERANGE",
+        "address": "MAIRIE DE HESPERANGE - ROUTE DE THIONVILLE 474",
+        "position": {
+            "lat": 49.571924,
+            "lng": 6.15965
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748141000
+    },
+    {
+        "number": 79,
+        "contract_name": "luxembourg",
+        "name": "#00079-GARE CENTRALE",
+        "address": "GARE CENTRALE - PLACE DE LA GARE (Quai n\u00b01)",
+        "position": {
+            "lat": 49.6017,
+            "lng": 6.1331
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 3,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748353000
+    },
+    {
+        "number": 96,
+        "contract_name": "luxembourg",
+        "name": "#00096-BERTRANGE - GARE",
+        "address": "Rue de l'industrie/Rue Chemin de Fer/ Rue de Strassen",
+        "position": {
+            "lat": 49.613161,
+            "lng": 6.060382
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 11,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748384000
+    },
+    {
+        "number": 133,
+        "contract_name": "luxembourg",
+        "name": "#00133-HALANZY",
+        "address": "En face de Rue Fran\u00e7ois-S\u00e9bastien Tinant 156",
+        "position": {
+            "lat": 49.645359,
+            "lng": 6.128075
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 7,
+        "available_bikes": 13,
+        "status": "OPEN",
+        "last_update": 1714748383000
+    },
+    {
+        "number": 26,
+        "contract_name": "luxembourg",
+        "name": "#00026-HOLLERECHER PLAZ",
+        "address": "HOLLERECHER PLAZ - PLACE SAINT PIERRE ET PAUL / RUE BAUDOUIN",
+        "position": {
+            "lat": 49.598613,
+            "lng": 6.117957
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 19,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748304000
+    },
+    {
+        "number": 54,
+        "contract_name": "luxembourg",
+        "name": "#00054-CLOCHE D'OR",
+        "address": "CLOCHE D'OR - RUE JEAN PIRET ( DEVANT N\u00b0 3 )",
+        "position": {
+            "lat": 49.583377,
+            "lng": 6.115817
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748312000
+    },
+    {
+        "number": 81,
+        "contract_name": "luxembourg",
+        "name": "#00081-CARMEL",
+        "address": "All\u00e9e du Carmel/Rue Paul Albrecht face Police",
+        "position": {
+            "lat": 49.62019,
+            "lng": 6.172682
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748166000
+    },
+    {
+        "number": 116,
+        "contract_name": "luxembourg",
+        "name": "#00116-CHARLY'S STATION",
+        "address": "CHARLY'S STATION - RUE DE GR\u00dcNEWALD / CH\u00c2TEAU D'EAU \u00c0 2633 SENNINGERBERG",
+        "position": {
+            "lat": 49.649823,
+            "lng": 6.225796
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 13,
+        "status": "OPEN",
+        "last_update": 1714748119000
+    },
+    {
+        "number": 70,
+        "contract_name": "luxembourg",
+        "name": "#00070-GEMENG STROOSSEN",
+        "address": "- GEMENG STROOSSEN - RUE DES ROMAINS",
+        "position": {
+            "lat": 49.61909,
+            "lng": 6.07227
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748230000
+    },
+    {
+        "number": 9,
+        "contract_name": "luxembourg",
+        "name": "#00009-CONVICT",
+        "address": "CONVICT - PLACE DU FOYER",
+        "position": {
+            "lat": 49.6059,
+            "lng": 6.1199
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748344000
+    },
+    {
+        "number": 43,
+        "contract_name": "luxembourg",
+        "name": "#00043-LYCEE TECHNIQUE DE BONNEVOIE",
+        "address": "LYCEE TECHNIQUE DE BONNEVOIE - RUE DU CIMETIERE ( DEVANT N\u00b0 110 )",
+        "position": {
+            "lat": 49.5911,
+            "lng": 6.1416
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748183000
+    },
+    {
+        "number": 111,
+        "contract_name": "luxembourg",
+        "name": "#00111-HALL SPORTIF NICOLAS FRANTZ",
+        "address": "HALL SPORTIF NICOLAS FRANTZ - RUE DE BERTRANGE / HALL SPORTIF NICOLAS FRANTZ",
+        "position": {
+            "lat": 49.623154,
+            "lng": 6.024879
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748363000
+    },
+    {
+        "number": 59,
+        "contract_name": "luxembourg",
+        "name": "#00059-ST HUBERT",
+        "address": "ST HUBERT - RUE DE MERL 147 / RUE ST HUBERT",
+        "position": {
+            "lat": 49.60289,
+            "lng": 6.09322
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 3,
+        "available_bikes": 17,
+        "status": "OPEN",
+        "last_update": 1714748350000
+    },
+    {
+        "number": 69,
+        "contract_name": "luxembourg",
+        "name": "#00069-UM REIMERWEE",
+        "address": "UM REIMERWEE - RUE DU KIEM",
+        "position": {
+            "lat": 49.61769,
+            "lng": 6.08276
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 13,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748269000
+    },
+    {
+        "number": 74,
+        "contract_name": "luxembourg",
+        "name": "#00074-SAINTE CUNEGONDE",
+        "address": "SAINTE CUNEGONDE - PLACE STE CUNEGONDE",
+        "position": {
+            "lat": 49.6146,
+            "lng": 6.14283
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748320000
+    },
+    {
+        "number": 18,
+        "contract_name": "luxembourg",
+        "name": "#00018-CAMPUS LAMPERTSBIERG",
+        "address": "CAMPUS LAMPERTSBIERG - RUE DE LA FAIENCERIE ( DEVANT N\u00b0 151 )",
+        "position": {
+            "lat": 49.6219,
+            "lng": 6.1118
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 13,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748317000
+    },
+    {
+        "number": 136,
+        "contract_name": "luxembourg",
+        "name": "#00136-NENNIG",
+        "address": "Rue Nennig",
+        "position": {
+            "lat": 49.633322,
+            "lng": 6.136676
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748208000
+    },
+    {
+        "number": 3,
+        "contract_name": "luxembourg",
+        "name": "#00003-STROOSSBUERGER PLAZ",
+        "address": "Place de Strasbourg x Rue Adolphe Fischer 110",
+        "position": {
+            "lat": 49.600714,
+            "lng": 6.127929
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748341000
+    },
+    {
+        "number": 107,
+        "contract_name": "luxembourg",
+        "name": "#00107-LEUDELANGE GARE",
+        "address": "GARE - RUE DE LA GARE N\u00b0166",
+        "position": {
+            "lat": 49.586736,
+            "lng": 6.05966
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748109000
+    },
+    {
+        "number": 60,
+        "contract_name": "luxembourg",
+        "name": "#00060-BOCH",
+        "address": "BOCH - RUE J-F BOCH",
+        "position": {
+            "lat": 49.61925,
+            "lng": 6.10842
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748370000
+    },
+    {
+        "number": 138,
+        "contract_name": "luxembourg",
+        "name": "#00138-A SCHOMMESCH",
+        "address": "Rue d'Ernster 18",
+        "position": {
+            "lat": 49.659778,
+            "lng": 6.241714
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748204000
+    },
+    {
+        "number": 66,
+        "contract_name": "luxembourg",
+        "name": "#00066-BEIM TENNIS",
+        "address": "Rue des Scillas 55 / Banque de Luxembourg",
+        "position": {
+            "lat": 49.579231,
+            "lng": 6.134018
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 1,
+        "available_bikes": 19,
+        "status": "OPEN",
+        "last_update": 1714748384000
+    },
+    {
+        "number": 128,
+        "contract_name": "luxembourg",
+        "name": "#00128-GARE MAMER",
+        "address": "Rue de la Gare 2",
+        "position": {
+            "lat": 49.625695,
+            "lng": 6.020409
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748280000
+    },
+    {
+        "number": 40,
+        "contract_name": "luxembourg",
+        "name": "#00040-GLACIS KAPELL",
+        "address": "GLACIS KAPELL - BOULEVARD DE LA FOIRE ( DEVANT N\u00b0 21 )",
+        "position": {
+            "lat": 49.6147,
+            "lng": 6.1211
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 10,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748322000
+    },
+    {
+        "number": 32,
+        "contract_name": "luxembourg",
+        "name": "#00032-PISCINE OLYMPIQUE",
+        "address": "PISCINE OLYMPIQUE - RUE LEON HENGEN",
+        "position": {
+            "lat": 49.623901,
+            "lng": 6.150013
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748356000
+    },
+    {
+        "number": 110,
+        "contract_name": "luxembourg",
+        "name": "#00110-ROND-POINT GASSECHTBIERG",
+        "address": "ROND-POINT GASSECHTBIERG - ROUTE D'ARLON / RUE DE LA LIB\u00c9RATION",
+        "position": {
+            "lat": 49.627159,
+            "lng": 6.031948
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748311000
+    },
+    {
+        "number": 93,
+        "contract_name": "luxembourg",
+        "name": "#00093-GODCHAUX (BONNEVOIE)",
+        "address": "Rue Auguste Charles/Rue Godchaux",
+        "position": {
+            "lat": 49.601652,
+            "lng": 6.145533
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 7,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748378000
+    },
+    {
+        "number": 21,
+        "contract_name": "luxembourg",
+        "name": "#00021-JEAN MONNET",
+        "address": "JEAN MONNET - BOULEVARD KONRAD ADENAUER / RUE ERASME",
+        "position": {
+            "lat": 49.625714,
+            "lng": 6.148347
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 20,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748306000
+    },
+    {
+        "number": 42,
+        "contract_name": "luxembourg",
+        "name": "#00042-SQUARE ANDRE",
+        "address": "SQUARE ANDRE - SQUARE EDOUARD ANDRE ( DEVANT N\u00b0 1 )",
+        "position": {
+            "lat": 49.6238,
+            "lng": 6.1188
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748150000
+    },
+    {
+        "number": 100,
+        "contract_name": "luxembourg",
+        "name": "#00100-FORT NIEDERGR\u00dcNEWALD",
+        "address": "FORT NIEDERGR\u00dcNEWALD - RUE DU FORT NIEDERGR\u00dcNEWALD/KENNEDY",
+        "position": {
+            "lat": 49.619439,
+            "lng": 6.140894
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748381000
+    },
+    {
+        "number": 64,
+        "contract_name": "luxembourg",
+        "name": "#00064-GRENIER",
+        "address": "GRENIER - RUE EDOUARD GRENIER",
+        "position": {
+            "lat": 49.59383,
+            "lng": 6.14327
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 13,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748177000
+    },
+    {
+        "number": 46,
+        "contract_name": "luxembourg",
+        "name": "#00046-LONKECHER STROOSS",
+        "address": "LONKECHER STROOSS - ROUTE DE LONGWY ( DEVANT N\u00b0 241 )",
+        "position": {
+            "lat": 49.60563,
+            "lng": 6.10003
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748259000
+    },
+    {
+        "number": 61,
+        "contract_name": "luxembourg",
+        "name": "#00061-FRIEDEN",
+        "address": "FRIEDEN - BVD PIERRE FRIEDEN",
+        "position": {
+            "lat": 49.637327,
+            "lng": 6.164573
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748323000
+    },
+    {
+        "number": 140,
+        "contract_name": "luxembourg",
+        "name": "#00140-LAACH",
+        "address": "Route de Tr\u00e8ves 177 x Rue Laach",
+        "position": {
+            "lat": 49.651348,
+            "lng": 6.255547
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748299000
+    }
+]

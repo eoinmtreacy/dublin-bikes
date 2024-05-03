@@ -1,0 +1,750 @@
+[
+    {
+        "number": 50019,
+        "contract_name": "cergy-pontoise",
+        "name": "50019 - CER19 - RUE DES LILAS",
+        "address": "RUE DES LILAS ANGLE BOULEVARD DU PORT 95000 CERGY",
+        "position": {
+            "lat": 49.034625,
+            "lng": 2.067596
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 11,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714747966000
+    },
+    {
+        "number": 54901,
+        "contract_name": "cergy-pontoise",
+        "name": "54901 - VAU01 - PLACE DU RDV (CB)",
+        "address": "Place du Rendez-Vous c\u00f4t\u00e9 avenue Louis Lecoin - 95490 VAUREAL",
+        "position": {
+            "lat": 49.0329335916808,
+            "lng": 2.02031242929915
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 11,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748244000
+    },
+    {
+        "number": 56105,
+        "contract_name": "cergy-pontoise",
+        "name": "56105 - ERA05- BAS NOYER (CB)",
+        "address": "RUE DU BAS NOYER DEVANT CENTRE COMMERCIAL ART DE VIVRE - ERAGNY",
+        "position": {
+            "lat": 49.03223,
+            "lng": 2.101656
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 14,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748199000
+    },
+    {
+        "number": 50021,
+        "contract_name": "cergy-pontoise",
+        "name": "50021 - CER21 - DALLE PI\u00c9TONNE GRAND CENTRE",
+        "address": "BOULEVARD DE L'OISE / RUE DE LA GARE - 95000 CERGY",
+        "position": {
+            "lat": 49.03632,
+            "lng": 2.079568
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 3,
+        "available_bikes": 17,
+        "status": "OPEN",
+        "last_update": 1714748113000
+    },
+    {
+        "number": 56104,
+        "contract_name": "cergy-pontoise",
+        "name": "56104 - ERA04 - LA CHALLE (CB)",
+        "address": "PLACE DE LA CHALLE ANGLE RUE DE LA CHALLE ORANGE 95600 - ERAGNY",
+        "position": {
+            "lat": 49.017696834806,
+            "lng": 2.09941681180915
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 23,
+        "available_bike_stands": 20,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748015000
+    },
+    {
+        "number": 50008,
+        "contract_name": "cergy-pontoise",
+        "name": "50008 - CER08 - AXE MAJEUR (CB)",
+        "address": "RUE DE L'ESPLANADE DE PARIS ANGLE BOULEVARD DE L'OISE - 95000 CERGY",
+        "position": {
+            "lat": 49.044092,
+            "lng": 2.036546
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 17,
+        "available_bike_stands": 6,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748375000
+    },
+    {
+        "number": 50023,
+        "contract_name": "cergy-pontoise",
+        "name": "50023 - CER23 - LES TOULEUSES",
+        "address": "AVENUE DU SUD - 95000 CERGY",
+        "position": {
+            "lat": 49.030665,
+            "lng": 2.083067
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748248000
+    },
+    {
+        "number": 53001,
+        "contract_name": "cergy-pontoise",
+        "name": "53001 - PON01 - RUE SERE-DEPOIN (CB)",
+        "address": "Place du General de Gaulle devant la Gare - 95300 PONTOISE",
+        "position": {
+            "lat": 49.047619,
+            "lng": 2.096823
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 13,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748324000
+    },
+    {
+        "number": 54904,
+        "contract_name": "cergy-pontoise",
+        "name": "54904 - VAU04 - MENDES FRANCE",
+        "address": "MAIL MENDES FRANCE ANGLE BOULEVARD DE L'OISE - 95490 VAUREAL",
+        "position": {
+            "lat": 49.023836592832,
+            "lng": 2.02259548583062
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 15,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748321000
+    },
+    {
+        "number": 50017,
+        "contract_name": "cergy-pontoise",
+        "name": "50017 - CER17 - CERGY VILLAGE CENTRE",
+        "address": "RUE NATIONALE ANGLE RUE LEV\u00c8QUE - 95000 CERGY",
+        "position": {
+            "lat": 49.035511,
+            "lng": 2.061921
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 14,
+        "available_bike_stands": 7,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714747923000
+    },
+    {
+        "number": 50004,
+        "contract_name": "cergy-pontoise",
+        "name": "50004 - CER04 - LE BON TEMPS",
+        "address": "AVENUE DU BON TEMPS ANGLE AVENUE DU HAZAY - 95000 CERGY",
+        "position": {
+            "lat": 49.052785,
+            "lng": 2.017956
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 11,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748254000
+    },
+    {
+        "number": 50024,
+        "contract_name": "cergy-pontoise",
+        "name": "50024 - CER24 - CROIX PETIT",
+        "address": "Rue des petits pr\u00e9s  95000 CERGY",
+        "position": {
+            "lat": 49.038058,
+            "lng": 2.070534
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 12,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714747980000
+    },
+    {
+        "number": 53002,
+        "contract_name": "cergy-pontoise",
+        "name": "53002 - PON02 - PLACE DE LA LIB\u00c9RATION",
+        "address": "Place de la Lib\u00e9ration c\u00f4t\u00e9 avenue de Verdun - 95300 PONTOISE",
+        "position": {
+            "lat": 49.044395,
+            "lng": 2.090632
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748189000
+    },
+    {
+        "number": 50026,
+        "contract_name": "cergy-pontoise",
+        "name": "50026 - CER26 - BEAUX SOLEILS",
+        "address": "Chauss\u00e9e Jules C\u00e9sar, 95520 Osny",
+        "position": {
+            "lat": 49.051104,
+            "lng": 2.069419
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714747909000
+    },
+    {
+        "number": 53101,
+        "contract_name": "cergy-pontoise",
+        "name": "53101 - SOA01 - PLACE CARNOT (CB)",
+        "address": "Place Carnot c\u00f4t\u00e9 quai de l'Ecluse ou halage - 95310 SAINT OUEN L'AUMONE",
+        "position": {
+            "lat": 49.0477806094296,
+            "lng": 2.10303772616957
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 14,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748081000
+    },
+    {
+        "number": 50016,
+        "contract_name": "cergy-pontoise",
+        "name": "50016 - CER16 - UNIVERSIT\u00c9 LES CH\u00caNES (CB)",
+        "address": "RUE DES CH\u00caNES D'OR ANGLE BOULEVARD DU PORT - 95000 CERGY",
+        "position": {
+            "lat": 49.038874,
+            "lng": 2.076405
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 18,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748400000
+    },
+    {
+        "number": 50013,
+        "contract_name": "cergy-pontoise",
+        "name": "50013 - CER13 - ROND-POINT DES RAIES",
+        "address": "ALL\u00c9E DU BELV\u00c9D\u00c8RE ANGLE ROND POINT DES RAIES - 95000 CERGY",
+        "position": {
+            "lat": 49.044831,
+            "lng": 2.053462
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714747995000
+    },
+    {
+        "number": 53003,
+        "contract_name": "cergy-pontoise",
+        "name": "53003 - PON03 - UNIVERSIT\u00c9 ST MARTIN",
+        "address": "Avenue Fran\u00e7ois Mitterand c\u00f4t\u00e9 boulevard du Port - 95300 PONTOISE",
+        "position": {
+            "lat": 49.0435829707344,
+            "lng": 2.08480803731778
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714747880000
+    },
+    {
+        "number": 56103,
+        "contract_name": "cergy-pontoise",
+        "name": "56103 - ERA03 - GARE D'ERAGNY (CB)",
+        "address": "RUE DES BELLES H\u00c2TES ANGLE BOULEVARD DES AVIATEURS ALLI\u00c9S 95600 - ERAGNY",
+        "position": {
+            "lat": 49.0180572637007,
+            "lng": 2.09102625541638
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748026000
+    },
+    {
+        "number": 50009,
+        "contract_name": "cergy-pontoise",
+        "name": "50009 - CER09 - RUE DU BR\u00dbLOIR",
+        "address": "88, RUE DU BR\u00dbLOIR ANGLE RUE DES TOULEUSES POURPRES - 95000 CERGY",
+        "position": {
+            "lat": 49.027239,
+            "lng": 2.077178
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 11,
+        "available_bike_stands": 8,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748091000
+    },
+    {
+        "number": 50007,
+        "contract_name": "cergy-pontoise",
+        "name": "50007 - CER07 -  PARC ST-CHRISTOPHE",
+        "address": "AVENUE DE L'ENTREPRISE ANGLE ROND POINT DU C\u00c8DRE - 95000 CERGY",
+        "position": {
+            "lat": 49.042999,
+            "lng": 2.029687
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 14,
+        "available_bike_stands": 10,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748335000
+    },
+    {
+        "number": 50015,
+        "contract_name": "cergy-pontoise",
+        "name": "50015 - CER15 - PLACE DES LINANDES (CB)",
+        "address": "PLACE DES LINANDES - 95000 CERGY",
+        "position": {
+            "lat": 49.043284,
+            "lng": 2.068934
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 8,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748417000
+    },
+    {
+        "number": 50025,
+        "contract_name": "cergy-pontoise",
+        "name": "50025 - CER25 - ARENICE",
+        "address": "ROUTE D14, DEVANT LE COMPLEXE SPORTIF ARENICE",
+        "position": {
+            "lat": 49.050988,
+            "lng": 2.057324
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748299000
+    },
+    {
+        "number": 50018,
+        "contract_name": "cergy-pontoise",
+        "name": "50018 - CER18 - PORT CERGY (CB)",
+        "address": "BOULEVARD DU PORT ANGLE RUE JEAN BART - 95000 CERGY",
+        "position": {
+            "lat": 49.031214,
+            "lng": 2.061506
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 27,
+        "available_bike_stands": 24,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748260000
+    },
+    {
+        "number": 50001,
+        "contract_name": "cergy-pontoise",
+        "name": "50001 - CER01 - GARE LES HAUTS DE CERGY(CB)",
+        "address": "PLACE DES 3 GARES - 95000 CERGY",
+        "position": {
+            "lat": 49.048246,
+            "lng": 2.011238
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 29,
+        "available_bike_stands": 20,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748414000
+    },
+    {
+        "number": 56401,
+        "contract_name": "cergy-pontoise",
+        "name": "56401 - COU01 - LA LOUVIERE (CB)",
+        "address": "Boulevard des chasseurs angle boulevard Sainte Apolline - 95400 COURDIMANCHE",
+        "position": {
+            "lat": 49.0452230206183,
+            "lng": 2.00250713459357
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714747895000
+    },
+    {
+        "number": 50011,
+        "contract_name": "cergy-pontoise",
+        "name": "50011 - CER11 - PLACE DE L'HOTEL DE VILLE (CB)",
+        "address": "RUE DES G\u00c9MEAUX - 95000 CERGY",
+        "position": {
+            "lat": 49.051599,
+            "lng": 2.036105
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 22,
+        "available_bike_stands": 17,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748336000
+    },
+    {
+        "number": 54902,
+        "contract_name": "cergy-pontoise",
+        "name": "54902 - VAU02 - MAIRIE CROIX-LIEU(CB)",
+        "address": "Rond Point de la Croix Lieu c\u00f4t\u00e9 avenue Gandhi - 95490 VAUREAL",
+        "position": {
+            "lat": 49.0301062798099,
+            "lng": 2.02157336740974
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 26,
+        "available_bike_stands": 22,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748150000
+    },
+    {
+        "number": 56102,
+        "contract_name": "cergy-pontoise",
+        "name": "56102 - ERA02 - CHARLES DE GAULLE",
+        "address": "AVENUE FERNAND CHATELAIN ANGLE RUE DE PIERRELAYE 95600 - ERAGNY",
+        "position": {
+            "lat": 49.0230651147826,
+            "lng": 2.11045996684615
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714747905000
+    },
+    {
+        "number": 56106,
+        "contract_name": "cergy-pontoise",
+        "name": "56106 - ERA06 - CENTRE TECHNIQUE MUNICIPAL",
+        "address": "Rue de l'Ambassadeur angle rue des Anglais - 95610 ERAGNY",
+        "position": {
+            "lat": 49.0112158195145,
+            "lng": 2.09846304107412
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 24,
+        "available_bike_stands": 19,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714747829000
+    },
+    {
+        "number": 56101,
+        "contract_name": "cergy-pontoise",
+        "name": "56101 - ERA01 - LA DANNE",
+        "address": "BOULEVARD CHARLES DE GAULLE ANGLE BOULEVARD JACQUES DUCLOS 95600 - ERAGNY",
+        "position": {
+            "lat": 49.0242104711371,
+            "lng": 2.10326750859631
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 4,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748125000
+    },
+    {
+        "number": 50003,
+        "contract_name": "cergy-pontoise",
+        "name": "50003 - CER03 - LES ESSARTS (CB)",
+        "address": "AVENUE DES ESSARTS ANGLE BOULEVARD DE L'OISE - 95000 CERGY",
+        "position": {
+            "lat": 49.042318,
+            "lng": 2.01958
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 24,
+        "available_bike_stands": 19,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748251000
+    },
+    {
+        "number": 50027,
+        "contract_name": "cergy-pontoise",
+        "name": "50027 - CER27 - MARJOBERTS",
+        "address": "7 Rue des Chauffours, 95000 Cergy",
+        "position": {
+            "lat": 49.041233,
+            "lng": 2.075956
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714747898000
+    },
+    {
+        "number": 50020,
+        "contract_name": "cergy-pontoise",
+        "name": "50020 - CONSEIL G\u00c9N\u00c9RAL",
+        "address": "AVENUE DU PARC ANGLE BOULEVARD DE L'HAUTIL - 95000 CERGY",
+        "position": {
+            "lat": 49.032107,
+            "lng": 2.074345
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 9,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714747916000
+    },
+    {
+        "number": 50002,
+        "contract_name": "cergy-pontoise",
+        "name": "50002 - CER02 - AVENUE DU HAZAY",
+        "address": "Avenue du Hazay angle rue de la Destin\u00e9e - 95000 CERGY",
+        "position": {
+            "lat": 49.046868,
+            "lng": 2.01362
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 24,
+        "available_bike_stands": 19,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748398000
+    },
+    {
+        "number": 50101,
+        "contract_name": "cergy-pontoise",
+        "name": "50101 - P\u00d4LE GARE (CB)",
+        "address": "CHEMIN DE CERGY DEVANT LA GARE - 95010 NEUVILLE",
+        "position": {
+            "lat": 49.014534,
+            "lng": 2.078945
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 13,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714747821000
+    },
+    {
+        "number": 50014,
+        "contract_name": "cergy-pontoise",
+        "name": "50014 - CER14 - AVENUE DU NORD",
+        "address": "AVENUE DU NORD ANGLE ALL\u00c9E DES ACACIAS - 95000 CERGY",
+        "position": {
+            "lat": 49.043224,
+            "lng": 2.060405
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 13,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748300000
+    },
+    {
+        "number": 50006,
+        "contract_name": "cergy-pontoise",
+        "name": "50006 - CER06 - LE CHAT PERCH\u00c9",
+        "address": "AVENUE DE LA BELLE HEAUMI\u00c8RE ANGLE SQUARE DE L'ECHIQUIER - 95000 CERGY",
+        "position": {
+            "lat": 49.048957,
+            "lng": 2.026947
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 10,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748381000
+    },
+    {
+        "number": 54905,
+        "contract_name": "cergy-pontoise",
+        "name": "54905 - VAU05 - LES TOUPETS",
+        "address": "MAIL MENDES FRANCE ANGLE AVENUE DE LA REVOLUTION FRANCAISE - 95490 VAUREAL",
+        "position": {
+            "lat": 49.0231625956251,
+            "lng": 2.02948629121322
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 22,
+        "available_bike_stands": 20,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748360000
+    },
+    {
+        "number": 50005,
+        "contract_name": "cergy-pontoise",
+        "name": "50005 - CER05 - MOULIN A VENT",
+        "address": "AVENUE DU HAZAY ANGLE RUE DE L'AISSELETTE - 95000 CERGY",
+        "position": {
+            "lat": 49.049401,
+            "lng": 2.017075
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714747994000
+    },
+    {
+        "number": 53102,
+        "contract_name": "cergy-pontoise",
+        "name": "53102 - SOA02 - GARE SOA CENTRE",
+        "address": "Av du G\u00e9n\u00e9ral Leclerc / rue du 8 mai 1945 - 95310 SAINT OUEN L'AUMONE",
+        "position": {
+            "lat": 49.0462492033273,
+            "lng": 2.1057103478728
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 14,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714747880000
+    },
+    {
+        "number": 50010,
+        "contract_name": "cergy-pontoise",
+        "name": "50010 - CER10 - GARE CERGY AXE MAJ HORLOGE (CB)",
+        "address": "RUE DES PAS PERDUS - 95000 CERGY",
+        "position": {
+            "lat": 49.0493,
+            "lng": 2.035223
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 28,
+        "available_bike_stands": 20,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714747836000
+    },
+    {
+        "number": 50012,
+        "contract_name": "cergy-pontoise",
+        "name": "50012 - CER12 - PLACE DU HAUT-GENCY",
+        "address": "PLACE DU HAUT DE GENCY ANGLE RUE DES VENDANGES PROCHAINES - 95000 CERGY",
+        "position": {
+            "lat": 49.046588,
+            "lng": 2.04512
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 21,
+        "available_bike_stands": 16,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748102000
+    },
+    {
+        "number": 53004,
+        "contract_name": "cergy-pontoise",
+        "name": "53004 - PON04 - LA PALETTE",
+        "address": "BD DE L'OISE ANGLE RUE DE LA PALETTE",
+        "position": {
+            "lat": 49.032140952207,
+            "lng": 2.08780221085683
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748161000
+    }
+]

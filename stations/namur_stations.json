@@ -1,0 +1,478 @@
+[
+    {
+        "number": 22,
+        "contract_name": "namur",
+        "name": "022 - GROGNON",
+        "address": "022 - GROGNON - ROND-POINT GROGNON / GROGNON",
+        "position": {
+            "lat": 50.461576,
+            "lng": 4.867857
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 5,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748383000
+    },
+    {
+        "number": 7,
+        "contract_name": "namur",
+        "name": "007 - ANGE",
+        "address": "007 - ANGE - PLACE DE L ANGE FACE 95",
+        "position": {
+            "lat": 50.46424,
+            "lng": 4.8652
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748385000
+    },
+    {
+        "number": 1,
+        "contract_name": "namur",
+        "name": "001 - OCTAVE HENRY",
+        "address": "001 - OCTAVE HENRY - RUE DE GEMBLOUX / HALL OMNISPORT",
+        "position": {
+            "lat": 50.47536,
+            "lng": 4.84661
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748332000
+    },
+    {
+        "number": 30,
+        "contract_name": "namur",
+        "name": "030 - PLACE LOUISE GODIN",
+        "address": "030 - PLACE LOUISE GODIN- LOUISE GODIN",
+        "position": {
+            "lat": 50.460596,
+            "lng": 4.842836
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748102000
+    },
+    {
+        "number": 28,
+        "contract_name": "namur",
+        "name": "028 - EXPO",
+        "address": "028 - EXPO - AV SGT VRITHOFF FACE PALAIS DES EXPO",
+        "position": {
+            "lat": 50.46675,
+            "lng": 4.84834
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 11,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748374000
+    },
+    {
+        "number": 24,
+        "contract_name": "namur",
+        "name": "024 - SAINT-AUBAIN",
+        "address": "024 - SAINT-AUBAIN - RUE DU COLLEGE / PLACE SAINT-AUBIN",
+        "position": {
+            "lat": 50.46387,
+            "lng": 4.861142
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748074000
+    },
+    {
+        "number": 12,
+        "contract_name": "namur",
+        "name": "012 - PLACE SAINT-NICOLAS",
+        "address": "012 - PLACE SAINT-NICOLAS - AVENUE ALBERT 1ER / PARKING P + R",
+        "position": {
+            "lat": 50.46687,
+            "lng": 4.88484
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748374000
+    },
+    {
+        "number": 17,
+        "contract_name": "namur",
+        "name": "017 - GARE DE JAMBES",
+        "address": "017 - GARE DE JAMBES - RUE DE LA GARE FLEURIE",
+        "position": {
+            "lat": 50.455072,
+            "lng": 4.8755827
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714747924000
+    },
+    {
+        "number": 15,
+        "contract_name": "namur",
+        "name": "015 - PONT DE JAMBES",
+        "address": "015 - PONT DE JAMBES - PONT DE JAMBES",
+        "position": {
+            "lat": 50.457858,
+            "lng": 4.86697
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748329000
+    },
+    {
+        "number": 31,
+        "contract_name": "namur",
+        "name": "031 - PLACE DE BERCK-SUR-MER",
+        "address": "031 - PLACE DE BERCK-SUR-MER / PLACE DE BERCK-SUR-MER",
+        "position": {
+            "lat": 50.464517,
+            "lng": 4.839852
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748313000
+    },
+    {
+        "number": 11,
+        "contract_name": "namur",
+        "name": "011 - CITE ADMINISTRATIVE",
+        "address": "011 - CITE ADMINISTRATIVE - BD CAUCHY",
+        "position": {
+            "lat": 50.46786,
+            "lng": 4.87352
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 3,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714747837000
+    },
+    {
+        "number": 13,
+        "contract_name": "namur",
+        "name": "013 - PONT DES ARDENNES",
+        "address": "013 - PONT DES ARDENNES - PONT DES ARDENNES",
+        "position": {
+            "lat": 50.46155,
+            "lng": 4.87609
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748384000
+    },
+    {
+        "number": 25,
+        "contract_name": "namur",
+        "name": "025 - AUBERGE DE JEUNESSE",
+        "address": "025 - AUBERGE DE JEUNESSE - AVENUE FELICIEN ROPS",
+        "position": {
+            "lat": 50.448224,
+            "lng": 4.859506
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714747893000
+    },
+    {
+        "number": 33,
+        "contract_name": "namur",
+        "name": "033 - BOSQUETS",
+        "address": "033 - BOSQUETS - RUE DES BOSQUETS",
+        "position": {
+            "lat": 50.462741,
+            "lng": 4.837198
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748338000
+    },
+    {
+        "number": 29,
+        "contract_name": "namur",
+        "name": "029 - WIERTZ",
+        "address": "029 - WIERTZ - PLACE WIERTZ FACE 8",
+        "position": {
+            "lat": 50.464476,
+            "lng": 4.849289
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 5,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748326000
+    },
+    {
+        "number": 26,
+        "contract_name": "namur",
+        "name": "026 - ARSENAL",
+        "address": "026 - ARSENAL - BOULEVARD FRERE ORBAN",
+        "position": {
+            "lat": 50.464457,
+            "lng": 4.85644
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 13,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748372000
+    },
+    {
+        "number": 2,
+        "contract_name": "namur",
+        "name": "002 - CROIX DU FEU",
+        "address": "002 - CROIX DU FEU - AV DES CROIX DU FEU / RUE MUZET FACE N\u00b07",
+        "position": {
+            "lat": 50.470692,
+            "lng": 4.852803
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748364000
+    },
+    {
+        "number": 6,
+        "contract_name": "namur",
+        "name": "006 - HOTEL DE VILLE",
+        "address": "006 - HOTEL DE VILLE - RUE DE FER DVT 101",
+        "position": {
+            "lat": 50.46697,
+            "lng": 4.86546
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748314000
+    },
+    {
+        "number": 23,
+        "contract_name": "namur",
+        "name": "023 - MAURICE SERVAIS",
+        "address": "023 - MAURICE SERVAIS - PLACE MAURICE SERVAIS DVT 92",
+        "position": {
+            "lat": 50.46204,
+            "lng": 4.86499
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 6,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748166000
+    },
+    {
+        "number": 10,
+        "contract_name": "namur",
+        "name": "010 - ARTHUR MASSON",
+        "address": "010 - ARTHUR MASSON - SQUARE ARTHUR MASSON N 5",
+        "position": {
+            "lat": 50.46364,
+            "lng": 4.87353
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714747855000
+    },
+    {
+        "number": 18,
+        "contract_name": "namur",
+        "name": "018 - CPAS",
+        "address": "018 - CPAS - RUE DE DAVE",
+        "position": {
+            "lat": 50.451892,
+            "lng": 4.868837
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 5,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748361000
+    },
+    {
+        "number": 34,
+        "contract_name": "namur",
+        "name": "034 - ROGIER",
+        "address": "034 - ROGIER - RUE ROGIER / RUE NAMECHE",
+        "position": {
+            "lat": 50.46735,
+            "lng": 4.86872
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 7,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748376000
+    },
+    {
+        "number": 27,
+        "contract_name": "namur",
+        "name": "027 - OMALIUS",
+        "address": "027 - OMALIUS - REMPART DE LA VIERGE / PLACE D'OMALIUS",
+        "position": {
+            "lat": 50.4674,
+            "lng": 4.8581
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 4,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748316000
+    },
+    {
+        "number": 21,
+        "contract_name": "namur",
+        "name": "021 - CASINO",
+        "address": "021 - CASINO - AVENUE DE LA PLANTE / CASINO",
+        "position": {
+            "lat": 50.456159,
+            "lng": 4.862225
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748297000
+    },
+    {
+        "number": 3,
+        "contract_name": "namur",
+        "name": "003 - GARE DU NORD",
+        "address": "003 - GARE DU NORD - BD DU NORD FACE 5",
+        "position": {
+            "lat": 50.47001,
+            "lng": 4.86199
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748327000
+    },
+    {
+        "number": 35,
+        "contract_name": "namur",
+        "name": "035 - REINE ASTRID",
+        "address": "035 -  REINE ASTRID",
+        "position": {
+            "lat": 50.462037,
+            "lng": 4.856928
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748177000
+    },
+    {
+        "number": 16,
+        "contract_name": "namur",
+        "name": "016 - PLACE DE WALLONIE",
+        "address": "016 - PLACE DE WALLONIE - PLACE DE LA WALLONIE",
+        "position": {
+            "lat": 50.45602,
+            "lng": 4.87266
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748364000
+    },
+    {
+        "number": 32,
+        "contract_name": "namur",
+        "name": "032- ECOLE DES CADETS",
+        "address": "032- ECOLE DES CADETS - PLACE DE L'ECOLE DES CADETS",
+        "position": {
+            "lat": 50.46603,
+            "lng": 4.87735
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 17,
+        "available_bike_stands": 6,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748366000
+    }
+]

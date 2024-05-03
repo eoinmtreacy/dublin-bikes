@@ -1,0 +1,4660 @@
+[
+    {
+        "number": 198,
+        "contract_name": "valence",
+        "name": "198_CALLE_FONTANARS_DELS_AFORINS",
+        "address": "Fontanars dels Aforins - Vall d'Uix\u00f3",
+        "position": {
+            "lat": 39.4608480566945,
+            "lng": -0.3954071515343
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748321000
+    },
+    {
+        "number": 3,
+        "contract_name": "valence",
+        "name": "003_PLAZA_MUSICO_LOPEZ_CHAVARRI",
+        "address": "Plaza del Musico L\u00f3pez Chavarri",
+        "position": {
+            "lat": 39.4768031153802,
+            "lng": -0.38037911504075
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 20,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748299000
+    },
+    {
+        "number": 233,
+        "contract_name": "valence",
+        "name": "233_SAN_JUAN_BOSCO_SANTIAGO_RUSI\u00d1OL",
+        "address": "San Juan Bosco - Santiago Rusi\u00f1ol",
+        "position": {
+            "lat": 39.497128187401,
+            "lng": -0.369528093405798
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 15,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748018000
+    },
+    {
+        "number": 211,
+        "contract_name": "valence",
+        "name": "211_CALLE_FRAY_JUN\u00cdPERO_SERRA_ESQ_CALLE_VALL_D'UIX",
+        "address": "Fray Jun\u00edpero Serra - Vall d'Uix\u00f3",
+        "position": {
+            "lat": 39.4586940486343,
+            "lng": -0.397848157697943
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714747958000
+    },
+    {
+        "number": 98,
+        "contract_name": "valence",
+        "name": "098_SANTOS JUSTO Y PASTOR",
+        "address": "Justo y Pastor - Duque de Gaeta",
+        "position": {
+            "lat": 39.4696481015324,
+            "lng": -0.348533015740284
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 14,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748385000
+    },
+    {
+        "number": 76,
+        "contract_name": "valence",
+        "name": "076_CAMPOAMOR II",
+        "address": "Campoamor - M\u00fasico Gin\u00e9s",
+        "position": {
+            "lat": 39.4700511045018,
+            "lng": -0.343552001034738
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 6,
+        "available_bikes": 13,
+        "status": "OPEN",
+        "last_update": 1714748234000
+    },
+    {
+        "number": 116,
+        "contract_name": "valence",
+        "name": "116_C/ DR. VICENTE ZARAGOZA",
+        "address": "Doctor Vicente Zaragoz\u00e1 - Ram\u00f3n Asensio",
+        "position": {
+            "lat": 39.4832211443412,
+            "lng": -0.357652050365347
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 15,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748303000
+    },
+    {
+        "number": 21,
+        "contract_name": "valence",
+        "name": "021_JUAN_LLORENS_29",
+        "address": "Juan Llorens - Literato Gabriel Mir\u00f3",
+        "position": {
+            "lat": 39.4723390971218,
+            "lng": -0.390305142409828
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 14,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748040000
+    },
+    {
+        "number": 193,
+        "contract_name": "valence",
+        "name": "193_CALLE_CARTEROS",
+        "address": "Uruguay - Carteros",
+        "position": {
+            "lat": 39.4551140401216,
+            "lng": -0.38680912265075
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748036000
+    },
+    {
+        "number": 268,
+        "contract_name": "valence",
+        "name": "268_PZA_LUIS_CANO_5",
+        "address": "Plaza Luis Cano, 5",
+        "position": {
+            "lat": 39.5014131861577,
+            "lng": -0.418584242795808
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 10,
+        "available_bike_stands": 10,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748342000
+    },
+    {
+        "number": 247,
+        "contract_name": "valence",
+        "name": "247_AVDA_TRES_CRUCES_MUSICO_AYLLON",
+        "address": "Tres Cruces - M\u00fasico Ayll\u00f3n",
+        "position": {
+            "lat": 39.4673780754272,
+            "lng": -0.405664185821979
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 14,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748235000
+    },
+    {
+        "number": 31,
+        "contract_name": "valence",
+        "name": "031_CALLE SALAMANCA",
+        "address": "Salamanca - Conde Altea",
+        "position": {
+            "lat": 39.4673330883642,
+            "lng": -0.365119064198398
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 5,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748000000
+    },
+    {
+        "number": 99,
+        "contract_name": "valence",
+        "name": "099_AVDA. BLASCO IBA\u00d1EZ 166_PINTOR JOS\u00c9 MONGRELL",
+        "address": "Blasco Iba\u00f1ez 166 - Pintor Jos\u00e9 Mongrell",
+        "position": {
+            "lat": 39.4713121097146,
+            "lng": -0.34057499279659
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 21,
+        "available_bike_stands": 15,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748143000
+    },
+    {
+        "number": 255,
+        "contract_name": "valence",
+        "name": "255_SAN_VICENTE_MARTIR_TOMAS_DE_VILLAROYA",
+        "address": "Tomas de Villarroya - San Vicente",
+        "position": {
+            "lat": 39.4476710152215,
+            "lng": -0.386120116565009
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 2,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714748374000
+    },
+    {
+        "number": 246,
+        "contract_name": "valence",
+        "name": "246_AVDA_TRES_CRUCES_ENTRADA_HOSPITAL_GENERAL",
+        "address": "Tres Cruces - Hospital General",
+        "position": {
+            "lat": 39.469058080797,
+            "lng": -0.406600189533111
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748250000
+    },
+    {
+        "number": 41,
+        "contract_name": "valence",
+        "name": "41_AVDA. GRAL. URRUTIA",
+        "address": "General Urrutia - Granada",
+        "position": {
+            "lat": 39.4588800599356,
+            "lng": -0.364867058884755
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748151000
+    },
+    {
+        "number": 26,
+        "contract_name": "valence",
+        "name": "026_CALLE_SAN_JOSE_DE_CALASANZ",
+        "address": "San Jos\u00e9 de Calasanz - Salas Quiroga",
+        "position": {
+            "lat": 39.466303,
+            "lng": -0.385955
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748253000
+    },
+    {
+        "number": 12,
+        "contract_name": "valence",
+        "name": "012_CALLE_MINYANA",
+        "address": "Calle Salv\u00e1 - Calle Poeta Querol",
+        "position": {
+            "lat": 39.471935,
+            "lng": -0.374101
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748033000
+    },
+    {
+        "number": 159,
+        "contract_name": "valence",
+        "name": "159_FRANCISCO CUBELLS",
+        "address": "Francisco Cubells - San Jos\u00e9 de la Vega",
+        "position": {
+            "lat": 39.4634170849731,
+            "lng": -0.334812971276553
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 17,
+        "available_bike_stands": 11,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748146000
+    },
+    {
+        "number": 134,
+        "contract_name": "valence",
+        "name": "134_C/ MAXIMILIANO THOUS",
+        "address": "Maximiliano Thous - Luz Casanova",
+        "position": {
+            "lat": 39.4876241541086,
+            "lng": -0.373430100012801
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748180000
+    },
+    {
+        "number": 179,
+        "contract_name": "valence",
+        "name": "179_AVENIDA_DE_LA_PLATA_45",
+        "address": "Av. de la Plata - Zapadores",
+        "position": {
+            "lat": 39.4554400477968,
+            "lng": -0.366517061973888
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 23,
+        "available_bike_stands": 13,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748223000
+    },
+    {
+        "number": 235,
+        "contract_name": "valence",
+        "name": "235_CONDE_DE_TORREFIEL_CECILIO_PLA",
+        "address": "Conde Torrefiel - Cecilio Pl\u00e1",
+        "position": {
+            "lat": 39.4980131878952,
+            "lng": -0.377294117154526
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 14,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748147000
+    },
+    {
+        "number": 172,
+        "contract_name": "valence",
+        "name": "172_AVENIDA_PIO_XII",
+        "address": "P\u00edo XII - Campanar",
+        "position": {
+            "lat": 39.4814301267876,
+            "lng": -0.39343615667867
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748170000
+    },
+    {
+        "number": 274,
+        "contract_name": "valence",
+        "name": "274_MANUEL_ANDRES_CASTELL_DE_POLOP",
+        "address": "San Francisco de Paula - Castell de Pop",
+        "position": {
+            "lat": 39.4480380336336,
+            "lng": -0.333278958357397
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 3,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748065000
+    },
+    {
+        "number": 217,
+        "contract_name": "valence",
+        "name": "217_CALLE_9_DE_OCTUBRE_ESQ_CALLE_PINTOR_STOLZ",
+        "address": "Pintor Stolz - Nueve de Octubre",
+        "position": {
+            "lat": 39.4702960855926,
+            "lng": -0.404687184457659
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 16,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748364000
+    },
+    {
+        "number": 81,
+        "contract_name": "valence",
+        "name": "081_DOCTOR FORNOS",
+        "address": "Micer Masc\u00f3 - Rodriguez Fornos",
+        "position": {
+            "lat": 39.4750961158493,
+            "lng": -0.361069056238335
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714747994000
+    },
+    {
+        "number": 28,
+        "contract_name": "valence",
+        "name": "028_NAVARRO REVERTE",
+        "address": "Navarro Reverter - Grabador Esteve",
+        "position": {
+            "lat": 39.4715501017061,
+            "lng": -0.367842074631205
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 29,
+        "available_bike_stands": 20,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748342000
+    },
+    {
+        "number": 131,
+        "contract_name": "valence",
+        "name": "131_CALLE SANTA AMALIA  2",
+        "address": "CALLE SANTA AMALIA  2, esquina POETA BODRIA",
+        "position": {
+            "lat": 39.481385,
+            "lng": -0.373003
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748271000
+    },
+    {
+        "number": 1,
+        "contract_name": "valence",
+        "name": "001_GUILLEN_DE_CASTRO",
+        "address": "C/GUILLEM DE CASTRO esquina con C/NA JORDANA",
+        "position": {
+            "lat": 39.48001,
+            "lng": -0.38302
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 20,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748031000
+    },
+    {
+        "number": 48,
+        "contract_name": "valence",
+        "name": "48_AVDA. ANTONIO FERRANDIS",
+        "address": "Antonio Ferrandis - General Urrutia",
+        "position": {
+            "lat": 39.4507751420051,
+            "lng": -0.358643429344464
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714747919000
+    },
+    {
+        "number": 112,
+        "contract_name": "valence",
+        "name": "112_AVDA. DE LOS NARANJOS",
+        "address": "Manuel Broseta i Pont - Naranjos",
+        "position": {
+            "lat": 39.4785481335207,
+            "lng": -0.342366002058633
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 40,
+        "available_bike_stands": 5,
+        "available_bikes": 35,
+        "status": "OPEN",
+        "last_update": 1714748375000
+    },
+    {
+        "number": 122,
+        "contract_name": "valence",
+        "name": "122_C_M\u00daSICO HIP\u00d3LITO MART\u00cdNEZ",
+        "address": "M\u00fasico Hip\u00f3lito Mart\u00ednez - Di\u00f3genes L\u00f3pez Mecho",
+        "position": {
+            "lat": 39.4844531496192,
+            "lng": -0.354157040555065
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748280000
+    },
+    {
+        "number": 243,
+        "contract_name": "valence",
+        "name": "243_ALBACETE_ESQ_MALUQUER",
+        "address": "Albacete - Maluquer",
+        "position": {
+            "lat": 39.4627880667241,
+            "lng": -0.384633120260506
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 0,
+        "available_bikes": 18,
+        "status": "OPEN",
+        "last_update": 1714748077000
+    },
+    {
+        "number": 82,
+        "contract_name": "valence",
+        "name": "082_GUILLEN_DE_CASTRO_TORRES_DE_QUART",
+        "address": "Guillem de Castro (Torres de Quart)",
+        "position": {
+            "lat": 39.4760241115844,
+            "lng": -0.384005125495213
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 13,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748109000
+    },
+    {
+        "number": 165,
+        "contract_name": "valence",
+        "name": "165_PAVIA 2",
+        "address": "Pav\u00eda - Espad\u00e1n",
+        "position": {
+            "lat": 39.4713771150833,
+            "lng": -0.324660945171817
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748368000
+    },
+    {
+        "number": 106,
+        "contract_name": "valence",
+        "name": "106_AVDA. DE LOS NARANJOS",
+        "address": "Albalat dels Tarongers - Professor Ernest Lluch",
+        "position": {
+            "lat": 39.4767121276205,
+            "lng": -0.341477998410525
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 14,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748318000
+    },
+    {
+        "number": 265,
+        "contract_name": "valence",
+        "name": "265_C_ALCASSER_POETA_ALBERTO_LISTA",
+        "address": "Alcasser - Poeta Alberto Lista",
+        "position": {
+            "lat": 39.4709410866358,
+            "lng": -0.408208195369257
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748160000
+    },
+    {
+        "number": 238,
+        "contract_name": "valence",
+        "name": "238_SAN_JOSE_ARTESANO_FRANCISCO_MOROTE_GREUS",
+        "address": "San Jose Artesano - Francisco Morote Greus",
+        "position": {
+            "lat": 39.4974171803837,
+            "lng": -0.394474168343446
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748310000
+    },
+    {
+        "number": 63,
+        "contract_name": "valence",
+        "name": "063_AVDA. DEL PUERTO I",
+        "address": "Av Puerto 19 (Telef\u00f3nica)",
+        "position": {
+            "lat": 39.4677470918986,
+            "lng": -0.358505044597536
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748264000
+    },
+    {
+        "number": 47,
+        "contract_name": "valence",
+        "name": "47_AVDA. AUTOPISTA DEL SALER",
+        "address": "Autopista del Saler - Puente Monteolivete",
+        "position": {
+            "lat": 39.4564800548746,
+            "lng": -0.355509029538065
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748373000
+    },
+    {
+        "number": 56,
+        "contract_name": "valence",
+        "name": "56_AVDA. DE FRANCIA",
+        "address": "Francia - Menorca",
+        "position": {
+            "lat": 39.4583890648843,
+            "lng": -0.344495997567289
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 0,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748293000
+    },
+    {
+        "number": 227,
+        "contract_name": "valence",
+        "name": "227_CALLE_SAN_CLEMENTE_ENTRA_HOSPITAL_ARNAU_VILANO",
+        "address": "San Clemente - Hospital Arnau de Vilanova",
+        "position": {
+            "lat": 39.4902161533539,
+            "lng": -0.403022190134151
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 20,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748260000
+    },
+    {
+        "number": 232,
+        "contract_name": "valence",
+        "name": "232_SAN_VICENTE_DE_PAUL_SANTIAGO_RUSI\u00d1OL",
+        "address": "San Vicente Paul - Santiago Rusi\u00f1ol",
+        "position": {
+            "lat": 39.4946121801023,
+            "lng": -0.365844081019678
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748155000
+    },
+    {
+        "number": 169,
+        "contract_name": "valence",
+        "name": "169_PAVIA 4",
+        "address": "Pav\u00eda (Instituto Isabel de Villena)",
+        "position": {
+            "lat": 39.4787531399051,
+            "lng": -0.324735949373236
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748199000
+    },
+    {
+        "number": 49,
+        "contract_name": "valence",
+        "name": "49_C/ RICARDO MU\u00d1OZ SUAY",
+        "address": "Ricardo Mu\u00f1oz Suay - Mar\u00eda Jos\u00e9 Victoria Fuster (C.C. El Saler)",
+        "position": {
+            "lat": 39.4529547221767,
+            "lng": -0.35720111550767
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 19,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714747800000
+    },
+    {
+        "number": 121,
+        "contract_name": "valence",
+        "name": "121_C_MURTA",
+        "address": "Murta - Sant Eperit",
+        "position": {
+            "lat": 39.4861501538243,
+            "lng": -0.358862055563278
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 3,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714747979000
+    },
+    {
+        "number": 143,
+        "contract_name": "valence",
+        "name": "143_AVDA. MENENDEZ PIDAL",
+        "address": "Pio XII - Men\u00e9ndez PIdal (Nuevo Centro)",
+        "position": {
+            "lat": 39.4795051210676,
+            "lng": -0.391027148421504
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 27,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748160000
+    },
+    {
+        "number": 115,
+        "contract_name": "valence",
+        "name": "115_C/ DR. VICENTE ZARAGOZA",
+        "address": "Catalu\u00f1a - Doctor Vicente Zaragoz\u00e1",
+        "position": {
+            "lat": 39.4815301403857,
+            "lng": -0.352239033238509
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 13,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748315000
+    },
+    {
+        "number": 215,
+        "contract_name": "valence",
+        "name": "215_CALLE_MUSICO_AYLLON_ESQ_CALLE_FRANCISCO_DOLZ",
+        "address": "M\u00fasico Ayll\u00f3n - Francisco Dolz",
+        "position": {
+            "lat": 39.4656390724037,
+            "lng": -0.39683915840866
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748146000
+    },
+    {
+        "number": 204,
+        "contract_name": "valence",
+        "name": "204_AVDA_GENERAL_AVILES",
+        "address": "Corts Valencianes - General Avil\u00e9s",
+        "position": {
+            "lat": 39.4858111405269,
+            "lng": -0.396678168748875
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748134000
+    },
+    {
+        "number": 261,
+        "contract_name": "valence",
+        "name": "261_PZA_XUQUER_ESQ_VINALOPO",
+        "address": "Plaza Xuquer - Vinalop\u00f3",
+        "position": {
+            "lat": 39.4766441244888,
+            "lng": -0.350468025305313
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 10,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714747996000
+    },
+    {
+        "number": 102,
+        "contract_name": "valence",
+        "name": "102_AVDA.RAMON LLUL",
+        "address": "Ram\u00f3n Llull - Serpis",
+        "position": {
+            "lat": 39.4758011228282,
+            "lng": -0.346811013895548
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 7,
+        "available_bikes": 13,
+        "status": "OPEN",
+        "last_update": 1714748252000
+    },
+    {
+        "number": 32,
+        "contract_name": "valence",
+        "name": "032_C/ CONDE DE ALTEA",
+        "address": "Conde Altea - Almirante Cadarso",
+        "position": {
+            "lat": 39.4659740827401,
+            "lng": -0.368338073115823
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 1,
+        "available_bikes": 19,
+        "status": "OPEN",
+        "last_update": 1714748018000
+    },
+    {
+        "number": 79,
+        "contract_name": "valence",
+        "name": "079_AVDA. ARAGON II",
+        "address": "Arag\u00f3n - Ernesto Ferrer",
+        "position": {
+            "lat": 39.4727471091356,
+            "lng": -0.357333043778256
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748166000
+    },
+    {
+        "number": 8,
+        "contract_name": "valence",
+        "name": "008_PLAZA_DE_LA_REINA_ESQUINA_CALLE_DEL_MAR",
+        "address": "Plaza de la Reina - Mar",
+        "position": {
+            "lat": 39.473849,
+            "lng": -0.375389
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 9,
+        "available_bike_stands": 8,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748379000
+    },
+    {
+        "number": 190,
+        "contract_name": "valence",
+        "name": "190_CTRA_MALILLA",
+        "address": "Cra. Malilla - Bulevar Sur",
+        "position": {
+            "lat": 39.4460500116106,
+            "lng": -0.380387098491455
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 2,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714748167000
+    },
+    {
+        "number": 52,
+        "contract_name": "valence",
+        "name": "52_C/ LUIS GARCIA BERLANGA",
+        "address": "Luis Garc\u00eda Berlanga Mart\u00ed - Menorca",
+        "position": {
+            "lat": 39.4560020562084,
+            "lng": -0.346431002074561
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 4,
+        "available_bikes": 21,
+        "status": "OPEN",
+        "last_update": 1714748188000
+    },
+    {
+        "number": 234,
+        "contract_name": "valence",
+        "name": "234_PLAZA MUSICO_ESPI_JOSE_ESTEVE",
+        "address": "Plaza M\u00fasico Esp\u00ed",
+        "position": {
+            "lat": 39.496467183824,
+            "lng": -0.373735105660714
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 15,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748107000
+    },
+    {
+        "number": 155,
+        "contract_name": "valence",
+        "name": "155_C/ SALAMANCA",
+        "address": "Salamanca - Reina Do\u00f1a Germana",
+        "position": {
+            "lat": 39.4649210808604,
+            "lng": -0.363169057053421
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748378000
+    },
+    {
+        "number": 152,
+        "contract_name": "valence",
+        "name": "152_C/ LITERATO AZOR\u00cdN",
+        "address": "Reina Do\u00f1a Mar\u00eda - C\u00e1diz",
+        "position": {
+            "lat": 39.4608930641588,
+            "lng": -0.372796083742631
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 11,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748304000
+    },
+    {
+        "number": 237,
+        "contract_name": "valence",
+        "name": "237_LEVANTE_UD_AVDA_ECUADOR",
+        "address": "Levante U.D. - Ecuador",
+        "position": {
+            "lat": 39.4947261723789,
+            "lng": -0.391129156875508
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 14,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748295000
+    },
+    {
+        "number": 108,
+        "contract_name": "valence",
+        "name": "108_ LUIS PEIXO",
+        "address": "Lu\u00eds Peix\u00f3 20",
+        "position": {
+            "lat": 39.473794,
+            "lng": -0.334006
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748347000
+    },
+    {
+        "number": 67,
+        "contract_name": "valence",
+        "name": "067_JUAN VERDEGUER",
+        "address": "Juan Verdeguer - Toneleros",
+        "position": {
+            "lat": 39.4588280688327,
+            "lng": -0.336888975014669
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 14,
+        "available_bike_stands": 4,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748298000
+    },
+    {
+        "number": 120,
+        "contract_name": "valence",
+        "name": "120_C_DR VICENTE ZARAGOZA",
+        "address": "Doctor Vicente Zaragoz\u00e1 - Emilio Bar\u00f3",
+        "position": {
+            "lat": 39.4848481483816,
+            "lng": -0.362137064678155
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 4,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748335000
+    },
+    {
+        "number": 19,
+        "contract_name": "valence",
+        "name": "019_JUAN_LLORENS",
+        "address": "Juan Llorens - Quart",
+        "position": {
+            "lat": 39.4743371034203,
+            "lng": -0.391681147609965
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 8,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748125000
+    },
+    {
+        "number": 25,
+        "contract_name": "valence",
+        "name": "025_CALLE_DEL_ALBERIC",
+        "address": "Alberique, 18 (Abastos)",
+        "position": {
+            "lat": 39.4676970819754,
+            "lng": -0.388701135103807
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 23,
+        "available_bike_stands": 17,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748154000
+    },
+    {
+        "number": 178,
+        "contract_name": "valence",
+        "name": "178_CALLE_REIG_GENOVES",
+        "address": "Reig Genov\u00e9s - Ram\u00f3n Contreras Mongrell",
+        "position": {
+            "lat": 39.4921841703923,
+            "lng": -0.37059709396399
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 0,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748257000
+    },
+    {
+        "number": 186,
+        "contract_name": "valence",
+        "name": "186_CALLE_INGENIERO_JOAQUIN_BENLLOCH",
+        "address": "Benifair\u00f3 de Valldigna - Joaqu\u00edn Benlloch",
+        "position": {
+            "lat": 39.4503590281921,
+            "lng": -0.374106081983545
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 14,
+        "available_bike_stands": 5,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748290000
+    },
+    {
+        "number": 94,
+        "contract_name": "valence",
+        "name": "094_AVDA. BLASCO IBA\u00d1EZ 5",
+        "address": "Blasco Iba\u00f1ez - Clariano",
+        "position": {
+            "lat": 39.4753461197244,
+            "lng": -0.351674028220146
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 5,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748329000
+    },
+    {
+        "number": 39,
+        "contract_name": "valence",
+        "name": "39_AVDA. PERIS Y VALERO",
+        "address": "Peris y Valero - Cuba",
+        "position": {
+            "lat": 39.457822053401,
+            "lng": -0.374022085762198
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 10,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748237000
+    },
+    {
+        "number": 140,
+        "contract_name": "valence",
+        "name": "140_AVENIDA_CAMPANAR",
+        "address": "Campanar - Nicasio Benlloch",
+        "position": {
+            "lat": 39.4879721500597,
+            "lng": -0.38969114895134
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748273000
+    },
+    {
+        "number": 128,
+        "contract_name": "valence",
+        "name": "128_C/ ALFAUIR",
+        "address": "Alfahuir - Pe\u00f1iscola",
+        "position": {
+            "lat": 39.4887341597133,
+            "lng": -0.367635083238739
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 9,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714748186000
+    },
+    {
+        "number": 130,
+        "contract_name": "valence",
+        "name": "130_C/ CONVENTO CARMELITAS",
+        "address": "Convento Carmelitas - Alboraya",
+        "position": {
+            "lat": 39.4832061402186,
+            "lng": -0.370301088264948
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 13,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714747883000
+    },
+    {
+        "number": 107,
+        "contract_name": "valence",
+        "name": "107_C/ CAMPILLO ALTO BUEY",
+        "address": "Campillo de Altobuey (Polideportivo)",
+        "position": {
+            "lat": 39.4752131242374,
+            "lng": -0.336314982139155
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 14,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748286000
+    },
+    {
+        "number": 221,
+        "contract_name": "valence",
+        "name": "221_AVDA_MANUEL_DE_FALLA_ESQ_CALLE_HERNANDEZ_LAZAR",
+        "address": "Manuel de Falla - Hern\u00e1ndez L\u00e1zaro",
+        "position": {
+            "lat": 39.4752381028348,
+            "lng": -0.40294418188015
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714747935000
+    },
+    {
+        "number": 273,
+        "contract_name": "valence",
+        "name": "273_CALLE_MORAIRA_CALLE_DALT_DE_LA_MAR",
+        "address": "Moraira - Alta del Mar",
+        "position": {
+            "lat": 39.4502730411407,
+            "lng": -0.33336295982062
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 10,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748287000
+    },
+    {
+        "number": 17,
+        "contract_name": "valence",
+        "name": "017_ESTACION RENFE I",
+        "address": "X\u00e1tiva - Bail\u00e9n (Estaci\u00f3n del Norte)",
+        "position": {
+            "lat": 39.4674360847595,
+            "lng": -0.377350100922523
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 15,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748370000
+    },
+    {
+        "number": 147,
+        "contract_name": "valence",
+        "name": "147_CALLE_PIE_DE_LA_CRUZ_CALLE_DE_LA_REJA",
+        "address": "Pie de la Cruz - Rejas",
+        "position": {
+            "lat": 39.4731691031481,
+            "lng": -0.38029811284559
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 7,
+        "status": "OPEN",
+        "last_update": 1714748308000
+    },
+    {
+        "number": 18,
+        "contract_name": "valence",
+        "name": "018_COLON II",
+        "address": "Col\u00f3n 20-22",
+        "position": {
+            "lat": 39.4681590885325,
+            "lng": -0.373220088928677
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 24,
+        "available_bike_stands": 8,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748289000
+    },
+    {
+        "number": 256,
+        "contract_name": "valence",
+        "name": "256_AVDA_TRES_FORQUES_TURIS",
+        "address": "Tres Forques - Tur\u00eds",
+        "position": {
+            "lat": 39.4639310680958,
+            "lng": -0.392326143951058
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748243000
+    },
+    {
+        "number": 119,
+        "contract_name": "valence",
+        "name": "119_C/ JAIME ROIG",
+        "address": "Jaime Roig - Bachiller",
+        "position": {
+            "lat": 39.482488140046,
+            "lng": -0.363317066947724
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714747914000
+    },
+    {
+        "number": 164,
+        "contract_name": "valence",
+        "name": "164_PAVIA 1",
+        "address": "Pav\u00eda - Columbretes",
+        "position": {
+            "lat": 39.4684281051279,
+            "lng": -0.324724943771547
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 17,
+        "available_bike_stands": 1,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714748341000
+    },
+    {
+        "number": 138,
+        "contract_name": "valence",
+        "name": "138_SAN_PANCRACIO",
+        "address": "San Pancracio - Periodista Llorente",
+        "position": {
+            "lat": 39.4881581524135,
+            "lng": -0.384313132924836
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748355000
+    },
+    {
+        "number": 34,
+        "contract_name": "valence",
+        "name": "34_AVDA. ANTIGUO REINO DE VALENCIA",
+        "address": "Regne de Valencia - Doctor Sumsi",
+        "position": {
+            "lat": 39.4640900758311,
+            "lng": -0.370052077239064
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 17,
+        "available_bike_stands": 11,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748368000
+    },
+    {
+        "number": 216,
+        "contract_name": "valence",
+        "name": "216_AVDA_DEL_CID_ESQ_CALLE_BURGOS",
+        "address": "Av. del Cid - Burgos",
+        "position": {
+            "lat": 39.46913,
+            "lng": -0.399552
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 17,
+        "available_bike_stands": 17,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748221000
+    },
+    {
+        "number": 27,
+        "contract_name": "valence",
+        "name": "027_CALLE_SAN_VICENTE_MARTIR_129",
+        "address": "San Vicente Martir - Doctor Vil\u00e1 Barber\u00e1",
+        "position": {
+            "lat": 39.4633300694228,
+            "lng": -0.381942112481819
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748358000
+    },
+    {
+        "number": 141,
+        "contract_name": "valence",
+        "name": "141_C/ GREGORIO GEA (PEATONAL)",
+        "address": "Gregorio Gea - Padre Ferris",
+        "position": {
+            "lat": 39.4832361355125,
+            "lng": -0.385247133088568
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748225000
+    },
+    {
+        "number": 96,
+        "contract_name": "valence",
+        "name": "096_AVDA. BLASCO IBA\u00d1EZ 6",
+        "address": "Blasco Iba\u00f1ez - Yecla",
+        "position": {
+            "lat": 39.4735221146643,
+            "lng": -0.348305017144382
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 21,
+        "available_bike_stands": 2,
+        "available_bikes": 19,
+        "status": "OPEN",
+        "last_update": 1714748363000
+    },
+    {
+        "number": 151,
+        "contract_name": "valence",
+        "name": "151_JERONIMO MONSORIU",
+        "address": "Jer\u00f3nimo Monsoriu - Alcalde Cano Coloma",
+        "position": {
+            "lat": 39.4646370882768,
+            "lng": -0.337207979114133
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748291000
+    },
+    {
+        "number": 72,
+        "contract_name": "valence",
+        "name": "072_RAMIRO MAETZU",
+        "address": "Ramiro de Maeztu - Peris Brell",
+        "position": {
+            "lat": 39.467225,
+            "lng": -0.346537
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 7,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748225000
+    },
+    {
+        "number": 258,
+        "contract_name": "valence",
+        "name": "258_PINTOR_RAFAEL_SOLVES_ESQ_JOSE_SOTO_MICO",
+        "address": "Pintor Rafael Solves - Jose Soto Mico",
+        "position": {
+            "lat": 39.4397959876251,
+            "lng": -0.38922812163005
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 2,
+        "available_bikes": 13,
+        "status": "OPEN",
+        "last_update": 1714748308000
+    },
+    {
+        "number": 58,
+        "contract_name": "valence",
+        "name": "058_PLAZA DE ESPA\u00d1A",
+        "address": "Plaza Espa\u00f1a",
+        "position": {
+            "lat": 39.4661860791448,
+            "lng": -0.381677113224894
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714747797000
+    },
+    {
+        "number": 70,
+        "contract_name": "valence",
+        "name": "70_CALLE_COLON_ESQ_ALMIRANTE_ROGER_DE_LAURIA",
+        "address": "Col\u00f3n, 44",
+        "position": {
+            "lat": 39.469181,
+            "lng": -0.371737
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 17,
+        "available_bike_stands": 14,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748361000
+    },
+    {
+        "number": 263,
+        "contract_name": "valence",
+        "name": "263_PADRE ESTEBAN_PERNET_ANTES_CASA_MISERICORDIA",
+        "address": "Padre Esteban Pernet - Casa Misericordia",
+        "position": {
+            "lat": 39.4670110728758,
+            "lng": -0.409735197841415
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 15,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748097000
+    },
+    {
+        "number": 207,
+        "contract_name": "valence",
+        "name": "207_CALLE_MILLARES_ESQ_CALLE_FEDERICO_GARCA_LORCA",
+        "address": "Giorgeta, 64",
+        "position": {
+            "lat": 39.455361042514,
+            "lng": -0.381996108347568
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748276000
+    },
+    {
+        "number": 118,
+        "contract_name": "valence",
+        "name": "118_C/ DR. GOMEZ FERRER",
+        "address": "G\u00f3mez Ferrer - \u00c1lvaro de Baz\u00e1n",
+        "position": {
+            "lat": 39.4804341340267,
+            "lng": -0.360507057423573
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 3,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714748367000
+    },
+    {
+        "number": 239,
+        "contract_name": "valence",
+        "name": "239_LA_FLORISTA_TRANVIA_PALACIO_CONGRESOS",
+        "address": "Florista - T4 (Palau de Congressos)",
+        "position": {
+            "lat": 39.4969531770325,
+            "lng": -0.400055184833165
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714747795000
+    },
+    {
+        "number": 114,
+        "contract_name": "valence",
+        "name": "114_ADOLFO SUAREZ",
+        "address": "UPV Inform\u00e1tica",
+        "position": {
+            "lat": 39.4817721429927,
+            "lng": -0.346682016720988
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 16,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748158000
+    },
+    {
+        "number": 213,
+        "contract_name": "valence",
+        "name": "213_CALLE_ARCHIDUQUE_CARLOS_ESQ_CALLE_JOSE_MA_MOR",
+        "address": "Archiduque Carlos - Jos\u00e9 Mar\u00eda Mortes Lerma",
+        "position": {
+            "lat": 39.4631330638726,
+            "lng": -0.397063157732616
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748033000
+    },
+    {
+        "number": 111,
+        "contract_name": "valence",
+        "name": "111_UNIVERSIDAD POLITECNICA \u2013 JUNTO PISTAS DEPORTI",
+        "address": "UPV Galileo",
+        "position": {
+            "lat": 39.480632,
+            "lng": -0.339599
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 9,
+        "available_bikes": 21,
+        "status": "OPEN",
+        "last_update": 1714748054000
+    },
+    {
+        "number": 254,
+        "contract_name": "valence",
+        "name": "254_AVDA_DR_TOMAS_SALA_CARTEROS",
+        "address": "Doctor Tom\u00e1s Sala - Carteros",
+        "position": {
+            "lat": 39.4476820139972,
+            "lng": -0.39000812823506
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 0,
+        "available_bikes": 19,
+        "status": "OPEN",
+        "last_update": 1714747927000
+    },
+    {
+        "number": 100,
+        "contract_name": "valence",
+        "name": "100_AVDA. BLASCO IBA\u00d1EZ 9",
+        "address": "Blasco Iba\u00f1ez - Mestre Ripoll",
+        "position": {
+            "lat": 39.4716021114468,
+            "lng": -0.33824098596173
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 4,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714748304000
+    },
+    {
+        "number": 196,
+        "contract_name": "valence",
+        "name": "196_AVDA_GASPAR_AGUILAR",
+        "address": "Jer\u00f3nimo Mu\u00f1oz - Gaspar Aguilar",
+        "position": {
+            "lat": 39.4595430546337,
+            "lng": -0.388157129082296
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748214000
+    },
+    {
+        "number": 264,
+        "contract_name": "valence",
+        "name": "264_AVDA_CID_ANTES_MARCONI",
+        "address": "Av. del Cid - Marconi",
+        "position": {
+            "lat": 39.469128078481,
+            "lng": -0.414523213347863
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748076000
+    },
+    {
+        "number": 137,
+        "contract_name": "valence",
+        "name": "137_CALLE_ECONOMISTA_GAY",
+        "address": "Economista Gay - Luis Crumiere",
+        "position": {
+            "lat": 39.4890011566455,
+            "lng": -0.379987120406342
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748329000
+    },
+    {
+        "number": 168,
+        "contract_name": "valence",
+        "name": "168_AVDA. MALVARROSA",
+        "address": "Malvarrosa - R\u00edo Tajo",
+        "position": {
+            "lat": 39.4768391324101,
+            "lng": -0.327977958049006
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748357000
+    },
+    {
+        "number": 248,
+        "contract_name": "valence",
+        "name": "248_AVDA_TRES_CRUCES_JOSE_MARIA_MORTES_LERMA",
+        "address": "Tres Cruces - Jose Maria Mortes Lerma",
+        "position": {
+            "lat": 39.4628080601935,
+            "lng": -0.40506018155276
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748298000
+    },
+    {
+        "number": 201,
+        "contract_name": "valence",
+        "name": "201_AVDA_PEREZ_GALDOS",
+        "address": "Perez Gald\u00f3s - Nou Moles",
+        "position": {
+            "lat": 39.471680093785,
+            "lng": -0.393759152416117
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714747905000
+    },
+    {
+        "number": 174,
+        "contract_name": "valence",
+        "name": "174_CALLE_MONDUBER",
+        "address": "Monduber - Peset Aleixandre",
+        "position": {
+            "lat": 39.4894061558441,
+            "lng": -0.386738140863954
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 16,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748111000
+    },
+    {
+        "number": 77,
+        "contract_name": "valence",
+        "name": "77_C/ MOLINELL",
+        "address": "Molinell - Calder\u00f3n de la Barca",
+        "position": {
+            "lat": 39.4849411475299,
+            "lng": -0.365758075579642
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714747995000
+    },
+    {
+        "number": 203,
+        "contract_name": "valence",
+        "name": "203_CALLE_REINA_VIOLANTE",
+        "address": "Reina Violante - Escultor Garc\u00eda Mas",
+        "position": {
+            "lat": 39.4845771348881,
+            "lng": -0.401273181871356
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748032000
+    },
+    {
+        "number": 74,
+        "contract_name": "valence",
+        "name": "074_PLAZA SAN FELIPE NERI",
+        "address": "Plaza San Felipe Neri (Mercado Algir\u00f3s)",
+        "position": {
+            "lat": 39.4699171007281,
+            "lng": -0.353825031741888
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 20,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748268000
+    },
+    {
+        "number": 209,
+        "contract_name": "valence",
+        "name": "209_AVDA_GASPAR_AGUILAR_ESQ_CALLE_MUSICO_PENELLA",
+        "address": "Gaspar Aguilar - M\u00fasico Penella",
+        "position": {
+            "lat": 39.4520500277393,
+            "lng": -0.393106139888379
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 8,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748118000
+    },
+    {
+        "number": 167,
+        "contract_name": "valence",
+        "name": "167_PAVIA 3",
+        "address": "Pav\u00eda - Acequia de la Cadena",
+        "position": {
+            "lat": 39.4748761268572,
+            "lng": -0.324700947178956
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748343000
+    },
+    {
+        "number": 7,
+        "contract_name": "valence",
+        "name": "007_PZA_DEL_MERCADO_TAULA_DE_CANVIS",
+        "address": "Plaza del Mercado - Taula de Canvis",
+        "position": {
+            "lat": 39.4748401091142,
+            "lng": -0.379276110679168
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 14,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748334000
+    },
+    {
+        "number": 104,
+        "contract_name": "valence",
+        "name": "104_ALBALAT DELS TARONGERS",
+        "address": "Albalat dels Tarongers - Paseo Facultades",
+        "position": {
+            "lat": 39.4783541312533,
+            "lng": -0.34736601693197
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 4,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714748115000
+    },
+    {
+        "number": 110,
+        "contract_name": "valence",
+        "name": "110_KISSHOMARU",
+        "address": "UPV Trinquet",
+        "position": {
+            "lat": 39.4807081426045,
+            "lng": -0.336770986463246
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 15,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714747850000
+    },
+    {
+        "number": 97,
+        "contract_name": "valence",
+        "name": "097_AVDA. BLASCO IBA\u00d1EZ 7",
+        "address": "Blasco Iba\u00f1ez 121",
+        "position": {
+            "lat": 39.4730361146687,
+            "lng": -0.343223001657882
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 23,
+        "available_bike_stands": 22,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748222000
+    },
+    {
+        "number": 231,
+        "contract_name": "valence",
+        "name": "231_CALLE_DE_ALCA\u00d1IZ_ESQ_CALLE_CAMBRILS",
+        "address": "Alca\u00f1iz - Cambrils",
+        "position": {
+            "lat": 39.4950401774174,
+            "lng": -0.378712119815713
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748006000
+    },
+    {
+        "number": 123,
+        "contract_name": "valence",
+        "name": "123_C_ALBOCACER",
+        "address": "Alboc\u00e1cer - Vinaroz",
+        "position": {
+            "lat": 39.4876391568909,
+            "lng": -0.364932074551232
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 3,
+        "available_bikes": 17,
+        "status": "OPEN",
+        "last_update": 1714748058000
+    },
+    {
+        "number": 46,
+        "contract_name": "valence",
+        "name": "46_AVDA. INSTITUTO OBRERO DE VALENCIA",
+        "address": "Pintor Luis Arcas - Inst. Obrero Valenciano",
+        "position": {
+            "lat": 39.455477050399,
+            "lng": -0.358878039093959
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 1,
+        "available_bikes": 19,
+        "status": "OPEN",
+        "last_update": 1714748248000
+    },
+    {
+        "number": 68,
+        "contract_name": "valence",
+        "name": "068_AVDA. DEL PUERTO IV",
+        "address": "Av. Puerto - Jos\u00e9 Aguilar",
+        "position": {
+            "lat": 39.462771080523,
+            "lng": -0.341823991929563
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748123000
+    },
+    {
+        "number": 175,
+        "contract_name": "valence",
+        "name": "175_CALLE_JUAN_XXIII",
+        "address": "Juan XXIII - Domingo G\u00f3mez",
+        "position": {
+            "lat": 39.4925571677332,
+            "lng": -0.382803130751858
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748161000
+    },
+    {
+        "number": 166,
+        "contract_name": "valence",
+        "name": "166_PROGRESO",
+        "address": "Don Vicente Guillot - Progreso",
+        "position": {
+            "lat": 39.4733171202464,
+            "lng": -0.328901958917283
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 0,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748008000
+    },
+    {
+        "number": 53,
+        "contract_name": "valence",
+        "name": "53_C/ LUIS GARCIA BERLANGA",
+        "address": "Alameda - Pintor Maella",
+        "position": {
+            "lat": 39.456732058086,
+            "lng": -0.348230007860048
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 2,
+        "available_bikes": 23,
+        "status": "OPEN",
+        "last_update": 1714748197000
+    },
+    {
+        "number": 271,
+        "contract_name": "valence",
+        "name": "271_CALLE_SALVADOR_CERVER\u00d3_CALLE_CARLOS_CORTINA",
+        "address": "Salvador Cerver\u00f3 - Carlos Cortina",
+        "position": {
+            "lat": 39.4992471879931,
+            "lng": -0.389982155850781
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 10,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714747885000
+    },
+    {
+        "number": 42,
+        "contract_name": "valence",
+        "name": "42_AVDA. DE LA PLATA",
+        "address": "Av. de la Plata (Museo Fallero)",
+        "position": {
+            "lat": 39.4587490614763,
+            "lng": -0.358749040474832
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 1,
+        "available_bikes": 19,
+        "status": "OPEN",
+        "last_update": 1714748312000
+    },
+    {
+        "number": 44,
+        "contract_name": "valence",
+        "name": "44_AVDA. GRAL. URRUTIA",
+        "address": "General Urrutia - Av. de la Plata",
+        "position": {
+            "lat": 39.4563970521313,
+            "lng": -0.363105052261891
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 4,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748324000
+    },
+    {
+        "number": 16,
+        "contract_name": "valence",
+        "name": "016_COLON I",
+        "address": "Col\u00f3n, 60",
+        "position": {
+            "lat": 39.470060095815,
+            "lng": -0.370524081869223
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748296000
+    },
+    {
+        "number": 210,
+        "contract_name": "valence",
+        "name": "210_CALLE_CAMPOS_CRESPO_ESQ_CALLE_JUAN_DE_GARAY",
+        "address": "Campos Crespo - Juan de Garay",
+        "position": {
+            "lat": 39.455521038259,
+            "lng": -0.396807152864784
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 11,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714747846000
+    },
+    {
+        "number": 45,
+        "contract_name": "valence",
+        "name": "45_AVDA. GRAL. URRUTIA",
+        "address": "Hermanos Maristas - General Urrutia",
+        "position": {
+            "lat": 39.4537870437033,
+            "lng": -0.361946047377204
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 4,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748171000
+    },
+    {
+        "number": 125,
+        "contract_name": "valence",
+        "name": "125_C/ MASQUEFA",
+        "address": "Masquefa, 42 - 44",
+        "position": {
+            "lat": 39.4896611657071,
+            "lng": -0.358709056987903
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 1,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748164000
+    },
+    {
+        "number": 202,
+        "contract_name": "valence",
+        "name": "202_PASEO_PECHINA",
+        "address": "Pechina - Teruel",
+        "position": {
+            "lat": 39.4761901091111,
+            "lng": -0.393425153835504
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714747957000
+    },
+    {
+        "number": 236,
+        "contract_name": "valence",
+        "name": "236_RIO_SEGRE_RAFAEL_COMPANY",
+        "address": "Rio Segre - Rafael Company",
+        "position": {
+            "lat": 39.4950341762248,
+            "lng": -0.382369130775341
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 13,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748260000
+    },
+    {
+        "number": 135,
+        "contract_name": "valence",
+        "name": "135_AVDA. CONSTITUCI\u00d3N",
+        "address": "Constituci\u00f3n - Reus",
+        "position": {
+            "lat": 39.4856701458608,
+            "lng": -0.378592114439778
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 4,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714748173000
+    },
+    {
+        "number": 251,
+        "contract_name": "valence",
+        "name": "251_ARQUITECTO_SEGURA_LAGO_CAMINO_NUEVO_DE_PICA\u00d1A",
+        "address": "Arquitecto Segura del Lago - Camino Nuevo de Pica\u00f1a",
+        "position": {
+            "lat": 39.4557980367043,
+            "lng": -0.404504176110588
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 5,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714747886000
+    },
+    {
+        "number": 157,
+        "contract_name": "valence",
+        "name": "157_AVENIDA_PEREZ_GALDOS",
+        "address": "P\u00e9rez Gald\u00f3s - Marqu\u00e9s de Zenete",
+        "position": {
+            "lat": 39.464020069969,
+            "lng": -0.387457129393968
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748265000
+    },
+    {
+        "number": 187,
+        "contract_name": "valence",
+        "name": "187_AVDA_AUSIAS_MARCH",
+        "address": "\u00c1ngel Villena - Ausias March",
+        "position": {
+            "lat": 39.4479280216762,
+            "lng": -0.368909065084874
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 5,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748291000
+    },
+    {
+        "number": 109,
+        "contract_name": "valence",
+        "name": "109_AVDA. NARANJOS",
+        "address": "Naranjos - Ingeniero Fausto Elio",
+        "position": {
+            "lat": 39.4767871304178,
+            "lng": -0.333600974859012
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714747828000
+    },
+    {
+        "number": 65,
+        "contract_name": "valence",
+        "name": "065_AVDA. DEL PUERTO III",
+        "address": "Av. Puerto - Doctor Manuel Candela",
+        "position": {
+            "lat": 39.4654840867199,
+            "lng": -0.350928020671138
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 2,
+        "available_bikes": 17,
+        "status": "OPEN",
+        "last_update": 1714748242000
+    },
+    {
+        "number": 205,
+        "contract_name": "valence",
+        "name": "205_CALLE_NICASIO_BENLLOCH",
+        "address": "Nicasio Benlloch - Amics dels Corpus",
+        "position": {
+            "lat": 39.4892551532675,
+            "lng": -0.393181160103781
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 24,
+        "available_bike_stands": 20,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748333000
+    },
+    {
+        "number": 133,
+        "contract_name": "valence",
+        "name": "133_C/ ALFAMBRA",
+        "address": "Alfambra - Poeta Monmeneu",
+        "position": {
+            "lat": 39.4827241367683,
+            "lng": -0.375973105008805
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 10,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748072000
+    },
+    {
+        "number": 197,
+        "contract_name": "valence",
+        "name": "197_CALLE_FONTANARS_DELS_AFORINS",
+        "address": "Fontanars dels Aforins - Jacinto Labaila",
+        "position": {
+            "lat": 39.4581520485586,
+            "lng": -0.392424141132886
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 14,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748255000
+    },
+    {
+        "number": 88,
+        "contract_name": "valence",
+        "name": "088_AVDA. BLASCO IBA\u00d1EZ 3",
+        "address": "Blasco Iba\u00f1ez, 28 (F. Geograf\u00eda e Historia)",
+        "position": {
+            "lat": 39.4774801238339,
+            "lng": -0.361233058011854
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 40,
+        "available_bike_stands": 40,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748378000
+    },
+    {
+        "number": 156,
+        "contract_name": "valence",
+        "name": "156_C/ CUBA",
+        "address": "Puerto Rico - Cuba",
+        "position": {
+            "lat": 39.4609320631125,
+            "lng": -0.376436094678165
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 10,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748300000
+    },
+    {
+        "number": 225,
+        "contract_name": "valence",
+        "name": "225_CALLE_PADRE_BARRANCO_DESPUES_CALLE_BENIFAIRO",
+        "address": "Padre Barranco - Carlos Ruano Llopis (Pintor)",
+        "position": {
+            "lat": 39.4880751467038,
+            "lng": -0.401233183623003
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 20,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748144000
+    },
+    {
+        "number": 92,
+        "contract_name": "valence",
+        "name": "092_AVDA. DE ARAGON, 4 - ESQ AVDA BLASCO IBA\u00d1EZ",
+        "address": "Blasco Iba\u00f1ez - Arag\u00f3n",
+        "position": {
+            "lat": 39.4758281199338,
+            "lng": -0.356059041618514
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 12,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748037000
+    },
+    {
+        "number": 33,
+        "contract_name": "valence",
+        "name": "033_GRAN_VIA_GERMANIAS_ESQ_CALLE_RUZAFA",
+        "address": "German\u00edas - Ruzafa",
+        "position": {
+            "lat": 39.4647860768762,
+            "lng": -0.37408108969372
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 7,
+        "available_bikes": 13,
+        "status": "OPEN",
+        "last_update": 1714748300000
+    },
+    {
+        "number": 85,
+        "contract_name": "valence",
+        "name": "085_AVDA_BLASCO IBA\u00d1EZ 1",
+        "address": "Blasco Iba\u00f1ez - Jaime Roig",
+        "position": {
+            "lat": 39.4794321292633,
+            "lng": -0.364806069768998
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 23,
+        "available_bike_stands": 11,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748228000
+    },
+    {
+        "number": 162,
+        "contract_name": "valence",
+        "name": "162_PZA. ARMADA ESPA\u00d1OLA",
+        "address": "Armada Espa\u00f1ola - Mariano Cuber",
+        "position": {
+            "lat": 39.4635720870931,
+            "lng": -0.32988595660341
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 3,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714748113000
+    },
+    {
+        "number": 13,
+        "contract_name": "valence",
+        "name": "013_PZA. ALFONSO MAGNANIMO_CON_CALLE_LA_NAVE",
+        "address": "Alfonso el Magn\u00e1nimo - Nave",
+        "position": {
+            "lat": 39.4720301023169,
+            "lng": -0.370965084251257
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 24,
+        "available_bike_stands": 24,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748059000
+    },
+    {
+        "number": 132,
+        "contract_name": "valence",
+        "name": "132_C/ RUAYA",
+        "address": "Platero Su\u00e1rez - Milagrosa",
+        "position": {
+            "lat": 39.485254146087,
+            "lng": -0.373525099027208
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748245000
+    },
+    {
+        "number": 194,
+        "contract_name": "valence",
+        "name": "194_ESTACION_AVE_JOAQUIN_SOROLLA",
+        "address": "Estaci\u00f3n AVE Joaqu\u00edn Sorolla",
+        "position": {
+            "lat": 39.46074,
+            "lng": -0.38189
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 40,
+        "available_bike_stands": 24,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748135000
+    },
+    {
+        "number": 87,
+        "contract_name": "valence",
+        "name": "87_AVDA BLASCO IBA\u00d1EZ 2",
+        "address": "Blasco Iba\u00f1ez - Doctor G\u00f3mez Ferrer (Cl\u00ednico)",
+        "position": {
+            "lat": 39.4784861269877,
+            "lng": -0.361971060764256
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 33,
+        "available_bike_stands": 31,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748375000
+    },
+    {
+        "number": 206,
+        "contract_name": "valence",
+        "name": "206_CALLE_PERIODISTA_GIL_SUMBIELA",
+        "address": "Periodista Gil Sumbiela - Poeta Serrano Clavero",
+        "position": {
+            "lat": 39.4926801661293,
+            "lng": -0.389098149691761
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 15,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748199000
+    },
+    {
+        "number": 223,
+        "contract_name": "valence",
+        "name": "223_CALLE_VALLE_BALLESTERA_ESQ_PLAZA_POLICIA_LOCAL",
+        "address": "Valle de la Ballestera - Hospital Nueve de Octubre",
+        "position": {
+            "lat": 39.4785261144674,
+            "lng": -0.40127817864509
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748154000
+    },
+    {
+        "number": 214,
+        "contract_name": "valence",
+        "name": "214_CALLE_SANTA_CRUZ_DE_TENERIFE_ESQ_CALLE_LLOMBA",
+        "address": "Santa Cruz de Tenerife, 21",
+        "position": {
+            "lat": 39.4649000686738,
+            "lng": -0.400667169496185
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748065000
+    },
+    {
+        "number": 40,
+        "contract_name": "valence",
+        "name": "40_CALLE_BARCAS_FRENTE _TEATRO_PRINCIPAL",
+        "address": "Barcas, 11",
+        "position": {
+            "lat": 39.470434095659,
+            "lng": -0.374915095234885
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 26,
+        "available_bike_stands": 25,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748263000
+    },
+    {
+        "number": 219,
+        "contract_name": "valence",
+        "name": "219_CALLE_CASTAN_TOBE\u00d1AS_ESQ_CALLE_VELAZQUEZ",
+        "address": "Cast\u00e1n Tobe\u00f1as - Rincon de Ademuz",
+        "position": {
+            "lat": 39.472625,
+            "lng": -0.403121
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 18,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714747793000
+    },
+    {
+        "number": 9,
+        "contract_name": "valence",
+        "name": "009_PLAZA_TETUAN_4",
+        "address": "Plaza de Tetu\u00e1n",
+        "position": {
+            "lat": 39.4743231103546,
+            "lng": -0.370021082654504
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 25,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714747810000
+    },
+    {
+        "number": 59,
+        "contract_name": "valence",
+        "name": "059_AVDA. DE BALEARES I",
+        "address": "Baleares - R\u00edo Escalona",
+        "position": {
+            "lat": 39.4630560773318,
+            "lng": -0.354640030484729
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 4,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748382000
+    },
+    {
+        "number": 30,
+        "contract_name": "valence",
+        "name": "030_CIRILO AMOROS",
+        "address": "Cirilo Amor\u00f3s - Jorge Juan (Mercado Col\u00f3n)",
+        "position": {
+            "lat": 39.468569091411,
+            "lng": -0.368590075268948
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714747959000
+    },
+    {
+        "number": 91,
+        "contract_name": "valence",
+        "name": "091_CALLE_GRABADOR_JORDAN_46_PLAZA_ESCULTOR_PASTOR",
+        "address": "Grabador Jordan - Escultor Pastor",
+        "position": {
+            "lat": 39.4440930091404,
+            "lng": -0.367664059275921
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 0,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748007000
+    },
+    {
+        "number": 4,
+        "contract_name": "valence",
+        "name": "004_PLAZA_DE_LA_VIRGEN_CALLE_BAILIA",
+        "address": "Plaza de la Virgen - Bail\u00eda",
+        "position": {
+            "lat": 39.4767151166769,
+            "lng": -0.375433100164395
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 24,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748194000
+    },
+    {
+        "number": 171,
+        "contract_name": "valence",
+        "name": "171_CALLE GRAN CANARIA",
+        "address": "Gran Canaria - Ingeniero Manuel Maese",
+        "position": {
+            "lat": 39.4830281528956,
+            "lng": -0.329098964737767
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 2,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714747955000
+    },
+    {
+        "number": 117,
+        "contract_name": "valence",
+        "name": "117_PRIMADO REIG",
+        "address": "Gasc\u00f3 Oliag - Primado Reig",
+        "position": {
+            "lat": 39.479219131011,
+            "lng": -0.357156046729095
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 2,
+        "available_bikes": 28,
+        "status": "OPEN",
+        "last_update": 1714748330000
+    },
+    {
+        "number": 266,
+        "contract_name": "valence",
+        "name": "266_PLANA_ALTA_ESQ_AVDA_MAESTRO_RODRIGO",
+        "address": "Canal de Navarr\u00e9s - Maestro Rodrigo",
+        "position": {
+            "lat": 39.4902571523898,
+            "lng": -0.406462200475517
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 17,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748186000
+    },
+    {
+        "number": 95,
+        "contract_name": "valence",
+        "name": "95_AVDA. DE LOS NARANJOS",
+        "address": "Naranjos (Magisterio)",
+        "position": {
+            "lat": 39.4798031365094,
+            "lng": -0.34621001424835
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 33,
+        "available_bike_stands": 3,
+        "available_bikes": 30,
+        "status": "OPEN",
+        "last_update": 1714748170000
+    },
+    {
+        "number": 22,
+        "contract_name": "valence",
+        "name": "022_JUAN_LLORENS_57",
+        "address": "Angel Guimer\u00e1 - Juan Llorens",
+        "position": {
+            "lat": 39.4697550890028,
+            "lng": -0.388444135439494
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 15,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748156000
+    },
+    {
+        "number": 55,
+        "contract_name": "valence",
+        "name": "55_AVDA. DE FRANCIA",
+        "address": "Francia - Pintor Maella",
+        "position": {
+            "lat": 39.4593110666043,
+            "lng": -0.348777010892994
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 3,
+        "available_bikes": 22,
+        "status": "OPEN",
+        "last_update": 1714748370000
+    },
+    {
+        "number": 14,
+        "contract_name": "valence",
+        "name": "014_BAR\u00d3N CARCER",
+        "address": "Huesca - Bar\u00f3n de C\u00e1rcer",
+        "position": {
+            "lat": 39.4689350890206,
+            "lng": -0.379815109120643
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748160000
+    },
+    {
+        "number": 62,
+        "contract_name": "valence",
+        "name": "062_MENORCA",
+        "address": "Menorca - Baleares",
+        "position": {
+            "lat": 39.4597790703012,
+            "lng": -0.342242991568314
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748225000
+    },
+    {
+        "number": 144,
+        "contract_name": "valence",
+        "name": "144_CALLE_MARQUES_DE_SAN_JUAN",
+        "address": "Marqu\u00e9s de San Juan - Diputat Llu\u00eds Luc\u00eda",
+        "position": {
+            "lat": 39.4787471170485,
+            "lng": -0.395571161644053
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748328000
+    },
+    {
+        "number": 89,
+        "contract_name": "valence",
+        "name": "89_AVDA. BLASCO IBA\u00d1EZ",
+        "address": "Blasco Iba\u00f1ez, 23 (F. Filosof\u00eda y Psicolog\u00eda)",
+        "position": {
+            "lat": 39.4777701253999,
+            "lng": -0.359409052701581
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 6,
+        "available_bikes": 24,
+        "status": "OPEN",
+        "last_update": 1714748315000
+    },
+    {
+        "number": 189,
+        "contract_name": "valence",
+        "name": "189_HOSPITAL_NUEVA_FE",
+        "address": "Hospital Nueva Fe (administraci\u00f3n)",
+        "position": {
+            "lat": 39.444747,
+            "lng": -0.377156
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 16,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748378000
+    },
+    {
+        "number": 80,
+        "contract_name": "valence",
+        "name": "080_AMADEO SAVOIA",
+        "address": "Amadeo de Saboya (frente Ayuntamiento)",
+        "position": {
+            "lat": 39.4737101107501,
+            "lng": -0.362389059448826
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 20,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748026000
+    },
+    {
+        "number": 129,
+        "contract_name": "valence",
+        "name": "129_C_ALMAZORA",
+        "address": "Almazora - Benimuslem",
+        "position": {
+            "lat": 39.485943149532,
+            "lng": -0.37003608893869
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714747829000
+    },
+    {
+        "number": 181,
+        "contract_name": "valence",
+        "name": "181_CALLE_DEL_SALINAR",
+        "address": "Zapadores, 23",
+        "position": {
+            "lat": 39.4579670557495,
+            "lng": -0.368282068629998
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 15,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714747910000
+    },
+    {
+        "number": 83,
+        "contract_name": "valence",
+        "name": "83_PZA. DE LA LEGI\u00d3N ESPA\u00d1OLA",
+        "address": "General Elio - Llano del Real",
+        "position": {
+            "lat": 39.4775531222011,
+            "lng": -0.367061075518166
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 14,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748374000
+    },
+    {
+        "number": 212,
+        "contract_name": "valence",
+        "name": "212_CALLE_FRAY_JUAN\u00cdPERO_SERRA_ESQ_CALLE_TORRENTE",
+        "address": "Fray Juan\u00edpero Serra - Torrente",
+        "position": {
+            "lat": 39.4614520570921,
+            "lng": -0.40048716710112
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714747943000
+    },
+    {
+        "number": 78,
+        "contract_name": "valence",
+        "name": "078_AVDA. ARAG\u00d3N I",
+        "address": "Arag\u00f3n - Vicente Sancho Tello",
+        "position": {
+            "lat": 39.4699130991134,
+            "lng": -0.358779046585651
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748080000
+    },
+    {
+        "number": 149,
+        "contract_name": "valence",
+        "name": "149_AVDA. PERIS Y VALERO",
+        "address": "Peris y Valero - Salamanca",
+        "position": {
+            "lat": 39.4629020744664,
+            "lng": -0.361886052119026
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714747866000
+    },
+    {
+        "number": 176,
+        "contract_name": "valence",
+        "name": "176_CAMINO_DE_MONCADA_52",
+        "address": "Cno. Moncada - Pedro Patricio Mey",
+        "position": {
+            "lat": 39.4919851670424,
+            "lng": -0.378944118876901
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748242000
+    },
+    {
+        "number": 23,
+        "contract_name": "valence",
+        "name": "023_GRAN_VIA_FERNANDO_EL_CATOLICO",
+        "address": "Fernando el Cat\u00f3lico - Erudito Orellana",
+        "position": {
+            "lat": 39.471596095916,
+            "lng": -0.3862691299059
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 19,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748015000
+    },
+    {
+        "number": 10,
+        "contract_name": "valence",
+        "name": "010_CALLE_DEL_HOSPITAL_FRENTE_CALLE_HORNO_DEL_HOSP",
+        "address": "Hospital - Horno del Hospital",
+        "position": {
+            "lat": 39.4707840943272,
+            "lng": -0.382701118769287
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 4,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714747884000
+    },
+    {
+        "number": 60,
+        "contract_name": "valence",
+        "name": "060_AVDA.BALEARES II",
+        "address": "Baleares - Leb\u00f3n",
+        "position": {
+            "lat": 39.4621990753403,
+            "lng": -0.351867021712218
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 19,
+        "available_bike_stands": 13,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748362000
+    },
+    {
+        "number": 229,
+        "contract_name": "valence",
+        "name": "229_CALLE_AITANA_ESQ_AVDA_BURJASSOT",
+        "address": "Aitana - Florista",
+        "position": {
+            "lat": 39.4930721655928,
+            "lng": -0.394897167291038
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 15,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714747804000
+    },
+    {
+        "number": 139,
+        "contract_name": "valence",
+        "name": "139_C/ REUS",
+        "address": "Reus - Alquer\u00eda de la Estrella",
+        "position": {
+            "lat": 39.4856741444693,
+            "lng": -0.382964127549696
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748292000
+    },
+    {
+        "number": 69,
+        "contract_name": "valence",
+        "name": "069_AVDA. DEL PUERTO",
+        "address": "Av. Puerto - Serrer\u00eda",
+        "position": {
+            "lat": 39.461920078631,
+            "lng": -0.338811982446624
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 1,
+        "available_bikes": 24,
+        "status": "OPEN",
+        "last_update": 1714748381000
+    },
+    {
+        "number": 245,
+        "contract_name": "valence",
+        "name": "245_9_DE_OCTUBRE_CIEZA",
+        "address": "Nueve de Octubre - Cieza",
+        "position": {
+            "lat": 39.472098,
+            "lng": -0.405361
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748166000
+    },
+    {
+        "number": 270,
+        "contract_name": "valence",
+        "name": "270_CALLE_NINOT_ESQ_PZA_REGINO_MAS",
+        "address": "Ninot - Regino Mas",
+        "position": {
+            "lat": 39.5000431897182,
+            "lng": -0.392980165265021
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 14,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714747827000
+    },
+    {
+        "number": 29,
+        "contract_name": "valence",
+        "name": "029_PLAZA AMERICA",
+        "address": "Plaza Am\u00e9rica - Cirilo Amor\u00f3s - Sorn\u00ed",
+        "position": {
+            "lat": 39.4700800975406,
+            "lng": -0.36539006649012
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714747944000
+    },
+    {
+        "number": 38,
+        "contract_name": "valence",
+        "name": "38_AVDA. PERIS Y VALERO",
+        "address": "Peris y Valero - Cabo Jubi",
+        "position": {
+            "lat": 39.4593698286773,
+            "lng": -0.370340076012569
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 5,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1714748365000
+    },
+    {
+        "number": 252,
+        "contract_name": "valence",
+        "name": "252_DE_LOS_GREMIOS_CAMPOS_CRESPO",
+        "address": "Dels Gremis - Campos Crespo",
+        "position": {
+            "lat": 39.4502560182615,
+            "lng": -0.4036651706049
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714747953000
+    },
+    {
+        "number": 192,
+        "contract_name": "valence",
+        "name": "192_CTRA_MALILLA",
+        "address": "Cra. Malilla - Olt\u00e1",
+        "position": {
+            "lat": 39.4526050342473,
+            "lng": -0.378805097289263
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 4,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714747988000
+    },
+    {
+        "number": 153,
+        "contract_name": "valence",
+        "name": "153_C/ LLANO DE ZAIDA",
+        "address": "Llano de la Zaid\u00eda - Doctor Ol\u00f3riz",
+        "position": {
+            "lat": 39.483026,
+            "lng": -0.380682
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 24,
+        "available_bike_stands": 24,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748330000
+    },
+    {
+        "number": 224,
+        "contract_name": "valence",
+        "name": "224_PLAZA_JOSE_MONFORTE_TUDELA_ESQ_CALLE_HERNANDEZ",
+        "address": "Jorge Comin (Metge) - Terrateig",
+        "position": {
+            "lat": 39.4805361204789,
+            "lng": -0.403679186925212
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748187000
+    },
+    {
+        "number": 113,
+        "contract_name": "valence",
+        "name": "113_ETS CAMINOS",
+        "address": "UPV Caminos",
+        "position": {
+            "lat": 39.4812441421744,
+            "lng": -0.343702007510602
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 38,
+        "available_bike_stands": 35,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714747833000
+    },
+    {
+        "number": 208,
+        "contract_name": "valence",
+        "name": "208_CALLE_CARTEROS_ESQ_CALLE_MOSSEN_FEBRER",
+        "address": "Carteros - Mossen Febrer",
+        "position": {
+            "lat": 39.4516600278603,
+            "lng": -0.38866912636635
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 14,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714747796000
+    },
+    {
+        "number": 50,
+        "contract_name": "valence",
+        "name": "50_AVDA. AUTOPISTA DEL SALER",
+        "address": "Autopista del Saler - Antonio Ferrandis (C.C. El Saler)",
+        "position": {
+            "lat": 39.4532860449334,
+            "lng": -0.352950020141597
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 40,
+        "available_bike_stands": 12,
+        "available_bikes": 28,
+        "status": "OPEN",
+        "last_update": 1714748348000
+    },
+    {
+        "number": 142,
+        "contract_name": "valence",
+        "name": "142_C/ GREGORIO GEA (PEATONAL)",
+        "address": "Gregorio Gea - Profesor Beltr\u00e1n B\u00e1guena",
+        "position": {
+            "lat": 39.4818881295177,
+            "lng": -0.389750145869399
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 25,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748109000
+    },
+    {
+        "number": 269,
+        "contract_name": "valence",
+        "name": "269_CAMPAMENTO_81",
+        "address": "Campamento, 81",
+        "position": {
+            "lat": 39.4998751784868,
+            "lng": -0.426354265293528
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 15,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748074000
+    },
+    {
+        "number": 103,
+        "contract_name": "valence",
+        "name": "103_RUBEN DARIO",
+        "address": "Rub\u00e9n Dar\u00edo - Plaza Fray Luis Colomer",
+        "position": {
+            "lat": 39.4784211298349,
+            "lng": -0.35246203223541
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 14,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748274000
+    },
+    {
+        "number": 11,
+        "contract_name": "valence",
+        "name": "011_PZA_AYTO_CON_CALLE_COTANDA",
+        "address": "Plaza Ayuntamiento - Cotanda",
+        "position": {
+            "lat": 39.471154097455,
+            "lng": -0.376875101498657
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 27,
+        "available_bike_stands": 26,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748010000
+    },
+    {
+        "number": 242,
+        "contract_name": "valence",
+        "name": "242_LA_SAFOR_AVDA_MAESTRO_RODRIGO",
+        "address": "La Safor - Maestro Rodrigo",
+        "position": {
+            "lat": 39.4878751450492,
+            "lng": -0.404288192680299
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748028000
+    },
+    {
+        "number": 250,
+        "contract_name": "valence",
+        "name": "250_AVDA_TRES_CRUCES_PIO_XI",
+        "address": "Tres Cruces - Pio XI",
+        "position": {
+            "lat": 39.45632,
+            "lng": -0.4008977
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714747851000
+    },
+    {
+        "number": 2,
+        "contract_name": "valence",
+        "name": "002_CALLE_SALVADOR_GINER_CALLE_MUSEO",
+        "address": "Salvador Giner - C. Museo",
+        "position": {
+            "lat": 39.4798571258551,
+            "lng": -0.379839115061075
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 13,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748045000
+    },
+    {
+        "number": 182,
+        "contract_name": "valence",
+        "name": "182_AVDA_AUSIAS_MARCH",
+        "address": "Ausias March - Pianista Amparo Iturbi",
+        "position": {
+            "lat": 39.455400044894,
+            "lng": -0.375056087555512
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 21,
+        "available_bike_stands": 9,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1714748243000
+    },
+    {
+        "number": 222,
+        "contract_name": "valence",
+        "name": "222_AVDA_MAESTRO_RODRIGO_ESQ_AVDA_MANUEL_DE_FALLA",
+        "address": "Maestro Rodrigo - Manuel de Falla",
+        "position": {
+            "lat": 39.4768611101047,
+            "lng": -0.397373166037864
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748131000
+    },
+    {
+        "number": 93,
+        "contract_name": "valence",
+        "name": "93_AVADA_BLASCO_IBA\u00d1EZ_DESP_C_POETA_DURAN_TORTAJAD",
+        "address": "Blasco Iba\u00f1ez - Poeta Dur\u00e1n Tortajada",
+        "position": {
+            "lat": 39.4722501118008,
+            "lng": -0.34390000326249
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 38,
+        "available_bike_stands": 37,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748174000
+    },
+    {
+        "number": 57,
+        "contract_name": "valence",
+        "name": "057_CALLE PINTOR MONLEON",
+        "address": "Alameda - Pintor Monle\u00f3n",
+        "position": {
+            "lat": 39.464444080812,
+            "lng": -0.35834704234339
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 3,
+        "available_bikes": 17,
+        "status": "OPEN",
+        "last_update": 1714748357000
+    },
+    {
+        "number": 253,
+        "contract_name": "valence",
+        "name": "253_PLAZA_JOSE_MELIA_CASTELLO_CAMPOS_CRESPO",
+        "address": "Jos\u00e9 Meli\u00e1 Castell\u00f3 - Campos Crespo",
+        "position": {
+            "lat": 39.4526940272949,
+            "lng": -0.401192164498328
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 2,
+        "available_bikes": 13,
+        "status": "OPEN",
+        "last_update": 1714748102000
+    },
+    {
+        "number": 218,
+        "contract_name": "valence",
+        "name": "218_CALLE_OLIMPIA AROZENA TORRES_ESQ_JUAN BAPTISTA",
+        "address": "Olimpia Arozena Torres - Juan Bautista Vives",
+        "position": {
+            "lat": 39.470708089307,
+            "lng": -0.397475163041212
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 10,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748325000
+    },
+    {
+        "number": 136,
+        "contract_name": "valence",
+        "name": "136_CALLE_ECONOMISTA_GAY",
+        "address": "Economista Gay - Constituci\u00f3n",
+        "position": {
+            "lat": 39.4899091610835,
+            "lng": -0.375701108044157
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748296000
+    },
+    {
+        "number": 272,
+        "contract_name": "valence",
+        "name": "272_VICENTE_LA_RODA_C_INGENIERO_FAUSTO_ELIO",
+        "address": "Vicente la Roda - Ingeniero Fausto Elio",
+        "position": {
+            "lat": 39.4805911436594,
+            "lng": -0.332280972954351
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 1,
+        "available_bikes": 13,
+        "status": "OPEN",
+        "last_update": 1714748383000
+    },
+    {
+        "number": 199,
+        "contract_name": "valence",
+        "name": "199_CALLE_BEATO_NICOLAS_FACTOR",
+        "address": "Beato Nicol\u00e1s Factor - Convento de Jes\u00fas",
+        "position": {
+            "lat": 39.4615560602987,
+            "lng": -0.391649140641673
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714748047000
+    },
+    {
+        "number": 105,
+        "contract_name": "valence",
+        "name": "105_AVDA. DE LOS NARANJOS",
+        "address": "Aularios Universidad de Valencia",
+        "position": {
+            "lat": 39.478319,
+            "lng": -0.344486
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 3,
+        "available_bikes": 27,
+        "status": "OPEN",
+        "last_update": 1714748358000
+    },
+    {
+        "number": 126,
+        "contract_name": "valence",
+        "name": "126_C/ ALFAUIR",
+        "address": "Alfahuir - Jos\u00e9 Chabas Bordehore",
+        "position": {
+            "lat": 39.4930661767053,
+            "lng": -0.36019506326505
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748262000
+    },
+    {
+        "number": 195,
+        "contract_name": "valence",
+        "name": "195_CALLE_GIORGETA",
+        "address": "Giorgeta - Roig de Corella",
+        "position": {
+            "lat": 39.4593520552134,
+            "lng": -0.384372117626406
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 11,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748267000
+    },
+    {
+        "number": 145,
+        "contract_name": "valence",
+        "name": "145_PLAZA_BADAJOZ",
+        "address": "Plaza Badajoz",
+        "position": {
+            "lat": 39.4815151254512,
+            "lng": -0.398486171871458
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 14,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748131000
+    },
+    {
+        "number": 275,
+        "contract_name": "valence",
+        "name": "275_CAMINO_DE_LAS_MORERAS_ESQ_RONDA_DE_NAZARET",
+        "address": "Moreras - Rona de Nazaret",
+        "position": {
+            "lat": 39.4522730472996,
+            "lng": -0.33515596627555
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 2,
+        "available_bikes": 17,
+        "status": "OPEN",
+        "last_update": 1714748144000
+    },
+    {
+        "number": 61,
+        "contract_name": "valence",
+        "name": "061_VICENTE VIDAL",
+        "address": "Vicent Vidal - Pintor Maella",
+        "position": {
+            "lat": 39.4612610734563,
+            "lng": -0.347921009381426
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748324000
+    },
+    {
+        "number": 260,
+        "contract_name": "valence",
+        "name": "260_DELS_FERRERS_ESQ_TRAGINERS",
+        "address": "Traginers - Pedrapiquers",
+        "position": {
+            "lat": 39.4595240483794,
+            "lng": -0.407308186532079
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 18,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714747834000
+    },
+    {
+        "number": 54,
+        "contract_name": "valence",
+        "name": "54_PASEO ALAMEDA",
+        "address": "Plaza de Europa",
+        "position": {
+            "lat": 39.4597460667729,
+            "lng": -0.352781023126671
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 5,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748232000
+    },
+    {
+        "number": 188,
+        "contract_name": "valence",
+        "name": "188_HOSPITAL_NUEVA_FE",
+        "address": "Hospital Nueva Fe (consultas externas)",
+        "position": {
+            "lat": 39.444589,
+            "lng": -0.375249
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 40,
+        "available_bike_stands": 40,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748093000
+    },
+    {
+        "number": 163,
+        "contract_name": "valence",
+        "name": "163_PASEO NEPTUNO",
+        "address": "Paseo Neptuno 32-34",
+        "position": {
+            "lat": 39.4644050919738,
+            "lng": -0.323491937905993
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 3,
+        "available_bikes": 17,
+        "status": "OPEN",
+        "last_update": 1714748105000
+    },
+    {
+        "number": 244,
+        "contract_name": "valence",
+        "name": "244_AVDA_PIO_BAROJA_VALLE_DE_LA_BALLESTERA",
+        "address": "Valle de la Ballestera - Pio Baroja",
+        "position": {
+            "lat": 39.4784741127009,
+            "lng": -0.406227193465013
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748132000
+    },
+    {
+        "number": 75,
+        "contract_name": "valence",
+        "name": "075_CAMPOAMOR I",
+        "address": "Rep\u00fablica Argentina - Campoamor",
+        "position": {
+            "lat": 39.4720811086804,
+            "lng": -0.351792026815861
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 11,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748230000
+    },
+    {
+        "number": 276,
+        "contract_name": "valence",
+        "name": "276_EDIFICIO_VELES_E_VENTS",
+        "address": "Veles e Vents",
+        "position": {
+            "lat": 39.4619430835605,
+            "lng": -0.323855937664754
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748382000
+    },
+    {
+        "number": 51,
+        "contract_name": "valence",
+        "name": "51_PSO. DE LAS MORERAS",
+        "address": "Moreras (Oceanogr\u00e1fico)",
+        "position": {
+            "lat": 39.4521510429352,
+            "lng": -0.347318002649104
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 4,
+        "available_bikes": 16,
+        "status": "OPEN",
+        "last_update": 1714747987000
+    },
+    {
+        "number": 37,
+        "contract_name": "valence",
+        "name": "37_AVDA. PERIS Y VALERO",
+        "address": "Peris y Valero - Luis Sant\u00e1ngel",
+        "position": {
+            "lat": 39.4609055823944,
+            "lng": -0.366531327258963
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748321000
+    },
+    {
+        "number": 124,
+        "contract_name": "valence",
+        "name": "124_C/ AZAGADOR DE ALBORAYA",
+        "address": "Azagador de Alboraya - Dolores Marqu\u00e9s",
+        "position": {
+            "lat": 39.4884691606166,
+            "lng": -0.362046066347782
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 7,
+        "available_bikes": 18,
+        "status": "OPEN",
+        "last_update": 1714748150000
+    },
+    {
+        "number": 257,
+        "contract_name": "valence",
+        "name": "257_PLAZA_SALVADOR_SORIA_ESQ_PIO_X",
+        "address": "Plaza Salvador Soria, 8",
+        "position": {
+            "lat": 39.4452190059457,
+            "lng": -0.389195124464717
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 0,
+        "available_bikes": 20,
+        "status": "OPEN",
+        "last_update": 1714748239000
+    },
+    {
+        "number": 158,
+        "contract_name": "valence",
+        "name": "158_DR.LLUNCH",
+        "address": "Doctor Lluch - Virgen del Sufragio",
+        "position": {
+            "lat": 39.4666660981916,
+            "lng": -0.327809952057852
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 0,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714747784000
+    },
+    {
+        "number": 43,
+        "contract_name": "valence",
+        "name": "43_C/ DE ORIENTE",
+        "address": "Escultor Jos\u00e9 Capuz - Oriente",
+        "position": {
+            "lat": 39.4594450630151,
+            "lng": -0.361244048329219
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 0,
+        "available_bikes": 20,
+        "status": "OPEN",
+        "last_update": 1714748067000
+    },
+    {
+        "number": 240,
+        "contract_name": "valence",
+        "name": "240_CAMP_DEL_TURIA_AVDA_CORTES_VALENCIANAS",
+        "address": "Camp del Turia - Corts Valencianes",
+        "position": {
+            "lat": 39.494972169843,
+            "lng": -0.401638188523523
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748288000
+    },
+    {
+        "number": 150,
+        "contract_name": "valence",
+        "name": "150_DR. MANUEL CANDELA",
+        "address": "Manuel Candela - Rodriguez de Cepeda",
+        "position": {
+            "lat": 39.4676890942275,
+            "lng": -0.350700021177111
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 25,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748012000
+    },
+    {
+        "number": 220,
+        "contract_name": "valence",
+        "name": "220_CALLE_CASTAN_TOBE\u00d1AS_ESQ_CALLE_DE_GOYA",
+        "address": "Cast\u00e1n Tobe\u00f1as - Patriques",
+        "position": {
+            "lat": 39.4738230995181,
+            "lng": -0.398412167524643
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 14,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748317000
+    },
+    {
+        "number": 148,
+        "contract_name": "valence",
+        "name": "148_X\u00c0TIVA_PLAZA_DE_TOROS",
+        "address": "C/X\u00e0tiva 30-32",
+        "position": {
+            "lat": 39.467113,
+            "lng": -0.375469
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 35,
+        "available_bike_stands": 17,
+        "available_bikes": 18,
+        "status": "OPEN",
+        "last_update": 1714748117000
+    },
+    {
+        "number": 228,
+        "contract_name": "valence",
+        "name": "228_AVDA_NICASIO_BENLLOCH_ESQ_CALLE_L'HORTA_SUD",
+        "address": "Doctor Nicasio Benlloch - L'Horta Sud",
+        "position": {
+            "lat": 39.493660166338,
+            "lng": -0.398762179196655
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 9,
+        "available_bikes": 6,
+        "status": "OPEN",
+        "last_update": 1714747919000
+    },
+    {
+        "number": 6,
+        "contract_name": "valence",
+        "name": "006_GUILLEN_CASTRO_CON_CALLE_SAN_PEDRO_PASCUAL",
+        "address": "Guillem de Castro - San Pedro Pascual",
+        "position": {
+            "lat": 39.4727661005389,
+            "lng": -0.384174124251856
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 13,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748254000
+    },
+    {
+        "number": 180,
+        "contract_name": "valence",
+        "name": "180_AVENIDA_DOCTOR_WAKSMAN",
+        "address": "Doctor Waksman - Nieves",
+        "position": {
+            "lat": 39.455989048269,
+            "lng": -0.370774075033782
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 11,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748011000
+    },
+    {
+        "number": 177,
+        "contract_name": "valence",
+        "name": "177_CALLE_ALCUDIA",
+        "address": "Alcudia de Crespins - Pedro Patricio Mey",
+        "position": {
+            "lat": 39.4935131739156,
+            "lng": -0.373579103612918
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 12,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748278000
+    },
+    {
+        "number": 267,
+        "contract_name": "valence",
+        "name": "267_C_BENIFERRI_VICENTE_TOMAS_MARTI",
+        "address": "Beniferri - Vicent Tom\u00e1s Mart\u00ed",
+        "position": {
+            "lat": 39.4941361656198,
+            "lng": -0.406020201221407
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 11,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748257000
+    },
+    {
+        "number": 154,
+        "contract_name": "valence",
+        "name": "154_PESCADORES",
+        "address": "Pescadores - Progreso",
+        "position": {
+            "lat": 39.4698441083049,
+            "lng": -0.329644959268791
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 2,
+        "available_bikes": 13,
+        "status": "OPEN",
+        "last_update": 1714748179000
+    },
+    {
+        "number": 259,
+        "contract_name": "valence",
+        "name": "259_CALLE_PIO_IX_POLIDEPORTIVO_RAMBLETA",
+        "address": "Pio IX - M\u00fasico Cabanilles",
+        "position": {
+            "lat": 39.445428005382,
+            "lng": -0.393106136312086
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714747782000
+    },
+    {
+        "number": 86,
+        "contract_name": "valence",
+        "name": "86_AVDA_GASPAR_AGUILAR_ESQ_VICENTE_PARRA",
+        "address": "Gaspar Aguilar - Vicente Parra",
+        "position": {
+            "lat": 39.45520803899,
+            "lng": -0.391284136125771
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748272000
+    },
+    {
+        "number": 73,
+        "contract_name": "valence",
+        "name": "073_JERONIMO MONSORIU",
+        "address": "Jer\u00f3nimo Monsoriu - Industria",
+        "position": {
+            "lat": 39.4662270918011,
+            "lng": -0.342969997228533
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 16,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748316000
+    },
+    {
+        "number": 191,
+        "contract_name": "valence",
+        "name": "191_CTRA_MALILLA",
+        "address": "Esparraguera - Cra. Malilla",
+        "position": {
+            "lat": 39.4502970264089,
+            "lng": -0.378957096498364
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 11,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748186000
+    },
+    {
+        "number": 5,
+        "contract_name": "valence",
+        "name": "005_PINTOR_LOPEZ_PZA_POETA_LLORENTE",
+        "address": "Plaza Poeta Llorente",
+        "position": {
+            "lat": 39.4768631185303,
+            "lng": -0.371231087646942
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 13,
+        "available_bikes": 2,
+        "status": "OPEN",
+        "last_update": 1714748181000
+    },
+    {
+        "number": 183,
+        "contract_name": "valence",
+        "name": "183 - AVDA AUSIAS MARCH",
+        "address": "Ausias March - Av. de la Plata",
+        "position": {
+            "lat": 39.452588036275,
+            "lng": -0.372375077997377
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 18,
+        "available_bike_stands": 3,
+        "available_bikes": 15,
+        "status": "OPEN",
+        "last_update": 1714748287000
+    },
+    {
+        "number": 24,
+        "contract_name": "valence",
+        "name": "024_GRAN_VIA_RAMON_Y_CAJAL",
+        "address": "Fernando el Cat\u00f3lico - Cuenca",
+        "position": {
+            "lat": 39.4690450880029,
+            "lng": -0.384118122083548
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748348000
+    },
+    {
+        "number": 241,
+        "contract_name": "valence",
+        "name": "241_VALL_DE_ALBAIDA_PEATONAL",
+        "address": "La Vall d'Albaida - Corts Valencianes",
+        "position": {
+            "lat": 39.4929461628982,
+            "lng": -0.401981188470323
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 14,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714747901000
+    },
+    {
+        "number": 127,
+        "contract_name": "valence",
+        "name": "127_C/ DUQUE DE MANDAS",
+        "address": "Alfahuir - Duque de Mandas",
+        "position": {
+            "lat": 39.4905591668607,
+            "lng": -0.36453707493258
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714748295000
+    },
+    {
+        "number": 64,
+        "contract_name": "valence",
+        "name": "064_AVDA. DEL PUERTO II",
+        "address": "Av. Puerto 61-63",
+        "position": {
+            "lat": 39.4664860890115,
+            "lng": -0.354286031274125
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 3,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748000000
+    },
+    {
+        "number": 90,
+        "contract_name": "valence",
+        "name": "90_AVDA. BLASCO IBA\u00d1EZ",
+        "address": "Blasco Iba\u00f1ez, 32 (F. Filolog\u00eda)",
+        "position": {
+            "lat": 39.4767021219125,
+            "lng": -0.35905805107551
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 40,
+        "available_bike_stands": 36,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714747994000
+    },
+    {
+        "number": 146,
+        "contract_name": "valence",
+        "name": "146_AVDA. CAMPANAR",
+        "address": "Av. Campanar (La Fe)",
+        "position": {
+            "lat": 39.4850781398635,
+            "lng": -0.391043151456223
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 26,
+        "available_bike_stands": 25,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748198000
+    },
+    {
+        "number": 161,
+        "contract_name": "valence",
+        "name": "161_MEDITERRANEO",
+        "address": "Mediterr\u00e1neo - Plaza Cruz de Ca\u00f1amelar",
+        "position": {
+            "lat": 39.467937101176,
+            "lng": -0.331816964744236
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 4,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748138000
+    },
+    {
+        "number": 160,
+        "contract_name": "valence",
+        "name": "160_JOSE MARIA DE HARO",
+        "address": "Jos\u00e9 Mar\u00eda de Haro - Justo y Pastor",
+        "position": {
+            "lat": 39.4673040966933,
+            "lng": -0.33907198613268
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 9,
+        "available_bikes": 11,
+        "status": "OPEN",
+        "last_update": 1714748226000
+    },
+    {
+        "number": 185,
+        "contract_name": "valence",
+        "name": "185_AVDA_AUSIAS_MARCH",
+        "address": "Ebanista Caselles - Ausias March",
+        "position": {
+            "lat": 39.450012028161,
+            "lng": -0.37059407126453
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 11,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748150000
+    },
+    {
+        "number": 66,
+        "contract_name": "valence",
+        "name": "066_GUILLEN DE ANGLESOLA",
+        "address": "Guillem de Anglesola - Av. Puerto",
+        "position": {
+            "lat": 39.4642390840045,
+            "lng": -0.346352006288128
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 17,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748160000
+    },
+    {
+        "number": 173,
+        "contract_name": "valence",
+        "name": "173_AVENIDA_PIO_XII_34",
+        "address": "P\u00edo XII - Monestir de Poblet",
+        "position": {
+            "lat": 39.4845091367472,
+            "lng": -0.394769162326153
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3,
+        "status": "OPEN",
+        "last_update": 1714748165000
+    },
+    {
+        "number": 230,
+        "contract_name": "valence",
+        "name": "230_CALLE_POETA_SERRANO_CLAVERO_EQ_GENERAL_LLORENS",
+        "address": "Poeta Serrano Clavero - General Llorens",
+        "position": {
+            "lat": 39.4947181737151,
+            "lng": -0.386875144115863
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 14,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714747835000
+    },
+    {
+        "number": 71,
+        "contract_name": "valence",
+        "name": "071_AVDA DEL PUERTO VI",
+        "address": "Av. Puerto - Plaza Tribunal de les Aig\u00fces",
+        "position": {
+            "lat": 39.4603480750162,
+            "lng": -0.333621966050435
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714748380000
+    },
+    {
+        "number": 200,
+        "contract_name": "valence",
+        "name": "200_AVDA_DEL_CID",
+        "address": "Av. del Cid - Juli\u00e1n Pe\u00f1a",
+        "position": {
+            "lat": 39.4677050805168,
+            "lng": -0.393305148918046
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 10,
+        "available_bikes": 5,
+        "status": "OPEN",
+        "last_update": 1714747866000
+    },
+    {
+        "number": 184,
+        "contract_name": "valence",
+        "name": "184_CALLE_BOMBER_RAMON_DUART",
+        "address": "Bombero Ram\u00f3n Duart - Hermanos Maristas",
+        "position": {
+            "lat": 39.4527500389997,
+            "lng": -0.365661057953976
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 6,
+        "available_bikes": 9,
+        "status": "OPEN",
+        "last_update": 1714748098000
+    },
+    {
+        "number": 262,
+        "contract_name": "valence",
+        "name": "262_AVDA_TRES_FORQUES_COLONIA_ESPANOLA_DE_MEXICO",
+        "address": "Tres Forques - Colonia Espa\u00f1ola de Mexico",
+        "position": {
+            "lat": 39.4634400609539,
+            "lng": -0.409316194664879
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14,
+        "status": "OPEN",
+        "last_update": 1714747957000
+    },
+    {
+        "number": 15,
+        "contract_name": "valence",
+        "name": "015_RIBERA",
+        "address": "Ribera - Plaza Ayuntamiento",
+        "position": {
+            "lat": 39.4690560906886,
+            "lng": -0.375728096943875
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 34,
+        "available_bike_stands": 33,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748181000
+    },
+    {
+        "number": 249,
+        "contract_name": "valence",
+        "name": "249_AVDA_TRES_CRUCES_SEGUNDA_REPUBLICA_ESPA\u00d1OLA",
+        "address": "Tres Cruces - Segunda Rep\u00fablica Espa\u00f1ola",
+        "position": {
+            "lat": 39.459474049657,
+            "lng": -0.402831173069948
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 15,
+        "available_bike_stands": 11,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748384000
+    },
+    {
+        "number": 35,
+        "contract_name": "valence",
+        "name": "35_C/ DUQUE DE CALABRIA",
+        "address": "Regne de Valencia - Almirante Cadarso",
+        "position": {
+            "lat": 39.4637170755328,
+            "lng": -0.367085068143159
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 8,
+        "status": "OPEN",
+        "last_update": 1714748380000
+    },
+    {
+        "number": 20,
+        "contract_name": "valence",
+        "name": "020_FERNANDO_EL_CATOLICO_CALLE_QUART",
+        "address": "Quart - Fernando el Cat\u00f3lico",
+        "position": {
+            "lat": 39.4750021068696,
+            "lng": -0.387938136740957
+        },
+        "banking": true,
+        "bonus": false,
+        "bike_stands": 16,
+        "available_bike_stands": 16,
+        "available_bikes": 0,
+        "status": "OPEN",
+        "last_update": 1714748292000
+    },
+    {
+        "number": 36,
+        "contract_name": "valence",
+        "name": "036_PZA_LOS_FUEROS_CONDE_TRENOR",
+        "address": "Plaza de los Fueros - Conde Trenor",
+        "position": {
+            "lat": 39.4790401244879,
+            "lng": -0.375527101694727
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 25,
+        "available_bike_stands": 21,
+        "available_bikes": 4,
+        "status": "OPEN",
+        "last_update": 1714748382000
+    },
+    {
+        "number": 226,
+        "contract_name": "valence",
+        "name": "226_CALLE_SAFOR_ESQ_AVDA_DE_LAS_CORTES_VALENCIANAS",
+        "address": "Corts Valencianes - La Safor",
+        "position": {
+            "lat": 39.4908321567375,
+            "lng": -0.398950178249295
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 30,
+        "available_bike_stands": 29,
+        "available_bikes": 1,
+        "status": "OPEN",
+        "last_update": 1714748235000
+    },
+    {
+        "number": 170,
+        "contract_name": "valence",
+        "name": "170_PAVIA 5",
+        "address": "Isabel de Villena - Mendiz\u00e1bal",
+        "position": {
+            "lat": 39.4829411537881,
+            "lng": -0.325424953690914
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 2,
+        "available_bikes": 17,
+        "status": "OPEN",
+        "last_update": 1714748368000
+    }
+]
