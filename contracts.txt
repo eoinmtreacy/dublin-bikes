@@ -6,7 +6,6 @@ mulhouse
 luxembourg
 lund
 namur
-jcdecauxbike
 valence
 nancy
 ljubljana

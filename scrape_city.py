@@ -49,7 +49,7 @@ def main(arg):
                 print(
                     f"Duplicate data, station number: {number} @ {datetime.fromtimestamp(last_update)}, not adding")
 
-        print(f'Last update: {datetime.now()}')
+        print(f'Last update of {arg} at: {datetime.now()}')
 
     headers = {"accept": "application/json"}
     # 7 day forecast including realtime
@@ -58,9 +58,9 @@ def main(arg):
 
     if r_weather.status_code != 200:
         print(
-            f"Failed to fetch from weather API. Status Code: {r_weather.status_code}")
+            f"Failed to fetch from weather API for {arg}. Status Code: {r_weather.status_code}")
     else:
-        print("Successful fetch from weather API.")
+        print(f"Successful fetch from weather API for {arg}.")
         response_dictionary = r_weather.json()
         weather_data_cache = response_dictionary
 
