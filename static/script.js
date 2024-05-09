@@ -80,7 +80,7 @@ async function createMarkers(stations) {
         `;
 
         const marker = new google.maps.Marker({
-            position: new google.maps.LatLng(station.position_lat, station.position_lng),
+            position: new google.maps.LatLng(station.position.lat, station.position.lng),
             map: map,
         });
 
