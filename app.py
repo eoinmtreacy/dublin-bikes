@@ -30,7 +30,7 @@ def fetchCurrentWeather():
     with app.app_context():  # Push an application context Reference https://flask.palletsprojects.com/en/2.3.x/appcontext/
         print(f"Fetching weather data from API at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         headers = {"accept": "application/json"}
-        url = f"http://api.weatherapi.com/v1/forecast.json?key={WEATHER_API_KEY}=Dublin&days=7&aqi=no&alerts=no" # 7 day forecast including realtime
+        url = f"http://api.weatherapi.com/v1/forecast.json?key={WEATHER_API_KEY}&q=Dublin&days=7&aqi=no&alerts=no" # 7 day forecast including realtime
         response = requests.get(url, headers=headers)
         response_dictionary = response.json()
         global weather_data_cache # Use global variable to store the weather data
