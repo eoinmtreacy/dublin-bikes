@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     addToQueue("Ready!")
     STATIONS = await fetchStations() // STATIONS created from fetch
 
-    let lat = getAverage(STATIONS.map(station => station.position.lat))
-    let lng = getAverage(STATIONS.map(station => station.position.lng))
+    let lat = getAverage(STATIONS.map(station => station.position_lat))
+    let lng = getAverage(STATIONS.map(station => station.position_lng))
 
     map = await initMap(lat, lng) // initalise the map with Light Mode style
     STATIONS = await createMarkers(STATIONS)
@@ -83,7 +83,7 @@ async function createMarkers(stations) {
         `;
 
         const marker = new google.maps.Marker({
-            position: new google.maps.LatLng(station.position.lat, station.position.lng),
+            position: new google.maps.LatLng(station.position_lat, station.position_lng),
             map: map,
         });
 

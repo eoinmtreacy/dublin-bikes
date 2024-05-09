@@ -124,11 +124,14 @@ def predict(station):
 def stations(city):
     # this won't work on campus without an SSH tunnel but should be okay at home 
     try:
+
+        print(city.replace('-', ''))
         conn = pymysql.connect(
         host=DB,
+        port=PORT,
         user=DB_USER,
         password=DB_PW,
-        database=city.strip('-')
+        database=city.replace('-', '')
         )
 
         cursor = conn.cursor()
@@ -156,7 +159,6 @@ def stations(city):
         print(e)
         with open(f'stations/{city}_stations.json', 'r') as json_file:
             local_data = json.load(json_file)
-            print(local_data)
         return jsonify(local_data)
     
 @app.route('/realtime')
