@@ -22,17 +22,13 @@ const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 document.addEventListener('DOMContentLoaded', async () => {
     displayMessages()
     addToQueue("Ready!")
-    await initMap() // initalise the map with Light Mode style
-    await mapSetup()
+    map = await initMap() // initalise the map with Light Mode style
+    STATIONS = await fetchStations() // STATIONS created from fetch
+    console.log(STATIONS);
+    STATIONS = await createMarkers(STATIONS)
     fetchRealTimeWeather()
     setClock()
 });
-
-async function mapSetup() {
-    RTDATA = await fetchRealTime()
-    STATIONS = await fetchStations() // STATIONS created from fetch
-    STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
-}
 
 async function fetchStatic(path) {
     const response = await fetch(path);
@@ -47,27 +43,8 @@ async function fetchRealTime() {
 
 
 async function fetchStations() {
-    return await fetch('/stations').then(response => response.json())
+    return await fetch('/stations/' + city).then(response => response.json())
 }
-function getStationAvailability(dataSelect, stationNumber, realTimeData, stations) {
-    const station = stations[stationNumber];
-    if (station) {
-        const stationData = realTimeData.find(data => data[0] === stationNumber);
-        if (stationData) {
-        if (dataSelect === 'stands') {
-          return stationData[2]; // Index 2 represents available stands
-        } else if (dataSelect === 'bikes') {
-          return stationData[1]; // Index 1 represents available bikes
-        } else {
-            return "Invalid data selected specified";
-        }
-      } else {
-        return "Data not available for the station";
-      }
-    } else {
-      return "Station not found";
-    }
-  }
 
 // Raises an error in JS console when currentInfoWindow is not defined - this is fine
 function closeInfoWindow() {
@@ -87,16 +64,14 @@ async function createMarkers(stations) {
     // console.log('Creating markers:', stations);
     let currentInfoWindow = null; // Variable to store the currently open info window
     
-    stations['data'].forEach((station, index) => {
-        const availableBikes = getStationAvailability(bikes, station.number, RTDATA, STATIONS);
-        const availableStands = getStationAvailability(stands, station.number, RTDATA, STATIONS);
+    stations.forEach((station, index) => {
         const contentString = `
         <div style='color: black;' id='marker-popup'>
             <strong>${station.name}</strong>
             <p><strong>Station Number:</strong> ${station.number}</p>
             <p><strong>Credit Card:</strong> ${station.banking === 1 ? 'Available' : 'Not Available'}</p>
-            <p><strong>Available Bikes:</strong> ${availableBikes}</p>
-            <p><strong>Available Stands:</strong> ${availableStands}</p>
+            <p><strong>Available Bikes:</strong> ${station.available_bikes}</p>
+            <p><strong>Available Stands:</strong> ${station.available_bike_stands}</p>
             <p><strong>Overall Capacity:</strong> ${station.bike_stands}</p>
             <canvas id="chart-day-${index}" width="400" height="200"></canvas>
             <canvas id="chart-hour-${index}" width="400" height="200" style="margin-top: 20px;"></canvas>
@@ -341,15 +316,15 @@ async function createMarkers(stations) {
         station['marker'] = marker
     });
 
-    markers = stations['data'].map(station => station.marker)
-    console.log(map);
+    markers = stations.map(station => station.marker)
+    console.log(markers);
     markerClusterer = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
     return stations
 }
 
 // changed this to async because it wouldn't work otherwise lol
 async function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
+    let map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 53.349805, lng: -6.26031 },
         zoom: 13
     });
@@ -399,7 +374,7 @@ async function initMap() {
     })
 
     setupNavbarToggle();
-
+    return map
 }
 
 // DIRECTION SERVICES
@@ -553,15 +528,6 @@ function findClosestStation(location) {
         }
     });
     return closestStation;
-}
-
-function getStationCoordinates(stationName, stationsData) {
-    const station = stationsData.find(station => station.name === stationName); // Find station data in json by name: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
-    if (station) {
-        return `${station.position_lat},${station.position_lng}`; // Return the coordinates as a string in the format required by Google Maps API
-    }
-    else
-        return null; // Return null if station not found
 }
 
 function getText(elementID, value) { // Function to get the text of an option by its value rather than its value. https://www.geeksforgeeks.org/how-to-get-the-text-of-option-tag-by-value-using-javascript/

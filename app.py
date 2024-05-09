@@ -86,6 +86,10 @@ def fetchWeatherForecast():
 def landing():
     return render_template('index.html', google_maps_api_key=GOOGLE_MAPS_API_KEY, )
 
+@app.route('/<city>')
+def city(city):
+    return render_template('index.html', google_maps_api_key=GOOGLE_MAPS_API_KEY, city=city)
+
 @app.route('/predict/<station>', methods=['POST'])
 def predict(station):
     if request.method == 'POST':
@@ -116,15 +120,15 @@ def predict(station):
                         'debug' : e})
 
 # Open the JSON file for reading
-@app.route('/stations')
-def stations():
+@app.route('/stations/<city>')
+def stations(city):
     # this won't work on campus without an SSH tunnel but should be okay at home 
     try:
         conn = pymysql.connect(
         host=DB,
         user=DB_USER,
         password=DB_PW,
-        database=CITY
+        database=city.strip('-')
         )
 
         cursor = conn.cursor()
@@ -144,16 +148,16 @@ def stations():
 
         cursor.close()
         conn.close()
-        # print("Succesful fetched stations from database")
+        print("Succesful fetched stations from database")
 
         return jsonify(results)
     
     except pymysql.Error as e:
-        # print(e)s
-        with open('stations.json', 'r') as json_file:
+        print(e)
+        with open(f'stations/{city}_stations.json', 'r') as json_file:
             local_data = json.load(json_file)
-        return jsonify({"data": local_data, 
-                        "error": "Error fetching up-to-date stations, plotting static data"})
+            print(local_data)
+        return jsonify(local_data)
     
 @app.route('/realtime')
 def realtime():
