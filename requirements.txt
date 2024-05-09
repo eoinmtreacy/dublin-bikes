@@ -13,9 +13,11 @@ executing==2.0.1
 Flask==3.0.2
 Flask-Cors==4.0.0
 flask-googlemaps==0.4.1
+Flask-SQLAlchemy==3.1.1
 fonttools==4.49.0
 ghp-import==2.1.0
 greenlet==3.0.3
+gunicorn==21.2.0
 htmlmin==0.1.12
 idna==3.6
 importlib-metadata==7.0.1
@@ -57,6 +59,7 @@ ptyprocess==0.7.0
 pure-eval==0.2.2
 Pygments==2.17.2
 pymdown-extensions==10.7
+PyMySQL==1.1.0
 pyparsing==3.1.1
 python-dateutil==2.8.2
 pytz==2024.1
