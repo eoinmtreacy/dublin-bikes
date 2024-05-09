@@ -3,7 +3,7 @@ let origin, depart, arrive, destination
 let firstLeg, secondLeg, thirdLeg
 let map;
 const root = document.documentElement;
-let markerClusterer;
+// let markerClusterer;
 
 const STATUS_QUEUE = []
 
@@ -22,15 +22,14 @@ const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 document.addEventListener('DOMContentLoaded', async () => {
     displayMessages()
     addToQueue("Ready!")
-    map = await initMap() // initalise the map with Light Mode style
+    await initMap() // initalise the map with Light Mode style
     await mapSetup()
     fetchRealTimeWeather()
     setClock()
 });
 
 async function mapSetup() {
-    const realTime = await fetchRealTime()
-    RTDATA = realTime
+    RTDATA = await fetchRealTime()
     STATIONS = await fetchStations() // STATIONS created from fetch
     STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
 }
@@ -88,7 +87,7 @@ async function createMarkers(stations) {
     console.log('Creating markers:', stations);
     let currentInfoWindow = null; // Variable to store the currently open info window
     
-    stations.forEach((station, index) => {
+    stations['data'].forEach((station, index) => {
         const availableBikes = getStationAvailability(bikes, station.number, RTDATA, STATIONS);
         const availableStands = getStationAvailability(stands, station.number, RTDATA, STATIONS);
         const contentString = `
@@ -337,8 +336,8 @@ async function createMarkers(stations) {
         station['marker'] = marker
     });
 
-    markers = stations.map(station => station.marker)
-
+    markers = stations['data'].map(station => station.marker)
+    console.log(map);
     markerClusterer = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
     return stations
 }
