@@ -88,7 +88,7 @@ def landing():
 
 @app.route('/<city>')
 def city(city):
-    return render_template('index.html', google_maps_api_key=GOOGLE_MAPS_API_KEY, city=city)
+    return render_template('city.html', google_maps_api_key=GOOGLE_MAPS_API_KEY, city=city)
 
 @app.route('/predict/<station>', methods=['POST'])
 def predict(station):
