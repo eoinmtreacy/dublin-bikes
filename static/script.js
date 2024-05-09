@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     displayMessages()
     addToQueue("Ready!")
     map = await initMap() // initalise the map with Light Mode style
-    mapSetup()
+    await mapSetup()
     fetchRealTimeWeather()
     setClock()
 });
@@ -31,9 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function mapSetup() {
     const realTime = await fetchRealTime()
     RTDATA = realTime
-    console.log('Real Time Data:', realTime); 
     STATIONS = await fetchStations() // STATIONS created from fetch
-    console.log('Stations:', STATIONS);
     STATIONS = await createMarkers(STATIONS) // marker attributes added to stations
 }
 
