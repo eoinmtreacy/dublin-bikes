@@ -161,8 +161,8 @@ def stations(city):
             local_data = json.load(json_file)
         return jsonify(local_data)
     
-@app.route('/realtime')
-def realtime():
+@app.route('/realtime/<city>')
+def realtime(city):
     """fetch most recent realtime availability data
     for each station
     return for pop-up UI"""
@@ -170,9 +170,10 @@ def realtime():
     try:
         conn = pymysql.connect(
         host=DB,
+        port=PORT,
         user=DB_USER,
         password=DB_PW,
-        database=CITY
+        database=city.replace('-', '')
         )
 
         cursor = conn.cursor()
@@ -199,8 +200,8 @@ def realtime():
         return jsonify({"data": local_data, 
                         "error": "Realtime unavailable, current availability is predicted"})
 
-@app.route('/recent', methods=['POST'])
-def recent():
+@app.route('/recent/<city>', methods=['POST'])
+def recent(city):
     # post method that takes a station number
     # and current time that represents an hour 
     # and returns an array of the average
@@ -213,9 +214,10 @@ def recent():
         try :
             conn = pymysql.connect(
             host=DB,
+            port=PORT,
             user=DB_USER,
             password=DB_PW,
-            database=CITY
+            database=city.replace('-', '')
             )
 
             cursor = conn.cursor()
@@ -245,8 +247,8 @@ def recent():
             # print(e)
             return False
         
-@app.route('/lastweek', methods=['POST'])
-def last_week():
+@app.route('/lastweek/<city>', methods=['POST'])
+def last_week(city):
     # post method that takes a station number
     # and current time that represents an hour 
     # and returns an array of the average
@@ -259,9 +261,10 @@ def last_week():
         try :
             conn = pymysql.connect(
             host=DB,
+            port=PORT,
             user=DB_USER,
             password=DB_PW,
-            database=CITY
+            database=city.replace('-', '')
             )
 
             cursor = conn.cursor()
