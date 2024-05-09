@@ -22,9 +22,12 @@ const days_letters = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 document.addEventListener('DOMContentLoaded', async () => {
     displayMessages()
     addToQueue("Ready!")
-    map = await initMap() // initalise the map with Light Mode style
     STATIONS = await fetchStations() // STATIONS created from fetch
-    console.log(STATIONS);
+
+    let lat = getAverage(STATIONS.map(station => station.position.lat))
+    let lng = getAverage(STATIONS.map(station => station.position.lng))
+
+    map = await initMap(lat, lng) // initalise the map with Light Mode style
     STATIONS = await createMarkers(STATIONS)
     fetchRealTimeWeather()
     setClock()
@@ -317,15 +320,14 @@ async function createMarkers(stations) {
     });
 
     markers = stations.map(station => station.marker)
-    console.log(markers);
     markerClusterer = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
     return stations
 }
 
 // changed this to async because it wouldn't work otherwise lol
-async function initMap() {
+async function initMap(lat, lng) {
     let map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 53.349805, lng: -6.26031 },
+        center: { lat: lat, lng: lng },
         zoom: 13
     });
 
@@ -739,3 +741,7 @@ function showMessage(message) {
     statusElement.innerText = message;
 }
   
+function getAverage(arr) {
+    const sum = arr.reduce((a, b) => a + b, 0);
+    return sum / arr.length;
+}
