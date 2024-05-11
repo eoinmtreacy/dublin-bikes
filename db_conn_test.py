@@ -1,12 +1,12 @@
-import mysql.connector
+import pymysql
 from constants import *
 
 try:
-    conn = mysql.connector.connect(
+    conn = pymysql.connect(
         host=HOST,
         user=DB_USER,
         password=DB_PW,
-        port=PORT,
+        port=PORT
     )
     print("connected")
 
@@ -27,5 +27,5 @@ try:
 
     cursor.close()
     conn.close()
-except mysql.connector.Error as e:
+except pymysql.Error as e:
     print("Error connecting to MySQL:", e)
