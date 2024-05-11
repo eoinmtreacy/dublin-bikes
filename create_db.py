@@ -131,10 +131,10 @@ def main():
             if fetch_city_static(arg):
                 print(f"static data saved in stations/{arg}_stations.json")
                 conn = mysql.connector.connect(
-                    host='localhost',
-                    port=3306,
-                    user='root',
-                    password='mysql',
+                        host=HOST,
+                        port=PORT,
+                        user=DB_USER,
+                        password=DB_PW,
                 )
                 cursor = conn.cursor()
 
@@ -145,11 +145,11 @@ def main():
 
                     # create new connection and cursor to database: arg
                     conn = mysql.connector.connect(
-                        host='localhost',
-                        port=3306,
-                        user='root',
-                        password='mysql',
-                        database=arg.replace('-', '')
+                        host=HOST,
+                        port=PORT,
+                        user=DB_USER,
+                        password=DB_PW,
+                        database=arg
                     )
                     cursor = conn.cursor()
                     if create_stations_table(conn, cursor):

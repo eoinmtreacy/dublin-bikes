@@ -19,7 +19,7 @@ def main(arg):
 
         # connect to database and create curson
         conn = pymysql.connect(
-            host=DB,
+            host=HOST,
             user=DB_USER,
             password=DB_PW,
             database=arg
@@ -67,7 +67,7 @@ def main(arg):
         try:
 
             conn = pymysql.connect(
-            host=DB,
+            host=HOST,
             user=DB_USER,
             password=DB_PW,
             database=arg

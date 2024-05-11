@@ -18,11 +18,11 @@ from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 app = Flask(__name__)
 CORS(app)
 # app.secret_key = SECRET_KEY
-# app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
+# app.config['SQLALCHEMY_DATABASE_URI'] = HOST_URI
 # stop Flask from caching to make sure production changes are represented
 app.config["CACHE_TYPE"] = "null"
 
-# db = SQLAlchemy(app) # Initialize the database
+# HOST = SQLAlchemy(app) # Initialize the database
 
 weather_data_cache = {} # Cache for weather data
 # Refernce: https://www.digitalocean.com/community/tutorials/how-to-use-flask-sqlalchemy-to-interact-with-databases-in-a-flask-application
@@ -124,14 +124,12 @@ def predict(station):
 def stations(city):
     # this won't work on campus without an SSH tunnel but should be okay at home 
     try:
-
-        print(city.replace('-', ''))
         conn = pymysql.connect(
-        host=DB,
+        host=HOST,
         port=PORT,
         user=DB_USER,
         password=DB_PW,
-        database=city.replace('-', '')
+        database=city
         )
 
         cursor = conn.cursor()
@@ -169,11 +167,11 @@ def realtime(city):
 
     try:
         conn = pymysql.connect(
-        host=DB,
+        host=HOST,
         port=PORT,
         user=DB_USER,
         password=DB_PW,
-        database=city.replace('-', '')
+        database=city
         )
 
         cursor = conn.cursor()
@@ -213,11 +211,11 @@ def recent(city):
         station = data['station_number']
         try :
             conn = pymysql.connect(
-            host=DB,
+            host=HOST,
             port=PORT,
             user=DB_USER,
             password=DB_PW,
-            database=city.replace('-', '')
+            database=city
             )
 
             cursor = conn.cursor()
@@ -260,11 +258,11 @@ def last_week(city):
         station = data['station_number']
         try :
             conn = pymysql.connect(
-            host=DB,
+            host=HOST,
             port=PORT,
             user=DB_USER,
             password=DB_PW,
-            database=city.replace('-', '')
+            database=city
             )
 
             cursor = conn.cursor()

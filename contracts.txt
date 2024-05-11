@@ -10,7 +10,6 @@ valence
 nancy
 ljubljana
 nantes
-cergy-pontoise
 dublin
 toulouse
 lillestrom
